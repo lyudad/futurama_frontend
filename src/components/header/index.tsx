@@ -15,6 +15,9 @@ export function Header(): JSX.Element {
             <div>
                 <NavLink to="/aboutus">About us</NavLink>
             </div>
+            <div>
+                <NavLink to="/login">Login</NavLink>
+            </div>
         </NavContainer>
     );
 }
