@@ -1,19 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Form, Input, Button, Select } from 'antd';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Form, Input, Button } from 'antd';
 
-import { onFinish } from '../../pages/signup/signUpHooks';
-import { User } from '../../types/user.interface';
-
-const { Option } = Select;
-
-export function SignUpWithSocialMedia(props: { name: string }): JSX.Element {
-    const { name } = props;
+export function SignUpWithSocialMedia(props: { text: string }): JSX.Element {
+    const { text } = props;
+    const navigate = useNavigate();
     return (
-        <Form>
+        <Form onFinish={() => navigate('/signup/role')}>
             <Form.Item>
-                <Button type="primary" htmlType="button">
-                    {`Sign Up with ${name}`}
+                <Button type="primary" htmlType="submit">
+                    {text}
                 </Button>
             </Form.Item>
         </Form>
@@ -22,14 +18,14 @@ export function SignUpWithSocialMedia(props: { name: string }): JSX.Element {
 
 export function SignUpForm(): JSX.Element {
     const [form] = Form.useForm();
+    const navigate = useNavigate();
+
     return (
         <>
             <Form
                 form={form}
                 name="user_register"
-                onFinish={(values: User) => {
-                    onFinish(values);
-                }}
+                onFinish={() => navigate('/signup/role')}
             >
                 <Form.Item
                     name="firstname"
@@ -61,28 +57,24 @@ export function SignUpForm(): JSX.Element {
                 <Form.Item
                     name="password"
                     label="Password"
-                    rules={[{ required: true }]}
+                    rules={[
+                        { required: true },
+                        {
+                            min: 8,
+                            message: 'Password must be minimum 8 characters.',
+                        },
+                    ]}
                 >
-                    <Input />
-                </Form.Item>
-                <Form.Item
-                    name="role"
-                    label="Role"
-                    rules={[{ required: true }]}
-                >
-                    <Select placeholder="Select a option">
-                        <Option value="freelanser">Freelanser</Option>
-                        <Option value="employer">Employer</Option>
-                    </Select>
+                    <Input.Password />
                 </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit">
-                        Sign Up
+                        Sign UP
                     </Button>
                 </Form.Item>
             </Form>
-            <SignUpWithSocialMedia name="Google" />
-            <SignUpWithSocialMedia name="Facebook" />
+            <SignUpWithSocialMedia text="Create an account using Google" />
+            <SignUpWithSocialMedia text="Create an account using social network" />
             <NavLink to="/signin">
                 <Button type="link" htmlType="button">
                     Sign In

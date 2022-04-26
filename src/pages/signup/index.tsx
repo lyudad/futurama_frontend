@@ -1,13 +1,11 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import { SignUpForm } from '../../components/sign-up-page';
-
-import 'antd/dist/antd.css';
+import { SignUpForm } from '../../components/sign-up';
 
 const { Content } = Layout;
 
-export function Home(): JSX.Element {
+export function SignUp(): JSX.Element {
     return (
         <Content
             style={{
