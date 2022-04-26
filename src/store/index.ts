@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './reducers/counter';
+import thunkMiddleware from 'redux-thunk';
+import userRegister from './reducers/user.register';
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer,
+        user_register: userRegister,
     },
+    middleware: [thunkMiddleware],
 });
 
 export type RootState = ReturnType<typeof store.getState>;

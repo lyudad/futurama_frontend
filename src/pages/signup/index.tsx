@@ -1,88 +1,24 @@
 import React from 'react';
-import { Form, Input, Button, Select } from 'antd';
-import { onFinish } from './signUpHooks';
+import { Layout } from 'antd';
+
+import { SignUpForm } from '../../components/sign-up-page';
 
 import 'antd/dist/antd.css';
 
-const { Option } = Select;
+const { Content } = Layout;
 
 export function Home(): JSX.Element {
-    const [form] = Form.useForm();
-
-    const FORM_LAYOUT = {
-        span: 8,
-    };
     return (
-        <Form
-            form={form}
-            name="control-hooks"
-            onFinish={onFinish}
-            labelCol={FORM_LAYOUT}
-            wrapperCol={FORM_LAYOUT}
+        <Content
+            style={{
+                margin: '24px 16px',
+                padding: 24,
+                background: '#fff',
+                minHeight: 280,
+            }}
         >
-            <Form.Item
-                name="firstname"
-                label="First Name"
-                rules={[{ required: true }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item
-                name="lastname"
-                label="Last Name"
-                rules={[{ required: true }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item
-                name="email"
-                label="Email"
-                rules={[
-                    {
-                        required: true,
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
-                    },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item
-                name="password"
-                label="Password"
-                rules={[{ required: true }]}
-            >
-                <Input />
-            </Form.Item>
-            <Form.Item name="role" label="Role" rules={[{ required: true }]}>
-                <Select
-                    placeholder="Select a option and change input text above"
-                    allowClear
-                >
-                    <Option value="freelanser">Freelanser</Option>
-                    <Option value="employer">Employer</Option>
-                </Select>
-            </Form.Item>
-            <Form.Item>
-                <Button type="primary" htmlType="submit">
-                    Sign Up
-                </Button>
-            </Form.Item>
-            <Form.Item>
-                <Button type="primary" htmlType="button">
-                    Sign Up with Google
-                </Button>
-            </Form.Item>
-            <Form.Item>
-                <Button type="primary" htmlType="button">
-                    Sign Up with Facebook
-                </Button>
-            </Form.Item>
-            <Form.Item>
-                <Button type="link" htmlType="button">
-                    Sign In
-                </Button>
-            </Form.Item>
-        </Form>
+            <h1>Create an account</h1>
+            <SignUpForm />
+        </Content>
     );
 }
