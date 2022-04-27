@@ -4,6 +4,7 @@ import { GoogleCircleFilled } from '@ant-design/icons';
 import { string, object } from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from 'components/ui/button';
 import { Input } from 'components/ui/input';
@@ -13,6 +14,7 @@ import { loginForm } from 'types/login';
 import { Card, ErrorSpan, LoginPage } from './styles';
 
 export function SignIn(): JSX.Element {
+    const { t } = useTranslation();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [signinUser, { data, isLoading, isSuccess }] =
@@ -45,7 +47,7 @@ export function SignIn(): JSX.Element {
     return (
         <LoginPage>
             <Card>
-                <h2>Login</h2>
+                <h2>{t('SignInForm.login_text')}</h2>
                 <Formik
                     initialValues={initialValues}
                     validationSchema={validationSchema}
@@ -59,14 +61,14 @@ export function SignIn(): JSX.Element {
                             as={Input}
                             name="email"
                             type="text"
-                            placeholder="Email"
+                            placeholder={t('SignInForm.email')}
                         />
                         <ErrorMessage name="email" render={renderError} />
                         <Field
                             as={Input}
                             name="password"
                             type="password"
-                            placeholder="Password"
+                            placeholder={t('SignInForm.password')}
                         />
                         <ErrorMessage name="password" render={renderError} />
                         <Button
@@ -75,19 +77,21 @@ export function SignIn(): JSX.Element {
                             color="white"
                             theme=" #00f9ff"
                         >
-                            {isLoading ? 'Loading...' : 'SIGN IN'}
+                            {isLoading
+                                ? t('SignInForm.loading')
+                                : t('SignInForm.signin')}
                         </Button>
                     </Form>
                 </Formik>
                 <Button color="white" theme="black">
-                    <GoogleCircleFilled /> Sign in with Google
+                    <GoogleCircleFilled /> {t('SignInForm.signin_with_google')}
                 </Button>
                 <Button color="white" theme="black">
-                    Forgot password?
+                    {t('SignInForm.forgot_password')}
                 </Button>
                 <p>
-                    Don&apos;t have an account?{' '}
-                    <NavLink to="/register">Sign up</NavLink>
+                    {t('SignInForm.do_not_have_an_account')}{' '}
+                    <NavLink to="/register">{t('SignInForm.signup')}</NavLink>
                 </p>
             </Card>
         </LoginPage>

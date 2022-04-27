@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 
 import { store } from './store';
 import App from './App';
+import './localization/i18n.js';
 import './index.css';
 
 const root = ReactDOM.createRoot(
