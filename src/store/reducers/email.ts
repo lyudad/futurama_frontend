@@ -8,7 +8,7 @@ const initialState: EmailState = {
     value: '',
 };
 
-export const counter = createSlice({
+export const email = createSlice({
     name: 'email',
     initialState,
     reducers: {
@@ -18,6 +18,6 @@ export const counter = createSlice({
     },
 });
 
-export const { addEmail } = counter.actions;
+export const { addEmail } = email.actions;
 
-export default counter.reducer;
+export default email.reducer;

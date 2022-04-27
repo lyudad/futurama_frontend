@@ -1,10 +1,7 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
-// import { RootState } from 'store';
 import { useAppSelector } from 'store/hooks';
 
 export function Notification(): JSX.Element {
-    // const { email } = useSelector<RootState>((state) => state.email.email);
     const email = useAppSelector((state) => state.email.value);
 
     return (
