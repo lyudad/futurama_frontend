@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { SignUp } from './pages/signup';
-import { SelectRole } from './pages/selectRole';
+import { SignUp } from 'pages/signup';
+import { SelectRole } from 'pages/selectRole';
 
 import 'antd/dist/antd.css';
 

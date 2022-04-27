@@ -1,7 +1,8 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import { SignUpForm } from '../../components/sign-up';
+import { SignUpForm } from 'components/sign-up/signUpForm';
+import { BACKGROUND_COLOR } from 'constants/colors';
 
 const { Content } = Layout;
 
@@ -11,7 +12,7 @@ export function SignUp(): JSX.Element {
             style={{
                 margin: '24px 16px',
                 padding: 24,
-                background: '#fff',
+                background: BACKGROUND_COLOR,
                 minHeight: 280,
             }}
         >

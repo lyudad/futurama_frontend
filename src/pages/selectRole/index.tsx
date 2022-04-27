@@ -2,6 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Layout, Button } from 'antd';
 
+import { BACKGROUND_COLOR } from 'constants/colors';
+import { roleSelectionPageLanguage } from 'constants/languages/english';
+
 const { Content } = Layout;
 
 export function SelectRole(): JSX.Element {
@@ -10,7 +13,7 @@ export function SelectRole(): JSX.Element {
             style={{
                 margin: '24px 16px',
                 padding: 24,
-                background: '#fff',
+                background: BACKGROUND_COLOR,
                 minHeight: 280,
             }}
         >
@@ -18,12 +21,12 @@ export function SelectRole(): JSX.Element {
             <section>
                 <NavLink to="/profile">
                     <Button type="primary" htmlType="submit">
-                        Freelancer
+                        {roleSelectionPageLanguage.freelancerButtonText}
                     </Button>
                 </NavLink>
                 <NavLink to="/profile">
                     <Button type="primary" htmlType="submit">
-                        Job owner
+                        {roleSelectionPageLanguage.jobOwnerText}
                     </Button>
                 </NavLink>
             </section>

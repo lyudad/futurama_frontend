@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { userState } from '../../types/user.interface';
+import { userState } from 'types/user.interface';
 
 const initialState: userState = {
     email: '',

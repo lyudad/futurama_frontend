@@ -2,19 +2,8 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 
-export function SignUpWithSocialMedia(props: { text: string }): JSX.Element {
-    const { text } = props;
-    const navigate = useNavigate();
-    return (
-        <Form onFinish={() => navigate('/signup/role')}>
-            <Form.Item>
-                <Button type="primary" htmlType="submit">
-                    {text}
-                </Button>
-            </Form.Item>
-        </Form>
-    );
-}
+import { signUpPageLanguage } from 'constants/languages/english';
+import { SignUpWithSocialMedia } from './signUpWithSocialMedia';
 
 export function SignUpForm(): JSX.Element {
     const [form] = Form.useForm();
@@ -29,21 +18,21 @@ export function SignUpForm(): JSX.Element {
             >
                 <Form.Item
                     name="firstname"
-                    label="First Name"
+                    label={signUpPageLanguage.firstNameLabel}
                     rules={[{ required: true }]}
                 >
                     <Input />
                 </Form.Item>
                 <Form.Item
                     name="lastname"
-                    label="Last Name"
+                    label={signUpPageLanguage.lastNameLabel}
                     rules={[{ required: true }]}
                 >
                     <Input />
                 </Form.Item>
                 <Form.Item
                     name="email"
-                    label="Email"
+                    label={signUpPageLanguage.emailLabel}
                     rules={[
                         {
                             required: true,
@@ -56,7 +45,7 @@ export function SignUpForm(): JSX.Element {
                 </Form.Item>
                 <Form.Item
                     name="password"
-                    label="Password"
+                    label={signUpPageLanguage.passwordLabel}
                     rules={[
                         { required: true },
                         {
@@ -69,15 +58,19 @@ export function SignUpForm(): JSX.Element {
                 </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit">
-                        Sign UP
+                        {signUpPageLanguage.signUpButtonText}
                     </Button>
                 </Form.Item>
             </Form>
-            <SignUpWithSocialMedia text="Create an account using Google" />
-            <SignUpWithSocialMedia text="Create an account using social network" />
+            <SignUpWithSocialMedia
+                text={signUpPageLanguage.signUpWithGoogleText}
+            />
+            <SignUpWithSocialMedia
+                text={signUpPageLanguage.signUpWithSocialMediaText}
+            />
             <NavLink to="/signin">
                 <Button type="link" htmlType="button">
-                    Sign In
+                    {signUpPageLanguage.signInButtonText}
                 </Button>
             </NavLink>
         </>
