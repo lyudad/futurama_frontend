@@ -2,10 +2,11 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 
-import { signUpPageLanguage } from 'constants/languages/english';
+import { useTranslation } from 'react-i18next';
 import { SignUpWithSocialMedia } from './signUpWithSocialMedia';
 
 export function SignUpForm(): JSX.Element {
+    const { t } = useTranslation();
     const [form] = Form.useForm();
     const navigate = useNavigate();
 
@@ -18,21 +19,21 @@ export function SignUpForm(): JSX.Element {
             >
                 <Form.Item
                     name="firstname"
-                    label={signUpPageLanguage.firstNameLabel}
+                    label={t('SignUpPage.firstNameLabel')}
                     rules={[{ required: true }]}
                 >
                     <Input />
                 </Form.Item>
                 <Form.Item
                     name="lastname"
-                    label={signUpPageLanguage.lastNameLabel}
+                    label={t('SignUpPage.lastNameLabel')}
                     rules={[{ required: true }]}
                 >
                     <Input />
                 </Form.Item>
                 <Form.Item
                     name="email"
-                    label={signUpPageLanguage.emailLabel}
+                    label={t('SignUpPage.email')}
                     rules={[
                         {
                             required: true,
@@ -45,7 +46,7 @@ export function SignUpForm(): JSX.Element {
                 </Form.Item>
                 <Form.Item
                     name="password"
-                    label={signUpPageLanguage.passwordLabel}
+                    label={t('SignUpPage.password')}
                     rules={[
                         { required: true },
                         {
@@ -58,19 +59,17 @@ export function SignUpForm(): JSX.Element {
                 </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit">
-                        {signUpPageLanguage.signUpButtonText}
+                        {t('SignUpPage.signUp')}
                     </Button>
                 </Form.Item>
             </Form>
+            <SignUpWithSocialMedia text={t('SignUpPage.signUpWithGoogle')} />
             <SignUpWithSocialMedia
-                text={signUpPageLanguage.signUpWithGoogleText}
-            />
-            <SignUpWithSocialMedia
-                text={signUpPageLanguage.signUpWithSocialMediaText}
+                text={t('SignUpPage.signUpWithSocialMedia')}
             />
             <NavLink to="/signin">
                 <Button type="link" htmlType="button">
-                    {signUpPageLanguage.signInButtonText}
+                    {t('SignUpPage.signIn')}
                 </Button>
             </NavLink>
         </>

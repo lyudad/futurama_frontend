@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Layout, Button } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 import { BACKGROUND_COLOR } from 'constants/colors';
-import { roleSelectionPageLanguage } from 'constants/languages/english';
 
 const { Content } = Layout;
 
 export function SelectRole(): JSX.Element {
+    const { t } = useTranslation();
     return (
         <Content
             style={{
@@ -17,16 +18,16 @@ export function SelectRole(): JSX.Element {
                 minHeight: 280,
             }}
         >
-            <h1>WHO YOU ARE?</h1>
+            <h1>{t('RoleSelectionPage.whoAreYou')}</h1>
             <section>
                 <NavLink to="/profile">
                     <Button type="primary" htmlType="submit">
-                        {roleSelectionPageLanguage.freelancerButtonText}
+                        {t('RoleSelectionPage.freelancer')}
                     </Button>
                 </NavLink>
                 <NavLink to="/profile">
                     <Button type="primary" htmlType="submit">
-                        {roleSelectionPageLanguage.jobOwnerText}
+                        {t('RoleSelectionPage.jobOwner')}
                     </Button>
                 </NavLink>
             </section>
