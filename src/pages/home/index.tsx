@@ -1,21 +1,12 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { decrement, increment } from 'store/reducers/counter';
-import { RootState } from 'store';
-import { Button } from './styles';
+import { useTranslation } from 'react-i18next';
 
 export function Home(): JSX.Element {
-    const count = useSelector((state: RootState) => state.counter.value);
-    const dispatch = useDispatch();
-
+    const { t } = useTranslation();
     return (
         <div>
             <div>
-                <h2>Example counter for redux toolkit.</h2>
-                <Button onClick={() => dispatch(increment())}>Increment</Button>
-                <span>{count}</span>
-                <Button onClick={() => dispatch(decrement())}>Decrement</Button>
+                <h2>{t('HomePage.home_page')}</h2>
             </div>
         </div>
     );

@@ -1,4 +1,24 @@
 {
+    "MenuBar": {
+        "home": "Home",
+        "contacts": "Contacts",
+        "aboutus": "About us",
+        "login": "Login"
+    },
+    "SignInForm": {
+        "login_text": "Login",
+        "email": "Email",
+        "password": "Password",
+        "signin": "SIGN IN",
+        "loading": "Loading...",
+        "signin_with_google": "Sign in with Google",
+        "forgot_password": "Forgot password?",
+        "do_not_have_an_account": "Don't have an account?",
+        "signup": "Sign up"
+    },
+    "HomePage": {
+        "home_page": "Home page!"
+    },
     "resetPasswordBtn": {
         "resetPwdBtn": "Forgot password?"
     },
