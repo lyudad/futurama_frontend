@@ -33,5 +33,23 @@
     "passwordRecovery": {
         "goSignIn": "Already have an account? Click to go to login page",
         "continueBtn": "Continue"
+    },
+    
+    "SignUpPage": {
+        "createAnAccount":"Create an account",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "email": "Email",
+        "password": "Password",
+        "signUp": "Sign UP",
+        "signIn": "Sign In",
+        "signUpWithGoogle": "Create an account using Google",
+        "signUpWithSocialMedia": "Create an account using social network"
+    },
+
+    "RoleSelectionPage": {
+        "whoAreYou": "WHO YOU ARE?",
+        "freelancer": "Freelancer",
+        "jobOwner": "Job owner"
     }
 }

@@ -7,8 +7,8 @@ import { SignIn } from './pages/signin';
 import { PasswordRecovery } from './pages/passwordRecovery';
 import { PasswordNotification } from './pages/passwordNotification';
 import { PasswordMakeNew } from './pages/passwordMakeNew';
-import { SignUp } from 'pages/signup';
-import { SelectRole } from 'pages/selectRole';
+import { SignUp } from './pages/signup';
+import { SelectRole } from './pages/selectRole';
 import 'antd/dist/antd.css';
 
 function App(): JSX.Element {
@@ -26,12 +26,8 @@ function App(): JSX.Element {
             <Route path="/password_recovery" element={<PasswordRecovery />} />
             <Route path="/password_reset" element={<PasswordNotification />} />
             <Route path="/password_make_new" element={<PasswordMakeNew />} />
-            <Routes>
-                <Route path="/signup" element={<SignUp />} />
-            </Routes>
-            <Routes>
-                <Route path="/signup/role" element={<SelectRole />} />
-            </Routes>
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signup/role" element={<SelectRole />} />
         </Routes>
     );
 }
