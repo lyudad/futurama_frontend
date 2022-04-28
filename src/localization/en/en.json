@@ -1,0 +1,37 @@
+{
+    "MenuBar": {
+        "home": "Home",
+        "contacts": "Contacts",
+        "aboutus": "About us",
+        "login": "Login"
+    },
+    "SignInForm": {
+        "login_text": "Login",
+        "email": "Email",
+        "password": "Password",
+        "signin": "SIGN IN",
+        "loading": "Loading...",
+        "signin_with_google": "Sign in with Google",
+        "forgot_password": "Forgot password?",
+        "do_not_have_an_account": "Don't have an account?",
+        "signup": "Sign up"
+    },
+    "HomePage": {
+        "home_page": "Home page!"
+    },
+    "resetPasswordBtn": {
+        "resetPwdBtn": "Forgot password?"
+    },
+    "passwordMakeNew": {
+        "closeBtn": "Close",
+        "continueBtn": "Continue"
+    },
+    "passwordNotification": {
+        "notificationPartOne": "The instructions were sent to ",
+        "notificationPartTwo": " if there is a profile in UNIFI registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions."
+    },
+    "passwordRecovery": {
+        "goSignIn": "Already have an account? Click to go to login page",
+        "continueBtn": "Continue"
+    }
+}
