@@ -1,0 +1,1 @@
+export { PasswordMakeNew } from './passwordMakeNew';

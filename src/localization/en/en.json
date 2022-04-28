@@ -1,0 +1,17 @@
+{
+    "resetPasswordBtn": {
+        "resetPwdBtn": "Forgot password?"
+    },
+    "passwordMakeNew": {
+        "closeBtn": "Close",
+        "continueBtn": "Continue"
+    },
+    "passwordNotification": {
+        "notificationPartOne": "The instructions were sent to ",
+        "notificationPartTwo": " if there is a profile in UNIFI registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions."
+    },
+    "passwordRecovery": {
+        "goSignIn": "Already have an account? Click to go to login page",
+        "continueBtn": "Continue"
+    }
+}
