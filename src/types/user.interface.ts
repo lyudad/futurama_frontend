@@ -1,11 +1,4 @@
-export interface User {
-    email:string
-    firstname:string
-    lastname:string
-    password:string
-}
-
-export interface userState {
+export interface IUserState {
     email: string;
     firstname: string;
     lastname: string;
