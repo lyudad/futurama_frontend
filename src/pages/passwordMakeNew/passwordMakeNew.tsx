@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, notification } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function PasswordMakeNew(): JSX.Element {
     const [password, setPassword] = useState<string>('');
@@ -10,6 +11,7 @@ export function PasswordMakeNew(): JSX.Element {
 
     const navigate = useNavigate();
     const [form] = Form.useForm();
+    const { t } = useTranslation();
 
     const handleChange = (e: any): void => {
         const { name, value } = e.currentTarget;
@@ -37,7 +39,7 @@ export function PasswordMakeNew(): JSX.Element {
                 size="small"
                 onClick={() => notification.close(key)}
             >
-                Close
+                {t('passwordMakeNew.closeBtn')}
             </Button>
         );
         notification.open({
@@ -103,7 +105,7 @@ export function PasswordMakeNew(): JSX.Element {
                     htmlType="submit"
                     className="login-form-button"
                 >
-                    Continue
+                    {t('passwordMakeNew.continueBtn')}
                 </Button>
             </Form.Item>
         </Form>

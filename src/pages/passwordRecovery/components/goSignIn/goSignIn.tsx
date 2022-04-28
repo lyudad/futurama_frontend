@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button } from 'antd';
-import 'antd/dist/antd.min.css';
+import { useTranslation } from 'react-i18next';
 
 export function GoSignIn(): JSX.Element {
+    const { t } = useTranslation();
+
     return (
         <Button type="link">
-            <NavLink to="/">
-                Already have an account? Click to go to login page
-            </NavLink>
+            <NavLink to="/">{t('passwordRecovery.goSignIn')}</NavLink>
         </Button>
     );
 }

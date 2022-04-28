@@ -4,12 +4,15 @@ import { Form, Input, Button } from 'antd';
 import { MailOutlined } from '@ant-design/icons';
 import { useAppDispatch } from 'store/hooks';
 import { addEmail } from 'store/reducers/email';
+import { useTranslation } from 'react-i18next';
 import { GoSignIn } from './components/goSignIn';
 
 export function PasswordRecovery(): JSX.Element {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const [form] = Form.useForm();
+    const { t } = useTranslation();
+
     const onReset = (): void => {
         form.resetFields();
     };
@@ -54,7 +57,7 @@ export function PasswordRecovery(): JSX.Element {
 
                 <Form.Item>
                     <Button type="primary" htmlType="submit">
-                        Continue
+                        {t('passwordRecovery.continueBtn')}
                     </Button>
                 </Form.Item>
             </Form>
