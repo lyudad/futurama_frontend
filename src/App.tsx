@@ -19,18 +19,9 @@ function App(): JSX.Element {
                 path="/login"
                 element={!token ? <SignIn /> : <Navigate to="/" />}
             />
-            <Route
-                    path="/password_recovery"
-                    element={<PasswordRecovery />}
-            />
-            <Route
-                path="/password_reset"
-                element={<PasswordNotification />}
-            />
-            <Route
-                path="/password_make_new"
-                element={<PasswordMakeNew />}
-            />
+            <Route path="/password_recovery" element={<PasswordRecovery />} />
+            <Route path="/password_reset" element={<PasswordNotification />} />
+            <Route path="/password_make_new" element={<PasswordMakeNew />} />
         </Routes>
     );
 }

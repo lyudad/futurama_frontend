@@ -87,7 +87,9 @@ export function SignIn(): JSX.Element {
                     <GoogleCircleFilled /> {t('SignInForm.signin_with_google')}
                 </Button>
                 <Button color="white" theme="black">
-                    {t('SignInForm.forgot_password')}
+                    <NavLink to="/password_recovery">
+                        {t('SignInForm.forgot_password')}
+                    </NavLink>
                 </Button>
                 <p>
                     {t('SignInForm.do_not_have_an_account')}{' '}
