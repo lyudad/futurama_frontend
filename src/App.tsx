@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { useAppSelector } from 'store/hooks';
 import { Home } from './pages/home';
 import { SignIn } from './pages/signin';
 import { PasswordRecovery } from './pages/passwordRecovery';
@@ -8,7 +9,10 @@ import { PasswordNotification } from './pages/passwordNotification';
 import { PasswordMakeNew } from './pages/passwordMakeNew';
 
 function App(): JSX.Element {
-    const token = localStorage.getItem('token');
+    const token =
+        useAppSelector((state) => state.login.token) ||
+        localStorage.getItem('token');
+
     return (
         <Routes>
             <Route

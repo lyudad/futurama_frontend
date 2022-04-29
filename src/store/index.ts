@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 
 import emailReducer from './reducers/email';
+import loginReducer from './reducers/login';
 import { authApi } from './api/authApi';
 
 export const store = configureStore({
     reducer: {
         [authApi.reducerPath]: authApi.reducer,
         email: emailReducer,
+        login: loginReducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(authApi.middleware),

@@ -4,10 +4,18 @@ export const authApi = createApi({
     reducerPath: 'auth',
     baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_URL }),
     endpoints: (builder) => ({
+        signinGoogle: builder.mutation({
+            query: () => {
+                return {
+                    url: '/user/auth/google/callback',
+                    method: 'get',
+                };
+            },
+        }),
         signinUser: builder.mutation({
             query: (body: { email: string; password: string }) => {
                 return {
-                    url: '/user/signin',
+                    url: '/user/login',
                     method: 'post',
                     body,
                 };
@@ -16,4 +24,4 @@ export const authApi = createApi({
     }),
 });
 
-export const { useSigninUserMutation } = authApi;
+export const { useSigninUserMutation, useSigninGoogleMutation } = authApi;
