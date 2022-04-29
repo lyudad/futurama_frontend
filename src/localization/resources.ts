@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
-import common_en from "./en/en.json";
+import common_en from './en/en.json';
 
 export default {
-  nsSeparator: false,
-  keySeparator: false,
-  en: {
-    translation: common_en,
-  },
+    nsSeparator: false,
+    keySeparator: false,
+    en: {
+        translation: common_en,
+    },
 };
