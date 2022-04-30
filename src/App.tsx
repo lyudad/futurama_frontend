@@ -13,9 +13,7 @@ import { SelectRole } from './pages/selectRole';
 import 'antd/dist/antd.css';
 
 function App(): JSX.Element {
-    const token =
-        useAppSelector((state) => state.login.token) ||
-        localStorage.getItem('token');
+    const token = useAppSelector((state) => state.login.token);
 
     return (
         <Routes>

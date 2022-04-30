@@ -67,7 +67,7 @@ export function SignUpForm(): JSX.Element {
             <SignUpWithSocialMedia
                 text={t('SignUpPage.signUpWithSocialMedia')}
             />
-            <NavLink to="/signin">
+            <NavLink to="/login">
                 <Button type="link" htmlType="button">
                     {t('SignUpPage.signIn')}
                 </Button>

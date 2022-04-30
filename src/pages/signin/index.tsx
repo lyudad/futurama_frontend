@@ -40,7 +40,6 @@ export function SignIn(): JSX.Element {
     useEffect(() => {
         if (isSuccess) {
             dispatch(setUser({ token: data.token, user: data.user }));
-            localStorage.setItem('token', data.token);
         }
     }, [isSuccess]);
 
@@ -91,7 +90,7 @@ export function SignIn(): JSX.Element {
                 </Button>
                 <p>
                     {t('SignInForm.do_not_have_an_account')}{' '}
-                    <NavLink to="/register">{t('SignInForm.signup')}</NavLink>
+                    <NavLink to="/signup">{t('SignInForm.signup')}</NavLink>
                 </p>
             </Card>
         </LoginPage>

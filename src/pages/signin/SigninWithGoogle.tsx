@@ -14,7 +14,6 @@ function SigninWithGoogle(): JSX.Element {
     useEffect(() => {
         if (isSuccess) {
             dispatch(setUser({ token: data.token, user: data.user }));
-            localStorage.setItem('token', data.token);
         }
     }, [isSuccess]);
     return (

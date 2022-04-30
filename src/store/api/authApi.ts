@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { constants } from 'constants/urls';
 
 export const authApi = createApi({
     reducerPath: 'auth',
@@ -7,7 +8,7 @@ export const authApi = createApi({
         signinGoogle: builder.mutation({
             query: () => {
                 return {
-                    url: '/user/auth/google/callback',
+                    url: constants.USER_LOGIN_WITH_GOOGLE,
                     method: 'get',
                 };
             },
@@ -15,7 +16,7 @@ export const authApi = createApi({
         signinUser: builder.mutation({
             query: (body: { email: string; password: string }) => {
                 return {
-                    url: '/user/login',
+                    url: constants.USER_LOGIN,
                     method: 'post',
                     body,
                 };
