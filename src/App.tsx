@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { useAppSelector } from 'store/hooks';
 import { Home } from './pages/home';
 import { SignIn } from './pages/signin';
 import { PasswordRecovery } from './pages/passwordRecovery';
@@ -12,7 +13,8 @@ import { SelectRole } from './pages/selectRole';
 import 'antd/dist/antd.css';
 
 function App(): JSX.Element {
-    const token = localStorage.getItem('token');
+    const token = useAppSelector((state) => state.login.token);
+
     return (
         <Routes>
             <Route

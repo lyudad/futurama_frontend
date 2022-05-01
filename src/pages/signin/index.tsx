@@ -1,6 +1,5 @@
-import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { GoogleCircleFilled } from '@ant-design/icons';
+import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { string, object } from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
@@ -12,11 +11,11 @@ import { useSigninUserMutation } from 'store/api/authApi';
 import { setUser } from 'store/reducers/login';
 import { loginForm } from 'types/login';
 import { Card, ErrorSpan, LoginPage } from './styles';
+import SigninWithGoogle from './SigninWithGoogle';
 
 export function SignIn(): JSX.Element {
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [signinUser, { data, isLoading, isSuccess }] =
         useSigninUserMutation();
 
@@ -38,11 +37,11 @@ export function SignIn(): JSX.Element {
         <ErrorSpan>{message}</ErrorSpan>
     );
 
-    if (isSuccess) {
-        dispatch(setUser({ token: data.token, user: data.user }));
-        navigate('/');
-        localStorage.setItem('token', data.token);
-    }
+    useEffect(() => {
+        if (isSuccess) {
+            dispatch(setUser({ token: data.token, user: data.user }));
+        }
+    }, [isSuccess]);
 
     return (
         <LoginPage>
@@ -83,9 +82,7 @@ export function SignIn(): JSX.Element {
                         </Button>
                     </Form>
                 </Formik>
-                <Button color="white" theme="black">
-                    <GoogleCircleFilled /> {t('SignInForm.signin_with_google')}
-                </Button>
+                <SigninWithGoogle />
                 <Button color="white" theme="black">
                     <NavLink to="/password_recovery">
                         {t('SignInForm.forgot_password')}
@@ -93,7 +90,7 @@ export function SignIn(): JSX.Element {
                 </Button>
                 <p>
                     {t('SignInForm.do_not_have_an_account')}{' '}
-                    <NavLink to="/register">{t('SignInForm.signup')}</NavLink>
+                    <NavLink to="/signup">{t('SignInForm.signup')}</NavLink>
                 </p>
             </Card>
         </LoginPage>
