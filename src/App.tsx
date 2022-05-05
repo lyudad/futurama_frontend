@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { constants } from 'constants/urls';
 import { useAppSelector } from 'store/hooks';
 import { Home } from './pages/home';
 import { SignIn } from './pages/signin';
@@ -18,21 +19,27 @@ function App(): JSX.Element {
     return (
         <Routes>
             <Route
-                path="/"
-                element={token ? <Home /> : <Navigate to="/login" />}
+                path={constants.HOME}
+                element={token ? <Home /> : <Navigate to={constants.LOGIN} />}
             />
             <Route
-                path="/login"
-                element={!token ? <SignIn /> : <Navigate to="/" />}
+                path={constants.LOGIN}
+                element={!token ? <SignIn /> : <Navigate to={constants.HOME} />}
             />
-            <Route path="/password/recovery" element={<PasswordRecovery />} />
             <Route
-                path="/password/notification"
+                path={constants.PASSWORD_RECOVERY}
+                element={<PasswordRecovery />}
+            />
+            <Route
+                path={constants.PASSWORD_NOTOFICATION}
                 element={<PasswordNotification />}
             />
-            <Route path="/password/make_new" element={<PasswordMakeNew />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signup/role" element={<SelectRole />} />
+            <Route
+                path={constants.PASSWORD_MAKE_NEW}
+                element={<PasswordMakeNew />}
+            />
+            <Route path={constants.SIGNUP} element={<SignUp />} />
+            <Route path={constants.SIGNUP_ROLE} element={<SelectRole />} />
         </Routes>
     );
 }
