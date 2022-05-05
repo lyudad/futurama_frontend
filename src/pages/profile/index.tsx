@@ -7,21 +7,21 @@ import { UserProfile, ProfilePhoto, UserInfo } from './style';
 
 function Profile(): JSX.Element {
     const { t } = useTranslation();
-    const user = useAppSelector((state) => state.profile);
+    const user = useAppSelector((state) => state.profile.profile);
 
     const contactInformation = {
-        Email: user.email,
-        Phone: user.phoneNumber,
+        Email: user?.email,
+        Phone: user?.phoneNumber,
     };
 
     const positionAndSkills = {
-        Position: user.position,
-        Skills: user.skills,
+        Position: user?.position,
+        Skills: user?.skills,
     };
 
     const conditionsAtWork = {
-        'Desirebl salary level (per hour)': user.desirebleSalaryLevel,
-        'Available amount of hours': user.availableAmountOfHours,
+        'Desirebl salary level (per hour)': user?.desirebleSalaryLevel,
+        'Available amount of hours': user?.availableAmountOfHours,
     };
 
     const otherExperience = {
@@ -34,14 +34,14 @@ function Profile(): JSX.Element {
             <UserProfile>
                 <UserInfo>
                     <ProfilePhoto>
-                        <img src={user.profilePhoto} alt="#" />
+                        <img src={user?.profilePhoto} alt="#" />
                     </ProfilePhoto>
                     <div>
                         <h2>
-                            {user.firstName} {user.lastName}
+                            {user?.firstName} {user?.lastName}
                         </h2>
                         <h3>
-                            <strong>English level</strong>: {user.englishLevel}
+                            <strong>English level</strong>: {user?.englishLevel}
                         </h3>
                     </div>
                 </UserInfo>
@@ -57,14 +57,24 @@ function Profile(): JSX.Element {
                     description={t('ProfilePage.conditionsForWork')}
                     data={conditionsAtWork}
                 />
-                <Card
-                    description={t('ProfilePage.workExperience')}
-                    data={user.workExperience}
-                />
-                <Card
-                    description={t('ProfilePage.education')}
-                    data={user.education}
-                />
+                {user?.workExperience &&
+                    user?.workExperience.map((experience) => {
+                        return (
+                            <Card
+                                description={t('ProfilePage.workExperience')}
+                                data={experience}
+                            />
+                        );
+                    })}
+                {user?.education &&
+                    user.education.map((educat) => {
+                        return (
+                            <Card
+                                description={t('ProfilePage.education')}
+                                data={educat}
+                            />
+                        );
+                    })}
                 {otherExperience ? (
                     <Card
                         description={t('ProfilePage.otherExperience')}

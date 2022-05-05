@@ -1,40 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { UserProfile } from 'types/profile';
+import { ProfileState } from 'types/profile';
 
-const initialState: UserProfile = {
-    firstName: '',
-    lastName: '',
-    profilePhoto: '',
-    englishLevel: '',
-    skills: [],
-    email: '',
-    phoneNumber: '',
-    position: '',
-    description: '',
-    desirebleSalaryLevel: 0,
-    availableAmountOfHours: '',
-    otherExperience: '',
-    education: {
-        establishment: '',
-        level: '',
-        start: new Date(),
-        end: new Date(),
-    },
-    workExperience: {
-        company: '',
-        position: '',
-        start: new Date(),
-        end: new Date(),
-        description: '',
-    },
+const initialState: ProfileState = {
+    profile: null,
 };
 
 export const profile = createSlice({
-    name: 'auth',
+    name: 'profile',
     initialState,
     reducers: {
-        setProfile: (state, action: PayloadAction<{ user: UserProfile }>) => {
+        setProfile: (state, action: PayloadAction<{ user: ProfileState }>) => {
             state = action.payload.user;
         },
         defaultState: (state) => {

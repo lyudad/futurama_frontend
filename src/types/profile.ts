@@ -1,31 +1,24 @@
-export interface UserProfile {
-    firstName: string;
-    lastName: string;
-    profilePhoto: string;
-    englishLevel: string;
-    education: Education;
-    workExperience: WorkExperience;
-    skills: Array<string>;
-    email: string;
-    phoneNumber: string;
-    position: string;
-    desirebleSalaryLevel: number;
-    availableAmountOfHours: string;
-    otherExperience?: string;
-    description?: string;
-}
+export type ProfileState = {
+    profile: UserProfile | null;
+};
 
-interface Education {
-    establishment: string;
-    level: string;
-    start: Date;
-    end: Date;
-}
+type UserProfile = {
+    firstName: NullableString;
+    lastName: NullableString;
+    profilePhoto: any;
+    englishLevel: NullableString;
+    education: NullableArray;
+    workExperience: NullableArray;
+    skills: NullableArray;
+    email: NullableString;
+    phoneNumber: NullableString;
+    position: NullableString;
+    desirebleSalaryLevel: NullableNumber;
+    availableAmountOfHours: NullableNumber;
+    otherExperience?: NullableString;
+    description?: NullableString;
+};
 
-interface WorkExperience {
-    company: string;
-    position: string;
-    start: Date;
-    end: Date;
-    description: string;
-}
+type NullableArray = null | Array<any>;
+type NullableString = null | string;
+type NullableNumber = null | number;
