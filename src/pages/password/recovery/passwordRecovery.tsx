@@ -5,7 +5,9 @@ import { MailOutlined } from '@ant-design/icons';
 import { useAppDispatch } from 'store/hooks';
 import { addEmail } from 'store/reducers/email';
 import { useTranslation } from 'react-i18next';
+import { useSendEmailMutation } from 'store/api/passwordResetApi';
 import { GoSignIn } from './components/goSignIn';
+import { Container } from './styles';
 
 export function PasswordRecovery(): JSX.Element {
     const dispatch = useAppDispatch();
@@ -13,17 +15,24 @@ export function PasswordRecovery(): JSX.Element {
     const [form] = Form.useForm();
     const { t } = useTranslation();
 
+    const [sendEmail, { data, error, isLoading }] = useSendEmailMutation();
+
+    interface Ivalues {
+        Email: string;
+    }
+
     const onReset = (): void => {
         form.resetFields();
     };
-    const onFinish = (values: any): void => {
-        navigate('/password_reset');
+    const onFinish = (values: Ivalues): void => {
+        sendEmail({ email: values.Email });
         dispatch(addEmail(values.Email));
+        navigate('/password/notification');
         onReset();
     };
 
     return (
-        <>
+        <Container>
             <Form
                 name="basic"
                 form={form}
@@ -31,11 +40,6 @@ export function PasswordRecovery(): JSX.Element {
                 initialValues={{ remember: false }}
                 onFinish={onFinish}
                 autoComplete="on"
-                style={{
-                    margin: '0 auto',
-                    padding: 24,
-                    width: 300,
-                }}
             >
                 <Form.Item
                     name="Email"
@@ -62,6 +66,6 @@ export function PasswordRecovery(): JSX.Element {
                 </Form.Item>
             </Form>
             <GoSignIn />
-        </>
+        </Container>
     );
 }
