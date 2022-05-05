@@ -75,13 +75,11 @@ function Profile(): JSX.Element {
                             />
                         );
                     })}
-                {otherExperience ? (
+                {otherExperience && (
                     <Card
                         description={t('ProfilePage.otherExperience')}
                         data={otherExperience}
                     />
-                ) : (
-                    ''
                 )}
             </UserProfile>
         </div>
