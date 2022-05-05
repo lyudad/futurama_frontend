@@ -1,6 +1,6 @@
 export interface loginState {
     user: object | null;
-    token: string | null;
+    token: string;
 }
 
 export interface loginForm {
