@@ -84,7 +84,7 @@ export function SignIn(): JSX.Element {
                 </Formik>
                 <SigninWithGoogle />
                 <Button color="white" theme="black">
-                    <NavLink to="/password_recovery">
+                    <NavLink to="/password/recovery">
                         {t('SignInForm.forgot_password')}
                     </NavLink>
                 </Button>

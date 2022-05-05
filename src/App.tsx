@@ -3,17 +3,17 @@ import { useDispatch } from 'react-redux';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { constants } from 'constants/urls';
 import { useAppSelector } from 'store/hooks';
 import { setProfile } from 'store/reducers/profile';
 import { useGetProfileMutation } from 'store/api/profileApi';
 import { Home } from './pages/home';
 import { SignIn } from './pages/signin';
-import { PasswordRecovery } from './pages/passwordRecovery';
-import { PasswordNotification } from './pages/passwordNotification';
-import { PasswordMakeNew } from './pages/passwordMakeNew';
+import { PasswordRecovery } from './pages/password/recovery';
+import { PasswordNotification } from './pages/password/notification';
+import { PasswordMakeNew } from './pages/password/makeNew';
 import { SignUp } from './pages/signup';
 import { SelectRole } from './pages/selectRole';
-import 'antd/dist/antd.css';
 
 function App(): JSX.Element {
     const token = useAppSelector((state) => state.login.token);
@@ -30,18 +30,27 @@ function App(): JSX.Element {
     return (
         <Routes>
             <Route
-                path="/"
-                element={token ? <Home /> : <Navigate to="/login" />}
+                path={constants.HOME}
+                element={token ? <Home /> : <Navigate to={constants.LOGIN} />}
             />
             <Route
-                path="/login"
-                element={!token ? <SignIn /> : <Navigate to="/" />}
+                path={constants.LOGIN}
+                element={!token ? <SignIn /> : <Navigate to={constants.HOME} />}
             />
-            <Route path="/password_recovery" element={<PasswordRecovery />} />
-            <Route path="/password_reset" element={<PasswordNotification />} />
-            <Route path="/password_make_new" element={<PasswordMakeNew />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signup/role" element={<SelectRole />} />
+            <Route
+                path={constants.PASSWORD_RECOVERY}
+                element={<PasswordRecovery />}
+            />
+            <Route
+                path={constants.PASSWORD_NOTOFICATION}
+                element={<PasswordNotification />}
+            />
+            <Route
+                path={constants.PASSWORD_MAKE_NEW}
+                element={<PasswordMakeNew />}
+            />
+            <Route path={constants.SIGNUP} element={<SignUp />} />
+            <Route path={constants.SIGNUP_ROLE} element={<SelectRole />} />
         </Routes>
     );
 }

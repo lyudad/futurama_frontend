@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, notification } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { usePasswordResetMutation } from 'store/api/passwordResetApi';
 
 export function PasswordMakeNew(): JSX.Element {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
-    const [isMatch, setIsMatch] = useState<boolean>(false);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const queryParam = searchParams.get('email');
 
     const navigate = useNavigate();
     const [form] = Form.useForm();
     const { t } = useTranslation();
 
-    const handleChange = (e: any): void => {
+    const [passwordReset, { data, error, isLoading }] =
+        usePasswordResetMutation();
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.currentTarget;
 
         switch (name) {
             case 'password':
                 setPassword(value);
                 break;
-            case 'confirmPassword':
+            case 'passwordConfirm':
                 setConfirmPassword(value);
                 break;
             default:
@@ -51,13 +56,13 @@ export function PasswordMakeNew(): JSX.Element {
     };
 
     const onFinish = (): void => {
-        onReset();
-        if (password === confirmPassword) setIsMatch(true);
-        if (isMatch) {
+        if (password === confirmPassword) {
+            passwordReset({ password: confirmPassword, email: queryParam });
             navigate('/');
         } else {
             openNotification();
         }
+        onReset();
     };
 
     return (
@@ -67,7 +72,12 @@ export function PasswordMakeNew(): JSX.Element {
             initialValues={{ remember: true }}
             form={form}
             onFinish={onFinish}
-            style={{ width: '300px', margin: '0 auto', padding: '10px' }}
+            style={{
+                width: '300px',
+                margin: '0 auto',
+                padding: '55px',
+                textAlign: 'center',
+            }}
         >
             <Form.Item
                 name="password"
@@ -77,6 +87,7 @@ export function PasswordMakeNew(): JSX.Element {
             >
                 <Input
                     prefix={<LockOutlined className="site-form-item-icon" />}
+                    name="password"
                     type="password"
                     placeholder="Password"
                     onChange={handleChange}
@@ -93,6 +104,7 @@ export function PasswordMakeNew(): JSX.Element {
             >
                 <Input
                     prefix={<LockOutlined className="site-form-item-icon" />}
+                    name="passwordConfirm"
                     type="password"
                     placeholder="Confirm Password"
                     onChange={handleChange}
