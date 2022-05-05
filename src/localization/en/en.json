@@ -19,9 +19,6 @@
     "HomePage": {
         "home_page": "Home page!"
     },
-    "resetPasswordBtn": {
-        "resetPwdBtn": "Forgot password?"
-    },
     "passwordMakeNew": {
         "closeBtn": "Close",
         "continueBtn": "Continue"
@@ -31,12 +28,12 @@
         "notificationPartTwo": " if there is a profile in UNIFI registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions."
     },
     "passwordRecovery": {
-        "goSignIn": "Already have an account? Click to go to login page",
+        "goSignIn": "Already have an account? Go to login page",
         "continueBtn": "Continue"
     },
-    
+
     "SignUpPage": {
-        "createAnAccount":"Create an account",
+        "createAnAccount": "Create an account",
         "firstNameLabel": "First Name",
         "lastNameLabel": "Last Name",
         "email": "Email",
