@@ -28,3 +28,7 @@ code {
 button{
   cursor: pointer;
 }
+
+img{
+  width: 100%;
+}

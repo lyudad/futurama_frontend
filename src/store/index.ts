@@ -14,8 +14,10 @@ import storage from 'redux-persist/lib/storage';
 import emailReducer from './reducers/email';
 import loginReducer from './reducers/login';
 import userRegister from './reducers/user.register';
+import profileReducer from './reducers/profile';
 import { authApi } from './api/authApi';
 import { passwordResetApi } from './api/passwordResetApi';
+import { profileApi } from './api/profileApi';
 
 const persistConfig = {
     key: 'store',
@@ -25,8 +27,10 @@ const persistConfig = {
 const reducers = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [passwordResetApi.reducerPath]: passwordResetApi.reducer,
+    [profileApi.reducerPath]: profileApi.reducer,
     email: emailReducer,
     login: loginReducer,
+    profile: profileReducer,
     user_register: userRegister,
 });
 

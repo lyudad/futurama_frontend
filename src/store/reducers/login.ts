@@ -4,7 +4,7 @@ import { loginState } from 'types/login';
 
 const initialState: loginState = {
     user: null,
-    token: null,
+    token: '',
 };
 
 export const auth = createSlice({
