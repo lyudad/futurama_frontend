@@ -15,6 +15,7 @@ import emailReducer from './reducers/email';
 import loginReducer from './reducers/login';
 import userRegister from './reducers/user.register';
 import { authApi } from './api/authApi';
+import { passwordResetApi } from './api/passwordResetApi';
 
 const persistConfig = {
     key: 'store',
@@ -23,6 +24,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
+    [passwordResetApi.reducerPath]: passwordResetApi.reducer,
     email: emailReducer,
     login: loginReducer,
     user_register: userRegister,
@@ -44,7 +46,9 @@ export const store = configureStore({
                     REGISTER,
                 ],
             },
-        }).concat(authApi.middleware),
+        })
+            .concat(authApi.middleware)
+            .concat(passwordResetApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
