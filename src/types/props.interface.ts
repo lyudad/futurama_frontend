@@ -1,3 +1,3 @@
 export interface ISignUpWithSocialMedia {
-    text: string
+    text: string;
 }

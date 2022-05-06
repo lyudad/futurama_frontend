@@ -3,16 +3,21 @@ import "antd/dist/antd.min.css";
 import { useSetDataMutation } from "store/api/authApi";
 import { Layout } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { constants } from "constants/urls";
+import { useAppSelector } from "store/hooks";
+import { constants } from "constants/text";
+
+
 const { Content } = Layout;
 
 export function Settings(): JSX.Element {
   const [form] = Form.useForm();
   const [setData] = useSetDataMutation();
+  const usermail = useAppSelector(state => state.email.value)
+  
 
   const props = {
     name: "file",
-    action: constants.USER_SETTINGS,
+    action: process.env.UPLOAD,
     headers: {
       contentType:"multipart/form-data",
       authorization: "",
@@ -31,7 +36,7 @@ export function Settings(): JSX.Element {
 
       <Form
         onFinish={(values) => {
-          setData(values)
+          setData({...values, user: usermail})
         }}
         form={form}
         name="set_userData"
@@ -57,7 +62,7 @@ export function Settings(): JSX.Element {
             {
               required: true,
               type: "email",
-              message: "The input is not valid E-mail!",
+              message: `${constants.MAIL_VALID}`,
             },
           ]}
         >
@@ -69,7 +74,7 @@ export function Settings(): JSX.Element {
           rules={[
             {
               required: true,
-              message: "Please input your phone number!",
+              message: `${constants.PHONE_VALID}`,
               max: 13,
             },
           ]}

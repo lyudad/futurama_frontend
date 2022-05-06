@@ -24,16 +24,18 @@ export const authApi = createApi({
       },
     }),
     setData: builder.mutation({
-      query: (body: {
-        Firstname: string;
-        Lastname: string;
-        Email: string;
-        Phone: string;
+      query: (body: {        
+        firstname: string;
+        lastname: string;
+        email: string;
+        phone: string;
+        user: string;
       }) => {
         return {
-          url: constants.USER_SETTINGS,
+          url: constants.USER_CONTACTS,
           method: "post",
-          body,
+          body
+
         };
       },
     }),

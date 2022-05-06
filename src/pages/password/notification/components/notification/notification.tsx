@@ -7,10 +7,17 @@ export function Notification(): JSX.Element {
     const { t } = useTranslation();
 
     return (
-        <p style={{ width: '300px', margin: '0 auto', padding: '10px' }}>
+        <h2
+            style={{
+                width: '600px',
+                margin: '0 auto',
+                padding: '10px',
+                textAlign: 'center',
+            }}
+        >
             {t('passwordNotification.notificationPartOne')}
             {email}
             {t('passwordNotification.notificationPartTwo')}
-        </p>
+        </h2>
     );
 }
