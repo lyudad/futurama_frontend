@@ -33,7 +33,7 @@
     },
     "passwordNotification": {
         "notificationPartOne": "The instructions were sent to ",
-        "notificationPartTwo": " if there is a profile in UNIFI registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions."
+        "notificationPartTwo": " if there is a profile in FUTURAMA registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions."
     },
     "passwordRecovery": {
         "goSignIn": "Already have an account? Go to login page",
