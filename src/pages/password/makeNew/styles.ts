@@ -15,8 +15,8 @@ export const Container = styled.div`
 export const Card = styled.div`
     padding: 2rem;
     padding-bottom: 25px;
-    background: white;
     height: 90vh;
+    background: white;
     border-radius: 2rem;
     > * {
         margin: 0.5rem;
@@ -24,7 +24,7 @@ export const Card = styled.div`
     > h2,
     p {
         text-align: center;
-    }
+    },
 `;
 
 export const Header1 = styled.h2`

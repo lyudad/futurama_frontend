@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppSelector } from 'store/hooks';
 import { useTranslation } from 'react-i18next';
+import { fonts } from 'constants/fonts';
 
 export function Notification(): JSX.Element {
     const email = useAppSelector((state) => state.email.value);
@@ -13,11 +14,12 @@ export function Notification(): JSX.Element {
                 margin: '0 auto',
                 padding: '10px',
                 textAlign: 'center',
+                fontSize: fonts.FONT_SIZE_LABELS,
             }}
         >
-            {t('passwordNotification.notificationPartOne')}
+            {t('PasswordNotification.notificationPartOne')}
             {email}
-            {t('passwordNotification.notificationPartTwo')}
+            {t('PasswordNotification.notificationPartTwo')}
         </h2>
     );
 }

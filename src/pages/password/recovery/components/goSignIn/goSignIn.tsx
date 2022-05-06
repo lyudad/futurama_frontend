@@ -1,14 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { Button } from 'antd';
+import { fonts } from 'constants/fonts';
 
 export function GoSignIn(): JSX.Element {
     const { t } = useTranslation();
 
     return (
-        <Button type="link">
-            <NavLink to="/">{t('passwordRecovery.goSignIn')}</NavLink>
+        <Button
+            type="link"
+            style={{
+                height: '45px',
+                borderRadius: '10px',
+                border: 'none',
+                fontSize: fonts.FONT_SIZE_BUTTONS,
+                display: 'block',
+                margin: '0 auto',
+            }}
+        >
+            <NavLink to="/">{t('PasswordRecovery.goSignIn')}</NavLink>
         </Button>
     );
 }

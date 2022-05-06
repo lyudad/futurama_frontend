@@ -13,10 +13,9 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-    padding: 2rem;
+    padding: 4rem;
     padding-bottom: 25px;
     background: white;
-    height: 90vh;
     border-radius: 2rem;
     > * {
         margin: 0.5rem;
