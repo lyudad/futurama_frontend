@@ -25,19 +25,24 @@
         "signup": "Sign up"
     },
     "HomePage": {
-        "home_page": "Home page!"
+        "home_page": "Home page!",
+        "futuramaBrand": "Futurama",
+        "futuramaSlogan": "Find a dream job"
     },
-    "passwordMakeNew": {
+    "PasswordMakeNew": {
         "closeBtn": "Close",
-        "continueBtn": "Continue"
+        "continueBtn": "Continue",
+        "placeholder": "Please input your password",
+        "placeholderConfirm": "Confirm your password"
     },
-    "passwordNotification": {
+    "PasswordNotification": {
         "notificationPartOne": "The instructions were sent to ",
         "notificationPartTwo": " if there is a profile in FUTURAMA registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions."
     },
-    "passwordRecovery": {
+    "PasswordRecovery": {
         "goSignIn": "Already have an account? Go to login page",
-        "continueBtn": "Continue"
+        "continueBtn": "Continue",
+        "placeholder": "Please input your email"
     },
 
     "SignUpPage": {
