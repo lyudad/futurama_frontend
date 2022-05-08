@@ -163,7 +163,9 @@ export function PasswordMakeNew(): JSX.Element {
                                 textTransform: 'uppercase',
                             }}
                         >
-                            Show password
+                            {isPasswordHide
+                                ? t('PasswordMakeNew.showPassword')
+                                : t('PasswordMakeNew.hidePassword')}
                         </Button>
                         <Button
                             type="primary"
