@@ -112,6 +112,8 @@ export function PasswordMakeNew(): JSX.Element {
                                 marginBottom: '16px',
                                 fontSize: fonts.FONT_SIZE_LABELS,
                             }}
+                            pattern="[^\.]{8,}"
+                            title={t('PasswordMakeNew.passwordPatternTitle')}
                         />
                     </Form.Item>
                     <Form.Item
@@ -140,6 +142,8 @@ export function PasswordMakeNew(): JSX.Element {
                                 fontSize: fonts.FONT_SIZE_LABELS,
                                 marginBottom: '16px',
                             }}
+                            pattern="[^\.]{8,}"
+                            title={t('PasswordMakeNew.passwordPatternTitle')}
                         />
                     </Form.Item>
 

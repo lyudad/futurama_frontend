@@ -33,7 +33,8 @@
         "closeBtn": "Close",
         "continueBtn": "Continue",
         "placeholder": "Please input your password",
-        "placeholderConfirm": "Confirm your password"
+        "placeholderConfirm": "Confirm your password",
+        "passwordPatternTitle": "Length at least must be 8 characters(uppercase characters (A-Z), lowercase characters (a-z), digits (0-9), special characters (~!@#$%^&*_-+=`|\\(){}[]:;\"'<>,.?/)"
     },
     "PasswordNotification": {
         "notificationPartOne": "The instructions were sent to ",
@@ -42,7 +43,8 @@
     "PasswordRecovery": {
         "goSignIn": "Already have an account? Go to login page",
         "continueBtn": "Continue",
-        "placeholder": "Please input your email"
+        "placeholder": "Please input your email",
+        "emailPatternTitle": "Example: myemail@gmail.com"
     },
 
     "SignUpPage": {

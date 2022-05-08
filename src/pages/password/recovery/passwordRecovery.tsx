@@ -52,7 +52,6 @@ export function PasswordRecovery(): JSX.Element {
                             {
                                 required: true,
                                 message: t('PasswordRecovery.placeholder'),
-                                type: 'email',
                             },
                         ]}
                     >
@@ -65,6 +64,8 @@ export function PasswordRecovery(): JSX.Element {
                                 marginBottom: '16px',
                                 fontSize: fonts.FONT_SIZE_LABELS,
                             }}
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                            title={t('PasswordRecovery.emailPatternTitle')}
                             placeholder={t('PasswordRecovery.placeholder')}
                         />
                     </Form.Item>
