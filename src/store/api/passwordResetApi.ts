@@ -10,7 +10,7 @@ export const passwordResetApi = createApi({
         passwordReset: builder.mutation({
             query: (body: { password: string; email: string | null }) => ({
                 url: `${constants.PASSWORD_RESET}?email=${body.email}`,
-                method: 'PUT',
+                method: 'PATCH',
                 body,
             }),
         }),

@@ -11,6 +11,7 @@ import { Container, Card, Header1, Header2 } from './styles';
 export function PasswordMakeNew(): JSX.Element {
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
+    const [isPasswordHide, setIsPasswordHide] = useState<boolean>(true);
     const [searchParams, setSearchParams] = useSearchParams();
     const queryParam = searchParams.get('email');
 
@@ -73,11 +74,9 @@ export function PasswordMakeNew(): JSX.Element {
         onReset();
     };
 
-    // let isPasswordHide = true;
-    // const showPassword = (): void => {
-    //     isPasswordHide = !isPasswordHide;
-    //     console.log(isPasswordHide);
-    // };
+    const showPassword = (): void => {
+        setIsPasswordHide(!isPasswordHide);
+    };
 
     return (
         <Container>
@@ -102,7 +101,7 @@ export function PasswordMakeNew(): JSX.Element {
                     >
                         <Input
                             name="password"
-                            type="password"
+                            type={isPasswordHide ? 'password' : 'text'}
                             placeholder={t('PasswordMakeNew.placeholder')}
                             onChange={handleChange}
                             style={{
@@ -128,7 +127,7 @@ export function PasswordMakeNew(): JSX.Element {
                     >
                         <Input
                             name="passwordConfirm"
-                            type="password"
+                            type={isPasswordHide ? 'password' : 'text'}
                             placeholder={t(
                                 'PasswordMakeNew.placeholderConfirm'
                             )}
@@ -145,7 +144,7 @@ export function PasswordMakeNew(): JSX.Element {
                     </Form.Item>
 
                     <Form.Item>
-                        {/* <Button
+                        <Button
                             type="link"
                             onClick={showPassword}
                             style={{
@@ -161,7 +160,7 @@ export function PasswordMakeNew(): JSX.Element {
                             }}
                         >
                             Show password
-                        </Button> */}
+                        </Button>
                         <Button
                             type="primary"
                             htmlType="submit"
