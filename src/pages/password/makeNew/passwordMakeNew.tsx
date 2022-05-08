@@ -111,6 +111,8 @@ export function PasswordMakeNew(): JSX.Element {
                                 border: '1px solid #808080',
                                 marginBottom: '16px',
                                 fontSize: fonts.FONT_SIZE_LABELS,
+                                boxShadow:
+                                    '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
                             }}
                             pattern="[^\.]{8,}"
                             title={t('PasswordMakeNew.passwordPatternTitle')}
@@ -141,6 +143,8 @@ export function PasswordMakeNew(): JSX.Element {
                                 border: '1px solid #808080',
                                 fontSize: fonts.FONT_SIZE_LABELS,
                                 marginBottom: '16px',
+                                boxShadow:
+                                    '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
                             }}
                             pattern="[^\.]{8,}"
                             title={t('PasswordMakeNew.passwordPatternTitle')}
@@ -182,6 +186,8 @@ export function PasswordMakeNew(): JSX.Element {
                                 background: colors.BUTTON_COLOR_BASE,
                                 fontSize: fonts.FONT_SIZE_BUTTONS,
                                 textTransform: 'uppercase',
+                                boxShadow:
+                                    '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
                             }}
                         >
                             {t('PasswordMakeNew.continueBtn')}

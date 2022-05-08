@@ -63,6 +63,8 @@ export function PasswordRecovery(): JSX.Element {
                                 border: '1px solid #808080',
                                 marginBottom: '16px',
                                 fontSize: fonts.FONT_SIZE_LABELS,
+                                boxShadow:
+                                    '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
                             }}
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                             title={t('PasswordRecovery.emailPatternTitle')}
@@ -85,6 +87,8 @@ export function PasswordRecovery(): JSX.Element {
                                 background: colors.BUTTON_COLOR_BASE,
                                 fontSize: fonts.FONT_SIZE_BUTTONS,
                                 textTransform: 'uppercase',
+                                boxShadow:
+                                    '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
                             }}
                         >
                             {t('PasswordRecovery.continueBtn')}
