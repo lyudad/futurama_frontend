@@ -40,10 +40,12 @@
     },
     "PasswordNotification": {
         "notificationPartOne": "The instructions were sent to ",
-        "notificationPartTwo": " if there is a profile in FUTURAMA registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions."
+        "notificationPartTwo": " if there is a profile in FUTURAMA registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions.",
+        "errorNotoficationPartOne": "User with email ",
+        "errorNotoficationPartTwo": " was not found! Please check the spelling of your email and try again"
     },
     "PasswordRecovery": {
-        "goSignIn": "Or back to Login",
+        "goSignIn": "Back to Login",
         "continueBtn": "Continue",
         "placeholder": "Please input your email",
         "emailPatternTitle": "Example: myemail@gmail.com"

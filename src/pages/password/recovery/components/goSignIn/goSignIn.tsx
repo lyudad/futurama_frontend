@@ -17,9 +17,10 @@ export function GoSignIn(): JSX.Element {
                 fontSize: fonts.FONT_SIZE_BUTTONS,
                 display: 'block',
                 margin: '0 auto',
+                marginTop: '80px',
             }}
         >
-            <NavLink to="/">{t('PasswordRecovery.goSignIn')}</NavLink>
+            <NavLink to="/login">{t('PasswordRecovery.goSignIn')}</NavLink>
         </Button>
     );
 }

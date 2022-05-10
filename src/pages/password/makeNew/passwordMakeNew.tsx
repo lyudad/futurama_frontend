@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, notification } from 'antd';
+import { Form, Input, Button, notification, Spin } from 'antd';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { usePasswordResetMutation } from 'store/api/passwordResetApi';
@@ -9,18 +9,17 @@ import { colors } from 'constants/colors';
 import { Container, Card, Header1, Header2 } from './styles';
 
 export function PasswordMakeNew(): JSX.Element {
-    const [password, setPassword] = useState<string>('');
-    const [confirmPassword, setConfirmPassword] = useState<string>('');
-    const [isPasswordHide, setIsPasswordHide] = useState<boolean>(true);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [isPasswordHide, setIsPasswordHide] = useState(true);
+    const [searchParams] = useSearchParams();
     const queryParam = searchParams.get('email');
 
     const navigate = useNavigate();
     const [form] = Form.useForm();
     const { t } = useTranslation();
 
-    const [passwordReset, { data, error, isLoading }] =
-        usePasswordResetMutation();
+    const [passwordReset, { isLoading }] = usePasswordResetMutation();
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.currentTarget;
@@ -64,9 +63,12 @@ export function PasswordMakeNew(): JSX.Element {
         });
     };
 
-    const onFinish = (): void => {
+    const onFinish = async (): Promise<void> => {
         if (password === confirmPassword) {
-            passwordReset({ password: confirmPassword, email: queryParam });
+            await passwordReset({
+                password: confirmPassword,
+                email: queryParam,
+            });
             navigate(constants.LOGIN);
         } else {
             openNotification();
@@ -83,6 +85,7 @@ export function PasswordMakeNew(): JSX.Element {
             <Card>
                 <Header1>{t('HomePage.futuramaBrand')}</Header1>
                 <Header2>{t('HomePage.futuramaSlogan')}</Header2>
+                {isLoading && <Spin size="large" />}
                 <Form
                     name="normal_login"
                     className="login-form"
