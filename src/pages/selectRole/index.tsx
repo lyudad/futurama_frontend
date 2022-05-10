@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Layout, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 
-import { BACKGROUND_COLOR } from 'constants/colors';
+import { colors } from 'constants/colors';
 
 const { Content } = Layout;
 
@@ -14,7 +14,7 @@ export function SelectRole(): JSX.Element {
             style={{
                 margin: '24px 16px',
                 padding: 24,
-                background: BACKGROUND_COLOR,
+                background: colors.BACKGROUND_COLOR,
                 minHeight: 280,
             }}
         >

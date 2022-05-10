@@ -1,1 +1,5 @@
-export const BACKGROUND_COLOR = '#fff';
+export const colors = {
+    BACKGROUND_COLOR: '#E5E5E5;',
+    TEXT_COLOR_BASE: '#000000',
+    BUTTON_COLOR_BASE: '#75CCD2',
+};

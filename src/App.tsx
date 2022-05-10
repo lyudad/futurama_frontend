@@ -10,7 +10,6 @@ import { useGetProfileMutation } from 'store/api/profileApi';
 import { Home } from './pages/home';
 import { SignIn } from './pages/signin';
 import { PasswordRecovery } from './pages/password/recovery';
-import { PasswordNotification } from './pages/password/notification';
 import { PasswordMakeNew } from './pages/password/makeNew';
 import { SignUp } from './pages/signup';
 import { SelectRole } from './pages/selectRole';
@@ -40,10 +39,6 @@ function App(): JSX.Element {
             <Route
                 path={constants.PASSWORD_RECOVERY}
                 element={<PasswordRecovery />}
-            />
-            <Route
-                path={constants.PASSWORD_NOTOFICATION}
-                element={<PasswordNotification />}
             />
             <Route
                 path={constants.PASSWORD_MAKE_NEW}

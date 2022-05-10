@@ -25,19 +25,30 @@
         "signup": "Sign up"
     },
     "HomePage": {
-        "home_page": "Home page!"
+        "home_page": "Home page!",
+        "futuramaBrand": "Futurama",
+        "futuramaSlogan": "Find a dream job"
     },
-    "passwordMakeNew": {
+    "PasswordMakeNew": {
         "closeBtn": "Close",
-        "continueBtn": "Continue"
+        "continueBtn": "Continue",
+        "placeholder": "Please input your password",
+        "placeholderConfirm": "Confirm your password",
+        "passwordPatternTitle": "Length at least must be 8 characters(uppercase characters (A-Z), lowercase characters (a-z), digits (0-9), special characters (~!@#$%^&*_-+=`|\\(){}[]:;\"'<>,.?/)",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password"
     },
-    "passwordNotification": {
+    "PasswordNotification": {
         "notificationPartOne": "The instructions were sent to ",
-        "notificationPartTwo": " if there is a profile in UNIFI registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions."
+        "notificationPartTwo": " if there is a profile in FUTURAMA registered with it. If you didn`t get the email, check the spelling of the email address (make sure there are no typos) and ask to resend the instructions.",
+        "errorNotoficationPartOne": "User with email ",
+        "errorNotoficationPartTwo": " was not found! Please check the spelling of your email and try again"
     },
-    "passwordRecovery": {
-        "goSignIn": "Already have an account? Go to login page",
-        "continueBtn": "Continue"
+    "PasswordRecovery": {
+        "goSignIn": "Back to Login",
+        "continueBtn": "Continue",
+        "placeholder": "Please input your email",
+        "emailPatternTitle": "Example: myemail@gmail.com"
     },
 
     "SignUpPage": {
