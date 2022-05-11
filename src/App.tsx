@@ -12,7 +12,6 @@ import { SignIn } from './pages/signin';
 import { PasswordRecovery } from './pages/password/recovery';
 import { PasswordMakeNew } from './pages/password/makeNew';
 import { SignUp } from './pages/signup';
-import { SelectRole } from './pages/selectRole';
 
 function App(): JSX.Element {
     const token = useAppSelector((state) => state.login.token);
@@ -44,8 +43,7 @@ function App(): JSX.Element {
                 path={constants.PASSWORD_MAKE_NEW}
                 element={<PasswordMakeNew />}
             />
-            <Route path={constants.SIGNUP} element={<SignUp />} />
-            <Route path={constants.SIGNUP_ROLE} element={<SelectRole />} />
+            <Route path={constants.SIGNUP} element={!token ? <SignUp /> : <Navigate to={constants.HOME} />} />
         </Routes>
     );
 }

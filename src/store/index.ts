@@ -11,8 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import loginReducer from './reducers/login';
-import userRegister from './reducers/user.register';
+import loginReducer from './reducers/auth';
 import profileReducer from './reducers/profile';
 import { authApi } from './api/authApi';
 import { passwordResetApi } from './api/passwordResetApi';
@@ -29,7 +28,6 @@ const reducers = combineReducers({
     [profileApi.reducerPath]: profileApi.reducer,
     login: loginReducer,
     profile: profileReducer,
-    user_register: userRegister,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -50,7 +48,8 @@ export const store = configureStore({
             },
         })
             .concat(authApi.middleware)
-            .concat(passwordResetApi.middleware),
+            .concat(passwordResetApi.middleware)
+            .concat(profileApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

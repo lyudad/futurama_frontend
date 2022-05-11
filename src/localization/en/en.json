@@ -14,15 +14,31 @@
         "login": "Login"
     },
     "SignInForm": {
-        "login_text": "Login",
+        "futurama": "Futurama",
+        "find_a_dream_job": "Find a dream job!",
         "email": "Email",
         "password": "Password",
-        "signin": "SIGN IN",
+        "signin": "SIGNIN",
         "loading": "Loading...",
-        "signin_with_google": "Sign in with Google",
-        "forgot_password": "Forgot password?",
+        "signin_with": "Login with ",
+        "forgot_password": "Forgot your password?",
         "do_not_have_an_account": "Don't have an account?",
         "signup": "Sign up"
+    },
+    "SignUpForm": {
+        "futurama": "Futurama",
+        "find_a_dream_job": "Find a dream job!",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "password": "Password",
+        "signUp": "SIGNUP",
+        "signIn": "Sign in",
+        "signUpWith": "Signup with ",
+        "already_have_an_account": "Already have an account?",
+        "freelancer": "I'm a freelancer.",
+        "jobOwner": "I'm a job owner",
+        "loading": "Loading..."
     },
     "HomePage": {
         "home_page": "Home page!",
@@ -49,18 +65,6 @@
         "continueBtn": "Continue",
         "placeholder": "Please input your email",
         "emailPatternTitle": "Example: myemail@gmail.com"
-    },
-
-    "SignUpPage": {
-        "createAnAccount": "Create an account",
-        "firstNameLabel": "First Name",
-        "lastNameLabel": "Last Name",
-        "email": "Email",
-        "password": "Password",
-        "signUp": "Sign UP",
-        "signIn": "Sign In",
-        "signUpWithGoogle": "Create an account using Google",
-        "signUpWithSocialMedia": "Create an account using social network"
     },
 
     "RoleSelectionPage": {
