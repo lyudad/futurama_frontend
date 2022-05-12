@@ -27,6 +27,7 @@ export function SignUp(): JSX.Element {
     const dispatch = useDispatch();
     const [signupUser, signup] = useSignupUserMutation();
     const [signinUser, login] = useSigninUserMutation();
+    const test = 0;
     const [formLogin, setFormLogin] = useState<any>({
         email: '',
         password: ''
