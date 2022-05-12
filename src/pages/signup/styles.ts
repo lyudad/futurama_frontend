@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const LoginPage = styled.div`
+export const SignupPage = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -52,4 +52,9 @@ export const ButtonsContainer = styled.div`
     a {
         color: white;
     }
+`;
+
+export const Role = styled.div`
+    display: flex;
+    justify-content: space-around;
 `;

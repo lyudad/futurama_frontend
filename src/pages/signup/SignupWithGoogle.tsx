@@ -4,14 +4,14 @@ import { useTranslation } from 'react-i18next';
 import GoogleIcon from 'assets/icons/google_icon.png';
 import { ImageIcons } from './styles';
 
-function SigninWithGoogle(): JSX.Element {
+function SignupWithGoogle(): JSX.Element {
     const { t } = useTranslation();
 
     return (
         <div>
             <Button color="white" theme="black" width="8">
                 <a href="#" rel="noreferrer">
-                    {t('SignInForm.signin_with')}
+                    {t('SignUpForm.signUpWith')}
                 </a>
                 <ImageIcons>
                     <img src={GoogleIcon} alt="#" />
@@ -21,4 +21,4 @@ function SigninWithGoogle(): JSX.Element {
     );
 }
 
-export default SigninWithGoogle;
+export default SignupWithGoogle;

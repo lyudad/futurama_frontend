@@ -5,7 +5,7 @@ export type ProfileState = {
 type UserProfile = {
     firstName: NullableString;
     lastName: NullableString;
-    profilePhoto: any;
+    profilePhoto: string;
     englishLevel: NullableString;
     education: NullableArray;
     workExperience: NullableArray;
@@ -19,6 +19,6 @@ type UserProfile = {
     description?: NullableString;
 };
 
-type NullableArray = null | Array<any>;
+type NullableArray = null | Array<string>;
 type NullableString = null | string;
 type NullableNumber = null | number;

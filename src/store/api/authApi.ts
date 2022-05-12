@@ -5,14 +5,6 @@ export const authApi = createApi({
     reducerPath: 'auth',
     baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_URL }),
     endpoints: (builder) => ({
-        signinGoogle: builder.mutation({
-            query: () => {
-                return {
-                    url: constants.USER_LOGIN_WITH_GOOGLE,
-                    method: 'get',
-                };
-            },
-        }),
         signinUser: builder.mutation({
             query: (body: { email: string; password: string }) => {
                 return {
@@ -22,7 +14,16 @@ export const authApi = createApi({
                 };
             },
         }),
+        signupUser: builder.mutation({
+            query: (body: { firstName: string, lastName: string, email: string; password: string, role: string, }) => {
+                return {
+                    url: constants.USER_SIGNUP,
+                    method: 'post',
+                    body,
+                };
+            },
+        }),
     }),
 });
 
-export const { useSigninUserMutation, useSigninGoogleMutation } = authApi;
+export const { useSigninUserMutation, useSignupUserMutation } = authApi;

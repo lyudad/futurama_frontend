@@ -20,7 +20,10 @@
     },
     "plugins": ["react", "@typescript-eslint", "react-hooks"],
     "rules": {
+        "func-names": "off",
+        "react/require-default-props": "off",
         "no-param-reassign": "off",
+        "@typescript-eslint/no-explicit-any": "error",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
         "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
@@ -34,6 +37,7 @@
         ],
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": ["error"],
+        "no-unused-vars": "error",
         "@typescript-eslint/explicit-function-return-type": [
             "error",
             {
@@ -47,10 +51,11 @@
             }
         ],
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": "off",
         "import/prefer-default-export": "off",
         "react/prop-types": "off",
-        "react/jsx-props-no-spreading": "off"
+        "react/jsx-props-no-spreading": "off",
+        "jsx-a11y/anchor-is-valid": "off"
     },
     "settings": {
         "import/resolver": {
