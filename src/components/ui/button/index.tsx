@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyledButton, StyledDiv } from './styles';
 
-export function Button({ children, button, ...props }: any): JSX.Element {
+export function Button({ ...props }): JSX.Element {
+    
     return (
         <StyledDiv>
-            <StyledButton {...button} {...props}>
-                {children}
+            <StyledButton {...props}>
+                {props.children}
             </StyledButton>
         </StyledDiv>
     );

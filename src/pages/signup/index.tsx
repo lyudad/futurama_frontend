@@ -9,7 +9,8 @@ import { Button } from 'components/ui/button';
 import { Input } from 'components/ui/input';
 import { useSigninUserMutation, useSignupUserMutation } from 'store/api/authApi';
 import { setUser } from 'store/reducers/auth';
-import { signupForm } from 'types/auth';
+import { loginForm, signupForm } from 'types/auth';
+import { validations } from 'constants/validation';
 import SignupWithGoogle from './SignupWithGoogle';
 import SignupWithFacebook from './SignupWithFacebook';
 import {
@@ -27,21 +28,14 @@ export function SignUp(): JSX.Element {
     const dispatch = useDispatch();
     const [signupUser, signup] = useSignupUserMutation();
     const [signinUser, login] = useSigninUserMutation();
-    const test = 0;
-    const test2 = 1;
-    const test3 = 2;
-    const test4 = 3;
-    const [formLogin, setFormLogin] = useState<any>({
-        email: '',
-        password: ''
-    });
+    const [formLogin, setFormLogin] = useState<loginForm>({ email: '', password: '' });
     const [isFailed, setIsFailed] = useState(signup.isError);
 
     const validationSchema = object({
-        firstName: string().required('First name is required.'),
-        lastName: string().required('Last name is required.'),
-        email: string().email('Email must be an email address.').required('Email is required!'),
-        password: string().min(8, 'Length at least must be 8 characters.').required('Password is required!'),
+        firstName: string().required(validations.firstName),
+        lastName: string().required(validations.lastName),
+        email: string().email(validations.emailMustBeEmail).required(validations.email),
+        password: string().min(8, validations.passwordLength).required(validations.password),
     });
 
     const initialValues: signupForm = {

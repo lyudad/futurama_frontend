@@ -1,13 +1,14 @@
 import React from 'react';
 import { StyledInput } from './styles';
 
-export function Input({ Label, input, ...props }: any): JSX.Element {
+export function Input({ ...props }): JSX.Element {
+    
     return (
         <div>
             <div>
-                <label htmlFor={Label}>{Label}</label>
+                <label htmlFor={props.Label}>{props.Label}</label>
             </div>
-            <StyledInput {...input} {...props} />
+            <StyledInput {...props} />
         </div>
     );
 }

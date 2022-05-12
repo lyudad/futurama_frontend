@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 interface Props {
-    width: string;
-    height: string;
-    margin: string;
+    width?: string;
+    height?: string;
+    margin?: string;
 }
 export const StyledButton = styled.button<Props>`
     background: ${(props) => props.theme || 'white'};

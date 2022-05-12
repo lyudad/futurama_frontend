@@ -10,7 +10,7 @@ function SigninWithGoogle(): JSX.Element {
     return (
         <div>
             <Button color="white" theme="black" width="8">
-                <a href="_" target="_blank" rel="noreferrer">
+                <a href="#" rel="noreferrer">
                     {t('SignInForm.signin_with')}
                 </a>
                 <ImageIcons>

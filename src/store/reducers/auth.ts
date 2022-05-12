@@ -17,13 +17,10 @@ export const auth = createSlice({
         ) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
-        },
-        defaultState: (state) => {
-            state = initialState;
-        },
+        }
     },
 });
 
-export const { setUser, defaultState } = auth.actions;
+export const { setUser } = auth.actions;
 
 export default auth.reducer;

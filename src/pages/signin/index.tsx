@@ -11,6 +11,7 @@ import { useSigninUserMutation } from 'store/api/authApi';
 import { setUser } from 'store/reducers/auth';
 import { loginForm } from 'types/auth';
 import { constants } from 'constants/urls';
+import { validations } from 'constants/validation';
 import SigninWithGoogle from './SigninWithGoogle';
 import SigninWithFacebook from './SigninWithFacebook';
 import {
@@ -31,17 +32,14 @@ export function SignIn(): JSX.Element {
 
     const validationSchema = object({
         email: string()
-            .email('Email must be an email address.')
-            .required('Email is required!'),
+            .email(validations.emailMustBeEmail)
+            .required(validations.email),
         password: string()
-            .min(8, 'Length at least must be 8 characters.')
-            .required('Password is required!'),
+            .min(8, validations.passwordLength)
+            .required(validations.password),
     });
 
-    const initialValues: loginForm = {
-        email: '',
-        password: '',
-    };
+    const initialValues: loginForm = { email: '', password: '' };
 
     const renderError = (message: string): JSX.Element => (
         <ErrorSpan>{message}</ErrorSpan>

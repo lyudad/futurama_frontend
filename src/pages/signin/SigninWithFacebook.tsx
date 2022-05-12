@@ -9,7 +9,7 @@ function SigninWithFacebook(): JSX.Element {
     return (
         <div>
             <Button color="white" theme="#4876B9;" width="8">
-                <a href="_" target="_blank" rel="noreferrer">
+                <a href="#" rel="noreferrer">
                     {t('SignInForm.signin_with')}
                 </a>
                 <ImageIcons>
