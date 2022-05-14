@@ -1,1 +1,1 @@
-export { PasswordMakeNew } from './passwordMakeNew';
+export { MakeNew } from './makeNew';

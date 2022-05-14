@@ -1,1 +1,1 @@
-export { PasswordRecovery } from './passwordRecovery';
+export { Recovery } from './recovery';
