@@ -66,6 +66,16 @@
         "placeholder": "Please input your email",
         "emailPatternTitle": "Example: myemail@gmail.com"
     },
+    "Vacancies": {
+        "continueBtn": "Continue",
+        "company": "Company: ",
+        "location": "Location: ",
+        "englishLevel": "English level: ",
+        "price": "Price: $",
+        "searchField": "Search...",
+        "searchBtn": "Search",
+        "placeholder": "Please input your query"
+    },
 
     "RoleSelectionPage": {
         "whoAreYou": "WHO YOU ARE?",
