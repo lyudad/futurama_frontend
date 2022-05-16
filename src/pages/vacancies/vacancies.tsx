@@ -23,7 +23,6 @@ export function Vacancies(): JSX.Element {
 
     const onFinish = async (values: Ivalues): Promise<void> => {
         setQuery(values.Search);
-        console.log(values.Search);
 
         onReset();
     };
