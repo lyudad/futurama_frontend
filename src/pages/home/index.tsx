@@ -1,12 +1,10 @@
-import Profile from 'pages/profile';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+//import Profile from 'pages/profile';
 
 export function Home(): JSX.Element {
-    const { t } = useTranslation();
     return (
         <div>
-            <Profile />
+            {/* <Profile /> */}
         </div>
     );
 }

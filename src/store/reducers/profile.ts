@@ -13,12 +13,9 @@ export const profile = createSlice({
         setProfile: (state, action: PayloadAction<{ user: ProfileState }>) => {
             state = action.payload.user;
         },
-        defaultState: (state) => {
-            state = initialState;
-        },
     },
 });
 
-export const { setProfile, defaultState } = profile.actions;
+export const { setProfile } = profile.actions;
 
 export default profile.reducer;

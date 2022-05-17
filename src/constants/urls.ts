@@ -2,14 +2,16 @@ export const constants = {
     HOME: '/',
     LOGIN: '/login',
     SIGNUP: '/signup',
-    SIGNUP_ROLE: '/signup/role',
+    PROFILE: '/profile',
     USER_LOGIN: '/user/login',
-    USER_LOGIN_WITH_GOOGLE: '/user/auth/google/callback',
+    USER_SIGNUP: '/user/register',
     SEND_EMAIL: '/mail/send',
     PASSWORD_RESET: '/password/reset',
     PASSWORD_NOTOFICATION: '/password/notification',
     PASSWORD_MAKE_NEW: '/password/make_new',
     PASSWORD_RECOVERY: '/password/recovery',
     GET_PROFILE: '/profile',
-    USER_CONTACTS: '/user/contacts'
+    USER_CONTACTS: '/user/contacts',
+    PHOTO_UPLOAD: 'https://futurama.cf/upload/',
+    PHOTO_PLACEHOLDER: 'https://futurama.cf/upload/avatarPlaceholder7652.png'
 };
