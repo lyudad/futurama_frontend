@@ -8,10 +8,16 @@
         "otherExperience": "Other experience"
     },
     "MenuBar": {
-        "home": "Home",
-        "contacts": "Contacts",
-        "aboutus": "About us",
-        "login": "Login"
+        "searchWork": "Search work",
+        "InvitesToInterview": "Invites to interview",
+        "offers": "Offers",
+        "proposals": "Proposals",
+        "contracts": "Contracts",
+        "newJob": "New job",
+        "myJobPosts": "My Job Posts",
+        "talent": "Talent",
+        "hires": "Hires",
+        "messages": "Messages"
     },
     "SignInForm": {
         "futurama": "Futurama",

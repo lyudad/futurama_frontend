@@ -9,21 +9,17 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    padding: 20px;
+    padding: 7px;
     min-height: 100vh;
     background: #e5e5e5;
 `;
 
 export const WorkField = styled.div`
-    padding: 3rem;
-    padding-bottom: 25px;
+    padding-bottom: 5px;
     width: 100%;
     min-height: 93vh;
     background: white;
     border-radius: 2rem;
-    > * {
-        margin: 1rem;
-    }
     > h2,
     p {
         text-align: center;
@@ -35,22 +31,21 @@ export const WorkField = styled.div`
 `;
 
 export const CardWrapper = styled.div`
-    padding:1.5rem;
+    padding: 1.5rem;
     padding-bottom: 25px;
     width: 95%;
     height: 340px;
     background: white;
     border-radius: 2rem;
-    > * {
-        margin: 0.5rem;
-    }
     > h2,
     p {
         text-align: left;
     }
     box-shadow: 10px 2px 6px rgba(0, 0, 0, 0.12),
         0px 2px 6px rgba(0, 0, 0, 0.14), 0px 2px 6px rgba(0, 0, 0, 0.2);
-    margin: 0 auto;
+    margin: 0 auto 20px auto;
+    transition: background 250ms ease;
+    transition: box-shadow 200ms ease;
     &:hover {
         background: ${colors.VACANCIES_FOCUS};
         box-shadow: 4px 1px 11px 3px rgba(0,0,0,0.75)

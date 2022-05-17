@@ -4,6 +4,7 @@ import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
+import { HeaderFreelancer } from 'components/header';
 import { Container, WorkField } from './styles';
 import { Card } from './components/Card';
 
@@ -168,6 +169,7 @@ export function Vacancies(): JSX.Element {
     return (
         <Container>
             <WorkField>
+                <HeaderFreelancer />
                 <Form
                     name="basic"
                     form={form}
@@ -176,7 +178,11 @@ export function Vacancies(): JSX.Element {
                     initialValues={{ remember: false }}
                     onFinish={onFinish}
                     autoComplete="on"
-                    style={{ display: 'flex', justifyContent: 'center' }}
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        marginBottom: '40px',
+                    }}
                 >
                     <Form.Item
                         name="Search"
@@ -189,7 +195,7 @@ export function Vacancies(): JSX.Element {
                     >
                         <Input
                             style={{
-                                height: '75px',
+                                height: '50px',
                                 width: '450px',
                                 borderRadius: '20px',
                                 border: '1px solid #808080',
@@ -207,10 +213,9 @@ export function Vacancies(): JSX.Element {
                             htmlType="submit"
                             style={{
                                 width: '150px',
-                                height: '75px',
+                                height: '50px',
                                 borderRadius: '20px',
                                 border: 'none',
-                                marginBottom: '25px',
                                 background: colors.BUTTON_COLOR_BASE,
                                 fontSize: fonts.FONT_SIZE_BUTTONS,
                                 textTransform: 'uppercase',
