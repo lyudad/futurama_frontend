@@ -21,6 +21,7 @@ export const UserInfo = styled.div`
 export const ProfileCard = styled.div`
     width: 60%;
     border: 1px solid black;
+    background-color: white;
     border-radius: 1rem;
     text-align: left;
     padding: 1rem;

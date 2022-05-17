@@ -14,16 +14,19 @@ import { PasswordMakeNew } from './pages/password/makeNew';
 import { SignUp } from './pages/signup';
 
 function App(): JSX.Element {
-    const token = useAppSelector((state) => state.login.token);
+    const token = useAppSelector((state) => state.auth.token);
     const dispatch = useDispatch();
     const [getProfile, { data, isSuccess }] = useGetProfileMutation();
 
     useEffect(() => {
-        getProfile({ token });
-        if (isSuccess) {
+        if (isSuccess) 
+        {            
             dispatch(setProfile(data));
         }
-    }, [token, isSuccess]);
+        else if(token) {
+            getProfile({ token }); 
+        }  
+    }, [isSuccess, token]);
 
     return (
         <Routes>
