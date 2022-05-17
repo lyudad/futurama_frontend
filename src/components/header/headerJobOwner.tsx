@@ -1,8 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Profile from 'assets/icons/profile.png';
-import { NavContainer } from './styles';
+import { NavContainer, NavLink } from './styles';
 
 export function HeaderJobOwner(): JSX.Element {
     const { t } = useTranslation();
