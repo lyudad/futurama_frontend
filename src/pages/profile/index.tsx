@@ -67,6 +67,7 @@ function Profile(): JSX.Element {
                         );
                     })}
                 {profile?.educations?.map((educat) => {
+
                         return (
                             <Card
                                 key={Date.now()}

@@ -7,10 +7,11 @@ import { constants } from 'constants/urls';
 import { useAppSelector } from 'store/hooks';
 import { setProfile } from 'store/reducers/profile';
 import { useGetProfileMutation } from 'store/api/profileApi';
+import { Vacancies } from 'pages/vacancies';
 import { Home } from './pages/home';
 import { SignIn } from './pages/signin';
-import { PasswordRecovery } from './pages/password/recovery';
-import { PasswordMakeNew } from './pages/password/makeNew';
+import { Recovery } from './pages/password/recovery';
+import { MakeNew } from './pages/password/makeNew';
 import { SignUp } from './pages/signup';
 
 function App(): JSX.Element {
@@ -38,15 +39,13 @@ function App(): JSX.Element {
                 path={constants.LOGIN}
                 element={!token ? <SignIn /> : <Navigate to={constants.HOME} />}
             />
+            <Route path={constants.PASSWORD_RECOVERY} element={<Recovery />} />
+            <Route path={constants.PASSWORD_MAKE_NEW} element={<MakeNew />} />
+            <Route path={constants.VACANCIES} element={<Vacancies />} />
             <Route
-                path={constants.PASSWORD_RECOVERY}
-                element={<PasswordRecovery />}
+                path={constants.SIGNUP}
+                element={!token ? <SignUp /> : <Navigate to={constants.HOME} />}
             />
-            <Route
-                path={constants.PASSWORD_MAKE_NEW}
-                element={<PasswordMakeNew />}
-            />
-            <Route path={constants.SIGNUP} element={!token ? <SignUp /> : <Navigate to={constants.HOME} />} />
         </Routes>
     );
 }

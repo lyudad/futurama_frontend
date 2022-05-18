@@ -8,7 +8,7 @@ import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
 import { Container, Card, Header1, Header2 } from './styles';
 
-export function PasswordMakeNew(): JSX.Element {
+export function MakeNew(): JSX.Element {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [isPasswordHide, setIsPasswordHide] = useState(true);
@@ -49,7 +49,6 @@ export function PasswordMakeNew(): JSX.Element {
                 style={{
                     background: colors.BUTTON_COLOR_BASE,
                     textTransform: 'uppercase',
-                    fontStyle: fonts.FONT_FAMILY_BASE,
                 }}
             >
                 {t('passwordMakeNew.closeBtn')}
