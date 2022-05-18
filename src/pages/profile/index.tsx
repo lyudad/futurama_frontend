@@ -57,7 +57,7 @@ function Profile(): JSX.Element {
                     description={t('ProfilePage.conditionsForWork')}
                     data={conditionsAtWork}
                 />
-                {user?.workExperience &&
+                {/* {user?.workExperience &&
                     user?.workExperience.map((experience) => {
                         return (
                             <Card
@@ -65,8 +65,8 @@ function Profile(): JSX.Element {
                                 data={experience}
                             />
                         );
-                    })}
-                {user?.education &&
+                    })} */}
+                {/* {user?.education &&
                     user.education.map((educat) => {
                         return (
                             <Card
@@ -74,7 +74,7 @@ function Profile(): JSX.Element {
                                 data={educat}
                             />
                         );
-                    })}
+                    })} */}
                 {otherExperience && (
                     <Card
                         description={t('ProfilePage.otherExperience')}

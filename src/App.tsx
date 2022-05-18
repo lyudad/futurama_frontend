@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -7,12 +8,13 @@ import { constants } from "constants/urls";
 import { useAppSelector } from "store/hooks";
 import { setProfile } from "store/reducers/profile";
 import { useGetProfileMutation } from "store/api/profileApi";
+import { Contacts } from "pages/contacts";
 import { Home } from "./pages/home";
 import { SignIn } from "./pages/signin";
 import { PasswordRecovery } from "./pages/password/recovery";
 import { PasswordMakeNew } from "./pages/password/makeNew";
 import { SignUp } from "./pages/signup";
-import { Contacts } from "pages/contacts";
+
 
 function App(): JSX.Element {
   const token = useAppSelector((state) => state.login.token);
