@@ -4,9 +4,9 @@ export interface authState {
 }
 
 export interface userState {
-    email: NullableString;
-    firstName: NullableString;
-    lastName: NullableString;
+    email: string;
+    firstName: string;
+    lastName: string;
     phone?: NullableString;
     photo?: NullableString;
 }

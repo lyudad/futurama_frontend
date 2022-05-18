@@ -57,8 +57,7 @@ function Profile(): JSX.Element {
                     description={t('ProfilePage.conditionsForWork')}
                     data={conditionsAtWork}
                 />
-                {profile?.workExperience &&
-                    profile?.workExperience.map((experience) => {
+                {profile?.workExperience?.map((experience) => {
                         return (
                             <Card
                                 key={Date.now()}
@@ -67,8 +66,7 @@ function Profile(): JSX.Element {
                             />
                         );
                     })}
-                {profile?.educations &&
-                    profile.educations.map((educat) => {
+                {profile?.educations?.map((educat) => {
                         return (
                             <Card
                                 key={Date.now()}

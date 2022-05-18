@@ -21,9 +21,9 @@ function Card({ description, data }: Props): JSX.Element {
                                             <span>
                                                 {Array.isArray(value) ?
                                                     value.map((val => {
-                                                        return  Object.entries(val).map(([k, v], id) => {
+                                                        return  Object.entries(val).map(([key2, value2], id) => {
                                                                 return (<span key={id}>{
-                                                                    k === "id" ? "" : `${v  }, `
+                                                                    key2 === "id" ? "" : `${value2  }, `
                                                                     }</span>)
                                                             }
                                                         )
