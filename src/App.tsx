@@ -43,7 +43,7 @@ function App(): JSX.Element {
       <Route path={constants.PASSWORD_MAKE_NEW} element={<PasswordMakeNew />} />
       <Route
         path={constants.SIGNUP}
-        element={!token ? <SignUp /> : <Navigate to={constants.HOME} />}
+        element={!token ? <SignUp /> : <Navigate to={constants.USER_CONTACTS} />}
       />
       <Route path={constants.USER_CONTACTS} element={<Contacts />} />
     </Routes>

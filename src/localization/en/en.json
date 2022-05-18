@@ -71,5 +71,19 @@
         "whoAreYou": "WHO YOU ARE?",
         "freelancer": "Freelancer",
         "jobOwner": "Job owner"
+    },
+    "Contacts": {
+        "updating": "Updating...",
+        "updated" : "Updated!",
+        "message401" : "Sorry, you are not authorized to access this page.",
+        "contactinfo" : "Contact info",
+        "firstname" : "First name",
+        "lastname" : "Last name",
+        "email" : "E-mail",
+        "mailnotvalid" : "The input is not valid E-mail",
+        "phone" : "Phone",
+        "phonenotvalid" : "Please input your phone number",
+        "save" : "Save",
+        "updatephoto" : "Click to update photo"
     }
 }

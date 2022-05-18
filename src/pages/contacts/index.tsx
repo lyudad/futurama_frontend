@@ -10,17 +10,19 @@ import {
   message,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import { useTranslation } from 'react-i18next';
 
 import { useGetContactsQuery } from "store/api/contactsApi";
 import { useSetContactsMutation } from "store/api/contactsApi";
 import { useAppSelector } from "store/hooks";
-import { constants as textConstants } from "constants/text";
 import { constants as urlConstants } from "constants/urls";
 import { Container, Heading, Wrapper } from "./styles";
 
-export function Contacts(): JSX.Element {
-  const token = useAppSelector((state) => state.login.token);
+export function Contacts(): JSX.Element {  
   const [form] = Form.useForm();
+  const { t } = useTranslation();
+  const token = useAppSelector((state) => state.login.token);
+
   const [setData] = useSetContactsMutation();
   const { data, error } = useGetContactsQuery();
 
@@ -41,7 +43,7 @@ export function Contacts(): JSX.Element {
   const openMessage = () => {
     const key = "updatable";
     message.loading({
-      content: "Updating...",
+      content: t('Contacts.updating'),
       key,
       style: {
         marginTop: "40%",
@@ -49,7 +51,7 @@ export function Contacts(): JSX.Element {
     });
     setTimeout(() => {
       message.success({
-        content: "Updated!",
+        content: t('Contacts.updated'),
         key,
         duration: 2,
         style: {
@@ -70,12 +72,12 @@ export function Contacts(): JSX.Element {
 
   if (error)
     return (
-      <Result status="403" title="401" subTitle={textConstants.UNAUTHORIZD} />
+      <Result status="403" title="401" subTitle={t('Contacts.message401')} />
     );
   else if (data)
     return (
       <Container>
-        <Heading>Contact info</Heading>
+        <Heading>{t('Contacts.contactinfo')}</Heading>
         <Wrapper>
           <div
             style={{
@@ -92,7 +94,7 @@ export function Contacts(): JSX.Element {
               form={form}
             >
               <Form.Item
-                label={"First name"}
+                label={t('Contacts.firstname')}
                 name="firstName"
                 initialValue={data?.firstName}
                 required={true}
@@ -100,7 +102,7 @@ export function Contacts(): JSX.Element {
                 <Input />
               </Form.Item>
               <Form.Item
-                label={"Last name"}
+                label={t('Contacts.lastname')}
                 name="lastName"
                 initialValue={data?.lastName}
                 required={true}
@@ -108,14 +110,14 @@ export function Contacts(): JSX.Element {
                 <Input />
               </Form.Item>
               <Form.Item
-                label={"E-mail"}
+                label={t('Contacts.email')}
                 name="email"
                 initialValue={data?.email}
                 rules={[
                   {
                     required: true,
                     type: "email",
-                    message: `${textConstants.MAIL_VALID}`,
+                    message: t('Contacts.mailnotvalid'),
                   },
                 ]}
               >
@@ -123,11 +125,11 @@ export function Contacts(): JSX.Element {
               </Form.Item>
               <Form.Item
                 name="phone"
-                label="Phone"
+                label={t('Contacts.phone')}
                 rules={[
                   {
                     required: true,
-                    message: `${textConstants.PHONE_VALID}`,
+                    message: t('Contacts.phonenotvalid'),
                     max: 13,
                   },
                 ]}
@@ -138,7 +140,7 @@ export function Contacts(): JSX.Element {
 
               <Form.Item>
                 <Button type="primary" htmlType="submit">
-                  Save
+                {t('Contacts.save')}
                 </Button>
               </Form.Item>
             </Form>
@@ -160,7 +162,7 @@ export function Contacts(): JSX.Element {
             />
             <Upload {...uploadParams}>
               <Button type="primary" icon={<UploadOutlined />}>
-                Click to update photo
+              {t('Contacts.updatephoto')}
               </Button>
             </Upload>
           </div>
