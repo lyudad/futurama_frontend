@@ -1,29 +1,49 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CardWrapper, Header2, Header3, Header4 } from 'pages/vacancies/styles';
-import { NavLink } from 'react-router-dom';
-
-interface IProps {
-    title: string;
-    company: string;
-    location: string;
-    description: string;
-    englishLevel: string;
-    price: number;
-}
+import { IVacancy } from 'types/vacancy';
+import { setSelectedVacancy } from 'store/reducers/selectedVacancy';
+import { useAppDispatch } from 'store/hooks';
 
 export function Card({
+    ownerId,
     title,
     company,
     location,
     description,
     englishLevel,
     price,
-}: IProps): JSX.Element {
+    timePerWeek,
+    createdAt,
+    updatedAt,
+    category,
+    skills,
+}: IVacancy): JSX.Element {
     const { t } = useTranslation();
+    const dispatch = useAppDispatch();
+
+    const onClick = (): void => {
+        dispatch(
+            setSelectedVacancy({
+                ownerId,
+                title,
+                company,
+                location,
+                description,
+                englishLevel,
+                price,
+                timePerWeek,
+                createdAt,
+                updatedAt,
+                category,
+                skills,
+            })
+        );
+    };
 
     return (
-        <NavLink to="/vacancy_details">
+        <NavLink to="/vacancies" onClick={onClick}>
             <CardWrapper>
                 <Header2>{title}</Header2>
                 <Header3>

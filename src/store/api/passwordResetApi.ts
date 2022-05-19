@@ -4,7 +4,7 @@ import { constants } from 'constants/urls';
 export const passwordResetApi = createApi({
     reducerPath: 'passwordReset',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_RESET_PASSWORD_BC_URL,
+        baseUrl: process.env.REACT_APP_URL,
     }),
     endpoints: (builder) => ({
         passwordReset: builder.mutation({

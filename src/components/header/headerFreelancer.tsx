@@ -19,7 +19,7 @@ export function HeaderFreelancer(): JSX.Element {
             <NavLink to={constants.HOME}>{t('MenuBar.proposals')}</NavLink>
             <NavLink to={constants.HOME}>{t('MenuBar.contracts')}</NavLink>
             <NavLink to={constants.HOME}>{t('MenuBar.chats')}</NavLink>
-            <NavLink to={constants.HOME}>
+            <NavLink to={constants.PROFILE}>
                 <img
                     src={Profile}
                     alt="Profile"
