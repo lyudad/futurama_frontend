@@ -81,11 +81,5 @@
         "searchField": "Search...",
         "searchBtn": "Search",
         "placeholder": "Please input your query"
-    },
-
-    "RoleSelectionPage": {
-        "whoAreYou": "WHO YOU ARE?",
-        "freelancer": "Freelancer",
-        "jobOwner": "Job owner"
     }
 }

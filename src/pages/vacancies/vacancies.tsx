@@ -4,7 +4,6 @@ import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
-import { HeaderFreelancer } from 'components/header';
 import { Container, WorkField } from './styles';
 import { Card } from './components/Card';
 
@@ -169,7 +168,6 @@ export function Vacancies(): JSX.Element {
     return (
         <Container>
             <WorkField>
-                <HeaderFreelancer />
                 <Form
                     name="basic"
                     form={form}

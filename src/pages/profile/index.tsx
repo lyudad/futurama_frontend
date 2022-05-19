@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { useAppSelector } from 'store/hooks';
+import profileImage from 'assets/icons/profile.png';
 import Card from './Card';
 import { UserProfile, ProfilePhoto, UserInfo } from './style';
 
@@ -34,7 +34,7 @@ function Profile(): JSX.Element {
             <UserProfile>
                 <UserInfo>
                     <ProfilePhoto>
-                        <img src={user?.photo || ""} alt="#" />
+                        <img src={user?.photo || profileImage} alt="#" />
                     </ProfilePhoto>
                     <div>
                         <h2>

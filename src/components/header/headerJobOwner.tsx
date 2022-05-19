@@ -2,9 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Profile from 'assets/icons/profile.png';
 import { constants } from 'constants/urls';
+import { useAppSelector } from 'store/hooks';
 import { NavContainer, NavLink } from './styles';
 
 export function HeaderJobOwner(): JSX.Element {
+    const profilePhoto = useAppSelector(state => state.auth.user?.photo);
     const { t } = useTranslation();
     return (
         <NavContainer>
@@ -18,7 +20,7 @@ export function HeaderJobOwner(): JSX.Element {
             <NavLink to={constants.HOME}>{t('MenuBar.chats')}</NavLink>
             <NavLink to={constants.HOME}>
                 <img
-                    src={Profile}
+                    src={profilePhoto || Profile}
                     alt="Profile"
                     style={{
                         borderRadius: '50%',

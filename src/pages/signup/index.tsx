@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { string, object } from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
@@ -24,6 +24,7 @@ import {
 } from './styles';
 
 export function SignUp(): JSX.Element {
+    const navigate = useNavigate();
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const [signupUser, signup] = useSignupUserMutation();
@@ -58,6 +59,7 @@ export function SignUp(): JSX.Element {
         }
         if(login.isSuccess) {                
             dispatch(setUser({ token: login.data.token, user: login.data.user }));
+            navigate('/');
         }
         if (signup.isError) {
             setIsFailed(signup.isError);
