@@ -6,6 +6,7 @@ import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
 import { HeaderFreelancer } from 'components/header';
 import { IVacancy } from 'types/vacancy';
+import { Container, WorkField } from './styles';
 import { Card } from './components/Card';
 import { Container, WorkField } from './styles';
 
@@ -42,7 +43,6 @@ export function Vacancies(): JSX.Element {
     return (
         <Container>
             <WorkField>
-                <HeaderFreelancer />
                 <Form
                     name="basic"
                     form={form}

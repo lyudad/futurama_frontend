@@ -11,7 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import loginReducer from './reducers/auth';
+import authReducer from './reducers/auth';
 import profileReducer from './reducers/profile';
 import selectedVacancy from './reducers/selectedVacancy';
 import { authApi } from './api/authApi';
@@ -30,6 +30,7 @@ const reducers = combineReducers({
     [profileApi.reducerPath]: profileApi.reducer,
     [vacanciesApi.reducerPath]: vacanciesApi.reducer,
     login: loginReducer,
+    auth: authReducer,
     profile: profileReducer,
     vacancy: selectedVacancy
 });
