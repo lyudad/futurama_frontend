@@ -13,10 +13,10 @@ export const NavLink = styled(BaseNavLink)`
 
 
 export const NavContainer = styled.div`
+    background: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 65px;
     padding: 5px;
     width: 100%;
     border-bottom: 3px solid ${colors.BACKGROUND_COLOR};

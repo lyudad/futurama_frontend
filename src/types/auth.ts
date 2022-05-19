@@ -7,6 +7,7 @@ export interface userState {
     email: string;
     firstName: string;
     lastName: string;
+    role: string;
     phone?: NullableString;
     photo?: NullableString;
 }
