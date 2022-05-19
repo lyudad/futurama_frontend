@@ -9,11 +9,13 @@ import { useAppSelector } from "store/hooks";
 import { setProfile } from "store/reducers/profile";
 import { useGetProfileMutation } from "store/api/profileApi";
 import { Contacts } from "pages/contacts";
+import ProjectDetails from 'components/projectDetails';
 import { Home } from "./pages/home";
 import { SignIn } from "./pages/signin";
 import { PasswordRecovery } from "./pages/password/recovery";
 import { PasswordMakeNew } from "./pages/password/makeNew";
 import { SignUp } from "./pages/signup";
+
 
 
 function App(): JSX.Element {
@@ -48,6 +50,7 @@ function App(): JSX.Element {
         element={!token ? <SignUp /> : <Navigate to={constants.USER_CONTACTS} />}
       />
       <Route path={constants.USER_CONTACTS} element={<Contacts />} />
+      <Route path='/details' element={<ProjectDetails />} />
     </Routes>
   );
 }

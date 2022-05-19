@@ -29,6 +29,26 @@ export function Contacts(): JSX.Element {
     const [setData] = useSetContactsMutation();
     const { data, error } = useGetContactsQuery();
 
+    const openMessage = (): void => {
+        const key = 'updatable';
+        message.loading({
+            content: t('Contacts.updating'),
+            key,
+            style: {
+                marginTop: '40%',
+            },
+        });
+        setTimeout(() => {
+            message.success({
+                content: t('Contacts.updated'),
+                key,
+                duration: 2,
+                style: {
+                    marginTop: '40%',
+                },
+            });
+        }, 1800);
+    };
     async function handleclicker(values: {
         firstName: string;
         lastName: string;
@@ -39,26 +59,6 @@ export function Contacts(): JSX.Element {
         if (el) {
             el.style.display = 'none';
         }
-        const openMessage = (): void => {
-            const key = 'updatable';
-            message.loading({
-                content: t('Contacts.updating'),
-                key,
-                style: {
-                    marginTop: '40%',
-                },
-            });
-            setTimeout(() => {
-                message.success({
-                    content: t('Contacts.updated'),
-                    key,
-                    duration: 2,
-                    style: {
-                        marginTop: '40%',
-                    },
-                });
-            }, 1800);
-        };
         openMessage();
         await setData(values).unwrap();
     }
@@ -103,7 +103,14 @@ export function Contacts(): JSX.Element {
                                 label={t('Contacts.firstname')}
                                 name="firstName"
                                 initialValue={data?.firstName}
-                                required
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: t('Contacts.inputFirstname'),
+                                        min: 2,
+                                        max: 18,
+                                    },
+                                ]}
                             >
                                 <Input />
                             </Form.Item>
@@ -111,7 +118,14 @@ export function Contacts(): JSX.Element {
                                 label={t('Contacts.lastname')}
                                 name="lastName"
                                 initialValue={data?.lastName}
-                                required
+                                rules={[
+                                    {
+                                        required: true,
+                                        message: t('Contacts.inputLastname'),
+                                        min: 2,
+                                        max: 18,
+                                    },
+                                ]}
                             >
                                 <Input />
                             </Form.Item>
@@ -130,13 +144,13 @@ export function Contacts(): JSX.Element {
                                 <Input />
                             </Form.Item>
                             <Form.Item
-                                name="phone"
+                                name="phone"                                
                                 label={t('Contacts.phone')}
                                 rules={[
                                     {
                                         required: true,
                                         message: t('Contacts.phonenotvalid'),
-                                        max: 13,
+                                        max: 13
                                     },
                                 ]}
                                 initialValue={data?.phone}
