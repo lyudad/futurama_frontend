@@ -7,26 +7,26 @@ import { UserProfile, ProfilePhoto, UserInfo } from './style';
 
 function Profile(): JSX.Element {
     const { t } = useTranslation();
-    const user = useAppSelector((state) => state.profile.profile);
-
+    const profile = useAppSelector((state) => state.profile.profile); 
+    const user = useAppSelector((state) => state.auth.user);   
     const contactInformation = {
         Email: user?.email,
-        Phone: user?.phoneNumber,
+        Phone: user?.phone,
     };
 
     const positionAndSkills = {
-        Position: user?.position,
-        Skills: user?.skills,
+        Position: profile?.position,
+        Skills: profile?.skills,
     };
 
     const conditionsAtWork = {
-        'Desirebl salary level (per hour)': user?.desirebleSalaryLevel,
-        'Available amount of hours': user?.availableAmountOfHours,
+        'Desirebl salary level (per hour)': profile?.desirebleSalaryLevel,
+        'Available amount of hours': profile?.availableAmountOfHours,
     };
 
     const otherExperience = {
-        'Other experience': user?.otherExperience,
-        Description: user?.description,
+        'Other experience': profile?.otherExperience,
+        Description: profile?.description,
     };
 
     return (
@@ -34,14 +34,14 @@ function Profile(): JSX.Element {
             <UserProfile>
                 <UserInfo>
                     <ProfilePhoto>
-                        <img src={user?.profilePhoto} alt="#" />
+                        <img src={user?.photo || ""} alt="#" />
                     </ProfilePhoto>
                     <div>
                         <h2>
                             {user?.firstName} {user?.lastName}
                         </h2>
                         <h3>
-                            <strong>English level</strong>: {user?.englishLevel}
+                            <strong>English level</strong>: {profile?.englishLevel}
                         </h3>
                     </div>
                 </UserInfo>
@@ -57,24 +57,25 @@ function Profile(): JSX.Element {
                     description={t('ProfilePage.conditionsForWork')}
                     data={conditionsAtWork}
                 />
-                {/* {user?.workExperience &&
-                    user?.workExperience.map((experience) => {
+                {profile?.workExperience?.map((experience) => {
                         return (
                             <Card
+                                key={Date.now()}
                                 description={t('ProfilePage.workExperience')}
                                 data={experience}
                             />
                         );
-                    })} */}
-                {/* {user?.education &&
-                    user.education.map((educat) => {
+                    })}
+                {profile?.educations?.map((educat) => {
+
                         return (
                             <Card
+                                key={Date.now()}
                                 description={t('ProfilePage.education')}
                                 data={educat}
                             />
                         );
-                    })} */}
+                    })}
                 {otherExperience && (
                     <Card
                         description={t('ProfilePage.otherExperience')}

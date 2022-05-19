@@ -1,6 +1,14 @@
-export interface loginState {
-    user: object | null;
+export interface authState {
+    user: userState | null;
     token: string;
+}
+
+export interface userState {
+    email: string;
+    firstName: string;
+    lastName: string;
+    phone?: NullableString;
+    photo?: NullableString;
 }
 
 export interface loginForm {
@@ -15,3 +23,5 @@ export interface signupForm {
     password: string;
     role: string;
 }
+
+type NullableString = string | null;

@@ -2,16 +2,12 @@ export type ProfileState = {
     profile: UserProfile | null;
 };
 
-type UserProfile = {
-    firstName: NullableString;
-    lastName: NullableString;
-    profilePhoto: string;
+export type UserProfile = {
+    id: number;
     englishLevel: NullableString;
-    education: NullableArray;
+    educations: NullableArray;
     workExperience: NullableArray;
     skills: NullableArray;
-    email: NullableString;
-    phoneNumber: NullableString;
     position: NullableString;
     desirebleSalaryLevel: NullableNumber;
     availableAmountOfHours: NullableNumber;
@@ -19,6 +15,6 @@ type UserProfile = {
     description?: NullableString;
 };
 
-type NullableArray = null | Array<string>;
+type NullableArray = null | Array<object>;
 type NullableString = null | string;
 type NullableNumber = null | number;
