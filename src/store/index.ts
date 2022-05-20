@@ -29,7 +29,6 @@ const reducers = combineReducers({
     [passwordResetApi.reducerPath]: passwordResetApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
     [vacanciesApi.reducerPath]: vacanciesApi.reducer,
-    login: loginReducer,
     auth: authReducer,
     profile: profileReducer,
     vacancy: selectedVacancy
