@@ -4,11 +4,9 @@ import { Button, Form, Input, Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
-import { HeaderFreelancer } from 'components/header';
 import { IVacancy } from 'types/vacancy';
-import { Container, WorkField } from './styles';
 import { Card } from './components/Card';
-import { Container, WorkField } from './styles';
+import { Container } from './styles';
 
 export function Vacancies(): JSX.Element {
     const { t } = useTranslation();
@@ -42,89 +40,88 @@ export function Vacancies(): JSX.Element {
 
     return (
         <Container>
-            <WorkField>
-                <Form
-                    name="basic"
-                    form={form}
-                    layout="vertical"
-                    labelCol={{ span: 8 }}
-                    initialValues={{ remember: false }}
-                    onFinish={onFinish}
-                    autoComplete="on"
-                    style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        marginBottom: '40px',
-                    }}
+            <Form
+                name="basic"
+                form={form}
+                layout="vertical"
+                labelCol={{ span: 8 }}
+                initialValues={{ remember: false }}
+                onFinish={onFinish}
+                autoComplete="on"
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginBottom: '13px',
+                    marginTop: '30px',
+                }}
+            >
+                <Form.Item
+                    name="Search"
+                    rules={[
+                        {
+                            required: true,
+                            message: t('Vacancies.placeholder'),
+                        },
+                    ]}
                 >
-                    <Form.Item
-                        name="Search"
-                        rules={[
-                            {
-                                required: true,
-                                message: t('Vacancies.placeholder'),
-                            },
-                        ]}
-                    >
-                        <Input
-                            style={{
-                                height: '50px',
-                                width: '450px',
-                                borderRadius: '20px',
-                                border: '1px solid #808080',
-                                marginRight: '16px',
-                                fontSize: fonts.FONT_SIZE_LABELS,
-                                boxShadow:
-                                    '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
-                            }}
-                            placeholder={t('Vacancies.searchField')}
-                        />
-                    </Form.Item>
-                    <Form.Item>
-                        <Button
-                            type="primary"
-                            htmlType="submit"
-                            style={{
-                                width: '150px',
-                                height: '50px',
-                                borderRadius: '20px',
-                                border: 'none',
-                                background: colors.BUTTON_COLOR_BASE,
-                                fontSize: fonts.FONT_SIZE_BUTTONS,
-                                textTransform: 'uppercase',
-                                boxShadow:
-                                    '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
-                            }}
-                        >
-                            {t('Vacancies.searchBtn')}
-                        </Button>
-                    </Form.Item>
-                </Form>
-                {!isData ? (
-                    <Spin
-                        size="large"
-                        style={{ margin: '0 auto', display: 'block' }}
+                    <Input
+                        style={{
+                            height: '50px',
+                            width: '450px',
+                            borderRadius: '20px',
+                            border: '1px solid #808080',
+                            marginRight: '16px',
+                            fontSize: fonts.FONT_SIZE_LABELS,
+                            boxShadow:
+                                '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
+                        }}
+                        placeholder={t('Vacancies.searchField')}
                     />
-                ) : (
-                    data.map((el: IVacancy) => (
-                        <Card
-                            key={el.id}
-                            title={el.title}
-                            company={el.company}
-                            location={el.location}
-                            description={el.description}
-                            englishLevel={el.englishLevel}
-                            price={el.price}
-                            ownerId={el.ownerId}
-                            timePerWeek={el.timePerWeek}
-                            createdAt={el.createdAt}
-                            updatedAt={el.updatedAt}
-                            category={el.category}
-                            skills={el.skills}
-                        />
-                    ))
-                )}
-            </WorkField>
+                </Form.Item>
+                <Form.Item>
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        style={{
+                            width: '150px',
+                            height: '50px',
+                            borderRadius: '20px',
+                            border: 'none',
+                            background: colors.BUTTON_COLOR_BASE,
+                            fontSize: fonts.FONT_SIZE_BUTTONS,
+                            textTransform: 'uppercase',
+                            boxShadow:
+                                '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
+                        }}
+                    >
+                        {t('Vacancies.searchBtn')}
+                    </Button>
+                </Form.Item>
+            </Form>
+            {!isData ? (
+                <Spin
+                    size="large"
+                    style={{ margin: '0 auto', display: 'block' }}
+                />
+            ) : (
+                data.map((el: IVacancy) => (
+                    <Card
+                        key={el.id}
+                        title={el.title}
+                        company={el.company}
+                        location={el.location}
+                        description={el.description}
+                        englishLevel={el.englishLevel}
+                        price={el.price}
+                        ownerId={el.ownerId}
+                        timePerWeek={el.timePerWeek}
+                        createdAt={el.createdAt}
+                        updatedAt={el.updatedAt}
+                        category={el.category}
+                        skills={el.skills}
+                    />
+                ))
+            )}
         </Container>
     );
 }

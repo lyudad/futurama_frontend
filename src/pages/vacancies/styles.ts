@@ -11,30 +11,12 @@ export const Container = styled.div`
     justify-content: center;
     padding: 7px;
     min-height: 100vh;
-    background: #e5e5e5;
-`;
-
-export const WorkField = styled.div`
-    padding-bottom: 5px;
-    width: 100%;
-    min-height: 93vh;
-    background: white;
-    border-radius: 2rem;
-    > h2,
-    p {
-        text-align: center;
-    }
-    box-shadow: 10px 2px 6px rgba(0, 0, 0, 0.12),
-        0px 2px 6px rgba(0, 0, 0, 0.14), 0px 2px 6px rgba(0, 0, 0, 0.2);
-
-    
 `;
 
 export const CardWrapper = styled.div`
     padding: 1.5rem;
     padding-bottom: 25px;
-    width: 95%;
-    height: 340px;
+    width: 616px;
     background: white;
     border-radius: 2rem;
     > h2,
