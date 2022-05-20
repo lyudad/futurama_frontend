@@ -8,6 +8,7 @@ const initialState: authState = {
 };
 
 export const auth = createSlice({
+    
     name: 'auth',
     initialState,
     reducers: {

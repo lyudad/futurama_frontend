@@ -12,4 +12,7 @@ export const constants = {
     VACANCIES: '/vacancies',
     GET_ALL_VACANCIES: 'search_work/vacancies',
     GET_PROFILE: '/profile',
+    USER_CONTACTS: '/user/contacts',
+    PHOTO_UPLOAD: 'https://futurama.cf/upload/',
+    PHOTO_PLACEHOLDER: 'https://futurama.cf/upload/avatarPlaceholder7652.png'
 };
