@@ -8,10 +8,16 @@
         "otherExperience": "Other experience"
     },
     "MenuBar": {
-        "home": "Home",
-        "contacts": "Contacts",
-        "aboutus": "About us",
-        "login": "Login"
+        "searchWork": "Search work",
+        "InvitesToInterview": "Invites to interview",
+        "offers": "Offers",
+        "proposals": "Proposals",
+        "contracts": "Contracts",
+        "newJob": "New job",
+        "myJobPosts": "My Job Posts",
+        "talent": "Talent",
+        "hires": "Hires",
+        "chats": "Chats"
     },
     "SignInForm": {
         "futurama": "Futurama",
@@ -66,7 +72,6 @@
         "placeholder": "Please input your email",
         "emailPatternTitle": "Example: myemail@gmail.com"
     },
-
     "RoleSelectionPage": {
         "whoAreYou": "WHO YOU ARE?",
         "freelancer": "Freelancer",
@@ -87,5 +92,15 @@
         "phonenotvalid" : "Please input your phone number",
         "save" : "Save",
         "updatephoto" : "Click to update photo"
+  },
+    "Vacancies": {
+        "continueBtn": "Continue",
+        "company": "Company: ",
+        "location": "Location: ",
+        "englishLevel": "English level: ",
+        "price": "Price: $",
+        "searchField": "Search...",
+        "searchBtn": "Search",
+        "placeholder": "Please input your query"
     }
 }

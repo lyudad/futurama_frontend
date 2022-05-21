@@ -31,7 +31,7 @@ export default function ProjectDetails(): JSX.Element {
 
     return (
         <Container>
-            <Heading>Водитель-экспедитор со своим грузовым автомобилем</Heading>
+            <Heading>JS developer</Heading>
             <Wrapper>
                 <Info>
                     <div style={{ marginBottom: '20px' }}>

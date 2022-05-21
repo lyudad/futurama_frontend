@@ -8,7 +8,7 @@ import { GoSignIn } from './components/goSignIn';
 import { Container, Card, Header1, Header2 } from './styles';
 import { Notification } from './components/notification';
 
-export function PasswordRecovery(): JSX.Element {
+export function Recovery(): JSX.Element {
     const [form] = Form.useForm();
     const { t } = useTranslation();
 

@@ -10,8 +10,10 @@ export const constants = {
     PASSWORD_NOTOFICATION: '/password/notification',
     PASSWORD_MAKE_NEW: '/password/make_new',
     PASSWORD_RECOVERY: '/password/recovery',
+    VACANCIES: '/vacancies',
     GET_PROFILE: '/profile',
     USER_CONTACTS: '/user/contacts',
     PHOTO_UPLOAD: 'https://futurama.cf/upload/',
-    PHOTO_PLACEHOLDER: 'https://futurama.cf/upload/avatarPlaceholder7652.png'
+    PHOTO_PLACEHOLDER: 'https://futurama.cf/upload/avatarPlaceholder7652.png',
+    VACANCY_DETAILS: '/vacancy/details'
 };

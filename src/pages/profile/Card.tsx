@@ -5,7 +5,7 @@ interface Props {
     description: string;
     data: object;
 }
-function Card({ description, data }: Props): JSX.Element {
+function Card({ description, data }: Props): JSX.Element {    
     return (
         <ProfileCard>
             <div>
@@ -15,14 +15,23 @@ function Card({ description, data }: Props): JSX.Element {
                 {Object.entries(data).map(([key, value]) => {
                     return (
                         <div key={key}>
-                            <strong>{key}</strong> :{' '}
-                            <span>
-                                {Array.isArray(value)
-                                    ? value.map((val) => (
-                                          <span key={val}>{val},</span>
-                                      ))
-                                    : value}
-                            </span>
+                            {
+                                key === "id" ? "" : <div>
+                                        <strong>{key}</strong> :{' '}
+                                            <span>
+                                                {Array.isArray(value) ?
+                                                    value.map((val => {
+                                                        return  Object.entries(val).map(([key2, value2], id) => {
+                                                                return (<span key={id}>{
+                                                                    key2 === "id" ? "" : `${value2  }, `
+                                                                    }</span>)
+                                                            }
+                                                        )
+                                                    }))
+                                                    : value}
+                                            </span>
+                                    </div>
+                            }
                         </div>
                     );
                 })}

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useAppSelector } from 'store/hooks';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 
@@ -9,7 +8,6 @@ interface IProps {
 }
 
 export function Notification({ email, isError }: IProps): JSX.Element {
-    // const email = useAppSelector((state) => state.email.value);
     const { t } = useTranslation();
 
     return (
