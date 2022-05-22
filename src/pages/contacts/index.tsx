@@ -35,7 +35,7 @@ export function Contacts(): JSX.Element {
             content: t('Contacts.updating'),
             key,
             style: {
-                marginTop: '40%',
+                marginTop: '46%',
             },
         });
         setTimeout(() => {
@@ -44,7 +44,7 @@ export function Contacts(): JSX.Element {
                 key,
                 duration: 2,
                 style: {
-                    marginTop: '40%',
+                    marginTop: '46%',
                 },
             });
         }, 1800);

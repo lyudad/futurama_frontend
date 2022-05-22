@@ -48,7 +48,6 @@ export const contactsApi = createApi({
                     url: constants.USER_CONTACTS,
                     method: "post",
                     body
-
                 };
             },
             invalidatesTags: [{ type: 'User', id: 'LIST' }],

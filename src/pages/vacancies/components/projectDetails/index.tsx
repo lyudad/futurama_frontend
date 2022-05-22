@@ -1,5 +1,11 @@
 import React from 'react';
 import { Image } from 'antd';
+import { useAppSelector } from 'store/hooks';
+import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+import { IVacancy } from 'types/vacancy';
+import { constants } from 'constants/urls';
 import {
     Container,
     Heading,
@@ -15,72 +21,58 @@ import {
 } from './styles';
 
 export default function ProjectDetails(): JSX.Element {
-    const skills: string[] = [
-        'React.js',
-        'Nest.js',
-        'HTML5',
-        'TypeScript',
-        'MySQL',
-        'JavaScript',
-        'Vue.js',
-        'GIT',
-        'Адаптивная вёрстка',
-        'Целеустремленность',
-        'Ответственность',
-    ];
+    const vacancy: IVacancy = useAppSelector((state) => state.vacancy.data);
+    const skills = vacancy.skills.map(
+        (obj: { id: number; skill: string }) => obj.skill
+    );
+    const { t } = useTranslation();
 
     return (
         <Container>
-            <Heading>JS developer</Heading>
+            <Heading>{vacancy.title}</Heading>
             <Wrapper>
                 <Info>
                     <div style={{ marginBottom: '20px' }}>
-                        <Title>Hourly rate:</Title>
-                        <InfoItem>400 KGS</InfoItem>
+                        <Title>{t('Vacancy.rate')}</Title>
+                        <InfoItem>${vacancy.price}</InfoItem>
                     </div>
                     <div style={{ marginBottom: '20px' }}>
-                        <Title>Duration:</Title>
-                        <InfoItem>40 hour</InfoItem>
+                        <Title>{t('Vacancy.duration')}</Title>
+                        <InfoItem>{vacancy.timePerWeek} hour</InfoItem>
                     </div>
                     <div style={{ marginBottom: '20px' }}>
-                        <Title>English level:</Title>
-                        <InfoItem>Intermediate</InfoItem>
+                        <Title>{t('Vacancy.englishlevel')}</Title>
+                        <InfoItem>{vacancy.englishLevel}</InfoItem>
                     </div>
                 </Info>
             </Wrapper>
 
             <div style={{ display: 'flex' }}>
                 <div style={{ maxWidth: '70%' }}>
-                    <SmallHeading>
-                        Description:
-                    </SmallHeading>
+                    <SmallHeading>{t('Vacancy.description')}</SmallHeading>
                     <p style={{ marginTop: '10px', fontSize: '17px' }}>
-                        Знание CSS 2-3, HTML 4-5, Bootstrap 3-4; работа с REST
-                        API, AJAX; Опыт работы с JS, jQuery; умения работать с
-                        JS библиотеками; опыт использования GIT; работа с
-                        популярными CMS; умение работать в команде; умение
-                        разбираться в чужом коде; навык работы с Photoshop,
-                        Figma; оперативное реагирование и разрешение инцидентов.
+                        {vacancy.description}
                     </p>
-                    <SmallHeading>
-                        Required skills:
-                    </SmallHeading>
-
+                    <SmallHeading>{t('Vacancy.skills')}</SmallHeading>
                     <div>
                         {skills.map((skill) => (
-                            <Skill>{skill}</Skill>
+                            <Skill key={skills.indexOf(skill)}>{skill}</Skill>
                         ))}
                     </div>
                     <div>
-                        <Date content="created at: ">13.05.22</Date>
-                        <Date content="updated at: ">22.05.22</Date>
+                        <Date content="created at: ">
+                            {vacancy.createdAt.slice(0, 10)}
+                        </Date>
+                        <Date content="updated at: ">
+                            {vacancy.createdAt.slice(0, 10)}
+                        </Date>
                     </div>
                 </div>
                 <CompanyInfo>
                     <Image
                         style={{ maxHeight: '120px', maxWidth: '120px' }}
                         preview={false}
-                        src="http://placehold.jp/120x120.png"
+                        src={constants.COMPANY_PLACEHOLDER}
                     />
                     <h4
                         style={{
@@ -89,7 +81,7 @@ export default function ProjectDetails(): JSX.Element {
                             fontWeight: '700',
                         }}
                     >
-                        Эко Исламик Банк
+                        {vacancy.company}
                     </h4>
                     <span
                         style={{
@@ -98,22 +90,14 @@ export default function ProjectDetails(): JSX.Element {
                             fontWeight: '600',
                         }}
                     >
-                        г. Бишкек
+                        {vacancy.location}
                     </span>
                 </CompanyInfo>
             </div>
-            <Button>SEND PROPOSAL</Button>
-            <Button>BACK TO RESULTS</Button>
+            <Button>{t('Vacancy.sendproposal')}</Button>
+            <NavLink style={{ color: 'black' }} to="/vacancies">
+                <Button>{t('Vacancy.back')}</Button>
+            </NavLink>
         </Container>
     );
 }
-
-//   title: string;
-//   company: string;
-//   location: string;
-//   description: string;
-//   englishLevel: string;
-//   price: number;
-//   timePerWeek: number;
-//   createdAt: Date;
-//   updatedAt: Date;

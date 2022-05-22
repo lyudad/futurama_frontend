@@ -91,7 +91,8 @@
         "phone" : "Phone",
         "phonenotvalid" : "Please input your phone number",
         "save" : "Save",
-        "updatephoto" : "Click to update photo"
+        "updatephoto" : "Click to update photo",
+        "updatelogo": "Click to update logo"
   },
     "Vacancies": {
         "continueBtn": "Continue",
@@ -102,5 +103,14 @@
         "searchField": "Search...",
         "searchBtn": "Search",
         "placeholder": "Please input your query"
+    },
+    "Vacancy": {
+        "rate": "Rate:",
+        "duration": "Duration:",
+        "englishlevel": "English level:",
+        "description": "Description:",
+        "skills": "Required skills:",
+        "sendproposal": "SEND PROPOSAL",
+        "back": "BACK TO RESULTS"
     }
 }
