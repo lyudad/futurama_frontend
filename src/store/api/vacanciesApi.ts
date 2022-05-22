@@ -4,7 +4,10 @@ import { constants } from 'constants/urls';
 export const vacanciesApi = createApi({
     reducerPath: 'vacancies',
     baseQuery: fetchBaseQuery({
-        baseUrl: process.env.REACT_APP_URL,
+        baseUrl: process.env.REACT_APP_URL, prepareHeaders: (headers) => {
+            headers.set('Access-Control-Allow-Origin', '*')
+            return headers
+        },
     }),
     endpoints: (builder) => ({
         getAllVacancies: builder.mutation({

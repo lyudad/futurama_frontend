@@ -19,10 +19,11 @@ export const contactsApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_URL,
         prepareHeaders: (headers, { getState }) => {
-            const { token } = (getState() as RootState).auth  
+            const { token } = (getState() as RootState).auth
             if (token) {
                 headers.set('authorization', `Bearer ${token}`)
             }
+            headers.set('Access-Control-Allow-Origin', '*')
             return headers
         },
     }),

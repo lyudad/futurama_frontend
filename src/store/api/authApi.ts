@@ -3,7 +3,13 @@ import { constants } from 'constants/urls';
 
 export const authApi = createApi({
     reducerPath: 'authApi',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_URL }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: process.env.REACT_APP_URL, prepareHeaders: (headers) => {
+            headers.set('Access-Control-Allow-Origin', '*')
+            return headers
+        },
+    }),
+
     endpoints: (builder) => ({
         signinUser: builder.mutation({
             query: (body: { email: string; password: string }) => {
