@@ -74,6 +74,8 @@ export const InfoItem = styled.div`
   box-shadow: 2px 2px 2px 2px rgba(25, 133, 179, 0.5);
   border-radius: 6px;
   padding: 8px 30px;
+  text-align: center;
+  min-width: 118px;
   `
 export const Date = styled.div<Props>`
   display: inline-block;

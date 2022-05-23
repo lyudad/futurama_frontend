@@ -118,6 +118,7 @@ export function Vacancies(): JSX.Element {
                         updatedAt={el.updatedAt}
                         category={el.category}
                         skills={el.skills}
+                        id={el.id}
                     />
                 ))
             )}

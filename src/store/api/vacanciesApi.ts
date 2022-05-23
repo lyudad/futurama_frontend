@@ -16,8 +16,11 @@ export const vacanciesApi = createApi({
                 method: 'GET',
             }),
         }),
+        getVacancyById: builder.query({
+            query: (vacancyId: number) => constants.GET_ALL_VACANCIES + vacancyId
+          }),
     }),
 });
 
-export const { useGetAllVacanciesMutation } =
+export const { useGetAllVacanciesMutation, useGetVacancyByIdQuery} =
     vacanciesApi;

@@ -19,6 +19,7 @@ export function Card({
     updatedAt,
     category,
     skills,
+    id
 }: IVacancy): JSX.Element {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
@@ -43,7 +44,7 @@ export function Card({
     };
 
     return (
-        <NavLink to="/vacancies/details" onClick={onClick}>
+        <NavLink to={`vacancies/${id}`} onClick={onClick}>
             <CardWrapper>
                 <Header2>{title}</Header2>
                 <Header3>

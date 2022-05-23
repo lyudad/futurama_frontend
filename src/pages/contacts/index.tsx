@@ -144,7 +144,7 @@ export function Contacts(): JSX.Element {
                                 <Input />
                             </Form.Item>
                             <Form.Item
-                                name="phone"                                
+                                name="phone"
                                 label={t('Contacts.phone')}
                                 rules={[
                                     {
@@ -189,5 +189,8 @@ export function Contacts(): JSX.Element {
                 </Wrapper>
             </Container>
         );
-    return <Spin size="large" />;
+    return <Spin
+        size="large"
+        style={{ margin: '0 auto', display: 'block' }}
+    />;
 }
