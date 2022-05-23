@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useGetAllVacanciesMutation } from 'store/api/vacanciesApi';
-import { Button, Form, Input, Spin } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
@@ -95,12 +95,7 @@ export function Vacancies(): JSX.Element {
                     </Button>
                 </Form.Item>
             </Form>
-            {!data ? (
-                <Spin
-                    size="large"
-                    style={{ margin: '0 auto', display: 'block' }}
-                />
-            ) : (
+            {data &&
                 data.map((el: IVacancy) => (
                     <Card
                         key={el.id}
@@ -113,8 +108,7 @@ export function Vacancies(): JSX.Element {
                         price={el.price}
                         skills={el.skills}
                     />
-                ))
-            )}
+                ))}
         </Container>
     );
 }
