@@ -15,11 +15,13 @@ import authReducer from './reducers/auth';
 import profileReducer from './reducers/profile';
 import { authApi } from './api/authApi';
 import { passwordResetApi } from './api/passwordResetApi';
+import { vacanciesApi } from './api/vacanciesApi';
 import { profileApi } from './api/profileApi';
 import { contactsApi } from './api/contactsApi';
 
 const persistConfig = {
     key: 'store',
+    whitelist: ['auth'],
     storage,
 };
 
@@ -27,8 +29,8 @@ const reducers = combineReducers({
     [authApi.reducerPath]: authApi.reducer,
     [passwordResetApi.reducerPath]: passwordResetApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
+    [vacanciesApi.reducerPath]: vacanciesApi.reducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
-    login: loginReducer,
     auth: authReducer,
     profile: profileReducer,
 });
@@ -53,7 +55,9 @@ export const store = configureStore({
             .concat(authApi.middleware)
             .concat(passwordResetApi.middleware)
             .concat(profileApi.middleware)
+            .concat(vacanciesApi.middleware)
             .concat(contactsApi.middleware),
+
 });
 
 export type RootState = ReturnType<typeof store.getState>;

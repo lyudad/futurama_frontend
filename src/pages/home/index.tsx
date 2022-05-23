@@ -13,11 +13,21 @@ function Home(): JSX.Element {
 
     return (
         <>
-        {role === variables.freelancer ? <HeaderFreelancer/>  : <HeaderJobOwner/>}
-        <Routes>
-            <Route path={constants.VACANCIES} element={<PrivateRoute component={Vacancies} />}/>
-            <Route path="*" element={<PrivateRoute component={Profile} />} />
-        </Routes>
+            {role === variables.freelancer ? (
+                <HeaderJobOwner />
+            ) : (
+                <HeaderFreelancer />
+            )}
+            <Routes>
+                <Route
+                    path={constants.VACANCIES}
+                    element={<PrivateRoute component={Vacancies} />}
+                />
+                <Route
+                    path="*"
+                    element={<PrivateRoute component={Profile} />}
+                />
+            </Routes>
         </>
     );
 }

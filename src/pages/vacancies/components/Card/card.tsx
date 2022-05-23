@@ -1,29 +1,30 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { CardWrapper, Header2, Header3, Header4 } from 'pages/vacancies/styles';
 import { NavLink } from 'react-router-dom';
-
-interface IProps {
-    title: string;
-    company: string;
-    location: string;
-    description: string;
-    englishLevel: string;
-    price: number;
-}
+import { useTranslation } from 'react-i18next';
+import {
+    CardWrapper,
+    Header2,
+    Header3,
+    Header4,
+    Skill,
+    SkillsContainer,
+} from 'pages/vacancies/styles';
+import { IVacancy } from 'types/vacancy';
 
 export function Card({
+    vacancyId,
     title,
     company,
     location,
     description,
     englishLevel,
     price,
-}: IProps): JSX.Element {
+    skills,
+}: IVacancy): JSX.Element {
     const { t } = useTranslation();
 
     return (
-        <NavLink to="/vacancy_details">
+        <NavLink to={`/vacancy?id=${vacancyId}`}>
             <CardWrapper>
                 <Header2>{title}</Header2>
                 <Header3>
@@ -46,6 +47,11 @@ export function Card({
                     .split(' ')
                     .slice(0, 45)
                     .join(' ')}...`}</Header4>
+                <SkillsContainer>
+                    {skills.map(({ skill, id }) => (
+                        <Skill key={id}>{skill}</Skill>
+                    ))}
+                </SkillsContainer>
             </CardWrapper>
         </NavLink>
     );
