@@ -16,5 +16,5 @@ export const constants = {
     PHOTO_UPLOAD: 'https://futurama.cf:3011/upload/',
     PHOTO_PLACEHOLDER: 'https://futurama.cf:3011/upload/avatarPlaceholder7652.png',
     COMPANY_PLACEHOLDER: "https://placehold.jp/120x120.png",
-    VACANCY_DETAILS: '/vacancies/:id'
+    VACANCY_DETAILS: '/vacancy/:id'
 };
