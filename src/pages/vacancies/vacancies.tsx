@@ -13,13 +13,11 @@ export function Vacancies(): JSX.Element {
     const [form] = Form.useForm();
     // eslint-disable-next-line no-unused-vars
     const [query, setQuery] = useState('');
-    const [isData, setIsData] = useState(false);
     const [getAllVacancies, { data }] = useGetAllVacanciesMutation();
 
     useEffect(() => {
         const getData = async (): Promise<void> => {
             await getAllVacancies('');
-            setIsData(true);
         };
         getData();
     }, [getAllVacancies]);
@@ -50,7 +48,6 @@ export function Vacancies(): JSX.Element {
                 autoComplete="on"
                 style={{
                     display: 'flex',
-                    justifyContent: 'center',
                     marginBottom: '13px',
                     marginTop: '30px',
                 }}
@@ -98,7 +95,7 @@ export function Vacancies(): JSX.Element {
                     </Button>
                 </Form.Item>
             </Form>
-            {!isData ? (
+            {!data ? (
                 <Spin
                     size="large"
                     style={{ margin: '0 auto', display: 'block' }}
@@ -107,17 +104,13 @@ export function Vacancies(): JSX.Element {
                 data.map((el: IVacancy) => (
                     <Card
                         key={el.id}
+                        vacancyId={el.id}
                         title={el.title}
                         company={el.company}
                         location={el.location}
                         description={el.description}
                         englishLevel={el.englishLevel}
                         price={el.price}
-                        ownerId={el.ownerId}
-                        timePerWeek={el.timePerWeek}
-                        createdAt={el.createdAt}
-                        updatedAt={el.updatedAt}
-                        category={el.category}
                         skills={el.skills}
                     />
                 ))

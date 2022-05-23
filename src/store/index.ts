@@ -13,7 +13,6 @@ import storage from 'redux-persist/lib/storage';
 
 import authReducer from './reducers/auth';
 import profileReducer from './reducers/profile';
-import selectedVacancy from './reducers/selectedVacancy';
 import { authApi } from './api/authApi';
 import { passwordResetApi } from './api/passwordResetApi';
 import { vacanciesApi } from './api/vacanciesApi';
@@ -22,6 +21,7 @@ import { contactsApi } from './api/contactsApi';
 
 const persistConfig = {
     key: 'store',
+    whitelist: ['auth'],
     storage,
 };
 
@@ -33,7 +33,6 @@ const reducers = combineReducers({
     [contactsApi.reducerPath]: contactsApi.reducer,
     auth: authReducer,
     profile: profileReducer,
-    vacancy: selectedVacancy
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

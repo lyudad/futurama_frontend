@@ -8,10 +8,21 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     padding: 7px;
     min-height: 100vh;
 `;
+
+export const SkillsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+export const Skill = styled.div`
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 30%;
+    background: ${colors.VACANCIES_FOCUS};
+`
 
 export const CardWrapper = styled.div`
     padding: 1.5rem;
@@ -37,7 +48,7 @@ export const CardWrapper = styled.div`
 export const Header2 = styled.h2`
 font-size: ${fonts.FONT_SIZE_LABELS};
 font-weight: ${fonts.FONT_WEIGHT_BOLD};
-margin-bottom: 40px;
+margin-bottom: 30px;
 `
 export const Header3 = styled.h3`
 font-size: ${fonts.FONT_SIZE_MEDIUM};
