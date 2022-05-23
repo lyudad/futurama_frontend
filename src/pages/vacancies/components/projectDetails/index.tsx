@@ -64,7 +64,7 @@ export default function ProjectDetails(): JSX.Element {
                             {vacancy.createdAt.slice(0, 10)}
                         </Date>
                         <Date content="updated at: ">
-                            {vacancy.createdAt.slice(0, 10)}
+                            {vacancy.updatedAt.slice(0, 10)}
                         </Date>
                     </div>
                 </div>

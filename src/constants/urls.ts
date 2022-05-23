@@ -13,8 +13,8 @@ export const constants = {
     GET_ALL_VACANCIES: 'search_work/vacancies',
     GET_PROFILE: '/profile',
     USER_CONTACTS: '/user/contacts',
-    PHOTO_UPLOAD: 'https://futurama.cf:3010/upload/',
-    PHOTO_PLACEHOLDER: 'https://futurama.cf:3010/upload/avatarPlaceholder7652.png',
+    PHOTO_UPLOAD: 'https://futurama.cf:3011/upload/',
+    PHOTO_PLACEHOLDER: 'https://futurama.cf:3011/upload/avatarPlaceholder7652.png',
     COMPANY_PLACEHOLDER: "http://placehold.jp/120x120.png",
     VACANCY_DETAILS: '/vacancies/details'
 };
