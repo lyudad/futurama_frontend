@@ -19,8 +19,7 @@ export const NavContainer = styled.div`
     align-items: center;
     padding: 5px;
     width: 100%;
-    border-bottom: 3px solid ${colors.HEADER_BORDER};
-    border-top: 3px solid ${colors.HEADER_BORDER};
+    border-bottom: 3px solid ${colors.BACKGROUND_COLOR};
     font-size: ${fonts.FONT_SIZE_MEDIUM};
     > *{
         color: ${colors.NAVLINK_HEADER_COLOR};
