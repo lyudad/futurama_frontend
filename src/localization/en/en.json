@@ -100,5 +100,41 @@
         "searchField": "Search...",
         "searchBtn": "Search",
         "placeholder": "Please input your query"
+    },
+    "createjob": {
+        "nothingMsg": "Nothing selected",
+        "picked": "Picked",
+        "headtext": "Create Job",
+        "createBtn": "Create",
+        "home": "Home",
+        "joblist": "Jobs List",
+        "important": {
+            "label": "Important",
+            "text": "Welcome to the page for creating a vacancy, please carefully fill in each field. Fields marked with * are mandatory"
+        },
+        "headline": {
+            "label": "Headline",
+            "text": "Write a title for your job pos"
+        },
+        "duration": {
+            "label": "Duration of project",
+            "text": "Write how much time it takes to develop"
+        },
+        "category": {
+            "label": "Category",
+            "text": "Choose a job category"
+        },
+        "skills": {
+            "label": "Skills",
+            "text": "You must add at least 3 skills"
+        },
+        "rate": {
+            "label": "Hourly rate",
+            "text": "Enter how much you are willing to pay for the job"
+        },
+        "description": {
+            "label": "Description",
+            "text": "Write a detailed description of your order"
+        }
     }
 }

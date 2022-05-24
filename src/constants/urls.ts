@@ -13,7 +13,7 @@ export const constants = {
     VACANCIES: '/vacancies',
     GET_PROFILE: '/profile',
     USER_CONTACTS: '/user/contacts',
-    CREATE_JOB: "/jobowner/create",
+    CREATE_JOB: "/createjob",
     PHOTO_UPLOAD: 'https://futurama.cf/upload/',
     PHOTO_PLACEHOLDER: 'https://futurama.cf/upload/avatarPlaceholder7652.png',
 };

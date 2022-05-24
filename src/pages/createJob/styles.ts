@@ -101,6 +101,7 @@ export const TextArea = styled.textarea`
   width: 101%;
   height: 150px;
   resize: none;
+  outline: none;
 `;
 
 export const Button = styled.button<ButtonTypes>`

@@ -1,4 +1,5 @@
 import React, { ChangeEvent, MouseEvent, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { FormInterface } from "../../types/createjob";
 import Human from "../../assets/human.png";
@@ -26,6 +27,7 @@ const defaultSkills: string[] = ["Account managment", "HTML", "CSS", "Analitycs 
 export function CreateJob(): JSX.Element {
     const [skills, setSkills] = useState<string[]>(defaultSkills);
     const [customSkill, setCustomSkill] = useState<string>("");
+    const { t } = useTranslation();
     const [form, setForm] = useState<FormInterface>({
         headline: '',
         duration: '',
@@ -75,7 +77,7 @@ export function CreateJob(): JSX.Element {
                             color="#4C5151"
                             margin="10px 0px 5px 0px"
                             textAlign="left">
-                            Create Job
+                            {t("createjob.headtext")}
                         </Text>
                         <Separator
                             margin="0px 0px 30px 0px"
@@ -85,7 +87,7 @@ export function CreateJob(): JSX.Element {
                             width="70%"
                             display="block">
                             <Label>
-                                Headline
+                                {t("createjob.headline.label")}
                             </Label>
                             <Input
                                 id="headline"
@@ -102,7 +104,7 @@ export function CreateJob(): JSX.Element {
                                 color="gray"
                                 margin="0px"
                                 textAlign="left">
-                                *Write a title for your job pos
+                                *{t("createjob.headline.text")}
                             </Text>
                         </Wrapper>
                         <Wrapper
@@ -110,7 +112,7 @@ export function CreateJob(): JSX.Element {
                             width="70%"
                             display="block">
                             <Label>
-                                Duration of project
+                                {t("createjob.duration.label")}
                             </Label>
                             <Input
                                 type="date"
@@ -126,7 +128,7 @@ export function CreateJob(): JSX.Element {
                                 color="gray"
                                 margin="0px"
                                 textAlign="left">
-                                *Write how much time it takes to develop
+                                *{t("createjob.duration.text")}
                             </Text>
                         </Wrapper>
                         <Wrapper
@@ -134,7 +136,7 @@ export function CreateJob(): JSX.Element {
                             width="30%"
                             display="block">
                             <Label>
-                                Category
+                                {t("createjob.category.label")}
                             </Label>
                             <Select
                                 value={form.category}
@@ -150,7 +152,7 @@ export function CreateJob(): JSX.Element {
                                 color="gray"
                                 margin="0px"
                                 textAlign="left">
-                                *Choose a job category
+                                *{t("createjob.category.text")}
                             </Text>
                         </Wrapper>
                         <Wrapper
@@ -158,7 +160,7 @@ export function CreateJob(): JSX.Element {
                             width="70%"
                             display="block">
                             <Label>
-                                Skills
+                                {t("createjob.skills.label")}
                             </Label>
                             <Input
                                 placeholder="Skills"
@@ -172,7 +174,7 @@ export function CreateJob(): JSX.Element {
                                 color="gray"
                                 margin="0px"
                                 textAlign="left">
-                                *Select the skills you expect from the performer
+                                *{t("createjob.skills.text")}
                             </Text>
                             <Wrapper
                                 margin="8px 0px 0px 0px"
@@ -219,7 +221,7 @@ export function CreateJob(): JSX.Element {
                                     color="gray"
                                     textAlign="left"
                                     margin="0px">
-                                    *Picked
+                                    {t("createjob.picked")}
                                 </Text>
                                 {
                                     form.skills.length
@@ -247,7 +249,7 @@ export function CreateJob(): JSX.Element {
                                             color="gray"
                                             textAlign="center"
                                             margin="5px">
-                                            Nothing selected :(
+                                            {t("createjob.nothingMsg")} :(
                                         </Text>}
                             </Wrapper>
                         </Wrapper>
@@ -256,7 +258,7 @@ export function CreateJob(): JSX.Element {
                             width="70%"
                             display="block">
                             <Label>
-                                Hourly rate
+                                {t("createjob.rate.label")}
                             </Label>
                             <Input
                                 type="number"
@@ -272,7 +274,7 @@ export function CreateJob(): JSX.Element {
                                 color="gray"
                                 margin="0px"
                                 textAlign="left">
-                                *Enter how much you are willing to pay for the job
+                                *{t("createjob.rate.text")}
                             </Text>
                         </Wrapper>
                         <Wrapper
@@ -280,7 +282,7 @@ export function CreateJob(): JSX.Element {
                             width="70%"
                             display="block">
                             <Label>
-                                Description
+                                {t("createjob.description.label")}
                             </Label>
                             <TextArea
                                 value={form.desc}
@@ -295,7 +297,7 @@ export function CreateJob(): JSX.Element {
                                 color="gray"
                                 margin="0px"
                                 textAlign="left">
-                                *Write a detailed description of your order
+                                *{t("createjob.description.text")}
                             </Text>
                         </Wrapper>
                         <Wrapper
@@ -311,7 +313,7 @@ export function CreateJob(): JSX.Element {
                                 width="140"
                                 height="40"
                                 margin="0px">
-                                Create
+                                {t("createjob.createBtn")}
                             </Button>
                         </Wrapper>
                     </Form>
@@ -359,7 +361,7 @@ export function CreateJob(): JSX.Element {
                             color="white"
                             margin="0px"
                             textAlign="center">
-                            Important!
+                            {t("createjob.important.label")}
                         </Text>
                         <Text
                             fontSize="14"
@@ -367,9 +369,7 @@ export function CreateJob(): JSX.Element {
                             color="white"
                             margin="10px 0px 0px 0px"
                             textAlign="center">
-                            Welcome to the page for creating a vacancy,
-                            please carefully fill in each field.
-                            Fields marked with * are mandatory.
+                            {t("createjob.important.text")}
                         </Text>
                     </Wrapper>
                     <Wrapper
@@ -388,7 +388,7 @@ export function CreateJob(): JSX.Element {
                                     color="white"
                                     margin="15px"
                                     textAlign="center">
-                                    Jobs list
+                                    {t("createjob.joblist")}
                                 </Text>
                             </Link>
                             <Link to="/">
@@ -402,7 +402,7 @@ export function CreateJob(): JSX.Element {
                                     height="40"
                                     margin="0px"
                                 >
-                                    Menu
+                                    {t("createjob.home")}
                                 </Button>
                             </Link>
                         </Wrapper>
