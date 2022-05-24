@@ -218,7 +218,7 @@ export function CreateJob(): JSX.Element {
                                 margin="8px 0px 0px 0px"
                                 width="auto" display="block">
                                 {
-                                    customSkill ? <Text
+                                    !customSkill ? <Text
                                         fontSize="12"
                                         fontWeight="400"
                                         color="gray"
@@ -450,7 +450,7 @@ export function CreateJob(): JSX.Element {
                         </Text>
                     </Wrapper>
                     <Wrapper
-                        margin="85% auto"
+                        margin="100% auto"
                         width="100%"
                         display="block">
                         <Text
