@@ -34,9 +34,9 @@
     "SignUpForm": {
         "futurama": "Futurama",
         "find_a_dream_job": "Find a dream job!",
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "email": "Email",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "email": "E-mail",
         "password": "Password",
         "signUp": "SIGNUP",
         "signIn": "Sign in",
@@ -84,12 +84,15 @@
         "contactinfo" : "Contact info",
         "firstname" : "First name",
         "lastname" : "Last name",
+        "inputFirstname" : "Please input first name",
+        "inputLastname" : "Please input last name",
         "email" : "E-mail",
         "mailnotvalid" : "The input is not valid E-mail",
         "phone" : "Phone",
         "phonenotvalid" : "Please input your phone number",
         "save" : "Save",
-        "updatephoto" : "Click to update photo"
+        "updatephoto" : "Click to update photo",
+        "updatelogo": "Click to update logo"
   },
     "Vacancies": {
         "continueBtn": "Continue",
@@ -100,5 +103,14 @@
         "searchField": "Search...",
         "searchBtn": "Search",
         "placeholder": "Please input your query"
+    },
+    "Vacancy": {
+        "rate": "Rate:",
+        "duration": "Duration:",
+        "englishlevel": "English level:",
+        "description": "Description:",
+        "skills": "Required skills:",
+        "sendproposal": "SEND PROPOSAL",
+        "back": "BACK TO RESULTS"
     }
 }

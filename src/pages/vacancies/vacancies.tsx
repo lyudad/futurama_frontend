@@ -32,7 +32,6 @@ export function Vacancies(): JSX.Element {
 
     const onFinish = async (values: Ivalues): Promise<void> => {
         setQuery(values.Search);
-
         onReset();
     };
 
@@ -107,7 +106,11 @@ export function Vacancies(): JSX.Element {
                         englishLevel={el.englishLevel}
                         price={el.price}
                         skills={el.skills}
-                    />
+                        id={el.id} 
+                        timePerWeek={el.timePerWeek} 
+                        createdAt={el.createdAt} 
+                        updatedAt={el.updatedAt} 
+                        category={el.category} />
                 ))}
         </Container>
     );

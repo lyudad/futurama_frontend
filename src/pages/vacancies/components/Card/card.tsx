@@ -11,8 +11,7 @@ import {
 } from 'pages/vacancies/styles';
 import { IVacancy } from 'types/vacancy';
 
-export function Card({
-    vacancyId,
+export function Card({   
     title,
     company,
     location,
@@ -20,11 +19,12 @@ export function Card({
     englishLevel,
     price,
     skills,
+    vacancyId
 }: IVacancy): JSX.Element {
     const { t } = useTranslation();
 
     return (
-        <NavLink to={`/vacancy?id=${vacancyId}`}>
+        <NavLink to={`/vacancy/${vacancyId}`}>
             <CardWrapper>
                 <Header2>{title}</Header2>
                 <Header3>

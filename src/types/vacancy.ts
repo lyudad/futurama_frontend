@@ -8,4 +8,8 @@ export interface IVacancy {
     englishLevel: string;
     price: number;
     skills: [];
+    timePerWeek: number;
+    createdAt: string;
+    updatedAt: string;
+    category: [];
 }

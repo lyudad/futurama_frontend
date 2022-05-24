@@ -26,8 +26,7 @@ export const Skill = styled.div`
 
 export const CardWrapper = styled.div`
     padding: 1.5rem;
-    padding-bottom: 25px;
-    width: 616px;
+    padding-bottom: 25px;   
     background: white;
     border-radius: 2rem;
     > h2,

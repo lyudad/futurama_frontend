@@ -3,7 +3,12 @@ import { constants } from 'constants/urls';
 
 export const profileApi = createApi({
     reducerPath: 'profileApi',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_URL }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: process.env.REACT_APP_URL, prepareHeaders: (headers) => {
+            headers.set('Access-Control-Allow-Origin', '*')
+            return headers
+        },
+    }),
     endpoints: (builder) => ({
         getProfile: builder.mutation({
             query: (headers: { token: string }) => {
