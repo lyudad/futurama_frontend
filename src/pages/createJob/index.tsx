@@ -22,6 +22,7 @@ import {
 } from "./styles";
 
 const categories: string[] = ["Development", "Maintenance", "Sales"];
+const englishlevel: string[] = ["New", "strong"];
 const defaultSkills: string[] = ["Account managment", "HTML", "CSS", "Analitycs skills", "Mysql", "Nodejs", "Python"];
 
 export function CreateJob(): JSX.Element {
@@ -33,8 +34,11 @@ export function CreateJob(): JSX.Element {
         duration: '',
         category: '',
         skills: [],
+        englishlevel: '',
+        location: '',
         rate: '',
-        desc: ''
+        desc: '',
+        company: ''
     });
 
     useEffect(() => {
@@ -46,7 +50,7 @@ export function CreateJob(): JSX.Element {
     };
 
     function selectHandler(event: ChangeEvent<HTMLSelectElement>): void {
-        setForm({ ...form, category: event.target.value });
+        setForm({ ...form, [event.target.name]: event.target.value });
     };
 
     function pickSkillHandler(event: MouseEvent<HTMLButtonElement>): void {
@@ -94,7 +98,7 @@ export function CreateJob(): JSX.Element {
                                 type="text"
                                 value={form.headline}
                                 onChange={(e) => typingHandler(e)}
-                                placeholder="Headline"
+                                placeholder={t("createjob.headline.label")}
                                 name="headline"
                                 required
                             />
@@ -118,7 +122,7 @@ export function CreateJob(): JSX.Element {
                                 type="date"
                                 value={form.duration}
                                 onChange={(e) => typingHandler(e)}
-                                placeholder="Duration"
+                                placeholder={t("createjob.duration.label")}
                                 name="duration"
                                 required
                             />
@@ -132,38 +136,72 @@ export function CreateJob(): JSX.Element {
                             </Text>
                         </Wrapper>
                         <Wrapper
-                            margin="15px 0px 0px 0px"
-                            width="30%"
-                            display="block">
-                            <Label>
-                                {t("createjob.category.label")}
-                            </Label>
-                            <Select
-                                value={form.category}
-                                onChange={(e) => selectHandler(e)}>
-                                {
-                                    categories.map((item, i) =>
-                                        <Option key={i}>{item}</Option>)
-                                }
-                            </Select>
-                            <Text
-                                fontSize="10"
-                                fontWeight="300"
-                                color="gray"
+                            margin="12px 0px 0px 0px"
+                            width="70%"
+                            display="flex"
+                        >
+                            <Wrapper
+                                display="block"
+                                width="35%"
                                 margin="0px"
-                                textAlign="left">
-                                *{t("createjob.category.text")}
-                            </Text>
+                            >
+                                <Label>
+                                    {t("createjob.category.label")}
+                                </Label>
+                                <Select
+                                    value={form.category}
+                                    name="category"
+                                    onChange={(e) => selectHandler(e)}>
+                                    {
+                                        categories.map((item, i) =>
+                                            <Option key={i}>{item}</Option>)
+                                    }
+                                </Select>
+                                <Text
+                                    fontSize="10"
+                                    fontWeight="300"
+                                    color="gray"
+                                    margin="0px"
+                                    textAlign="left">
+                                    *{t("createjob.category.text")}
+                                </Text>
+                            </Wrapper>
+                            <Wrapper
+                                display="block"
+                                width="35%"
+                                margin="0px 0px 0px 20px"
+                            >
+                                <Label>
+                                    {t("createjob.english.label")}
+                                </Label>
+                                <Select
+                                    value={form.englishlevel}
+                                    name="englishlevel"
+                                    onChange={(e) => selectHandler(e)}>
+                                    {
+                                        englishlevel.map((item, i) =>
+                                            <Option key={i}>{item}</Option>)
+                                    }
+                                </Select>
+                                <Text
+                                    fontSize="10"
+                                    fontWeight="300"
+                                    color="gray"
+                                    margin="0px"
+                                    textAlign="left">
+                                    *{t("createjob.english.text")}
+                                </Text>
+                            </Wrapper>
                         </Wrapper>
                         <Wrapper
-                            margin="14px 0px 0px 0px"
+                            margin="12px 0px 0px 0px"
                             width="70%"
                             display="block">
                             <Label>
                                 {t("createjob.skills.label")}
                             </Label>
                             <Input
-                                placeholder="Skills"
+                                placeholder={t("createjob.skills.label")}
                                 onChange={(e) => skillsHandler(e)}
                                 type="text"
                                 name="skills"
@@ -276,7 +314,7 @@ export function CreateJob(): JSX.Element {
                                 type="number"
                                 value={form.rate}
                                 onChange={(e) => typingHandler(e)}
-                                placeholder="Rate"
+                                placeholder={t("createjob.rate.label")}
                                 name="rate"
                                 required
                             />
@@ -287,6 +325,54 @@ export function CreateJob(): JSX.Element {
                                 margin="0px"
                                 textAlign="left">
                                 *{t("createjob.rate.text")}
+                            </Text>
+                        </Wrapper>
+                        <Wrapper
+                            margin="14px 0px 0px 0px"
+                            width="70%"
+                            display="block">
+                            <Label>
+                                {t("createjob.location.label")}
+                            </Label>
+                            <Input
+                                type="text"
+                                value={form.rate}
+                                onChange={(e) => typingHandler(e)}
+                                placeholder={t("createjob.location.label")}
+                                name="rate"
+                                required
+                            />
+                            <Text
+                                fontSize="10"
+                                fontWeight="300"
+                                color="gray"
+                                margin="0px"
+                                textAlign="left">
+                                *{t("createjob.location.text")}
+                            </Text>
+                        </Wrapper>
+                        <Wrapper
+                            margin="14px 0px 0px 0px"
+                            width="70%"
+                            display="block">
+                            <Label>
+                                {t("createjob.company.label")}
+                            </Label>
+                            <Input
+                                type="text"
+                                value={form.rate}
+                                onChange={(e) => typingHandler(e)}
+                                placeholder={t("createjob.company.label")}
+                                name="company"
+                                required
+                            />
+                            <Text
+                                fontSize="10"
+                                fontWeight="300"
+                                color="gray"
+                                margin="0px"
+                                textAlign="left">
+                                *{t("createjob.company.text")}
                             </Text>
                         </Wrapper>
                         <Wrapper
@@ -364,7 +450,7 @@ export function CreateJob(): JSX.Element {
                         </Text>
                     </Wrapper>
                     <Wrapper
-                        margin="78% auto"
+                        margin="85% auto"
                         width="100%"
                         display="block">
                         <Text

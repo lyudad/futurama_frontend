@@ -5,4 +5,7 @@ export interface FormInterface {
     skills: string[];
     rate: string;
     desc: string;
+    englishlevel: string;
+    location: string;
+    company: string
 };

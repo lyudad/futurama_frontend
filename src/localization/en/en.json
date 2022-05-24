@@ -125,6 +125,10 @@
             "label": "Category",
             "text": "Choose a job category"
         },
+        "english": {
+            "label": "EnglishLevel",
+            "text": "Choose your level of English"
+        },
         "skills": {
             "label": "Skills",
             "text": "You must add at least 3 skills"
@@ -132,6 +136,14 @@
         "rate": {
             "label": "Hourly rate",
             "text": "Enter how much you are willing to pay for the job"
+        },
+        "location": {
+            "label": "Location",
+            "text": "Choose city"
+        },
+        "company": {
+            "label": "Company",
+            "text": "Your company name"
         },
         "description": {
             "label": "Description",
