@@ -180,6 +180,16 @@ export function CreateJob(): JSX.Element {
                                 margin="8px 0px 0px 0px"
                                 width="auto" display="block">
                                 {
+                                    customSkill ? <Text
+                                        fontSize="12"
+                                        fontWeight="400"
+                                        color="gray"
+                                        textAlign="left"
+                                        margin="0px">
+                                        {t("createjob.popular")}
+                                    </Text> : null
+                                }
+                                {
                                     customSkill
                                         ?
                                         <Button
@@ -187,8 +197,10 @@ export function CreateJob(): JSX.Element {
                                             type="button"
                                             name={customSkill}
                                             margin="5px 0px 0px 5px"
-                                            width="auto" height="30"
-                                            color="white" background="#4C5151"
+                                            width="auto"
+                                            height="30"
+                                            color="white"
+                                            background="#4C5151"
                                             fontSize="12"
                                             fontWeight="300">
                                             +{customSkill}

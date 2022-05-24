@@ -108,6 +108,7 @@
         "createBtn": "Create",
         "home": "Home",
         "joblist": "Jobs List",
+        "popular": "Popular skills",
         "important": {
             "label": "Important",
             "text": "Welcome to the page for creating a vacancy, please carefully fill in each field. Fields marked with * are mandatory"
