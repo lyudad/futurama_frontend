@@ -23,6 +23,7 @@ export const contactsApi = createApi({
             if (token) {
                 headers.set('authorization', `Bearer ${token}`)
             }
+            headers.set('Access-Control-Allow-Origin', '*')
             return headers
         },
     }),
@@ -48,7 +49,6 @@ export const contactsApi = createApi({
                     url: constants.USER_CONTACTS,
                     method: "post",
                     body
-
                 };
             },
             invalidatesTags: [{ type: 'User', id: 'LIST' }],

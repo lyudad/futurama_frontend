@@ -8,33 +8,25 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center;
     padding: 7px;
     min-height: 100vh;
-    background: #e5e5e5;
 `;
 
-export const WorkField = styled.div`
-    padding-bottom: 5px;
-    width: 100%;
-    min-height: 93vh;
-    background: white;
-    border-radius: 2rem;
-    > h2,
-    p {
-        text-align: center;
-    }
-    box-shadow: 10px 2px 6px rgba(0, 0, 0, 0.12),
-        0px 2px 6px rgba(0, 0, 0, 0.14), 0px 2px 6px rgba(0, 0, 0, 0.2);
+export const SkillsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+`
 
-    
-`;
+export const Skill = styled.div`
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 30%;
+    background: ${colors.VACANCIES_FOCUS};
+`
 
 export const CardWrapper = styled.div`
     padding: 1.5rem;
-    padding-bottom: 25px;
-    width: 95%;
-    height: 340px;
+    padding-bottom: 25px;   
     background: white;
     border-radius: 2rem;
     > h2,
@@ -55,7 +47,7 @@ export const CardWrapper = styled.div`
 export const Header2 = styled.h2`
 font-size: ${fonts.FONT_SIZE_LABELS};
 font-weight: ${fonts.FONT_WEIGHT_BOLD};
-margin-bottom: 40px;
+margin-bottom: 30px;
 `
 export const Header3 = styled.h3`
 font-size: ${fonts.FONT_SIZE_MEDIUM};
