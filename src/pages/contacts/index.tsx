@@ -24,7 +24,7 @@ import { Container, Heading, Wrapper } from './styles';
 export function Contacts(): JSX.Element {
     const [form] = Form.useForm();
     const { t } = useTranslation();
-    const token = useAppSelector((state) => state.login.token);
+    const token = useAppSelector((state) => state.auth.token);
 
     const [setData] = useSetContactsMutation();
     const { data, error } = useGetContactsQuery();

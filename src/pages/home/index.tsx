@@ -7,6 +7,7 @@ import PrivateRoute from 'components/privateRoute';
 import Profile from 'pages/profile';
 import { HeaderFreelancer, HeaderJobOwner } from 'components/header';
 import { variables } from 'constants/variables';
+import { Contacts } from 'pages/contacts';
 
 function Home(): JSX.Element {
     const role = useAppSelector((state) => state.auth.user?.role);
@@ -17,6 +18,7 @@ function Home(): JSX.Element {
         <Routes>
             <Route path={constants.VACANCIES} element={<PrivateRoute component={Vacancies} />}/>
             <Route path="*" element={<PrivateRoute component={Profile} />} />
+            <Route path={constants.USER_CONTACTS} element={<PrivateRoute component={Contacts} />}/>        
         </Routes>
         </>
     );

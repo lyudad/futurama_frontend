@@ -28,7 +28,6 @@ const reducers = combineReducers({
     [passwordResetApi.reducerPath]: passwordResetApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
-    login: loginReducer,
     auth: authReducer,
     profile: profileReducer,
 });
