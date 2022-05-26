@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface Props {
-    content: string;
+  content: string;
 }
 
 export const Container = styled.section`
@@ -10,6 +10,7 @@ export const Container = styled.section`
   padding: 45px 80px 30px 90px;
   background-color: #fff;
   min-width: 750px;
+  border-radius: 1rem;
 `;
 
 export const Button = styled.button`
@@ -22,6 +23,9 @@ export const Button = styled.button`
   font-size: 15px;
   font-weight: 400;
   border: none;
+  &:hover {
+    box-shadow: 2px 2px 2px 2px rgba(25, 133, 179, 0.5);
+  }
   &:active {
     box-shadow: none;
 }
@@ -48,12 +52,12 @@ export const CompanyInfo = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 50%;
-`
+`;
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  max-width: 50%;  
 `;
 
 export const Title = styled.h5`
@@ -76,7 +80,7 @@ export const InfoItem = styled.div`
   padding: 8px 30px;
   text-align: center;
   min-width: 118px;
-  `
+  `;
 export const Date = styled.div<Props>`
   display: inline-block;
   margin: 35px 35px 0 0;
@@ -87,10 +91,10 @@ export const Date = styled.div<Props>`
       font-size: 10px;
       color: grey;
   }
-  `
+  `;
 
 export const SmallHeading = styled.h2`
   margin-top: '10px'; 
   margin-bottom: '10px'; 
   font-size: '15px';
-  `
+  `;

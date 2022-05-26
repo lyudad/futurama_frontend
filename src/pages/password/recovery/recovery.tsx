@@ -37,7 +37,10 @@ export function Recovery(): JSX.Element {
             <Card>
                 <Header1>{t('HomePage.futuramaBrand')}</Header1>
                 <Header2>{t('HomePage.futuramaSlogan')}</Header2>
-                {isLoading && <Spin size="large" />}
+                {isLoading && <Spin
+                    size="large"
+                    style={{ margin: '0px auto', display: 'block' }}
+                />}
                 {isMailSent ? (
                     <Notification email={email} isError={isError} />
                 ) : (

@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Image, Spin } from 'antd';
 import { NavLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useGetVacancyByIdQuery } from 'store/api/vacanciesApi';
 
+
 import { IVacancy } from 'types/vacancy';
 import { constants } from 'constants/urls';
+import SendProposal from '../sendProposal/sendProposal';
 import {
     Container,
     Heading,
@@ -20,20 +22,28 @@ import {
     SmallHeading,
 } from './styles';
 
+
 type param = {
-    id: string
-}
+    id: string;
+};
+
+
 
 export default function ProjectDetails(): JSX.Element {
-    const id = useParams<param>().id as string
+
+    const id = useParams<param>().id as string;
+    const { data } = useGetVacancyByIdQuery(parseInt(id, 10));
+    const vacancy: IVacancy = data;
+
     const { t } = useTranslation();
 
-    const { data } = useGetVacancyByIdQuery(parseInt(id, 10))
-    const vacancy: IVacancy = data
+    const [modal, showModal] = useState(false);
+
+
 
     if (data) {
         const skills = vacancy.skills.map(
-            (obj: { id: number; skill: string }) => obj.skill
+            (obj: { id: number; skill: string; }) => obj.skill
         );
 
         return (
@@ -103,10 +113,15 @@ export default function ProjectDetails(): JSX.Element {
                         </span>
                     </CompanyInfo>
                 </div>
-                <Button>{t('Vacancy.sendproposal')}</Button>
+
                 <NavLink style={{ color: 'black' }} to="/vacancies">
                     <Button>{t('Vacancy.back')}</Button>
                 </NavLink>
+                <Button onClick={() => {
+                    showModal(true);
+                }}>{t('Vacancy.apply')}</Button>
+
+                <SendProposal vacancy={vacancy} modal={modal} showModal={showModal} />
             </Container>
         );
     }
