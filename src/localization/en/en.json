@@ -1,4 +1,43 @@
 {
+    "GeneralSettings": {
+        "title": "General settings",
+        "mainForm": {
+            "position": "Category (position):",
+            "skills": "Skills:",
+            "salary": "Desirable salary level (hourly):",
+            "english": "English level:",
+            "availableHours": "The available amount of hours:",
+            "workExperience": "Work Experience:",
+            "addWork": "Add work experience",
+            "education": "Education:",
+            "addEducation": "Add education",
+            "other": "Other experience:",
+            "description": "Description:",
+            "typeAboutYourself": "Type about yourself...",
+            "typeOther": "Type your other experiences..."
+        },
+        "educationForm": {
+            "title": "Education",
+            "establishment": "Establishment:",
+            "level": "Level:",
+            "start": "Start date:",
+            "end": "End date:",
+            "edit": "Edit",
+            "create": "Create"
+        },
+        "workExperience": {
+            "title": "Work Experience",
+            "company": "Company name:",
+            "position": "Position:",
+            "start": "Start date:",
+            "end": "End date:",
+            "description": "Description:",
+            "edit": "Edit",
+            "create": "Create"
+        },
+        "selectSkills": "Select skills",
+        "select": "Select value"
+    },
     "ProfilePage": {
         "contactInformation": "Contact information",
         "positionAndSkills": "Position and skills",
