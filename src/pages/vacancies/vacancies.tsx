@@ -12,7 +12,7 @@ import { Container } from './styles';
 export function Vacancies(): JSX.Element {
     const { t } = useTranslation();
     const [form] = Form.useForm();
-    const [query, setQuery] = useState({});
+    const [query, setQuery] = useState<object>({});
     const { data, isLoading } = useGetVacanciesQuery(query);
 
     interface Ivalues {
@@ -84,35 +84,35 @@ export function Vacancies(): JSX.Element {
                     </Button>
                 </Form.Item>
             </Form>
-            {data && data.length > 0
-                ? data.map((el: IVacancy) => (
-                      <Card
-                          key={el.id}
-                          vacancyId={el.id}
-                          title={el.title}
-                          company={el.company}
-                          location={el.location}
-                          description={el.description}
-                          englishLevel={el.englishLevel}
-                          price={el.price}
-                          skills={el.skills}
-                          id={el.id}
-                          timePerWeek={el.timePerWeek}
-                          createdAt={el.createdAt}
-                          updatedAt={el.updatedAt}
-                          category={el.category}
-                      />
-                  ))
-                : !isLoading && (
-                      <img
-                          src={NoDataFound}
-                          alt="No data found"
-                          style={{
-                              width: '610px',
-                              borderRadius: '10px',
-                          }}
-                      />
-                  )}
+            {data?.length > 0 && !isLoading ? (
+                data.map((el: IVacancy) => (
+                    <Card
+                        key={el.id}
+                        vacancyId={el.id}
+                        title={el.title}
+                        company={el.company}
+                        location={el.location}
+                        description={el.description}
+                        englishLevel={el.englishLevel}
+                        price={el.price}
+                        skills={el.skills}
+                        id={el.id}
+                        timePerWeek={el.timePerWeek}
+                        createdAt={el.createdAt}
+                        updatedAt={el.updatedAt}
+                        category={el.category}
+                    />
+                ))
+            ) : (
+                <img
+                    src={NoDataFound}
+                    alt="No data found"
+                    style={{
+                        width: '610px',
+                        borderRadius: '10px',
+                    }}
+                />
+            )}
         </Container>
     );
 }
