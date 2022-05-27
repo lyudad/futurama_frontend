@@ -11,6 +11,7 @@ export const Container = styled.section`
   background-color: #fff;
   min-width: 750px;
   border-radius: 1rem;
+  text-align: left;  
 `;
 
 export const Button = styled.button`

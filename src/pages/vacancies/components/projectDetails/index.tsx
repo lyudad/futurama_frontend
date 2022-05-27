@@ -129,6 +129,3 @@ export default function ProjectDetails(): JSX.Element {
         style={{ margin: '200px auto', display: 'block' }}
     />;
 }
-
-
-

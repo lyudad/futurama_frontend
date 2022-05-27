@@ -17,11 +17,11 @@ export function HeaderFreelancer(): JSX.Element {
             <NavLink to={constants.SEND_EMAIL}>
                 {t('MenuBar.InvitesToInterview')}
             </NavLink>
-            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.offers')}</NavLink>
-            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.proposals')}</NavLink>
-            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.contracts')}</NavLink>
-            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.chats')}</NavLink>
-            <NavLink to={constants.PROFILE}>
+            <NavLink to={constants.HOME}>{t('MenuBar.offers')}</NavLink>
+            <NavLink to={constants.HOME}>{t('MenuBar.proposals')}</NavLink>
+            <NavLink to={constants.HOME}>{t('MenuBar.contracts')}</NavLink>
+            <NavLink to={constants.HOME}>{t('MenuBar.chats')}</NavLink>
+            <NavLink to={constants.HOME}>
                 <img
                     src={profilePhoto || Profile}
                     alt="Profile"

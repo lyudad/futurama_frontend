@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'store/hooks';
 import profileImage from 'assets/icons/profile.png';
+import { useNavigate } from 'react-router-dom';
 import Card from './Card';
 import { UserProfile, ProfilePhoto, UserInfo } from './style';
 
 function Profile(): JSX.Element {
+    const navigate = useNavigate();
     const { t } = useTranslation();
     const profile = useAppSelector((state) => state.profile.profile); 
     const user = useAppSelector((state) => state.auth.user);   
@@ -28,6 +30,13 @@ function Profile(): JSX.Element {
         'Other experience': profile?.otherExperience,
         Description: profile?.description,
     };
+
+    useEffect(() => {
+        if(!profile){
+            navigate('/settings');
+        }
+    }, [profile])
+    
 
     return (
         <div className="container">

@@ -10,17 +10,18 @@ export const vacanciesApi = createApi({
         },
     }),
     endpoints: (builder) => ({
-        getAllVacancies: builder.mutation({
-            query: () => ({
-                url: constants.GET_ALL_VACANCIES,
-                method: 'GET',
+        getVacancies: builder.query({
+            query: (body?: { title?: string }) => ({
+                url: constants.GET_VACANCIES,
+                method: 'POST',
+                body
             }),
         }),
         getVacancyById: builder.query({
-            query: (vacancyId: number) => constants.GET_ALL_VACANCIES + vacancyId
-          }),
+            query: (vacancyId: number) => constants.GET_VACANCIES + vacancyId
+        }),
     }),
 });
 
-export const { useGetAllVacanciesMutation, useGetVacancyByIdQuery} =
+export const { useGetVacanciesQuery, useGetVacancyByIdQuery } =
     vacanciesApi;
