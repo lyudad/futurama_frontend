@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useGetAllVacanciesMutation } from 'store/api/vacanciesApi';
-import { Button, Form, Input } from 'antd';
+import React, { useState } from 'react';
+import { useGetVacanciesQuery } from 'store/api/vacanciesApi';
+import { Button, Form, Input, Spin } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
+import NoDataFound from 'assets/no_data_found.png';
 import { IVacancy } from 'types/vacancy';
 import { Card } from './components/Card';
 import { Container } from './styles';
@@ -11,29 +12,25 @@ import { Container } from './styles';
 export function Vacancies(): JSX.Element {
     const { t } = useTranslation();
     const [form] = Form.useForm();
-    // eslint-disable-next-line no-unused-vars
-    const [query, setQuery] = useState('');
-    const [getAllVacancies, { data }] = useGetAllVacanciesMutation();
-
-    useEffect(() => {
-        const getData = async (): Promise<void> => {
-            await getAllVacancies('');
-        };
-        getData();
-    }, [getAllVacancies]);
-
-    const onReset = (): void => {
-        form.resetFields();
-    };
+    const [query, setQuery] = useState<object>({});
+    const { data, isLoading } = useGetVacanciesQuery(query);
 
     interface Ivalues {
         Search: string;
     }
 
     const onFinish = async (values: Ivalues): Promise<void> => {
-        setQuery(values.Search);
-        onReset();
+        setQuery({ title: values.Search });
     };
+
+    if (isLoading) {
+        return (
+            <Spin
+                size="large"
+                style={{ margin: '200px auto', display: 'block' }}
+            />
+        );
+    }
 
     return (
         <Container>
@@ -51,15 +48,7 @@ export function Vacancies(): JSX.Element {
                     marginTop: '30px',
                 }}
             >
-                <Form.Item
-                    name="Search"
-                    rules={[
-                        {
-                            required: true,
-                            message: t('Vacancies.placeholder'),
-                        },
-                    ]}
-                >
+                <Form.Item name="Search">
                     <Input
                         style={{
                             height: '50px',
@@ -67,6 +56,7 @@ export function Vacancies(): JSX.Element {
                             borderRadius: '20px',
                             border: '1px solid #808080',
                             marginRight: '16px',
+                            padding: '15px',
                             fontSize: fonts.FONT_SIZE_LABELS,
                             boxShadow:
                                 '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
@@ -94,7 +84,7 @@ export function Vacancies(): JSX.Element {
                     </Button>
                 </Form.Item>
             </Form>
-            {data &&
+            {data?.length > 0 && !isLoading ? (
                 data.map((el: IVacancy) => (
                     <Card
                         key={el.id}
@@ -106,12 +96,23 @@ export function Vacancies(): JSX.Element {
                         englishLevel={el.englishLevel}
                         price={el.price}
                         skills={el.skills}
-                        id={el.id} 
-                        timePerWeek={el.timePerWeek} 
-                        createdAt={el.createdAt} 
-                        updatedAt={el.updatedAt} 
-                        category={el.category} />
-                ))}
+                        id={el.id}
+                        timePerWeek={el.timePerWeek}
+                        createdAt={el.createdAt}
+                        updatedAt={el.updatedAt}
+                        category={el.category}
+                    />
+                ))
+            ) : (
+                <img
+                    src={NoDataFound}
+                    alt="No data found"
+                    style={{
+                        width: '610px',
+                        borderRadius: '10px',
+                    }}
+                />
+            )}
         </Container>
     );
 }

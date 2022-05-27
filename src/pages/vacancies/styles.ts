@@ -3,8 +3,8 @@ import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
 
 export const Container = styled.div`
-    font-family: Inter;
-    font-weigth: normal;
+    font-family: ${fonts.FONT_FAMILY_BASE};
+    font-weigth: ${fonts.FONT_WEIGHT_BASE};
     display: flex;
     align-items: center;
     flex-direction: column;
