@@ -27,8 +27,6 @@ type param = {
     id: string;
 };
 
-
-
 export default function ProjectDetails(): JSX.Element {
 
     const id = useParams<param>().id as string;
@@ -65,6 +63,7 @@ export default function ProjectDetails(): JSX.Element {
                         </div>
                     </Info>
                 </Wrapper>
+                <SendProposal vacancy={vacancy} modal={modal} showModal={showModal} />
 
                 <div style={{ display: 'flex' }}>
                     <div style={{ maxWidth: '70%' }}>
@@ -121,7 +120,7 @@ export default function ProjectDetails(): JSX.Element {
                     showModal(true);
                 }}>{t('Vacancy.apply')}</Button>
 
-                <SendProposal vacancy={vacancy} modal={modal} showModal={showModal} />
+
             </Container>
         );
     }

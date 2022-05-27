@@ -7,6 +7,7 @@ import {
 } from "antd";
 import { IVacancy } from 'types/vacancy';
 import { Button } from '../projectDetails/styles';
+import { useSendProposalMutation } from 'store/api/proposalsApi';
 
 
 interface IProps {
@@ -15,10 +16,34 @@ interface IProps {
     showModal: Dispatch<SetStateAction<boolean>>;
 }
 
+type Proposal = {
+    user: number;
+    vacancy: number;
+    price: number;
+    coverLetter: string;
+};
+
 function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
     const [form] = Form.useForm();
     const { TextArea } = Input;
 
+    const [setData] = useSendProposalMutation();
+
+    const showMessage = () => {
+        const modal = Modal.success({
+            title: 'Success',
+            content: 'Your proposal have been successfully sent!',
+        });
+        setTimeout(() => {
+            modal.destroy();
+        }, 4000);
+    };
+
+    async function sending(values: Proposal): Promise<void> {
+        await setData(values);
+        showModal(false);
+        showMessage();
+    }
 
     return (
         <Modal
@@ -27,12 +52,9 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
             width={900}
             visible={modal}
             title={<h2 style={{ margin: 9 }}>Send your proposal</h2>}
-            //      okText={"Send proposal"}
-            //      cancelText={"Back to description"}
             onCancel={() => {
                 showModal(false);
             }}
-
 
             footer={[
                 <Button style={{ margin: '15px 20px 20px 5px' }} onClick={() => {
@@ -40,26 +62,22 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
                 }} key="back" >
                     Back to description
                 </Button>,
-                <Button style={{ margin: '15px 20px 20px 5px' }} key="submit">
+                <Button onClick={() => {
+                    form
+                        .validateFields()
+                        .then((values) => {
+                            form.resetFields();
+                            sending(values);
+                        });
+                }} style={{ margin: '15px 20px 20px 5px' }} key="submit">
                     Send proposal
                 </Button>
-            ]}
-
-        // onOk={() => {
-        //     form
-        //         .validateFields()
-        //         .then((values) => {
-        //             form.resetFields();
-        //         });
-        // }}
-        // forceRender
-        >
+            ]}>
             <Form
                 form={form}
                 layout="vertical"
                 size='large'
             >
-
                 <Form.Item
                     name="coverLetter"
                     label="Cover letter:"
@@ -79,20 +97,24 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
                 </Form.Item>
 
                 <Form.Item
-                    required
+                    initialValue={vacancy.price}
                     name="price"
-                    label="Rate hourly work:">&#36;
+                    label="Rate hourly work:"
+                    rules={[
+                        {
+                            required: true,
+                            message: "Please enter your horly rate"
+                        },
+                    ]}
+                >
                     <InputNumber
-                        style={{ margin: 10 }}
-                        defaultValue={vacancy.price}
+                        formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                         min={5}
                         max={500}
                         step={5}
-                    />per hour
+                    />
                 </Form.Item>
-                <Form.Item noStyle
-                    name="user"
-                    initialValue={17} />
+
                 <Form.Item noStyle
                     name="vacancy"
                     initialValue={vacancy.id}
