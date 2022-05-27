@@ -112,5 +112,18 @@
         "skills": "Required skills:",
         "apply": "APPLY TO JOB",
         "back": "BACK TO RESULTS"
+    },
+    "Proposal": {
+        "success": "Success",
+        "sent": "Your proposal have been successfully sent!",
+        "send": "Send your proposal",
+        "back": "Back to description",
+        "sendproposal": "Send proposal",
+        "coverletter": "Cover letter:",
+        "letterRequired": "Please input cover letter",
+        "letterplaceholder": "Input your cover letter here",
+        "rate": "Rate hourly work:",
+        "rateRequired": "Please input cover letter",
+        "budget": "Client&apos;s budget: "
     }
 }

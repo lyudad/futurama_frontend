@@ -6,8 +6,9 @@ import {
     InputNumber
 } from "antd";
 import { IVacancy } from 'types/vacancy';
-import { Button } from '../projectDetails/styles';
+import { useTranslation } from 'react-i18next';
 import { useSendProposalMutation } from 'store/api/proposalsApi';
+import { Button } from '../projectDetails/styles';
 
 
 interface IProps {
@@ -25,17 +26,18 @@ type Proposal = {
 
 function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
     const [form] = Form.useForm();
-    const { TextArea } = Input;
-
     const [setData] = useSendProposalMutation();
 
-    const showMessage = () => {
-        const modal = Modal.success({
-            title: 'Success',
-            content: 'Your proposal have been successfully sent!',
+    const { TextArea } = Input;
+    const { t } = useTranslation();
+
+    const showMessage = (): void => {
+        const message = Modal.success({
+            title: t('Proposal.success'),
+            content: t('Proposal.sent'),
         });
         setTimeout(() => {
-            modal.destroy();
+            message.destroy();
         }, 4000);
     };
 
@@ -51,16 +53,12 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
             style={{ top: 30 }}
             width={900}
             visible={modal}
-            title={<h2 style={{ margin: 9 }}>Send your proposal</h2>}
-            onCancel={() => {
-                showModal(false);
-            }}
-
+            title={<h2 style={{ margin: 9 }}>{t('Proposal.send')}</h2>}
             footer={[
                 <Button style={{ margin: '15px 20px 20px 5px' }} onClick={() => {
                     showModal(false);
                 }} key="back" >
-                    Back to description
+                    {t('Proposal.back')}
                 </Button>,
                 <Button onClick={() => {
                     form
@@ -70,7 +68,7 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
                             sending(values);
                         });
                 }} style={{ margin: '15px 20px 20px 5px' }} key="submit">
-                    Send proposal
+                    {t('Proposal.sendproposal')}
                 </Button>
             ]}>
             <Form
@@ -80,11 +78,11 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
             >
                 <Form.Item
                     name="coverLetter"
-                    label="Cover letter:"
+                    label={t('Proposal.coverletter')}
                     rules={[
                         {
                             required: true,
-                            message: "Please input cover letter"
+                            message: t('Proposal.letterRequired')
                         },
                     ]}
                 >
@@ -93,17 +91,17 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
                         rows={4}
                         maxLength={500}
                         style={{ height: 130 }}
-                        placeholder="Input your cover letter here" />
+                        placeholder={t('Proposal.letterplaceholder')} />
                 </Form.Item>
 
                 <Form.Item
                     initialValue={vacancy.price}
                     name="price"
-                    label="Rate hourly work:"
+                    label={t('Proposal.rate')} 
                     rules={[
                         {
                             required: true,
-                            message: "Please enter your horly rate"
+                            message: t('Proposal.rateRequired')
                         },
                     ]}
                 >
@@ -123,7 +121,7 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
             <p style={{
                 marginTop: "15px",
                 fontSize: "15px"
-            }}>Client&apos;s budget: <strong>&#36;{vacancy.price}</strong></p>
+            }}>{t('Proposal.budget')}<strong>&#36;{vacancy.price}</strong></p>
         </Modal >
     );
 };
