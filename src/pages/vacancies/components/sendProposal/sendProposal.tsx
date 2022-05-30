@@ -38,7 +38,7 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
         });
         setTimeout(() => {
             message.destroy();
-        }, 4000);
+        }, 3500);
     };
 
     async function sending(values: Proposal): Promise<void> {
@@ -97,7 +97,7 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
                 <Form.Item
                     initialValue={vacancy.price}
                     name="price"
-                    label={t('Proposal.rate')} 
+                    label={t('Proposal.rate')}
                     rules={[
                         {
                             required: true,

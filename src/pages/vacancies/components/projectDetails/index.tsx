@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Image, Spin } from 'antd';
 import { NavLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useGetVacancyByIdQuery } from 'store/api/vacanciesApi';
-
-
+import { useCheckProposalIsExistQuery } from 'store/api/proposalsApi';
+import { CheckOutlined } from '@ant-design/icons';
+import { Spinner } from 'components/ui/Spinner';
 import { IVacancy } from 'types/vacancy';
-import { constants } from 'constants/urls';
 import SendProposal from '../sendProposal/sendProposal';
 import {
     Container,
@@ -28,18 +27,15 @@ type param = {
 };
 
 export default function ProjectDetails(): JSX.Element {
+    const [modal, showModal] = useState(false);
+    const id: number = useParams<param>().id as unknown as number;
 
-    const id = useParams<param>().id as string;
-    const { data } = useGetVacancyByIdQuery(parseInt(id, 10));
-    const vacancy: IVacancy = data;
+    const vacancy: IVacancy = useGetVacancyByIdQuery(id).data;
+    const proposalExist = useCheckProposalIsExistQuery(id).data;
 
     const { t } = useTranslation();
 
-    const [modal, showModal] = useState(false);
-
-
-
-    if (data) {
+    if (vacancy) {
         const skills = vacancy.skills.map(
             (obj: { id: number; skill: string; }) => obj.skill
         );
@@ -48,6 +44,26 @@ export default function ProjectDetails(): JSX.Element {
             <Container>
                 <Heading>{vacancy.title}</Heading>
                 <Wrapper>
+                    <CompanyInfo>
+                        <span
+                            style={{
+                                fontSize: '18px',
+                                fontWeight: '700',
+                            }}
+                        >
+                            {vacancy.company}
+                        </span>
+                        <span
+                            style={{
+                                marginLeft: '30px',
+                                fontSize: '18px',
+                                fontWeight: '400',
+                            }}
+                        >
+                            {vacancy.location}
+                        </span>
+
+                    </CompanyInfo>
                     <Info>
                         <div style={{ marginBottom: '20px' }}>
                             <Title>{t('Vacancy.rate')}</Title>
@@ -66,7 +82,7 @@ export default function ProjectDetails(): JSX.Element {
                 <SendProposal vacancy={vacancy} modal={modal} showModal={showModal} />
 
                 <div style={{ display: 'flex' }}>
-                    <div style={{ maxWidth: '70%' }}>
+                    <div>
                         <SmallHeading>{t('Vacancy.description')}</SmallHeading>
                         <p style={{ marginTop: '10px', fontSize: '17px' }}>
                             {vacancy.description}
@@ -86,46 +102,17 @@ export default function ProjectDetails(): JSX.Element {
                             </Date>
                         </div>
                     </div>
-                    <CompanyInfo>
-                        <Image
-                            style={{ maxHeight: '120px', maxWidth: '120px' }}
-                            preview={false}
-                            src={constants.COMPANY_PLACEHOLDER}
-                        />
-                        <h4
-                            style={{
-                                marginTop: '20px',
-                                fontSize: '20px',
-                                fontWeight: '700',
-                            }}
-                        >
-                            {vacancy.company}
-                        </h4>
-                        <span
-                            style={{
-                                marginTop: '10px',
-                                fontSize: '18px',
-                                fontWeight: '600',
-                            }}
-                        >
-                            {vacancy.location}
-                        </span>
-                    </CompanyInfo>
+
                 </div>
 
                 <NavLink style={{ color: 'black' }} to="/vacancies">
                     <Button>{t('Vacancy.back')}</Button>
                 </NavLink>
-                <Button onClick={() => {
+                {proposalExist ? <Button disabled><CheckOutlined /> {t('Proposal.applied')}</Button> : <Button onClick={() => {
                     showModal(true);
-                }}>{t('Vacancy.apply')}</Button>
-
-
+                }}>{t('Vacancy.apply')}</Button>}
             </Container>
         );
     }
-    return <Spin
-        size="large"
-        style={{ margin: '200px auto', display: 'block' }}
-    />;
+    return <Spinner />;
 }

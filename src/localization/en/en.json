@@ -163,6 +163,9 @@
         "letterplaceholder": "Input your cover letter here",
         "rate": "Rate hourly work:",
         "rateRequired": "Please input cover letter",
-        "budget": "Client&apos;s budget: "
+        "budget": "Client's budget: ",
+        "myhourlyrate": "My hourly rate: ",
+        "myproposals": "My proposals",        
+        "applied": "ALREADY APPLIED"
     }
 }

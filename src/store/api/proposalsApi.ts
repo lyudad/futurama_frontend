@@ -16,7 +16,7 @@ export const proposalsApi = createApi({
             return headers;
         },
     }),
-
+    tagTypes: ['Proposal'],
     endpoints: (build) => ({
         sendProposal: build.mutation({
             query: (body) => {
@@ -26,8 +26,26 @@ export const proposalsApi = createApi({
                     body
                 };
             },
+            invalidatesTags: [{ type: 'Proposal', id: 'LIST' }],
         }),
+        getMyProposals: build.query<[], void>({
+            query: () => {
+                return {
+                    url: constants.GET_PROPOSALS,
+                    method: "get"
+                };
+            },
+        }),
+        checkProposalIsExist: build.query<boolean, number>({
+            query: (vacancyId) => {
+                return {
+                    url: constants.CHECK_PROPOSAL + vacancyId,
+                    method: "get"
+                };
+            },
+            providesTags: [{ type: 'Proposal', id: 'LIST' }],
+        })
     }),
 });
 
-export const { useSendProposalMutation } = proposalsApi;
+export const { useSendProposalMutation, useGetMyProposalsQuery, useCheckProposalIsExistQuery } = proposalsApi;
