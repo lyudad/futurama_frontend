@@ -10,6 +10,7 @@ export const Container = styled.div`
     flex-direction: column;
     padding: 7px;
     min-height: 100vh;
+    margin: 15px 70px;
 `;
 
 export const SkillsContainer = styled.div`

@@ -6,10 +6,10 @@ import {
     Input,
     Button,
     Image,
-    Spin,
     Result,
     message,
 } from 'antd';
+import { Spinner } from 'components/ui/Spinner';
 import { UploadOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
 
@@ -20,6 +20,7 @@ import {
 import { useAppSelector } from 'store/hooks';
 import { constants as urlConstants } from 'constants/urls';
 import { Container, Heading, Wrapper } from './styles';
+
 
 export function Contacts(): JSX.Element {
     const [form] = Form.useForm();
@@ -189,8 +190,5 @@ export function Contacts(): JSX.Element {
                 </Wrapper>
             </Container>
         );
-    return <Spin
-        size="large"
-        style={{ margin: '0 auto', display: 'block' }}
-    />;
+    return <Spinner />;
 }

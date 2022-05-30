@@ -10,15 +10,15 @@ export function HeaderJobOwner(): JSX.Element {
     const { t } = useTranslation();
     return (
         <NavContainer>
-            <NavLink to={constants.HOME}>{t('MenuBar.newJob')}</NavLink>
-            <NavLink to={constants.HOME}>
+            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.newJob')}</NavLink>
+            <NavLink to={constants.SEND_EMAIL}>
                 {t('MenuBar.InvitesToInterview')}
             </NavLink>
-            <NavLink to={constants.HOME}>{t('MenuBar.myJobPosts')}</NavLink>
-            <NavLink to={constants.HOME}>{t('MenuBar.talent')}</NavLink>
-            <NavLink to={constants.HOME}>{t('MenuBar.hires')}</NavLink>
-            <NavLink to={constants.HOME}>{t('MenuBar.chats')}</NavLink>
-            <NavLink to={constants.HOME}>
+            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.myJobPosts')}</NavLink>
+            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.talent')}</NavLink>
+            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.hires')}</NavLink>
+            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.chats')}</NavLink>
+            <NavLink to={constants.SEND_EMAIL}>
                 <img
                     src={profilePhoto || Profile}
                     alt="Profile"

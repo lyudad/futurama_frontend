@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useGetVacanciesQuery } from 'store/api/vacanciesApi';
-import { Button, Form, Input, Spin } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
 import NoDataFound from 'assets/no_data_found.png';
 import { IVacancy } from 'types/vacancy';
+import { Spinner } from 'components/ui/Spinner';
 import { Card } from './components/Card';
 import { Container } from './styles';
 
@@ -25,10 +26,7 @@ export function Vacancies(): JSX.Element {
 
     if (isLoading) {
         return (
-            <Spin
-                size="large"
-                style={{ margin: '200px auto', display: 'block' }}
-            />
+            <Spinner />
         );
     }
 

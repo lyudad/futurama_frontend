@@ -8,6 +8,7 @@ export const ProfilePhoto = styled.div`
 `;
 
 export const UserInfo = styled.div`
+    margin-top: 18px;
     display: flex;
     justify-content: center;
     align-items: center;

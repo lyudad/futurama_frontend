@@ -18,6 +18,8 @@ import { passwordResetApi } from './api/passwordResetApi';
 import { vacanciesApi } from './api/vacanciesApi';
 import { profileApi } from './api/profileApi';
 import { contactsApi } from './api/contactsApi';
+import { proposalsApi } from './api/proposalsApi';
+
 
 const persistConfig = {
     key: 'store',
@@ -31,6 +33,7 @@ const reducers = combineReducers({
     [profileApi.reducerPath]: profileApi.reducer,
     [vacanciesApi.reducerPath]: vacanciesApi.reducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
+    [proposalsApi.reducerPath]: proposalsApi.reducer,
     auth: authReducer,
     profile: profileReducer,
 });
@@ -56,7 +59,8 @@ export const store = configureStore({
             .concat(passwordResetApi.middleware)
             .concat(profileApi.middleware)
             .concat(vacanciesApi.middleware)
-            .concat(contactsApi.middleware),
+            .concat(contactsApi.middleware)
+            .concat(proposalsApi.middleware),
 
 });
 

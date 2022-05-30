@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Spin } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useSendEmailMutation } from 'store/api/passwordResetApi';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
+import { Spinner } from 'components/ui/Spinner';
 import { GoSignIn } from './components/goSignIn';
 import { Container, Card, Header1, Header2 } from './styles';
 import { Notification } from './components/notification';
@@ -28,7 +29,6 @@ export function Recovery(): JSX.Element {
         await sendEmail({ email: values.Email });
         setEmail(values.Email);
         setIsMailSent(true);
-
         onReset();
     };
 
@@ -37,7 +37,7 @@ export function Recovery(): JSX.Element {
             <Card>
                 <Header1>{t('HomePage.futuramaBrand')}</Header1>
                 <Header2>{t('HomePage.futuramaSlogan')}</Header2>
-                {isLoading && <Spin size="large" />}
+                {isLoading && <Spinner />}
                 {isMailSent ? (
                     <Notification email={email} isError={isError} />
                 ) : (

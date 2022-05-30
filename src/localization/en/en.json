@@ -149,7 +149,23 @@
         "englishlevel": "English level:",
         "description": "Description:",
         "skills": "Required skills:",
-        "sendproposal": "SEND PROPOSAL",
+        "apply": "APPLY TO JOB",
         "back": "BACK TO RESULTS"
+    },
+    "Proposal": {
+        "success": "Success",
+        "sent": "Your proposal have been successfully sent!",
+        "send": "Send your proposal",
+        "back": "Back to description",
+        "sendproposal": "Send proposal",
+        "coverletter": "Cover letter:",
+        "letterRequired": "Please input cover letter",
+        "letterplaceholder": "Input your cover letter here",
+        "rate": "Rate hourly work:",
+        "rateRequired": "Please input cover letter",
+        "budget": "Client's budget: ",
+        "myhourlyrate": "My hourly rate: ",
+        "myproposals": "My proposals",        
+        "applied": "ALREADY APPLIED"
     }
 }
