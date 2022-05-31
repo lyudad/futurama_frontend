@@ -1,6 +1,17 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { constants } from 'constants/urls';
 
+interface Ivacancy {
+    title?: string,
+    categories?: [],
+    englishLevel?: string,
+    minPrice?: number,
+    maxPrice?: number,
+    minTimePerWeek?: number,
+    maxTimePerWeek?: number,
+    skillsId?: [number]
+}
+
 export const vacanciesApi = createApi({
     reducerPath: 'vacancies',
     baseQuery: fetchBaseQuery({
@@ -11,7 +22,7 @@ export const vacanciesApi = createApi({
     }),
     endpoints: (builder) => ({
         getVacancies: builder.query({
-            query: (body?: { title?: string }) => ({
+            query: (body?: Ivacancy) => ({
                 url: constants.GET_VACANCIES,
                 method: 'POST',
                 body
