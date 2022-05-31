@@ -80,7 +80,7 @@ export function Vacancies(): JSX.Element {
                     <Input
                         style={{
                             width: '100%',
-                            height: '48px',
+                            height: '42px',
                             fontSize: fonts.FONT_SIZE_LABELS,
                             textAlign: 'center',
                             boxShadow:
@@ -95,7 +95,6 @@ export function Vacancies(): JSX.Element {
                         allowClear
                         style={{
                             width: '100%',
-                            height: '48px',
                             fontSize: fonts.FONT_SIZE_LABELS,
                             boxShadow:
                                 '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
