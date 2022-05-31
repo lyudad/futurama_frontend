@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface Props {
-    content: string;
+  content: string;
 }
 
 export const Container = styled.section`
@@ -10,20 +10,31 @@ export const Container = styled.section`
   padding: 45px 80px 30px 90px;
   background-color: #fff;
   min-width: 750px;
+  border-radius: 1rem;
+  text-align: left;  
 `;
 
 export const Button = styled.button`
   background-color: rgba(14, 97, 222, 0.2);
   border-radius: 6px;
   padding: 10px 40px;
-  box-shadow: 2px 2px 2px 2px rgba(4, 8, 14, 0.499);
+  box-shadow: 2px 2px 2px 2px rgba(4, 8, 14, 0.5);
   margin: 40px 20px 35px 0;
   cursor: pointer;
   font-size: 15px;
   font-weight: 400;
   border: none;
+  &:hover {
+    box-shadow: 2px 2px 2px 2px rgba(25, 133, 179, 0.5);
+  }
   &:active {
     box-shadow: none;
+  } 
+  &: disabled {
+    &: active {
+      box-shadow: 2px 2px 2px 2px rgba(4, 8, 14, 0.5);
+  }
+  cursor: not-allowed;
 }
 `;
 
@@ -39,21 +50,19 @@ export const Skill = styled.div`
   margin: 10px 5px 0 0;
   padding: 7px 15px;
   font-size: 16px;
-  font-weight: 500;
-  
+  font-weight: 500;  
 `;
 
 export const CompanyInfo = styled.div`
-  margin-left: 100px;
-  display: flex;
-  flex-direction: column;
+  margin: 15px 0 20px 0;
+  display: flex;  
   max-width: 50%;
-`
+`;
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  max-width: 65%;  
 `;
 
 export const Title = styled.h5`
@@ -76,7 +85,7 @@ export const InfoItem = styled.div`
   padding: 8px 30px;
   text-align: center;
   min-width: 118px;
-  `
+  `;
 export const Date = styled.div<Props>`
   display: inline-block;
   margin: 35px 35px 0 0;
@@ -87,10 +96,10 @@ export const Date = styled.div<Props>`
       font-size: 10px;
       color: grey;
   }
-  `
+  `;
 
 export const SmallHeading = styled.h2`
   margin-top: '10px'; 
   margin-bottom: '10px'; 
   font-size: '15px';
-  `
+  `;

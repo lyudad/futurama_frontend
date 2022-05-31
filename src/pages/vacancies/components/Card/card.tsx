@@ -6,19 +6,17 @@ import {
     Header2,
     Header3,
     Header4,
-    Skill,
-    SkillsContainer,
+
 } from 'pages/vacancies/styles';
 import { IVacancy } from 'types/vacancy';
 
-export function Card({   
+export function Card({
     title,
     company,
     location,
     description,
     englishLevel,
     price,
-    skills,
     vacancyId
 }: IVacancy): JSX.Element {
     const { t } = useTranslation();
@@ -47,11 +45,6 @@ export function Card({
                     .split(' ')
                     .slice(0, 45)
                     .join(' ')}...`}</Header4>
-                <SkillsContainer>
-                    {skills.map(({ skill, id }) => (
-                        <Skill key={id}>{skill}</Skill>
-                    ))}
-                </SkillsContainer>
             </CardWrapper>
         </NavLink>
     );

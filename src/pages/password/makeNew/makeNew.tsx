@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, notification, Spin } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { usePasswordResetMutation } from 'store/api/passwordResetApi';
 import { constants } from 'constants/urls';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
+import { Spinner } from 'components/ui/Spinner';
 import { Container, Card, Header1, Header2 } from './styles';
+
 
 export function MakeNew(): JSX.Element {
     const [password, setPassword] = useState('');
@@ -84,7 +86,7 @@ export function MakeNew(): JSX.Element {
             <Card>
                 <Header1>{t('HomePage.futuramaBrand')}</Header1>
                 <Header2>{t('HomePage.futuramaSlogan')}</Header2>
-                {isLoading && <Spin size="large" />}
+                {isLoading && <Spinner />}
                 <Form
                     name="normal_login"
                     className="login-form"

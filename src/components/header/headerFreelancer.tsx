@@ -14,11 +14,11 @@ export function HeaderFreelancer(): JSX.Element {
             <NavLink to={constants.VACANCIES}>
                 {t('MenuBar.searchWork')}
             </NavLink>
-            <NavLink to={constants.HOME}>
+            <NavLink to={constants.SEND_EMAIL}>
                 {t('MenuBar.InvitesToInterview')}
             </NavLink>
             <NavLink to={constants.HOME}>{t('MenuBar.offers')}</NavLink>
-            <NavLink to={constants.HOME}>{t('MenuBar.proposals')}</NavLink>
+            <NavLink to={constants.MY_PROPOSALS}>{t('MenuBar.proposals')}</NavLink>
             <NavLink to={constants.HOME}>{t('MenuBar.contracts')}</NavLink>
             <NavLink to={constants.HOME}>{t('MenuBar.chats')}</NavLink>
             <NavLink to={constants.HOME}>
