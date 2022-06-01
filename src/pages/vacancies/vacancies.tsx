@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useGetVacanciesQuery } from 'store/api/vacanciesApi';
-import { Form, Input, Spin, Select, Button } from 'antd';
+import { Form, Input, Select, Button } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';

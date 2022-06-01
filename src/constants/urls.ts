@@ -9,8 +9,8 @@ export const constants = {
     PASSWORD_MAKE_NEW: '/password/make_new',
     PASSWORD_RECOVERY: '/password/recovery',
     VACANCIES: '/vacancies',
-    GET_VACANCIES: 'search-work/vacancies/',
-    GET_CATEGORIES: 'search-work/categories/',
+    GET_VACANCIES: 'search_work/vacancies/',
+    GET_CATEGORIES: 'search_work/categories/',
     GET_PROFILE: '/profile',
     USER_CONTACTS: '/user/contacts',
     PHOTO_UPLOAD: 'https://futurama.cf:3011/upload/',
@@ -20,5 +20,7 @@ export const constants = {
     SETTINGS: '/settings',
     MY_PROPOSALS: '/myproposals',
     GET_PROPOSALS: '/proposals/myproposals',
-    CHECK_PROPOSAL: '/proposals/check/'
+    CHECK_PROPOSAL: '/proposals/check/',
+    GET_MY_JOBS: '/proposals/myjobs',
+    MY_JOBS: '/myjobs/'
 };

@@ -167,7 +167,14 @@
         "rateRequired": "Please input cover letter",
         "budget": "Client's budget: ",
         "myhourlyrate": "My hourly rate: ",
-        "myproposals": "My proposals",        
-        "applied": "ALREADY APPLIED"
+        "myproposals": "My proposals",
+        "applied": "ALREADY APPLIED",
+        "myjobs": "My jobs",
+        "proposalfrom": "proposal from: ",
+        "hourlyrate": "hourly rate: $",
+        "hour": " hour",
+        "recieved": "Received: ",
+        "nojobs": "No jobs yet...",
+        "noproposals": "No proposals yet..."
     }
 }
