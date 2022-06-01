@@ -140,7 +140,9 @@
         "englishLevel": "English level: ",
         "price": "Price: $",
         "searchField": "Search...",
-        "categorySelect": "Select category",
+        "selectCategories": "Select categories",
+        "selectSkills": "Select skills",
+        "selectEnglishLevel": "Select english level",
         "searchBtn": "Search",
         "clearBtn": "Clear All",
         "placeholder": "Please input your query"
@@ -167,7 +169,7 @@
         "rateRequired": "Please input cover letter",
         "budget": "Client's budget: ",
         "myhourlyrate": "My hourly rate: ",
-        "myproposals": "My proposals",        
+        "myproposals": "My proposals",
         "applied": "ALREADY APPLIED"
     }
 }
