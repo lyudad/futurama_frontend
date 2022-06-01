@@ -4,6 +4,6 @@ import { Spin } from 'antd';
 export function Spinner(): JSX.Element {
     return (
         <Spin size="large"
-            style={{ margin: '0 auto', display: 'block' }} />
+            style={{ margin: '20% auto', display: 'block' }} />
     );
 }

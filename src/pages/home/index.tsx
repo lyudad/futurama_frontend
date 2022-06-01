@@ -11,7 +11,7 @@ import ProjectDetails from 'pages/vacancies/components/projectDetails';
 import { HeaderFreelancer, HeaderJobOwner } from 'components/header';
 import { variables } from 'constants/variables';
 import Settings from 'pages/settings';
-import { MyProposals } from 'pages/MyProposals';
+import { MyProposals } from 'pages/myProposals';
 
 function Home(): JSX.Element {
     const role = useAppSelector((state) => state.auth.user?.role);
