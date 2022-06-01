@@ -9,7 +9,7 @@ interface Ivacancy {
     maxPrice?: number,
     minTimePerWeek?: number,
     maxTimePerWeek?: number,
-    skillsId?: [number]
+    skills?: []
 }
 
 export const vacanciesApi = createApi({
@@ -31,8 +31,14 @@ export const vacanciesApi = createApi({
         getVacancyById: builder.query({
             query: (vacancyId: number) => constants.GET_VACANCIES + vacancyId
         }),
+        getCategories: builder.query({
+            query: () => ({ url: constants.GET_CATEGORIES, method: 'GET', })
+        }),
+        getSkills: builder.query({
+            query: () => ({ url: constants.GET_SKILLS, method: 'GET', })
+        }),
     }),
 });
 
-export const { useGetVacanciesQuery, useGetVacancyByIdQuery } =
+export const { useGetVacanciesQuery, useGetVacancyByIdQuery, useGetCategoriesQuery, useGetSkillsQuery } =
     vacanciesApi;
