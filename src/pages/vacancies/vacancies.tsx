@@ -42,23 +42,30 @@ export function Vacancies(): JSX.Element {
     const { Option } = Select;
     const categoriesChildren: React.ReactNode[] = [];
     if (categoriesData) {
-        for (let i = 0; i < categoriesData.length; i += 1) {
+        categoriesData.map((el: { category: string }) =>
             categoriesChildren.push(
-                <Option key={categoriesData[i].category}>
-                    {categoriesData[i].category}
-                </Option>
-            );
-        }
+                <Option key={el.category}>{el.category}</Option>
+            )
+        );
     }
 
     const skillsChildren: React.ReactNode[] = [];
     if (skillsData) {
-        for (let i = 0; i < skillsData.length; i += 1) {
-            skillsChildren.push(
-                <Option key={skillsData[i].skill}>{skillsData[i].skill}</Option>
-            );
-        }
+        skillsData.map((el: { skill: string }) =>
+            skillsChildren.push(<Option key={el.skill}>{el.skill}</Option>)
+        );
     }
+
+    const onFinish = async (values: IFilter): Promise<void> => {
+        const scroll = (): void => {
+            window.scrollBy(0, -10000);
+        };
+        setTimeout(scroll, 200);
+        setTitle(values.Search);
+        setCategories(values.SelectCategories);
+        setSkills(values.SelectSkills);
+        setEnglishLevel(values.SelectEnglishLevel);
+    };
 
     const clearAll = (): void => {
         form.setFieldsValue({
@@ -67,13 +74,12 @@ export function Vacancies(): JSX.Element {
             SelectSkills: [],
             SelectEnglishLevel: null,
         });
-    };
-
-    const onFinish = async (values: IFilter): Promise<void> => {
-        setTitle(values.Search);
-        setCategories(values.SelectCategories);
-        setSkills(values.SelectSkills);
-        setEnglishLevel(values.SelectEnglishLevel);
+        onFinish({
+            Search: '',
+            SelectCategories: [],
+            SelectSkills: [],
+            SelectEnglishLevel: '',
+        });
     };
 
     if (isLoading) {
@@ -95,8 +101,12 @@ export function Vacancies(): JSX.Element {
                     padding: '25px',
                     background: '#FFFFFF',
                     borderRadius: '15px',
-                    width: '450px',
-                    height: '350px',
+                    width: '375px',
+                    height: '550px',
+                    position: 'sticky',
+                    top: '10px',
+                    boxShadow:
+                        '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
                 }}
             >
                 <Form.Item name="Search">
