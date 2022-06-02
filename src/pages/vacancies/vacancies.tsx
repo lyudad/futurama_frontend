@@ -14,6 +14,7 @@ import { IVacancy } from 'types/vacancy';
 import { Spinner } from 'components/ui/Spinner';
 import { Card } from './components/Card';
 import { ButtonsWrapper, Container, VacanciesContainer } from './styles';
+import { IFilter } from './interfaces/filter';
 
 export function Vacancies(): JSX.Element {
     const { t } = useTranslation();
@@ -37,13 +38,6 @@ export function Vacancies(): JSX.Element {
     useEffect(() => {
         setSearchParams({ page: pageValue.toString() });
     }, [pageValue]);
-
-    interface Ivalues {
-        Search: string;
-        SelectCategories: [];
-        SelectSkills: [];
-        SelectEnglishLevel: string;
-    }
 
     const { Option } = Select;
     const categoriesChildren: React.ReactNode[] = [];
@@ -75,7 +69,7 @@ export function Vacancies(): JSX.Element {
         });
     };
 
-    const onFinish = async (values: Ivalues): Promise<void> => {
+    const onFinish = async (values: IFilter): Promise<void> => {
         setTitle(values.Search);
         setCategories(values.SelectCategories);
         setSkills(values.SelectSkills);
