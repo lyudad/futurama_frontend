@@ -5,7 +5,16 @@ import {
     useGetSkillsQuery,
     useGetVacanciesQuery,
 } from 'store/api/vacanciesApi';
-import { Form, Input, Select, Button } from 'antd';
+import {
+    Form,
+    Input,
+    Select,
+    Button,
+    Row,
+    Col,
+    Slider,
+    InputNumber,
+} from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
@@ -18,17 +27,20 @@ import { IFilter } from './interfaces/filter';
 
 export function Vacancies(): JSX.Element {
     const { t } = useTranslation();
+    const { Option } = Select;
     const [form] = Form.useForm();
     const [pageValue] = useState<number>(1);
     const [title, setTitle] = useState<string>('');
     const [categories, setCategories] = useState<[]>([]);
     const [skills, setSkills] = useState<[]>([]);
     const [englishLevel, setEnglishLevel] = useState<string>('');
+    const [minPrice, setMinPrice] = useState(1);
     const { data: vacanciesData, isLoading } = useGetVacanciesQuery({
         title,
         categories,
         skills,
         englishLevel,
+        minPrice,
     });
     const { data: categoriesData } = useGetCategoriesQuery('');
     const { data: skillsData } = useGetSkillsQuery('');
@@ -39,22 +51,9 @@ export function Vacancies(): JSX.Element {
         setSearchParams({ page: pageValue.toString() });
     }, [pageValue]);
 
-    const { Option } = Select;
-    const categoriesChildren: React.ReactNode[] = [];
-    if (categoriesData) {
-        categoriesData.map((el: { category: string }) =>
-            categoriesChildren.push(
-                <Option key={el.category}>{el.category}</Option>
-            )
-        );
-    }
-
-    const skillsChildren: React.ReactNode[] = [];
-    if (skillsData) {
-        skillsData.map((el: { skill: string }) =>
-            skillsChildren.push(<Option key={el.skill}>{el.skill}</Option>)
-        );
-    }
+    const onChangeMinPrice = (newValue: number): void => {
+        setMinPrice(newValue);
+    };
 
     const onFinish = async (values: IFilter): Promise<void> => {
         const scroll = (): void => {
@@ -65,6 +64,7 @@ export function Vacancies(): JSX.Element {
         setCategories(values.SelectCategories);
         setSkills(values.SelectSkills);
         setEnglishLevel(values.SelectEnglishLevel);
+        setMinPrice(values.SliderMinPrice);
     };
 
     const clearAll = (): void => {
@@ -73,12 +73,14 @@ export function Vacancies(): JSX.Element {
             SelectCategories: [],
             SelectSkills: [],
             SelectEnglishLevel: null,
+            SliderMinPrice: 1,
         });
         onFinish({
             Search: '',
             SelectCategories: [],
             SelectSkills: [],
             SelectEnglishLevel: '',
+            SliderMinPrice: 1,
         });
     };
 
@@ -101,7 +103,6 @@ export function Vacancies(): JSX.Element {
                     padding: '25px',
                     background: '#FFFFFF',
                     borderRadius: '15px',
-                    width: '375px',
                     height: '550px',
                     position: 'sticky',
                     top: '10px',
@@ -132,7 +133,9 @@ export function Vacancies(): JSX.Element {
                         }}
                         placeholder={t('Vacancies.selectCategories')}
                     >
-                        {categoriesChildren}
+                        {categoriesData?.map((el: { category: string }) => (
+                            <Option key={el.category}>{el.category}</Option>
+                        ))}
                     </Select>
                 </Form.Item>
                 <Form.Item name="SelectSkills">
@@ -146,7 +149,9 @@ export function Vacancies(): JSX.Element {
                         }}
                         placeholder={t('Vacancies.selectSkills')}
                     >
-                        {skillsChildren}
+                        {skillsData?.map((el: { skill: string }) => (
+                            <Option key={el.skill}>{el.skill}</Option>
+                        ))}
                     </Select>
                 </Form.Item>
                 <Form.Item name="SelectEnglishLevel">
@@ -175,6 +180,33 @@ export function Vacancies(): JSX.Element {
                         </Option>
                         <Option value="Advanced">Advanced</Option>
                     </Select>
+                </Form.Item>
+                <Form.Item name="SliderMinPrice">
+                    <Row>
+                        <Col span={15}>
+                            <Slider
+                                min={1}
+                                max={10000}
+                                onChange={onChangeMinPrice}
+                                value={
+                                    typeof minPrice === 'number' ? minPrice : 0
+                                }
+                            />
+                        </Col>
+                        <Col span={4}>
+                            <InputNumber
+                                min={1}
+                                max={10000}
+                                style={{
+                                    margin: '0 32px',
+                                    boxShadow:
+                                        '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
+                                }}
+                                value={minPrice}
+                                onChange={onChangeMinPrice}
+                            />
+                        </Col>
+                    </Row>
                 </Form.Item>
                 <ButtonsWrapper>
                     <Form.Item>
