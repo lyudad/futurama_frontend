@@ -1,13 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import {
-    CardWrapper,
-    Header2,
-    Header3,
-    Header4,
-
-} from 'pages/vacancies/styles';
+import { CardWrapper, Header2, Header3, Header4 } from 'pages/vacancies/styles';
 import { IVacancy } from 'types/vacancy';
 
 export function Card({
@@ -17,7 +11,7 @@ export function Card({
     description,
     englishLevel,
     price,
-    vacancyId
+    vacancyId,
 }: IVacancy): JSX.Element {
     const { t } = useTranslation();
 
