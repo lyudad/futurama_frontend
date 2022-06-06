@@ -10,14 +10,14 @@ function Profile(): JSX.Element {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const profile = useAppSelector((state) => state.profile.profile); 
+    
     const user = useAppSelector((state) => state.auth.user);   
     const contactInformation = {
         Email: user?.email,
         Phone: user?.phone,
     };
 
-    const positionAndSkills = {
-        Position: profile?.position,
+    const Skills = {
         Skills: profile?.skills,
     };
 
@@ -29,10 +29,11 @@ function Profile(): JSX.Element {
     const otherExperience = {
         'Other experience': profile?.otherExperience,
         Description: profile?.description,
+        'English level': profile?.englishLevel
     };
 
     useEffect(() => {
-        if(!profile){
+        if(!profile?.position){            
             navigate('/settings');
         }
     }, [profile])
@@ -50,7 +51,7 @@ function Profile(): JSX.Element {
                             {user?.firstName} {user?.lastName}
                         </h2>
                         <h3>
-                            <strong>English level</strong>: {profile?.englishLevel}
+                            <strong>{t('ProfilePage.Position')}</strong>: {profile?.position?.category}
                         </h3>
                     </div>
                 </UserInfo>
@@ -59,8 +60,8 @@ function Profile(): JSX.Element {
                     data={contactInformation}
                 />
                 <Card
-                    description={t('ProfilePage.positionAndSkills')}
-                    data={positionAndSkills}
+                    description={t('ProfilePage.Skills')}
+                    data={Skills}
                 />
                 <Card
                     description={t('ProfilePage.conditionsForWork')}
@@ -69,17 +70,16 @@ function Profile(): JSX.Element {
                 {profile?.workExperience?.map((experience) => {
                         return (
                             <Card
-                                key={Date.now()}
+                                key={experience.id}
                                 description={t('ProfilePage.workExperience')}
                                 data={experience}
                             />
                         );
                     })}
                 {profile?.educations?.map((educat) => {
-
                         return (
                             <Card
-                                key={Date.now()}
+                                key={educat.id}
                                 description={t('ProfilePage.education')}
                                 data={educat}
                             />
