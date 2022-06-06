@@ -51,8 +51,8 @@ export const proposalsApi = createApi({
                     url: constants.GET_MY_JOBS,
                     method: "get"
                 };
-            },
-        }),
+            }
+        })
     }),
 });
 
