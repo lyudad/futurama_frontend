@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { useGetVacanciesQuery } from 'store/api/vacanciesApi';
-import { Form, Input, Select, Button } from 'antd';
+import {
+    useGetCategoriesQuery,
+    useGetSkillsQuery,
+    useGetVacanciesQuery,
+} from 'store/api/vacanciesApi';
+import {
+    Form,
+    Input,
+    Select,
+    Button,
+    Row,
+    Col,
+    Slider,
+    InputNumber,
+} from 'antd';
 import { useTranslation } from 'react-i18next';
 import { fonts } from 'constants/fonts';
 import { colors } from 'constants/colors';
@@ -10,49 +23,69 @@ import { IVacancy } from 'types/vacancy';
 import { Spinner } from 'components/ui/Spinner';
 import { Card } from './components/Card';
 import { ButtonsWrapper, Container, VacanciesContainer } from './styles';
+import { IFilter } from './interfaces/filter';
 
 export function Vacancies(): JSX.Element {
     const { t } = useTranslation();
+    const { Option } = Select;
     const [form] = Form.useForm();
+    const [pageValue] = useState<number>(1);
     const [title, setTitle] = useState<string>('');
-    const [categoriesMiddlware, setCategoriesMiddlware] = useState<[]>([]);
     const [categories, setCategories] = useState<[]>([]);
-    const [pageValue] = useState<string>('1');
-    const { data, isLoading } = useGetVacanciesQuery({ title, categories });
+    const [skills, setSkills] = useState<[]>([]);
+    const [englishLevel, setEnglishLevel] = useState<string>('');
+    const [minPrice, setMinPrice] = useState(1);
+    const { data: vacanciesData, isLoading } = useGetVacanciesQuery({
+        title,
+        categories,
+        skills,
+        englishLevel,
+        minPrice,
+    });
+    const { data: categoriesData } = useGetCategoriesQuery('');
+    const { data: skillsData } = useGetSkillsQuery('');
     // eslint-disable-next-line no-unused-vars
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        setSearchParams({ page: pageValue });
+        setSearchParams({ page: pageValue.toString() });
     }, [pageValue]);
 
-    interface Ivalues {
-        Search: string;
-    }
+    const onChangeMinPrice = (newValue: number): void => {
+        setMinPrice(newValue);
+    };
 
-    const categoriesList = ['JS', 'PHP', 'Java'];
-    const { Option } = Select;
-    const children: React.ReactNode[] = [];
-    for (let i = 0; i < categoriesList.length; i += 1) {
-        children.push(<Option key={i}>{categoriesList[i]}</Option>);
-    }
-    const handleChange = (value: []): void => {
-        setCategoriesMiddlware(value);
+    const onFinish = async (values: IFilter): Promise<void> => {
+        const scroll = (): void => {
+            window.scrollBy(0, -10000);
+        };
+        setTimeout(scroll, 200);
+        setTitle(values.Search);
+        setCategories(values.SelectCategories);
+        setSkills(values.SelectSkills);
+        setEnglishLevel(values.SelectEnglishLevel);
+        setMinPrice(values.SliderMinPrice);
     };
 
     const clearAll = (): void => {
-        form.setFieldsValue({ Search: null, Select: [] });
-    };
-
-    const onFinish = async (values: Ivalues): Promise<void> => {
-        setTitle(values.Search);
-        setCategories(categoriesMiddlware);
+        form.setFieldsValue({
+            Search: null,
+            SelectCategories: [],
+            SelectSkills: [],
+            SelectEnglishLevel: null,
+            SliderMinPrice: 1,
+        });
+        onFinish({
+            Search: '',
+            SelectCategories: [],
+            SelectSkills: [],
+            SelectEnglishLevel: '',
+            SliderMinPrice: 1,
+        });
     };
 
     if (isLoading) {
-        return (
-            <Spinner />
-        );
+        return <Spinner />;
     }
 
     return (
@@ -70,16 +103,18 @@ export function Vacancies(): JSX.Element {
                     padding: '25px',
                     background: '#FFFFFF',
                     borderRadius: '15px',
-                    width: '450px',
-                    height: '250px',
+                    height: '550px',
+                    position: 'sticky',
+                    top: '10px',
+                    boxShadow:
+                        '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
                 }}
             >
                 <Form.Item name="Search">
                     <Input
                         style={{
                             width: '100%',
-                            height: '42px',
-                            fontSize: fonts.FONT_SIZE_LABELS,
+                            height: '32px',
                             textAlign: 'center',
                             boxShadow:
                                 '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
@@ -87,21 +122,91 @@ export function Vacancies(): JSX.Element {
                         placeholder={t('Vacancies.searchField')}
                     />
                 </Form.Item>
-                <Form.Item name="Select">
+                <Form.Item name="SelectCategories">
                     <Select
                         mode="multiple"
                         allowClear
                         style={{
                             width: '100%',
-                            fontSize: fonts.FONT_SIZE_LABELS,
                             boxShadow:
                                 '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
                         }}
-                        onChange={handleChange}
-                        placeholder={t('Vacancies.categorySelect')}
+                        placeholder={t('Vacancies.selectCategories')}
                     >
-                        {children}
+                        {categoriesData?.map((el: { category: string }) => (
+                            <Option key={el.category}>{el.category}</Option>
+                        ))}
                     </Select>
+                </Form.Item>
+                <Form.Item name="SelectSkills">
+                    <Select
+                        mode="multiple"
+                        allowClear
+                        style={{
+                            width: '100%',
+                            boxShadow:
+                                '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
+                        }}
+                        placeholder={t('Vacancies.selectSkills')}
+                    >
+                        {skillsData?.map((el: { skill: string }) => (
+                            <Option key={el.skill}>{el.skill}</Option>
+                        ))}
+                    </Select>
+                </Form.Item>
+                <Form.Item name="SelectEnglishLevel">
+                    <Select
+                        showSearch
+                        style={{
+                            width: '100%',
+                            boxShadow:
+                                '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
+                        }}
+                        placeholder={t('Vacancies.selectEnglishLevel')}
+                        optionFilterProp="children"
+                        filterOption={(input, option) =>
+                            (option?.children as unknown as string)
+                                .toLowerCase()
+                                .includes(input.toLowerCase())
+                        }
+                    >
+                        <Option value="Elementary">Elementary</Option>
+                        <Option value="Pre-Intermediate">
+                            Pre-Intermediate
+                        </Option>
+                        <Option value="Intermediate">Intermediate</Option>
+                        <Option value="Apper-Intermadiate">
+                            Upper-Intermadiate
+                        </Option>
+                        <Option value="Advanced">Advanced</Option>
+                    </Select>
+                </Form.Item>
+                <Form.Item name="SliderMinPrice">
+                    <Row>
+                        <Col span={15}>
+                            <Slider
+                                min={1}
+                                max={10000}
+                                onChange={onChangeMinPrice}
+                                value={
+                                    typeof minPrice === 'number' ? minPrice : 0
+                                }
+                            />
+                        </Col>
+                        <Col span={4}>
+                            <InputNumber
+                                min={1}
+                                max={10000}
+                                style={{
+                                    margin: '0 32px',
+                                    boxShadow:
+                                        '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
+                                }}
+                                value={minPrice}
+                                onChange={onChangeMinPrice}
+                            />
+                        </Col>
+                    </Row>
                 </Form.Item>
                 <ButtonsWrapper>
                     <Form.Item>
@@ -147,8 +252,8 @@ export function Vacancies(): JSX.Element {
                 </ButtonsWrapper>
             </Form>
             <VacanciesContainer>
-                {data?.length > 0 && !isLoading ? (
-                    data.map((el: IVacancy) => (
+                {vacanciesData?.length > 0 && !isLoading ? (
+                    vacanciesData.map((el: IVacancy) => (
                         <Card
                             key={el.id}
                             vacancyId={el.id}

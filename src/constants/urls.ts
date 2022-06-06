@@ -11,6 +11,7 @@ export const constants = {
     VACANCIES: '/vacancies',
     GET_VACANCIES: 'search_work/vacancies/',
     GET_CATEGORIES: 'search_work/categories/',
+    GET_SKILLS: 'search_work/skills/',
     GET_PROFILE: '/profile',
     USER_CONTACTS: '/user/contacts',
     PHOTO_UPLOAD: 'https://futurama.cf:3011/upload/',

@@ -3,7 +3,20 @@ import { Spin } from 'antd';
 
 export function Spinner(): JSX.Element {
     return (
-        <Spin size="large"
-            style={{ margin: '20% auto', display: 'block' }} />
+        <div
+            style={{
+                height: '85vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}
+        >
+            <Spin
+                size="large"
+                style={{
+                    display: 'block',
+                }}
+            />
+        </div>
     );
 }
