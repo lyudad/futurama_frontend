@@ -15,7 +15,7 @@ export function ProposalsList({ proposals }: IProps): JSX.Element {
     const { t } = useTranslation();
 
     function panelHeader(proposal: IProposal): JSX.Element {
-        return (<h4>
+        return (<h4 style={{ marginTop: '4px' }}>
             {t('Proposal.proposalfrom')}
             <strong>{proposal.user?.firstName} {proposal.user?.lastName} </strong> ( {t('Proposal.hourlyrate')}
             <strong>{proposal.price}</strong> )

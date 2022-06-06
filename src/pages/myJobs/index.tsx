@@ -15,10 +15,10 @@ export function MyJobs(): JSX.Element {
   const { t } = useTranslation();
 
   function panelHeader(proposals: IProposal[]): JSX.Element {
-    if (proposals.length === 0) return <strong>No proposals yet...</strong>;
+    if (proposals.length === 0) return <strong>{t('Proposal.noproposals')}</strong>;
     if (proposals.length === 1)
-      return <span>Show <strong>{proposals.length}</strong> proposal</span>;
-    return <span>Show <strong>{proposals.length}</strong> proposals</span>;
+      return <span>{t('Proposal.show')}<strong>{proposals.length}</strong>{t('Proposal.proposal')}</span>;
+    return <span>{t('Proposal.show')}<strong>{proposals.length}</strong>{t('Proposal.proposals')}</span>;
   }
 
   if (data) {

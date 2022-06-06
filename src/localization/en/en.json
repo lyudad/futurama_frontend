@@ -177,6 +177,9 @@
         "hour": " hour",
         "recieved": "Received: ",
         "nojobs": "No jobs yet...",
-        "noproposals": "No proposals yet..."
+        "noproposals": "No proposals yet...",
+        "show": "Show ",
+        "proposal": " proposal",
+        "proposals": " proposals"
     }
 }
