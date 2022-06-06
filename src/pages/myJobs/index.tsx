@@ -5,8 +5,9 @@ import { Container, Heading, Skill } from 'pages/vacancies/components/projectDet
 import { useTranslation } from 'react-i18next';
 import { Spinner } from 'components/ui/Spinner';
 import { IVacancy } from 'types/vacancy';
-import { ProposalsList } from './proposalsList';
 import { IProposal } from 'types/proposal';
+import { ProposalsList } from './proposalsList';
+
 
 export function MyJobs(): JSX.Element {
   const { data } = useGetMyJobsQuery();
@@ -14,10 +15,10 @@ export function MyJobs(): JSX.Element {
   const { t } = useTranslation();
 
   function panelHeader(proposals: IProposal[]): JSX.Element {
-    return proposals.length === 0 ? <strong>No proposals yet...</strong> :
-      proposals.length === 1 ?
-        <span>Show <strong>{proposals.length}</strong> proposal</span> :
-        <span>Show <strong>{proposals.length}</strong> proposals</span>;
+    if (proposals.length === 0) return <strong>No proposals yet...</strong>;
+    if (proposals.length === 1)
+      return <span>Show <strong>{proposals.length}</strong> proposal</span>;
+    return <span>Show <strong>{proposals.length}</strong> proposals</span>;
   }
 
   if (data) {
@@ -31,6 +32,7 @@ export function MyJobs(): JSX.Element {
           {jobs.length > 0 ? (
             jobs.map((job) => (
               <Card
+                key={job.id}
                 style={{
                   boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
                 }}
