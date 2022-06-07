@@ -30,5 +30,6 @@ export const constants = {
     PATCH_EXPERIENCE: '/profile/experience/update',
     DELETE_EXPERIENCE: '/profile/experience/delete/',
     GET_MY_JOBS: '/proposals/myjobs',
-    MY_JOBS: '/myjobs/'
+    MY_JOBS: '/myjobs/',
+    CONTRACTS: '/contracts',
 };

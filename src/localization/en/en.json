@@ -174,6 +174,16 @@
         "apply": "APPLY TO JOB",
         "back": "BACK TO RESULTS"
     },
+    "Contract": {
+        "title": "My contracts",
+        "open": "Open contracts",
+        "closed": "Closed contracts",
+        "chat": "Open chat",
+        "owner": "Owner",
+        "hourly_rate": "Hourly rate",
+        "start": "Start date",
+        "end": "End date"
+    },
     "Proposal": {
         "success": "Success",
         "sent": "Your proposal have been successfully sent!",
