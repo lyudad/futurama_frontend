@@ -170,6 +170,16 @@
         "budget": "Client's budget: ",
         "myhourlyrate": "My hourly rate: ",
         "myproposals": "My proposals",
-        "applied": "ALREADY APPLIED"
+        "applied": "ALREADY APPLIED",
+        "myjobs": "My jobs",
+        "proposalfrom": "proposal from: ",
+        "hourlyrate": "hourly rate: $",
+        "hour": " hour",
+        "recieved": "Received: ",
+        "nojobs": "No jobs yet...",
+        "noproposals": "No proposals yet...",
+        "show": "Show ",
+        "proposal": " proposal",
+        "proposals": " proposals"
     }
 }

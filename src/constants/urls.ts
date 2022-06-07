@@ -21,5 +21,7 @@ export const constants = {
     SETTINGS: '/settings',
     MY_PROPOSALS: '/myproposals',
     GET_PROPOSALS: '/proposals/myproposals',
-    CHECK_PROPOSAL: '/proposals/check/'
+    CHECK_PROPOSAL: '/proposals/check/',
+    GET_MY_JOBS: '/proposals/myjobs',
+    MY_JOBS: '/myjobs/'
 };

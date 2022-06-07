@@ -13,5 +13,14 @@ export interface IProposal {
         timePerWeek: number,
         createdAt: string,
         updatedAt: string;
+    },
+    user?: {
+        id: number,
+        firstName: string,
+        lastName: string,
+        email: string,
+        phone: string,
+        photo: string;
     };
+    createdAt: string
 };
