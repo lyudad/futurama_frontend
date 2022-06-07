@@ -18,7 +18,7 @@ export function Contract({data}: Props): JSX.Element {
     extra={<NavLink to="#">{t('Contract.chat')}</NavLink>}>
             <Meta
             avatar={<Avatar size={80} src={data.owner.photo} />}
-            title={`${t('Contract.title')}: ${data.owner.firstName  } ${  data.owner.lastName} `}
+            title={`${t('Contract.owner')}: ${data.owner.firstName  } ${  data.owner.lastName} `}
             description={data.description}
             style={{marginBottom: 10}}
             />
