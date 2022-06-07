@@ -11,15 +11,13 @@ export function HeaderJobOwner(): JSX.Element {
     return (
         <NavContainer>
             <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.newJob')}</NavLink>
-            <NavLink to={constants.SEND_EMAIL}>
-                {t('MenuBar.InvitesToInterview')}
-            </NavLink>
-            <NavLink to={constants.MY_JOBS}>{t('MenuBar.myJobPosts')}</NavLink>
+            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.InvitesToInterview')}</NavLink>
+            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.myJobPosts')}</NavLink>
             <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.talent')}</NavLink>
             <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.hires')}</NavLink>
             <NavLink to={constants.CONTRACTS}>{t('MenuBar.contracts')}</NavLink>
             <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.chats')}</NavLink>
-            <NavLink to={constants.SEND_EMAIL}>
+            <NavLink to={constants.HOME}>
                 <img
                     src={profilePhoto || Profile}
                     alt="Profile"

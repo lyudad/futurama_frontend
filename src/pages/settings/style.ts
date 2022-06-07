@@ -6,6 +6,7 @@ export const SettingsContainer = styled.div`
     align-items: center;
     padding: 1rem;
     background: white;
+    margin: 2rem 0;
     border-radius: 3rem;
     > div {
         margin-top: 2rem;
@@ -22,19 +23,21 @@ export const Part = styled.div`
 export const Select = styled.select`
     width: 15rem;
     padding: 0.4rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
 `
 
 export const Experience = styled.div`
     border-radius: 0.3rem;
     border: black solid 1px;
     padding: 1rem;
+    margin-top: 1rem;
 `
 
 export const EducationContainer = styled.div`
     border-radius: 0.3rem;
     border: black solid 1px;
     padding: 1rem;
+    margin-top: 1rem;
 `
 
 export const PartStart = styled.div`
@@ -45,6 +48,7 @@ export const PartStart = styled.div`
 
 export const Modal = styled.div`
     position: fixed;
+    z-index: 100;
     background: white;
 `
 
