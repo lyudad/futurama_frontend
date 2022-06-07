@@ -12,4 +12,5 @@ export interface IVacancy {
     createdAt: string;
     updatedAt: string;
     category: [];
+    proposals?: [];
 }

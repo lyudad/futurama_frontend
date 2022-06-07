@@ -29,4 +29,6 @@ export const constants = {
     POST_EXPERIENCE: '/profile/experience/create',
     PATCH_EXPERIENCE: '/profile/experience/update',
     DELETE_EXPERIENCE: '/profile/experience/delete/',
+    GET_MY_JOBS: '/proposals/myjobs',
+    MY_JOBS: '/myjobs/'
 };

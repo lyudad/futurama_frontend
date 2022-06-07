@@ -21,10 +21,10 @@ import {
     SmallHeading,
 } from './styles';
 
-
 type param = {
     id: string;
 };
+
 
 export default function ProjectDetails(): JSX.Element {
     const [modal, showModal] = useState(false);
