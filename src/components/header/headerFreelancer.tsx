@@ -19,7 +19,7 @@ export function HeaderFreelancer(): JSX.Element {
             </NavLink>
             <NavLink to={constants.HOME}>{t('MenuBar.offers')}</NavLink>
             <NavLink to={constants.MY_PROPOSALS}>{t('MenuBar.proposals')}</NavLink>
-            <NavLink to={constants.HOME}>{t('MenuBar.contracts')}</NavLink>
+            <NavLink to={constants.CONTRACTS}>{t('MenuBar.contracts')}</NavLink>
             <NavLink to={constants.HOME}>{t('MenuBar.chats')}</NavLink>
             <NavLink to={constants.HOME}>
                 <img

@@ -23,5 +23,6 @@ export const constants = {
     GET_PROPOSALS: '/proposals/myproposals',
     CHECK_PROPOSAL: '/proposals/check/',
     GET_MY_JOBS: '/proposals/myjobs',
-    MY_JOBS: '/myjobs/'
+    MY_JOBS: '/myjobs/',
+    CONTRACTS: '/contracts',
 };
