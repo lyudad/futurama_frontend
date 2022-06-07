@@ -47,7 +47,7 @@
         "max-len": [
             "warn",
             {
-                "code": 140
+                "code": 160
             }
         ],
         "react/no-array-index-key": "off",
