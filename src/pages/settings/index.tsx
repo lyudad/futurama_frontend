@@ -96,8 +96,10 @@ function Settings(): JSX.Element {
           position: category,
           user: authState.user?.id,
           skills: userSkills
-      }
-      updateProfileQuery(body);
+      };
+      (async function() {
+        await updateProfileQuery(body);
+      })();
       getProfileQuery({token: authState.token});
       }else{
         setMessage(errorMessage);
