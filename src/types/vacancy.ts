@@ -13,3 +13,15 @@ export interface IVacancy {
     updatedAt: string;
     category: [];
 }
+
+export interface IvacancyQuery {
+    title?: string,
+    categories?: [],
+    englishLevel?: string,
+    minPrice?: number,
+    maxPrice?: number,
+    minTimePerWeek?: number,
+    maxTimePerWeek?: number,
+    skills?: []
+    pageValue?: number
+}
