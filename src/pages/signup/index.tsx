@@ -7,9 +7,9 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from 'components/ui/button';
 import { Input } from 'components/ui/input';
-import { useSigninUserMutation, useSignupUserMutation } from 'store/api/authApi';
+import { useSignupUserMutation } from 'store/api/authApi';
 import { setUser } from 'store/reducers/auth';
-import { loginForm, signupForm } from 'types/auth';
+import { signupForm } from 'types/auth';
 import { validations } from 'constants/validation';
 import SignupWithGoogle from './SignupWithGoogle';
 import SignupWithFacebook from './SignupWithFacebook';
@@ -28,8 +28,6 @@ export function SignUp(): JSX.Element {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const [signupUser, signup] = useSignupUserMutation();
-    const [signinUser, login] = useSigninUserMutation();
-    const [formLogin, setFormLogin] = useState<loginForm>({ email: '', password: '' });
     const [isFailed, setIsFailed] = useState(signup.isError);
 
     const validationSchema = object({
@@ -53,18 +51,13 @@ export function SignUp(): JSX.Element {
 
     useEffect(() => {
         if(signup.isSuccess) {
-            (async function(){                
-                await signinUser({ email: formLogin.email, password: formLogin.password});
-            })();
-        }
-        if(login.isSuccess) {                
-            dispatch(setUser({ token: login.data.token, user: login.data.user }));
+            dispatch(setUser({ token: signup.data.token, user: signup.data.user }));
             navigate('/');
         }
         if (signup.isError) {
             setIsFailed(signup.isError);
         }                
-    }, [signup.isSuccess, signup.isError, login.isSuccess]);
+    }, [signup.isSuccess, signup.isError]);
 
     return (
         <SignupPage>
@@ -77,7 +70,6 @@ export function SignUp(): JSX.Element {
                     initialValues={initialValues}
                     validationSchema={validationSchema}
                     onSubmit={async (values) => {      
-                        setFormLogin({email: values.email, password: values.password});                  
                         await signupUser(values);
                     }}
                 >
