@@ -4,6 +4,7 @@ export interface authState {
 }
 
 export interface userState {
+    id: number;
     email: string;
     firstName: string;
     lastName: string;

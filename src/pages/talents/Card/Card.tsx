@@ -51,7 +51,7 @@ export function Card({
                 <Header3>{t('Vacancy.keyskills')}</Header3>
                 <div style={{ display: 'flex', justifyContent: 'left' }}>
                     {skills?.map((skill: { skill?: string; }) => (
-                        <Skill style={{ color: 'black' }} key={skills.indexOf(skill)}>{skill.skill}</Skill>
+                        <Skill style={{ color: 'black' }} key={Date.now()}>{skill.skill}</Skill>
                     ))}
                 </div>
             </CardWrapper>

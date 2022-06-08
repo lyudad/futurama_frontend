@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { constants } from 'constants/urls';
 import { useAppSelector } from 'store/hooks';
 import { setProfile } from 'store/reducers/profile';
 import { useGetProfileMutation } from 'store/api/profileApi';
 import PrivateRoute from 'components/privateRoute';
 import PublicRoute from 'components/publicRoute';
+import { setEducation, setExperience } from 'store/reducers/settings';
 import  Home  from './pages/home';
 import { SignIn } from './pages/signin';
 import { Recovery } from './pages/password/recovery';
@@ -14,6 +15,7 @@ import { MakeNew } from './pages/password/makeNew';
 import { SignUp } from './pages/signup';
 
 function App(): JSX.Element {
+    const navigate = useNavigate();
     const token = useAppSelector((state) => state.auth.token);
     const dispatch = useDispatch();
     const [getProfile, { data, isSuccess }] = useGetProfileMutation();
@@ -22,6 +24,9 @@ function App(): JSX.Element {
         if (isSuccess) 
         {            
             dispatch(setProfile(data));
+            dispatch(setExperience(data?.workExperience));
+            dispatch(setEducation(data?.educations))
+            navigate('/');
         }
         else if(token) {
             getProfile({ token }); 
