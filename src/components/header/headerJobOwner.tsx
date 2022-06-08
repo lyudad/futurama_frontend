@@ -15,7 +15,7 @@ export function HeaderJobOwner(): JSX.Element {
                 {t('MenuBar.InvitesToInterview')}
             </NavLink>
             <NavLink to={constants.MY_JOBS}>{t('MenuBar.myJobPosts')}</NavLink>
-            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.talent')}</NavLink>
+            <NavLink to={constants.TALENTS}>{t('MenuBar.talent')}</NavLink>
             <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.hires')}</NavLink>
             <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.chats')}</NavLink>
             <NavLink to={constants.SEND_EMAIL}>

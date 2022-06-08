@@ -44,10 +44,10 @@ font-weight: 600;
 `;
 
 export const Skill = styled.div`
-   display: inline-block;
-  background-color: rgba(188, 186, 186, 0.347);
-  border-radius: 7px;
-  margin: 10px 5px 0 0;
+  display: inline-block;
+  background-color: rgba(188, 186, 186, 0.4);  
+  border-radius: 6px;
+  margin: 10px 10px 0 0;
   padding: 7px 15px;
   font-size: 16px;
   font-weight: 500;  

@@ -13,6 +13,13 @@ export type UserProfile = {
     availableAmountOfHours: NullableNumber;
     otherExperience?: NullableString;
     description?: NullableString;
+    user?: {
+        id: number;
+        firstName: string;
+        lastName: string;
+        phone: string;
+        photo: string;
+    };
 };
 
 type NullableArray = null | Array<object>;

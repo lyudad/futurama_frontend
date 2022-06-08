@@ -13,6 +13,7 @@ export const constants = {
     GET_CATEGORIES: 'search_work/categories/',
     GET_SKILLS: 'search_work/skills/',
     GET_PROFILE: '/profile',
+    GET_ALL_PROFILES: '/profile/all',
     USER_CONTACTS: '/user/contacts',
     PHOTO_UPLOAD: 'https://futurama.cf:3011/upload/',
     PHOTO_PLACEHOLDER: 'https://futurama.cf:3011/upload/avatarPlaceholder7652.png',
@@ -23,5 +24,6 @@ export const constants = {
     GET_PROPOSALS: '/proposals/myproposals',
     CHECK_PROPOSAL: '/proposals/check/',
     GET_MY_JOBS: '/proposals/myjobs',
-    MY_JOBS: '/myjobs/'
+    MY_JOBS: '/myjobs/',
+    TALENTS: '/talents'
 };

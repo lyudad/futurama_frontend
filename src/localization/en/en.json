@@ -6,7 +6,7 @@
             "skills": "Skills:",
             "salary": "Desirable salary level (hourly):",
             "english": "English level:",
-            "availableHours": "The available amount of hours:",
+            "availableHours": "The available amount of hours: ",
             "workExperience": "Work Experience:",
             "addWork": "Add work experience",
             "education": "Education:",
@@ -54,7 +54,7 @@
         "contracts": "Contracts",
         "newJob": "New job",
         "myJobPosts": "My Job Posts",
-        "talent": "Talent",
+        "talent": "Talents",
         "hires": "Hires",
         "chats": "Chats"
     },
@@ -138,7 +138,7 @@
         "company": "Company: ",
         "location": "Location: ",
         "englishLevel": "English level: ",
-        "price": "Price: $",
+        "price": "Rate: $",
         "searchField": "Search...",
         "selectCategories": "Select categories",
         "selectSkills": "Select skills",
@@ -154,7 +154,8 @@
         "description": "Description:",
         "skills": "Required skills:",
         "apply": "APPLY TO JOB",
-        "back": "BACK TO RESULTS"
+        "back": "BACK TO RESULTS",
+        "keyskills": "Key skills: "
     },
     "Proposal": {
         "success": "Success",
@@ -180,6 +181,7 @@
         "noproposals": "No proposals yet...",
         "show": "Show ",
         "proposal": " proposal",
-        "proposals": " proposals"
+        "proposals": " proposals",
+        "sentDate": "Sent: "
     }
 }
