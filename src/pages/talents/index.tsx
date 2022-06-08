@@ -45,5 +45,5 @@ export function Talents(): JSX.Element {
                     )}
                 </VacanciesContainer>
             </Container>
-        ); else return <Spinner />;
+        ); return <Spinner />;
 }
