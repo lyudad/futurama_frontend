@@ -44,8 +44,16 @@ export const proposalsApi = createApi({
                 };
             },
             providesTags: [{ type: 'Proposal', id: 'LIST' }],
+        }),
+        getMyJobs: build.query<[], void>({
+            query: () => {
+                return {
+                    url: constants.GET_MY_JOBS,
+                    method: "get"
+                };
+            }
         })
     }),
 });
 
-export const { useSendProposalMutation, useGetMyProposalsQuery, useCheckProposalIsExistQuery } = proposalsApi;
+export const { useSendProposalMutation, useGetMyProposalsQuery, useCheckProposalIsExistQuery, useGetMyJobsQuery } = proposalsApi;

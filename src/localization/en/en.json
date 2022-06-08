@@ -3,19 +3,29 @@
         "title": "General settings",
         "mainForm": {
             "position": "Category (position):",
+            "validatePosition": "Please select position",
             "skills": "Skills:",
+            "validateSkills": "Please select skills",
             "salary": "Desirable salary level (hourly):",
+            "validateSalary": "Please input desirable salary level",
             "english": "English level:",
+            "validateEnglish": "Please select english level",
             "availableHours": "The available amount of hours:",
+            "validateAvailableHours": "Please input available amount of hours",
             "workExperience": "Work Experience:",
             "addWork": "Add work experience",
             "education": "Education:",
             "addEducation": "Add education",
             "other": "Other experience:",
             "description": "Description:",
+            "validateDescription": "Please describe about yourself",
             "typeAboutYourself": "Type about yourself...",
-            "typeOther": "Type your other experiences..."
+            "typeOther": "Type your other experiences...",
+            "save": "save",
+            "contactInfo": "Contact info"
         },
+        "selectSkills": "Select skills",
+        "select": "Select value",
         "educationForm": {
             "title": "Education",
             "establishment": "Establishment:",
@@ -23,7 +33,11 @@
             "start": "Start date:",
             "end": "End date:",
             "edit": "Edit",
-            "create": "Create"
+            "create": "Create",
+            "delete": "Delete",
+            "inputEstablishment": "Please input establishment!",
+            "inputLevel": "Please input level!",
+            "selectDate": "Please select date!"
         },
         "workExperience": {
             "title": "Work Experience",
@@ -33,14 +47,18 @@
             "end": "End date:",
             "description": "Description:",
             "edit": "Edit",
-            "create": "Create"
-        },
-        "selectSkills": "Select skills",
-        "select": "Select value"
+            "create": "Create",
+            "delete": "Delete",
+            "inputCompany": "Please input company name!",
+            "inputPosition": "Please input position!",
+            "selectDate": "Please select date!",
+            "inputDescription": "Please input description!"
+        }
     },
     "ProfilePage": {
         "contactInformation": "Contact information",
-        "positionAndSkills": "Position and skills",
+        "Position": "Position",
+        "Skills": "Skills",
         "conditionsForWork": "Conditions for work",
         "workExperience": "Work experience",
         "education": "Education",
@@ -55,8 +73,8 @@
         "newJob": "New job",
         "myJobPosts": "My Job Posts",
         "talent": "Talent",
-        "hires": "Hires",
-        "chats": "Chats"
+        "chats": "Chats",
+        "settings": "Settings"
     },
     "SignInForm": {
         "futurama": "Futurama",
@@ -156,6 +174,16 @@
         "apply": "APPLY TO JOB",
         "back": "BACK TO RESULTS"
     },
+    "Contract": {
+        "title": "My contracts",
+        "open": "Open contracts",
+        "closed": "Closed contracts",
+        "chat": "Open chat",
+        "owner": "Owner",
+        "hourly_rate": "Hourly rate",
+        "start": "Start date",
+        "end": "End date"
+    },
     "Proposal": {
         "success": "Success",
         "sent": "Your proposal have been successfully sent!",
@@ -170,6 +198,16 @@
         "budget": "Client's budget: ",
         "myhourlyrate": "My hourly rate: ",
         "myproposals": "My proposals",
-        "applied": "ALREADY APPLIED"
+        "applied": "ALREADY APPLIED",
+        "myjobs": "My jobs",
+        "proposalfrom": "proposal from: ",
+        "hourlyrate": "hourly rate: $",
+        "hour": " hour",
+        "recieved": "Received: ",
+        "nojobs": "No jobs yet...",
+        "noproposals": "No proposals yet...",
+        "show": "Show ",
+        "proposal": " proposal",
+        "proposals": " proposals"
     }
 }

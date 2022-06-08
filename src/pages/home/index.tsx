@@ -12,6 +12,8 @@ import { HeaderFreelancer, HeaderJobOwner } from 'components/header';
 import { variables } from 'constants/variables';
 import Settings from 'pages/settings';
 import { MyProposals } from 'pages/MyProposals';
+import { MyJobs } from 'pages/myJobs';
+import { Contracts } from 'pages/contracts';
 
 function Home(): JSX.Element {
     const role = useAppSelector((state) => state.auth.user?.role);
@@ -23,9 +25,11 @@ function Home(): JSX.Element {
                 <Routes>
                     <Route path={constants.SETTINGS} element={<PrivateRoute component={Settings} />} />
                     <Route path={constants.MY_PROPOSALS} element={<PrivateRoute component={MyProposals} />} />
+                    <Route path={constants.MY_JOBS} element={<PrivateRoute component={MyJobs} />} />
                     <Route path={constants.VACANCIES} element={<PrivateRoute component={Vacancies} />} />
                     <Route path={constants.VACANCY_DETAILS} element={<PublicRoute restricted={false} component={ProjectDetails} />} />
                     <Route path={constants.USER_CONTACTS} element={<PublicRoute restricted={false} component={Contacts} />} />
+                    <Route path={constants.CONTRACTS} element={<PublicRoute restricted={false} component={Contracts} />} />
                     <Route path="*" element={<PrivateRoute component={Profile} />} />
                 </Routes>
             </div>

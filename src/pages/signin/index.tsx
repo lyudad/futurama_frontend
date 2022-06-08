@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { string, object } from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
@@ -24,7 +24,6 @@ import {
 } from './styles';
 
 export function SignIn(): JSX.Element {
-    const navigate = useNavigate();
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const [signinUser, { data, isLoading, isSuccess, isError, error }] =
@@ -49,7 +48,6 @@ export function SignIn(): JSX.Element {
     useEffect(() => {
         if (isSuccess) {
             dispatch(setUser({ token: data.token, user: data.user }));
-            navigate('/')
         }
         if (isError) {
             setIsFailed(isError);

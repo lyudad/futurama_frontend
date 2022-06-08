@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Slider, InputNumber, Row, Col } from 'antd';
 
-export function IntegerStep(): JSX.Element {
-  const [inputValue, setInputValue] = useState(1);
-
-  const onChange = (newValue: number): void => {
-    setInputValue(newValue);
-  };
-
+interface Props {
+  value: number;
+  onChange(newValue: number): void;
+}
+export function IntegerStep({value, onChange}: Props): JSX.Element {  
   return (
     <Row style={{marginRight: '1.3rem'}}>
       <Col style={{width: '10rem'}} span={20}>
@@ -15,7 +13,7 @@ export function IntegerStep(): JSX.Element {
           min={0}
           max={50}
           onChange={onChange}
-          value={typeof inputValue === 'number' ? inputValue: 0}
+          value={value}
         />
       </Col>
       <Col span={4}>
@@ -23,7 +21,7 @@ export function IntegerStep(): JSX.Element {
           min={0}
           max={50}
           style={{ width: '3.5rem' }}
-          value={inputValue}
+          value={value}
           onChange={onChange}
         />
       </Col>

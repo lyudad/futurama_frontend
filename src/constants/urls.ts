@@ -17,6 +17,7 @@ export const constants = {
     GET_CATEGORIES: 'search_work/categories/',
     GET_SKILLS: 'search_work/skills/',
     GET_PROFILE: '/profile',
+    POST_PROFILE: '/profile/update',
     USER_CONTACTS: '/user/contacts',
     PHOTO_UPLOAD: 'https://futurama.cf:3011/upload/',
     PHOTO_PLACEHOLDER: 'https://futurama.cf:3011/upload/avatarPlaceholder7652.png',
@@ -25,5 +26,14 @@ export const constants = {
     SETTINGS: '/settings',
     MY_PROPOSALS: '/myproposals',
     GET_PROPOSALS: '/proposals/myproposals',
-    CHECK_PROPOSAL: '/proposals/check/'
+    CHECK_PROPOSAL: '/proposals/check/',
+    POST_EDUCATION: '/profile/education/create',
+    PATCH_EDUCATION: '/profile/education/update',
+    DELETE_EDUCATION: '/profile/education/delete/',
+    POST_EXPERIENCE: '/profile/experience/create',
+    PATCH_EXPERIENCE: '/profile/experience/update',
+    DELETE_EXPERIENCE: '/profile/experience/delete/',
+    GET_MY_JOBS: '/proposals/myjobs',
+    MY_JOBS: '/myjobs/',
+    CONTRACTS: '/contracts',
 };
