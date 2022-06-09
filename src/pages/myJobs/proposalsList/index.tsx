@@ -41,7 +41,7 @@ export function ProposalsList({ proposals }: IProps): JSX.Element {
                                         maxHeight: '100px',
                                         borderRadius: '50%',
                                         margin: '5px',
-                                        width: 'auto'
+                                        width: '100px'
                                     }}
                                     preview={false}
                                     src={proposal.user?.photo}

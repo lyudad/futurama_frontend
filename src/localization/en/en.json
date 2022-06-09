@@ -75,7 +75,8 @@
         "talent": "Talents",
         "hires": "Hires",
         "chats": "Chats",
-        "settings": "Settings"
+        "settings": "Settings",
+        "logout": "Log Out"
     },
     "SignInForm": {
         "futurama": "Futurama",

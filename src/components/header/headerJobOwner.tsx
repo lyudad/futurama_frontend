@@ -17,6 +17,10 @@ export function HeaderJobOwner(): JSX.Element {
             <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.hires')}</NavLink>
             <NavLink to={constants.CONTRACTS}>{t('MenuBar.contracts')}</NavLink>
             <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.chats')}</NavLink>
+            <NavLink onClick={() => {
+                localStorage.clear();
+                document.location.reload();
+            }} to={constants.LOGIN}>{t('MenuBar.logout')}</NavLink>
             <NavLink to={constants.HOME}>
                 <img
                     src={profilePhoto || Profile}

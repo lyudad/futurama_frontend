@@ -19,6 +19,7 @@ import {
     InfoItem,
     Date,
     SmallHeading,
+    FlexContainer,
 } from './styles';
 
 type param = {
@@ -81,7 +82,7 @@ export default function ProjectDetails(): JSX.Element {
                 </Wrapper>
                 <SendProposal vacancy={vacancy} modal={modal} showModal={showModal} />
 
-                <div style={{ display: 'flex' }}>
+                <FlexContainer>
                     <div>
                         <SmallHeading>{t('Vacancy.description')}</SmallHeading>
                         <p style={{ marginTop: '10px', fontSize: '17px' }}>
@@ -103,7 +104,7 @@ export default function ProjectDetails(): JSX.Element {
                         </div>
                     </div>
 
-                </div>
+                </FlexContainer>
 
                 <NavLink style={{ color: 'black' }} to="/vacancies">
                     <Button>{t('Vacancy.back')}</Button>

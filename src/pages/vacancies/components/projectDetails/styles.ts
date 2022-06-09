@@ -103,3 +103,6 @@ export const SmallHeading = styled.h2`
   margin-bottom: '10px'; 
   font-size: '15px';
   `;
+
+export const FlexContainer = styled.div`
+  display: flex;`;

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CardWrapper, Header2, Header3 } from 'pages/vacancies/styles';
 import { UserProfile } from 'types/profile';
-import { Skill } from 'pages/vacancies/components/projectDetails/styles';
+import { FlexContainer, Skill } from 'pages/vacancies/components/projectDetails/styles';
 import { Image } from 'antd';
 import { constants } from 'constants/urls';
 
@@ -21,7 +21,7 @@ export function Card({
         <NavLink to={`/profile/${user?.id}`}>
             <CardWrapper style={{ width: '800px', padding: '2.5rem' }}>
                 <Header2>{user?.firstName} {user?.lastName}</Header2>
-                <div style={{ display: 'flex' }}>
+                <FlexContainer>
                     <Image
                         style={{
                             maxHeight: '90px',
@@ -46,7 +46,7 @@ export function Card({
                             {englishLevel}
                         </Header3>
                     </div>
-                </div>
+                </FlexContainer>
 
                 <Header3>{t('Vacancy.keyskills')}</Header3>
                 <div style={{ display: 'flex', justifyContent: 'left' }}>

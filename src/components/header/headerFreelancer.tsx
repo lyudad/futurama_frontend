@@ -18,6 +18,10 @@ export function HeaderFreelancer(): JSX.Element {
             <NavLink to={constants.CONTRACTS}>{t('MenuBar.contracts')}</NavLink>
             <NavLink to={constants.HOME}>{t('MenuBar.chats')}</NavLink>
             <NavLink to={constants.SETTINGS}>{t('MenuBar.settings')}</NavLink>
+            <NavLink onClick={() => {
+                localStorage.clear();
+                document.location.reload();
+            }} to={constants.LOGIN}>{t('MenuBar.logout')}</NavLink>
             <NavLink to={constants.HOME}>
                 <img
                     src={profilePhoto || Profile}
