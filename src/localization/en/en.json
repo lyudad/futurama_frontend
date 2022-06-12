@@ -56,13 +56,13 @@
         }
     },
     "ProfilePage": {
-        "contactInformation": "Contact information",
+        "contactInformation": "Contact information:",
         "Position": "Position",
-        "Skills": "Skills",
+        "Skills": "Key skills: ",
         "conditionsForWork": "Conditions for work",
         "workExperience": "Work experience",
         "education": "Education",
-        "otherExperience": "Other experience"
+        "otherExperience": "Other:"
     },
     "MenuBar": {
         "searchWork": "Search work",

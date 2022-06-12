@@ -1,39 +1,24 @@
 import styled from 'styled-components';
 
-export const ProfilePhoto = styled.div`
-    width: 7rem;
-    img {
-        border-radius: 100%;
-    }
+interface Props {
+    child?: boolean;
+}
+
+export const Experience = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;    
 `;
 
-export const UserInfo = styled.div`
-    margin-top: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h2 {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-left: 1rem;
-    }
-`;
-
-export const ProfileCard = styled.div`
-    width: 60%;
-    border: 1px solid black;
+export const ProfileCard = styled.div<Props>`     
     background-color: white;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     text-align: left;
     padding: 1rem;
-    margin: 1rem;
-    box-shadow: 0 14px 28px rgba(238, 239, 242, 1),
-        0 10px 10px rgba(238, 239, 242, 1);
+    margin: 1rem 0 1rem 0;
+    box-shadow:  ${props => props.child ? "2px 2px 2px 2px rgba(25, 133, 179, 0.3)" : "2px 2px 3px 2px rgba(162, 185, 187, 0.8)"};
 `;
 
-export const UserProfile = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+export const InfoBlock = styled.div`
+    min-width: 183p;'
 `;

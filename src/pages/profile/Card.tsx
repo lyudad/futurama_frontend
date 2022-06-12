@@ -2,17 +2,22 @@ import React from 'react';
 import { ProfileCard } from './style';
 
 interface Props {
-    description: string;
+    description?: string;
     data: object;
+    child?: boolean;
 }
-function Card({ description, data }: Props): JSX.Element {
+function Card({ description, data, child }: Props): JSX.Element {
+
     return (
-        <ProfileCard>
+        <ProfileCard child={child}>
             <div>
                 <h2>{description}</h2>
             </div>
             <div>
                 {Object.entries(data).map(([key, value]) => {
+                    if (key === 'start' || key === 'end') {
+                        value = value.slice(0, 10);
+                    }
                     return (
                         <div key={key}>
                             {
