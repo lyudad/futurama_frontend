@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useGetVacancyByIdQuery } from 'store/api/vacanciesApi';
@@ -6,6 +6,8 @@ import { useCheckProposalIsExistQuery } from 'store/api/proposalsApi';
 import { CheckOutlined } from '@ant-design/icons';
 import { Spinner } from 'components/ui/Spinner';
 import { IVacancy } from 'types/vacancy';
+import { useAppSelector } from 'store/hooks';
+import { variables } from 'constants/variables';
 import SendProposal from '../sendProposal/sendProposal';
 import {
     Container,
@@ -26,13 +28,26 @@ type param = {
     id: string;
 };
 
+interface Props {
+    proposalExist: boolean;
+    showModal: Dispatch<SetStateAction<boolean>>;
+}
+
+function Buttons({ showModal, proposalExist }: Props): JSX.Element {
+    const { t } = useTranslation();
+    if (proposalExist) {
+        return <Button disabled><CheckOutlined /> {t('Proposal.applied')}</Button>;
+    } return <Button onClick={() => {
+        showModal(true);
+    }}>{t('Vacancy.apply')}</Button>;
+}
 
 export default function ProjectDetails(): JSX.Element {
     const [modal, showModal] = useState(false);
     const id: number = useParams<param>().id as unknown as number;
-
+    const role = useAppSelector((state) => state.auth.user?.role);
     const vacancy: IVacancy = useGetVacancyByIdQuery(id).data;
-    const proposalExist = useCheckProposalIsExistQuery(id).data;
+    const proposalExist = useCheckProposalIsExistQuery(id).data || false;
 
     const { t } = useTranslation();
 
@@ -109,9 +124,7 @@ export default function ProjectDetails(): JSX.Element {
                 <NavLink style={{ color: 'black' }} to="/vacancies">
                     <Button>{t('Vacancy.back')}</Button>
                 </NavLink>
-                {proposalExist ? <Button disabled><CheckOutlined /> {t('Proposal.applied')}</Button> : <Button onClick={() => {
-                    showModal(true);
-                }}>{t('Vacancy.apply')}</Button>}
+                {role === variables.freelancer ? <Buttons showModal={showModal} proposalExist={proposalExist} /> : null}
             </Container>
         );
     }

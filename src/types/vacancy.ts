@@ -1,5 +1,5 @@
 export interface IVacancy {
-    id?: number;
+    id: number;
     vacancyId?: number;
     title: string;
     company: string;
