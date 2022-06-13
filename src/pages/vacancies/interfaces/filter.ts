@@ -4,7 +4,7 @@ export interface IFilter {
     SelectSkills: [];
     SelectEnglishLevel: string;
     SliderMinPrice: number;
-    SliderMaxPrice?: number;
-    SliderMinDuration?: number;
-    SliderMaxDuration?: number;
+    SliderMaxPrice: number;
+    SliderMinDuration: number;
+    SliderMaxDuration: number;
 }

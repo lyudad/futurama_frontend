@@ -1,16 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 import { constants } from 'constants/urls';
-
-interface Ivacancy {
-    title?: string,
-    categories?: [],
-    englishLevel?: string,
-    minPrice?: number,
-    maxPrice?: number,
-    minTimePerWeek?: number,
-    maxTimePerWeek?: number,
-    skills?: []
-}
+import { IvacancyQuery } from 'types/vacancy';
 
 export const vacanciesApi = createApi({
     reducerPath: 'vacancies',
@@ -22,10 +12,11 @@ export const vacanciesApi = createApi({
     }),
     endpoints: (builder) => ({
         getVacancies: builder.query({
-            query: (body?: Ivacancy) => ({
-                url: constants.GET_VACANCIES,
+            query: (body: IvacancyQuery) => ({
+                url: `${constants.GET_VACANCIES}?page=${body.pageValue
+                    }`,
                 method: 'POST',
-                body
+                body,
             }),
         }),
         getVacancyById: builder.query({
@@ -37,8 +28,28 @@ export const vacanciesApi = createApi({
         getSkills: builder.query({
             query: () => ({ url: constants.GET_SKILLS, method: 'GET', })
         }),
+        getvacancyWithMinPrice: builder.query({
+            query: () => ({ url: constants.GET_VACANCY_WITH_MIN_PRICE, method: 'GET', })
+        }),
+        getvacancyWithMaxPrice: builder.query({
+            query: () => ({ url: constants.GET_VACANCY_WITH_MAX_PRICE, method: 'GET', })
+        }),
+        getvacancyWithMinDuration: builder.query({
+            query: () => ({ url: constants.GET_VACANCY_WITH_MIN_DURATION, method: 'GET', })
+        }),
+        getvacancyWithMaxDuration: builder.query({
+            query: () => ({ url: constants.GET_VACANCY_WITH_MAX_DURATION, method: 'GET', })
+        }),
     }),
 });
 
-export const { useGetVacanciesQuery, useGetVacancyByIdQuery, useGetCategoriesQuery, useGetSkillsQuery } =
-    vacanciesApi;
+export const {
+    useGetVacanciesQuery,
+    useGetVacancyByIdQuery,
+    useGetCategoriesQuery,
+    useGetSkillsQuery,
+    useGetvacancyWithMinPriceQuery,
+    useGetvacancyWithMaxPriceQuery,
+    useGetvacancyWithMinDurationQuery,
+    useGetvacancyWithMaxDurationQuery }
+    = vacanciesApi;
