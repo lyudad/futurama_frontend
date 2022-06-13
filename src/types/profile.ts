@@ -17,6 +17,7 @@ export type UserProfile = {
     description?: NullableString;
     user?: {
         id: number;
+        email: string;
         firstName: string;
         lastName: string;
         phone: string;

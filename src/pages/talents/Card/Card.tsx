@@ -19,7 +19,7 @@ export function Card({
     return (
 
         <NavLink to={`/profile/${user?.id}`}>
-            <CardWrapper style={{ width: '800px', padding: '2.5rem' }}>
+            <CardWrapper style={{ flexBasis: '80%', padding: '2.5rem' }}>
                 <Header2>{user?.firstName} {user?.lastName}</Header2>
                 <FlexContainer>
                     <Image
@@ -49,7 +49,7 @@ export function Card({
                 </FlexContainer>
 
                 <Header3>{t('Vacancy.keyskills')}</Header3>
-                <div style={{ display: 'flex', justifyContent: 'left' }}>
+                <div style={{ color: 'black', display: 'flex', justifyContent: 'left' }}>
                     {skills?.map((skill: { id?: number, skill?: string; }) => (
                         <Skill key={skill.id}>{skill.skill}</Skill>
                     ))}

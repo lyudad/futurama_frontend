@@ -2,10 +2,11 @@ import React from 'react';
 import NoDataFound from 'assets/no_data_found.png';
 
 import { Spinner } from 'components/ui/Spinner';
-import { Container, VacanciesContainer } from 'pages/vacancies/styles';
+import { Container } from 'pages/vacancies/styles';
 
 import { useGetAllProfilesQuery } from 'store/api/profileApi';
 import { UserProfile } from 'types/profile';
+import { FlexContainer } from 'pages/vacancies/components/projectDetails/styles';
 import { Card } from './Card/Card';
 
 
@@ -17,7 +18,7 @@ export function Talents(): JSX.Element {
 
         return (
             <Container>
-                <VacanciesContainer style={{ margin: '0 auto' }}>
+                <FlexContainer style={{ flexDirection: 'column', margin: '0 auto' }}>
                     {profiles?.length > 0 ? (
                         profiles.map((user: UserProfile) => (
                             <Card
@@ -43,7 +44,7 @@ export function Talents(): JSX.Element {
                             }}
                         />
                     )}
-                </VacanciesContainer>
+                </FlexContainer>
             </Container>
         ); return <Spinner />;
 }

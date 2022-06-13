@@ -34,7 +34,15 @@ export const profileApi = createApi({
                 };
             },
         }),
+        getProfileById: builder.query<UserProfile, number>({
+            query: (id) => {
+                return {
+                    url: constants.GET_PROFILE + id,
+                    method: "get"
+                };
+            },
+        }),
     }),
 });
 
-export const { useGetProfileMutation, useGetAllProfilesQuery } = profileApi;
+export const { useGetProfileMutation, useGetAllProfilesQuery, useGetProfileByIdQuery } = profileApi;

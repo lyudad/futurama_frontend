@@ -16,7 +16,7 @@ export const ProfileCard = styled.div<Props>`
     text-align: left;
     padding: 1rem;
     margin: 1rem 0 1rem 0;
-    box-shadow:  ${props => props.child ? "2px 2px 2px 2px rgba(25, 133, 179, 0.3)" : "2px 2px 3px 2px rgba(162, 185, 187, 0.8)"};
+    box-shadow:  ${props => props.child ? "1px 1px 5px 1px rgba(25, 133, 179, 0.3)" : "2px 2px 3px 2px rgba(162, 185, 187, 0.8)"};
 `;
 
 export const InfoBlock = styled.div`
