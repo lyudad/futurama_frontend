@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Card } from 'antd';
+import { Avatar, Button, Card } from 'antd';
 import { IContract } from 'types/contracts';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -8,8 +8,9 @@ const { Meta } = Card;
 
 interface Props {
     data: IContract;
+    closeContract?(): void;
 }
-export function Contract({data}: Props): JSX.Element {
+export function Contract({data, closeContract}: Props): JSX.Element {
     const { t } = useTranslation();
   return (
     <Card 
@@ -23,8 +24,9 @@ export function Contract({data}: Props): JSX.Element {
             style={{marginBottom: 10}}
             />
             <p><strong>{t('Contract.hourly_rate')}</strong> {data.hourlyRate} $</p>
-            <p><strong>{t('Contract.start')}</strong> {data.startDate}</p>
-            <p><strong>{t('Contract.end')}</strong> {data.endDate}</p>
+            <p><strong>{t('Contract.start')}</strong> {data.start}</p>
+            <p><strong>{t('Contract.end')}</strong> {data.end}</p>
+            {data.active && <Button onClick={closeContract}>{t('Contract.closeContract')}</Button>}
     </Card>
   )
 };

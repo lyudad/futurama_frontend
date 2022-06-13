@@ -13,6 +13,7 @@ import { profileApi } from './api/profileApi';
 import { contactsApi } from './api/contactsApi';
 import { proposalsApi } from './api/proposalsApi';
 import { settingsApi } from './api/settingsApi';
+import { contractsApi } from './api/contractsApi';
 
 
 const persistConfig = {
@@ -29,6 +30,7 @@ const reducers = combineReducers({
     [contactsApi.reducerPath]: contactsApi.reducer,
     [proposalsApi.reducerPath]: proposalsApi.reducer,
     [settingsApi.reducerPath]: settingsApi.reducer,
+    [contractsApi.reducerPath]: contractsApi.reducer,
     auth: authReducer,
     profile: profileReducer,
     settings: settingsReducer
@@ -48,7 +50,8 @@ export const store = configureStore({
             .concat(profileApi.middleware)
             .concat(vacanciesApi.middleware)
             .concat(contactsApi.middleware)
-            .concat(proposalsApi.middleware),
+            .concat(proposalsApi.middleware)
+            .concat(contractsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

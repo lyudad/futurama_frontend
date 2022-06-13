@@ -175,6 +175,7 @@
         "back": "BACK TO RESULTS"
     },
     "Contract": {
+        "noContractsYet": "No contracts yet",
         "title": "My contracts",
         "open": "Open contracts",
         "closed": "Closed contracts",
@@ -182,7 +183,8 @@
         "owner": "Owner",
         "hourly_rate": "Hourly rate",
         "start": "Start date",
-        "end": "End date"
+        "end": "End date",
+        "closeContract": "Close contract"
     },
     "Proposal": {
         "success": "Success",

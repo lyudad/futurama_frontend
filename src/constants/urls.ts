@@ -36,4 +36,7 @@ export const constants = {
     GET_MY_JOBS: '/proposals/myjobs',
     MY_JOBS: '/myjobs/',
     CONTRACTS: '/contracts',
+    CONTRACTS_FREELANCER: '/contracts/freelancer',
+    CONTRACTS_OWNER: 'contracts/owner',
+    CONTRACTS_UPDATE: '/contracts/update'
 };

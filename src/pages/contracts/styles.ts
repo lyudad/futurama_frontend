@@ -10,7 +10,7 @@ export const Container = styled.section`
   text-align: left;  
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 `;
 
