@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { IProposal } from 'types/proposal';
 import { constants } from 'constants/urls';
 import { Message } from '../styles';
+import { NavLink } from 'react-router-dom';
 
 interface IProps {
     proposals: IProposal[];
@@ -36,17 +37,19 @@ export function ProposalsList({ proposals }: IProps): JSX.Element {
                             <div style={{
                                 display: 'flex',
                                 justifyContent: 'space-between'
-                            }}><Image
-                                    style={{
-                                        maxHeight: '100px',
-                                        borderRadius: '50%',
-                                        margin: '5px',
-                                        width: '100px'
-                                    }}
-                                    preview={false}
-                                    src={proposal.user?.photo}
-                                    fallback={constants.PHOTO_PLACEHOLDER}
-                                /> <Message>{proposal.coverLetter}</Message>
+                            }}><NavLink to={`/profile/${proposal.user?.id}`}>
+                                    <Image
+                                        style={{
+                                            maxHeight: '100px',
+                                            borderRadius: '50%',
+                                            margin: '5px',
+                                            width: '100px'
+                                        }}
+                                        preview={false}
+                                        src={proposal.user?.photo}
+                                        fallback={constants.PHOTO_PLACEHOLDER}
+                                    />
+                                </NavLink> <Message>{proposal.coverLetter}</Message>
                             </div>
                         </Panel>
                     </Collapse>

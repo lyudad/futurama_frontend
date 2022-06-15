@@ -36,7 +36,7 @@ export function MyJobs(): JSX.Element {
                 style={{
                   boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
                 }}
-                title={job.title}
+                title={<a href={`/vacancy/${job.id}`}>{job.title}</a>}
               >
                 <span>{t('Vacancy.rate')} <strong> ${job.price}</strong></span>
                 <span>  /  {t('Vacancy.duration')} <strong> {job.timePerWeek}{t('Proposal.hour')}</strong></span>

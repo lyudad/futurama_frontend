@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useGetVacancyByIdQuery } from 'store/api/vacanciesApi';
 import { useCheckProposalIsExistQuery } from 'store/api/proposalsApi';
@@ -48,6 +48,7 @@ export default function ProjectDetails(): JSX.Element {
     const role = useAppSelector((state) => state.auth.user?.role);
     const vacancy: IVacancy = useGetVacancyByIdQuery(id).data;
     const proposalExist = useCheckProposalIsExistQuery(id).data || false;
+    const navigate = useNavigate();
 
     const { t } = useTranslation();
 
@@ -120,10 +121,7 @@ export default function ProjectDetails(): JSX.Element {
                     </div>
 
                 </FlexContainer>
-
-                <NavLink style={{ color: 'black' }} to="/vacancies">
-                    <Button>{t('Vacancy.back')}</Button>
-                </NavLink>
+                <Button onClick={() => navigate(-1)}>{t('Invite.back')}</Button>
                 {role === variables.freelancer ? <Buttons showModal={showModal} proposalExist={proposalExist} /> : null}
             </Container>
         );

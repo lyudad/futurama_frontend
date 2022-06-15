@@ -16,6 +16,7 @@ import { UserProfile } from 'types/profile';
 import { userState } from 'types/auth';
 import { Experience, ProfileCard, InfoBlock } from './style';
 import Card from './Card';
+import { NavLink } from 'react-router-dom';
 
 
 interface Props {
@@ -48,6 +49,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
             <FlexContainer style={{ marginTop: '25px' }}>
                 <Image
                     style={{
+                        minWidth: '200px',
                         maxHeight: '200px',
                         borderRadius: '0.5rem',
                         boxShadow: '2px 2px 3px 2px rgba(162, 185, 187, 0.62)'
@@ -58,34 +60,53 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                 />
                 <div style={{
                     marginLeft: '30px',
-                    width: '74%'
+                    width: '100%'
                 }}>
+
                     <Info style={{ margin: 0, flexWrap: 'wrap' }}>
-                        <InfoBlock>
-                            <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                            <InfoItem>${profile?.desirebleSalaryLevel}</InfoItem>
-                        </InfoBlock>
-                        <InfoBlock>
-                            <Title> {t('GeneralSettings.mainForm.availableHours')}</Title>
-                            <InfoItem>{profile?.availableAmountOfHours} hour</InfoItem>
-                        </InfoBlock>
-                        <InfoBlock>
-                            <Title>{t('Vacancy.englishlevel')}</Title>
-                            <InfoItem>{profile?.englishLevel}</InfoItem>
-                        </InfoBlock>
+                        {profile?.desirebleSalaryLevel ?
+                            <InfoBlock>
+                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
+                                <InfoItem>${profile?.desirebleSalaryLevel}</InfoItem>
+                            </InfoBlock> : <InfoBlock>
+                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
+                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                            </InfoBlock>}
+
+                        {profile?.availableAmountOfHours ?
+                            <InfoBlock>
+                                <Title> {t('GeneralSettings.mainForm.availableHours')}</Title>
+                                <InfoItem>{profile?.availableAmountOfHours}{t('ProfilePage.hour')}</InfoItem>
+                            </InfoBlock> : <InfoBlock>
+                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
+                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                            </InfoBlock>}
+
+                        {profile?.englishLevel ?
+                            <InfoBlock>
+                                <Title>{t('Vacancy.englishlevel')}</Title>
+                                <InfoItem>{profile?.englishLevel}</InfoItem>
+                            </InfoBlock> : <InfoBlock>
+                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
+                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                            </InfoBlock>}
                     </Info>
+
                     <Card
                         description={t('ProfilePage.contactInformation')}
                         data={contactInformation}
                     />
                 </div>
+                
             </FlexContainer>
 
-            <ProfileCard><h2>{t('ProfilePage.Skills')}</h2>
-                {profile?.skills?.map((skill: { id?: number, skill?: string; }) => (
-                    <Skill key={skill.id}>{skill.skill}</Skill>
-                ))}
-            </ProfileCard>
+            {profile?.skills?.length ? (
+                <ProfileCard><h2>{t('ProfilePage.Skills')}</h2>
+                    {profile?.skills?.map((skill: { id?: number, skill?: string; }) => (
+                        <Skill key={skill.id}>{skill.skill}</Skill>
+                    ))}
+                </ProfileCard>
+            ) : null}
 
             {profile?.workExperience?.length ? (
                 <ProfileCard>
@@ -121,7 +142,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                 </ProfileCard>
             ) : null}
 
-            {(profile?.otherExperience || profile?.description) && profile?.description !== ' ' ? (
+            {(profile?.otherExperience || profile?.description) ? (
                 <Card
                     description={t('ProfilePage.otherExperience')}
                     data={otherExperience()}

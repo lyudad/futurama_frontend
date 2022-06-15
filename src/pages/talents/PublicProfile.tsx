@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Container } from 'pages/vacancies/components/projectDetails/styles';
 import { Spinner } from 'components/ui/Spinner';
 import { useGetProfileByIdQuery } from 'store/api/profileApi';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CheckOutlined } from '@ant-design/icons';
 import { ProfilePage } from '../profile/profilePage';
@@ -18,6 +18,7 @@ function PublicProfile(): JSX.Element {
     const user = profile?.user || { lastName: '', firstName: '', email: '' };
     const { t } = useTranslation();
     const [modal, showModal] = useState(false);
+    const navigate = useNavigate();
     const inviteExist = false;
 
     if (profile) {
@@ -28,10 +29,8 @@ function PublicProfile(): JSX.Element {
                     user={user}
                     profile={profile}
                 />
-                <SendInvite modal={modal} showModal={showModal} />
-                <NavLink style={{ color: 'black' }} to="/talents">
-                    <Button>{t('Invite.back')}</Button>
-                </NavLink>
+                <SendInvite modal={modal} showModal={showModal} id={id} />
+                <Button onClick={() => navigate(-1)}>{t('Invite.back')}</Button>
                 {inviteExist ? <Button disabled><CheckOutlined /> {t('Invite.invited')}</Button> : <Button onClick={() => {
                     showModal(true);
                 }}>{t('Invite.send')}</Button>}

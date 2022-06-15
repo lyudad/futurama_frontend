@@ -15,6 +15,7 @@ import { MakeNew } from './pages/password/makeNew';
 import { SignUp } from './pages/signup';
 
 function App(): JSX.Element {
+
     const token = useAppSelector((state) => state.auth.token);
     const dispatch = useDispatch();
     const [getProfile, { data, isSuccess }] = useGetProfileMutation();

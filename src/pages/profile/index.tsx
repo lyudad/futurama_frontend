@@ -12,12 +12,13 @@ function Profile(): JSX.Element {
     const user = useAppSelector((state) => state.auth.user);
 
     useEffect(() => {
-        if (!profile?.position && user?.role === 'freelancer') {
-            navigate('/settings');
-        } if (user?.role !== 'freelancer') {
+        if (user?.role !== 'freelancer') {
             navigate('/myjobs');
         }
-    }, [profile]);
+        if (!user?.phone) {
+            navigate('/user/contacts');
+        }
+    }, [user?.phone]);
 
     if (profile && user)
         return (

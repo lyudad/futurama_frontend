@@ -25,6 +25,7 @@ function Home(): JSX.Element {
             {role === variables.freelancer ? <HeaderFreelancer /> : <HeaderJobOwner />}
             <div className='container'>
                 <Routes>
+                    <Route path="*" element={<PrivateRoute component={Profile} />} />
                     <Route path={constants.SETTINGS} element={<PrivateRoute component={Settings} />} />
                     <Route path={constants.MY_PROPOSALS} element={<PrivateRoute component={MyProposals} />} />
                     <Route path={constants.MY_JOBS} element={<PrivateRoute component={MyJobs} />} />
@@ -34,7 +35,6 @@ function Home(): JSX.Element {
                     <Route path={constants.TALENTS} element={<PrivateRoute component={Talents} />} />
                     <Route path={constants.CONTRACTS} element={<PublicRoute restricted={false} component={Contracts} />} />
                     <Route path={constants.PROFILE} element={<PublicRoute restricted={false} component={PublicProfile} />} />
-                    <Route path="*" element={<PrivateRoute component={Profile} />} />
                 </Routes>
             </div>
         </>

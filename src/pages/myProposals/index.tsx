@@ -23,7 +23,7 @@ export function MyProposals(): JSX.Element {
             proposals.map((proposal) => (
               <Card
                 key={proposal.id}
-                title={<a href={`/vacancy/${proposal.vacancy.id}`} rel="noreferrer" target='_blank'>{proposal.vacancy.title}</a>}
+                title={<a href={`/vacancy/${proposal.vacancy.id}`}>{proposal.vacancy.title}</a>}
                 size="small">
                 <p>{t('Proposal.myhourlyrate')}<strong>${proposal.price}</strong></p>
                 <Collapse>

@@ -62,7 +62,9 @@
         "conditionsForWork": "Conditions for work",
         "workExperience": "Work experience",
         "education": "Education",
-        "otherExperience": "Other:"
+        "otherExperience": "Other:",
+        "set": "SET",
+        "hour": " hour"
     },
     "MenuBar": {
         "searchWork": "Search work",
@@ -173,7 +175,7 @@
         "description": "Description:",
         "skills": "Required skills:",
         "apply": "APPLY TO JOB",
-        "back": "BACK TO RESULTS",
+        "back": "BACK",
         "keyskills": "Key skills: "
     },
     "Contract": {
@@ -216,11 +218,12 @@
     "Invite": {
         "sent": "Your invite to interview have been successfully sent!",
         "send": "SEND INVITATION",
-        "back": "BACK TO PROFILES",
+        "back": "BACK",
         "backto": "Back to profile",
         "sendinvitation": "Send invitation",
         "sendTitle": "Send your invitation to interview",
         "invited": " ALREADY INVITED",
-        "selectjob": "Select job for proposal"
+        "selectjob": "Select job for proposal",
+        "requiredmessage": "Please choose your job!"
     }
 }

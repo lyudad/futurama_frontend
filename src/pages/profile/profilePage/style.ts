@@ -20,5 +20,5 @@ export const ProfileCard = styled.div<Props>`
 `;
 
 export const InfoBlock = styled.div`
-    min-width: 183p;'
+    min-width: 183px;'
 `;

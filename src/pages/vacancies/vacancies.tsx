@@ -13,7 +13,7 @@ import {
     Form,
     Input,
     Select,
-    Button,
+
     Row,
     Col,
     Slider,
@@ -28,7 +28,7 @@ import NoDataFound from 'assets/no_data_found.png';
 import { IVacancy } from 'types/vacancy';
 import { Spinner } from 'components/ui/Spinner';
 import { Card } from './components/Card';
-import { ButtonsWrapper, Container, VacanciesContainer } from './styles';
+import { Button, ButtonsWrapper, Container, VacanciesContainer } from './styles';
 import { IFilter } from './interfaces/filter';
 
 export function Vacancies(): JSX.Element {
@@ -167,16 +167,16 @@ export function Vacancies(): JSX.Element {
                     onFinish={onFinish}
                     autoComplete="on"
                     style={{
-                        marginRight: '50px',
-                        padding: '10px 15px',
+                        marginRight: '20px',
+                        padding: '1.5rem',
                         background: '#FFFFFF',
                         borderRadius: '15px',
                         width: '355px',
-                        height: '560px',
+                        height: '570px',
                         position: 'sticky',
                         top: '10px',
                         boxShadow:
-                            '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
+                            '10px 2px 6px rgb(0 0 0 / 12%), 0px 2px 6px rgb(0 0 0 / 14%), 0px 2px 6px rgb(0 0 0 / 20%)'
                     }}
                 >
                     <Form.Item name="Search" style={{ marginBottom: '15px' }}>
@@ -205,7 +205,7 @@ export function Vacancies(): JSX.Element {
                             }}
                             placeholder={t('Vacancies.selectCategories')}
                         >
-                            {categoriesData?.map((el: { category: string }) => (
+                            {categoriesData?.map((el: { category: string; }) => (
                                 <Option key={el.category}>{el.category}</Option>
                             ))}
                         </Select>
@@ -224,7 +224,7 @@ export function Vacancies(): JSX.Element {
                             }}
                             placeholder={t('Vacancies.selectSkills')}
                         >
-                            {skillsData?.map((el: { skill: string }) => (
+                            {skillsData?.map((el: { skill: string; }) => (
                                 <Option key={el.skill}>{el.skill}</Option>
                             ))}
                         </Select>
@@ -261,7 +261,7 @@ export function Vacancies(): JSX.Element {
                     </Form.Item>
                     <Form.Item
                         name="SliderMinPrice"
-                        label="Min price"
+                        label="Min rate"
                         style={{ marginBottom: '2px' }}
                     >
                         <Row>
@@ -295,7 +295,7 @@ export function Vacancies(): JSX.Element {
                     </Form.Item>
                     <Form.Item
                         name="SliderMaxPrice"
-                        label="Max price"
+                        label="Max rate"
                         style={{ marginBottom: '2px' }}
                     >
                         <Row>
@@ -329,7 +329,7 @@ export function Vacancies(): JSX.Element {
                     </Form.Item>
                     <Form.Item
                         name="SliderMinDuration"
-                        label="Min duration"
+                        label="Min hrs/week"
                         style={{ marginBottom: '2px' }}
                     >
                         <Row>
@@ -340,7 +340,7 @@ export function Vacancies(): JSX.Element {
                                     onChange={onChangeMinDuration}
                                     value={
                                         typeof sliderMinTimePerWeekValue ===
-                                        'number'
+                                            'number'
                                             ? sliderMinTimePerWeekValue
                                             : 0
                                     }
@@ -364,7 +364,7 @@ export function Vacancies(): JSX.Element {
                     </Form.Item>
                     <Form.Item
                         name="SliderMaxDuration"
-                        label="Max duration"
+                        label="Max hrs/week"
                         style={{ marginBottom: '30px' }}
                     >
                         <Row>
@@ -375,7 +375,7 @@ export function Vacancies(): JSX.Element {
                                     onChange={onChangeMaxDuration}
                                     value={
                                         typeof sliderMaxTimePerWeekValue ===
-                                        'number'
+                                            'number'
                                             ? sliderMaxTimePerWeekValue
                                             : 0
                                     }
@@ -399,44 +399,10 @@ export function Vacancies(): JSX.Element {
                     </Form.Item>
                     <ButtonsWrapper>
                         <Form.Item>
-                            <Button
-                                type="primary"
-                                htmlType="submit"
-                                style={{
-                                    width: '150px',
-                                    height: '50px',
-                                    marginRight: '25px',
-                                    borderRadius: '20px',
-                                    border: 'none',
-                                    background: colors.BUTTON_COLOR_BASE,
-                                    fontSize: fonts.FONT_SIZE_BUTTONS,
-                                    textTransform: 'uppercase',
-                                    boxShadow:
-                                        '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
-                                }}
-                            >
-                                {t('Vacancies.searchBtn')}
-                            </Button>
+                            <Button style={{ marginRight: '15px' }} type="submit">{t('Vacancies.searchBtn')}</Button>
                         </Form.Item>
                         <Form.Item>
-                            <Button
-                                type="primary"
-                                htmlType="button"
-                                onClick={clearAll}
-                                style={{
-                                    width: '150px',
-                                    height: '50px',
-                                    borderRadius: '20px',
-                                    border: 'none',
-                                    background: colors.BUTTON_COLOR_BASE,
-                                    fontSize: fonts.FONT_SIZE_BUTTONS,
-                                    textTransform: 'uppercase',
-                                    boxShadow:
-                                        '0px 2px 6px rgba(0, 0, 0, 0.12), 0px 2px 6px rgba(0, 0, 0, 0.14),0px 2px 6px rgba(0, 0, 0, 0.2)',
-                                }}
-                            >
-                                {t('Vacancies.clearBtn')}
-                            </Button>
+                            <Button onClick={clearAll}>{t('Vacancies.clearBtn')}</Button>
                         </Form.Item>
                     </ButtonsWrapper>
                 </Form>

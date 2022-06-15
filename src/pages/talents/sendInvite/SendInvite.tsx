@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import {
     Modal,
-    Form,   
+    Form,
     Select
 } from "antd";
 import { useTranslation } from 'react-i18next';
@@ -13,14 +13,17 @@ import { useAppSelector } from 'store/hooks';
 interface IProps {
     modal: boolean;
     showModal: Dispatch<SetStateAction<boolean>>;
+    id: number;
 }
 
 type Invite = {
-    owner: number;
+    id: number;
     job: number;
+    owner: number;
+    status: string;
 };
 
-export function SendInvite({ modal, showModal }: IProps): JSX.Element {
+export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
     const owner = useAppSelector(state => state.auth.user?.id);
     const [form] = Form.useForm();
     //    const [setData] = useSendProposalMutation();
@@ -80,7 +83,7 @@ export function SendInvite({ modal, showModal }: IProps): JSX.Element {
                     layout="vertical"
                     size='large'
                 >
-                    <Form.Item required name="job">
+                    <Form.Item rules={[{ required: true, message: t('Invite.requiredmessage') }]} name="job">
                         <Select style={{
                             width: '100%'
                         }}
@@ -96,8 +99,15 @@ export function SendInvite({ modal, showModal }: IProps): JSX.Element {
                         name="owner"
                         initialValue={owner}
                     />
+                    <Form.Item noStyle
+                        name="profile"
+                        initialValue={id}
+                    />
+                    <Form.Item noStyle
+                        name="status"
+                        initialValue="pending"
+                    />
                 </Form>
-
             </Modal >
         );
     } return <div />;
