@@ -64,7 +64,8 @@
         "education": "Education",
         "otherExperience": "Other:",
         "set": "SET",
-        "hour": " hour"
+        "hour": " hour",
+        "empty": "Your profile is empty! Click here to set it."
     },
     "MenuBar": {
         "searchWork": "Search work",

@@ -3,8 +3,8 @@ import { Collapse, Image } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { IProposal } from 'types/proposal';
 import { constants } from 'constants/urls';
-import { Message } from '../styles';
 import { NavLink } from 'react-router-dom';
+import { Message } from '../styles';
 
 interface IProps {
     proposals: IProposal[];
@@ -22,11 +22,11 @@ export function ProposalsList({ proposals }: IProps): JSX.Element {
             <strong>{proposal.price}</strong> )
         </h4>);
     }
-
+    
     return (
         <>
             {
-                proposals.map((proposal: IProposal) => (
+                proposals.filter(elem => elem.coverLetter !== null).map((proposal: IProposal) => (
                     <Collapse accordion key={proposal.id}>
                         <Panel style={{
                             border: '1px solid rgba(25, 133, 179, 0.5)', marginBottom: '10px'

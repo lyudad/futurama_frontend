@@ -14,9 +14,9 @@ import { constants as urlConstants } from 'constants/urls';
 import { Image } from 'antd';
 import { UserProfile } from 'types/profile';
 import { userState } from 'types/auth';
+import { NavLink } from 'react-router-dom';
 import { Experience, ProfileCard, InfoBlock } from './style';
 import Card from './Card';
-import { NavLink } from 'react-router-dom';
 
 
 interface Props {
@@ -70,7 +70,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                                 <InfoItem>${profile?.desirebleSalaryLevel}</InfoItem>
                             </InfoBlock> : <InfoBlock>
                                 <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
                             </InfoBlock>}
 
                         {profile?.availableAmountOfHours ?
@@ -79,7 +79,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                                 <InfoItem>{profile?.availableAmountOfHours}{t('ProfilePage.hour')}</InfoItem>
                             </InfoBlock> : <InfoBlock>
                                 <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
                             </InfoBlock>}
 
                         {profile?.englishLevel ?
@@ -88,7 +88,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                                 <InfoItem>{profile?.englishLevel}</InfoItem>
                             </InfoBlock> : <InfoBlock>
                                 <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
                             </InfoBlock>}
                     </Info>
 

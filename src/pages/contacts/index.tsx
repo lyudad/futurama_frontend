@@ -12,15 +12,14 @@ import {
 import { Spinner } from 'components/ui/Spinner';
 import { UploadOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
-
 import {
     useGetContactsQuery,
     useSetContactsMutation,
 } from 'store/api/contactsApi';
 import { useAppSelector } from 'store/hooks';
 import { constants as urlConstants } from 'constants/urls';
-import { Container, Heading, Wrapper } from './styles';
 import { useNavigate } from 'react-router-dom';
+import { Container, Heading, Wrapper } from './styles';
 
 
 export function Contacts(): JSX.Element {
@@ -173,6 +172,7 @@ export function Contacts(): JSX.Element {
                         style={{
                             display: 'flex',
                             flexDirection: 'column',
+                            textAlign: 'left'
                         }}
                     >
                         <Image

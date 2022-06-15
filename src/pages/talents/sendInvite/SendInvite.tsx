@@ -6,9 +6,8 @@ import {
 } from "antd";
 import { useTranslation } from 'react-i18next';
 import { Button } from 'pages/vacancies/components/projectDetails/styles';
-import { useGetMyJobsQuery } from 'store/api/proposalsApi';
+import { useGetMyJobsQuery, useSendProposalMutation } from 'store/api/proposalsApi';
 import { IVacancy } from 'types/vacancy';
-import { useAppSelector } from 'store/hooks';
 
 interface IProps {
     modal: boolean;
@@ -17,16 +16,16 @@ interface IProps {
 }
 
 type Invite = {
-    id: number;
-    job: number;
-    owner: number;
+    user: number;
+    vacancy: number;
     status: string;
+    type: string;
 };
 
 export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
-    const owner = useAppSelector(state => state.auth.user?.id);
+
     const [form] = Form.useForm();
-    //    const [setData] = useSendProposalMutation();
+    const [setData] = useSendProposalMutation();
 
     const { data } = useGetMyJobsQuery();
     const { t } = useTranslation();
@@ -43,12 +42,12 @@ export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
         }, 3500);
     };
 
-    function sending(values: Invite): void {
-        // await setData(values);
+    async function sending(values: Invite): Promise<void> {
+        await setData(values);
         showModal(false);
         showMessage();
-        console.log(values);
     }
+
     if (data) {
         const jobs: IVacancy[] | [] = data;
 
@@ -83,7 +82,7 @@ export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
                     layout="vertical"
                     size='large'
                 >
-                    <Form.Item rules={[{ required: true, message: t('Invite.requiredmessage') }]} name="job">
+                    <Form.Item rules={[{ required: true, message: t('Invite.requiredmessage') }]} name="vacancy">
                         <Select style={{
                             width: '100%'
                         }}
@@ -96,16 +95,16 @@ export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
                     </Form.Item>
 
                     <Form.Item noStyle
-                        name="owner"
-                        initialValue={owner}
-                    />
-                    <Form.Item noStyle
-                        name="profile"
+                        name="user"
                         initialValue={id}
                     />
                     <Form.Item noStyle
                         name="status"
-                        initialValue="pending"
+                        initialValue="Pending"
+                    />
+                    <Form.Item noStyle
+                        name="type"
+                        initialValue="Invite"
                     />
                 </Form>
             </Modal >

@@ -64,7 +64,8 @@ export const Button = styled.button`
     border-radius: 10px;
     border: none;
     background-color: rgba(14, 97, 222, 0.2);
-    font-size: 16px;
+    font-size: 15px;
+    font-weight: 400;
     text-transform: uppercase;
     box-shadow: 2px 2px 5px 0px rgba(4, 8, 14, 0.5);
     &:hover {
