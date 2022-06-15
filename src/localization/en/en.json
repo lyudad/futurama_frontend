@@ -175,7 +175,8 @@
         "back": "BACK TO RESULTS"
     },
     "Contract": {
-        "noContractsYet": "No contracts yet",
+        "noOpenContractsYet": "No open contracts yet",
+        "noClosedContractsYet": "No closed contracts yet",
         "title": "My contracts",
         "open": "Open contracts",
         "closed": "Closed contracts",
