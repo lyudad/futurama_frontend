@@ -26,6 +26,15 @@ export const profileApi = createApi({
                 };
             },
         }),
+        getMyProfile: builder.query({
+            query: (headers: { token: string; }) => {
+                return {
+                    url: constants.GET_PROFILE,
+                    method: 'get',
+                    headers                   
+                };
+            },
+        }),
         getAllProfiles: builder.query<UserProfile[], void>({
             query: () => {
                 return {
@@ -45,4 +54,4 @@ export const profileApi = createApi({
     }),
 });
 
-export const { useGetProfileMutation, useGetAllProfilesQuery, useGetProfileByIdQuery } = profileApi;
+export const { useGetProfileMutation, useGetAllProfilesQuery, useGetProfileByIdQuery, useGetMyProfileQuery } = profileApi;

@@ -169,7 +169,7 @@ export function Vacancies(): JSX.Element {
                         background: '#FFFFFF',
                         borderRadius: '15px',
                         width: '355px',
-                        height: '570px',
+                        height: '562px',
                         position: 'sticky',
                         top: '10px',
                         boxShadow:
