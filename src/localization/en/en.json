@@ -167,7 +167,8 @@
         "selectEnglishLevel": "Select english level",
         "searchBtn": "Search",
         "clearBtn": "Clear All",
-        "placeholder": "Please input your query"
+        "placeholder": "Please input your query",
+        "nojobsfound": "No jobs found. Please change your search request."
     },
     "Vacancy": {
         "rate": "Rate:",
@@ -231,6 +232,7 @@
         "sendTitle": "Send your invitation to interview",
         "invited": " ALREADY INVITED",
         "selectjob": "Select job for proposal",
-        "requiredmessage": "Please choose your job!"
+        "requiredmessage": "Please choose your job!",
+        "notalentsfound": "No talents found for your categories."
     }
 }
