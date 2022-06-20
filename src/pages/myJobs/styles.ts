@@ -8,7 +8,7 @@ export const Message = styled.div`
     border-radius: 15px;
     position: relative;
     margin: 5px 12px;
-    min-height: 50px;
+    min-height: 95px;
         &::before {
         content: '';
         display: block;

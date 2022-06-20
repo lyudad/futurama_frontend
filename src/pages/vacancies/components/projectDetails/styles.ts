@@ -6,12 +6,12 @@ interface Props {
 
 export const Container = styled.section`
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  margin: 15px 70px;
+  margin: 0px 50px;
   padding: 45px 80px 30px 90px;
   background-color: #fff;
-  min-width: 750px;
-  border-radius: 1rem;
+  min-width: 750px; 
   text-align: left;  
+  min-height: 550px;
 `;
 
 export const Button = styled.button`
@@ -30,8 +30,8 @@ export const Button = styled.button`
   &:active {
     box-shadow: none;
   } 
-  &: disabled {
-    &: active {
+  &:disabled { 
+    &:active {
       box-shadow: 2px 2px 2px 2px rgba(4, 8, 14, 0.5);
   }
   cursor: not-allowed;
@@ -44,10 +44,10 @@ font-weight: 600;
 `;
 
 export const Skill = styled.div`
-   display: inline-block;
-  background-color: rgba(188, 186, 186, 0.347);
-  border-radius: 7px;
-  margin: 10px 5px 0 0;
+  display: inline-block;
+  background-color: rgba(188, 186, 186, 0.4);  
+  border-radius: 6px;
+  margin: 10px 10px 0 0;
   padding: 7px 15px;
   font-size: 16px;
   font-weight: 500;  
@@ -103,3 +103,6 @@ export const SmallHeading = styled.h2`
   margin-bottom: '10px'; 
   font-size: '15px';
   `;
+
+export const FlexContainer = styled.div`
+  display: flex;`;

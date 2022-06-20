@@ -4,11 +4,11 @@ export interface authState {
 }
 
 export interface userState {
-    id: number;
+    id?: number;
     email: string;
     firstName: string;
     lastName: string;
-    role: string;
+    role?: string;
     phone?: NullableString;
     photo?: NullableString;
 }

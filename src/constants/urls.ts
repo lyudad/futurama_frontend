@@ -16,7 +16,9 @@ export const constants = {
     GET_VACANCY_WITH_MAX_DURATION: 'search_work/vacancy_with_max_duration/',
     GET_CATEGORIES: 'search_work/categories/',
     GET_SKILLS: 'search_work/skills/',
-    GET_PROFILE: '/profile',
+    GET_PROFILE: '/profile/',
+    PROFILE: '/profile/:id',
+    GET_ALL_PROFILES: '/profile/all',
     POST_PROFILE: '/profile/update',
     USER_CONTACTS: '/user/contacts',
     PHOTO_UPLOAD: 'https://futurama.cf:3011/upload/',
@@ -35,5 +37,6 @@ export const constants = {
     DELETE_EXPERIENCE: '/profile/experience/delete/',
     GET_MY_JOBS: '/proposals/myjobs',
     MY_JOBS: '/myjobs/',
+    TALENTS: '/talents',
     CONTRACTS: '/contracts',
 };

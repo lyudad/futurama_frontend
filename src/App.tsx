@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { constants } from 'constants/urls';
 import { useAppSelector } from 'store/hooks';
 import { setProfile } from 'store/reducers/profile';
@@ -8,38 +8,36 @@ import { useGetProfileMutation } from 'store/api/profileApi';
 import PrivateRoute from 'components/privateRoute';
 import PublicRoute from 'components/publicRoute';
 import { setEducation, setExperience } from 'store/reducers/settings';
-import  Home  from './pages/home';
+import Home from './pages/home';
 import { SignIn } from './pages/signin';
 import { Recovery } from './pages/password/recovery';
 import { MakeNew } from './pages/password/makeNew';
 import { SignUp } from './pages/signup';
 
 function App(): JSX.Element {
-    const navigate = useNavigate();
+
     const token = useAppSelector((state) => state.auth.token);
     const dispatch = useDispatch();
     const [getProfile, { data, isSuccess }] = useGetProfileMutation();
 
     useEffect(() => {
-        if (isSuccess) 
-        {            
+        if (isSuccess) {
             dispatch(setProfile(data));
             dispatch(setExperience(data?.workExperience));
-            dispatch(setEducation(data?.educations))
-            navigate('/');
+            dispatch(setEducation(data?.educations));
         }
-        else if(token) {
-            getProfile({ token }); 
-        }  
+        else if (token) {
+            getProfile({ token });
+        }
     }, [isSuccess, token]);
 
     return (
         <Routes>
-            <Route path="*" element={<PrivateRoute component={Home} />}/>
-            <Route path={constants.LOGIN} element={<PublicRoute restricted component={SignIn}/>} />
-            <Route path={constants.PASSWORD_RECOVERY} element={<PublicRoute restricted component={Recovery}/>} />
-            <Route path={constants.PASSWORD_MAKE_NEW} element={<PublicRoute restricted component={MakeNew}/>} />
-            <Route path={constants.SIGNUP} element={<PublicRoute restricted component={SignUp}/>} />
+            <Route path="*" element={<PrivateRoute component={Home} />} />
+            <Route path={constants.LOGIN} element={<PublicRoute restricted component={SignIn} />} />
+            <Route path={constants.PASSWORD_RECOVERY} element={<PublicRoute restricted component={Recovery} />} />
+            <Route path={constants.PASSWORD_MAKE_NEW} element={<PublicRoute restricted component={MakeNew} />} />
+            <Route path={constants.SIGNUP} element={<PublicRoute restricted component={SignUp} />} />
         </Routes>
     );
 }

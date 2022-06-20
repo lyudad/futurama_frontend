@@ -1,5 +1,5 @@
 import React from 'react';
-import { Spin } from 'antd';
+import { Spin } from './styles';
 
 export function Spinner(): JSX.Element {
     return (
@@ -11,12 +11,7 @@ export function Spinner(): JSX.Element {
                 justifyContent: 'center',
             }}
         >
-            <Spin
-                size="large"
-                style={{
-                    display: 'block',
-                }}
-            />
+            <Spin />
         </div>
     );
 }
