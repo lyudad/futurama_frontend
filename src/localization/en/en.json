@@ -62,7 +62,7 @@
         "conditionsForWork": "Conditions for work",
         "workExperience": "Work experience",
         "education": "Education",
-        "otherExperience": "Other:",
+        "otherExperience": "Other",
         "set": "SET",
         "hour": " hour",
         "empty": "Your profile is empty! Click here to set it."
@@ -234,5 +234,8 @@
         "selectjob": "Select job for proposal",
         "requiredmessage": "Please choose your job!",
         "notalentsfound": "No talents found for your categories."
+    },
+    "Offers": {
+        "noofers": "No offers yet..."
     }
 }

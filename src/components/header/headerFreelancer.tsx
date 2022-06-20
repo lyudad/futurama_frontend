@@ -14,9 +14,9 @@ export function HeaderFreelancer(): JSX.Element {
             <NavLink to={constants.VACANCIES}>{t('MenuBar.searchWork')}</NavLink>
             <NavLink to={constants.MY_PROPOSALS}>{t('MenuBar.proposals')}</NavLink>
             <NavLink to={constants.INVITES_TO_INTERVIEW}>{t('MenuBar.InvitesToInterview')}</NavLink>
-            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.offers')}</NavLink>
+            <NavLink to={constants.OFFERS}>{t('MenuBar.offers')}</NavLink>
             <NavLink to={constants.CONTRACTS}>{t('MenuBar.contracts')}</NavLink>
-            <NavLink to={constants.SEND_EMAIL}>{t('MenuBar.chats')}</NavLink>
+            <NavLink to={constants.CHATS}>{t('MenuBar.chats')}</NavLink>
             <NavLink to={constants.SETTINGS}>{t('MenuBar.settings')}</NavLink>
             <NavLink onClick={() => {
                 localStorage.clear();

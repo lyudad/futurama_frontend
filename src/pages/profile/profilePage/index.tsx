@@ -36,9 +36,9 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
         if (profile?.otherExperience) {
             return {
                 'Other experience': profile?.otherExperience,
-                Description: profile?.description
+                'About me': profile?.description
             };
-        } return { Description: profile?.description };
+        } return { 'About me': profile?.description };
     }
 
     return (
@@ -51,6 +51,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                     style={{
                         minWidth: '200px',
                         maxHeight: '200px',
+                        objectFit: "contain",
                         borderRadius: '0.5rem',
                         boxShadow: '2px 2px 3px 2px rgba(162, 185, 187, 0.62)'
                     }}
@@ -78,7 +79,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                                 <Title> {t('GeneralSettings.mainForm.availableHours')}</Title>
                                 <InfoItem>{profile?.availableAmountOfHours}{t('ProfilePage.hour')}</InfoItem>
                             </InfoBlock> : <InfoBlock>
-                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
+                                <Title> {t('GeneralSettings.mainForm.availableHours')}</Title>
                                 <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
                             </InfoBlock>}
 
@@ -87,7 +88,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                                 <Title>{t('Vacancy.englishlevel')}</Title>
                                 <InfoItem>{profile?.englishLevel}</InfoItem>
                             </InfoBlock> : <InfoBlock>
-                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
+                                <Title> {t('Vacancy.englishlevel')}</Title>
                                 <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
                             </InfoBlock>}
                     </Info>

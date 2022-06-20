@@ -6,7 +6,6 @@ import { IProposal } from 'types/proposal';
 import { useTranslation } from 'react-i18next';
 import { Spinner } from 'components/ui/Spinner';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
-import { Container as Wrapper } from 'pages/contacts/styles';
 
 export function Invites(): JSX.Element {
     const { data, isLoading } = useGetMyInvitesQuery();
@@ -17,12 +16,12 @@ export function Invites(): JSX.Element {
     if (data) {
         const invites: IProposal[] | [] = data;
 
-        return (<>
-            {invites.length > 0 ? (
-                invites.map((invite) => (
-                    <Container style={{ minHeight: '600px' }}>
-                        <Heading>{t('MenuBar.InvitesToInterview')}</Heading>
-                        <Space direction="vertical" size="large" style={{ display: 'flex' }}>
+        return (
+            <Container style={{ minHeight: '600px' }}>
+                <Heading>{t('MenuBar.InvitesToInterview')}</Heading>
+                <Space direction="vertical" size="large" style={{ display: 'flex' }}>
+                    {invites.length > 0 ? (
+                        invites.map((invite) => (
                             <Card
                                 key={invite.id}
                                 title={<span>{t('Proposal.from')}
@@ -58,16 +57,15 @@ export function Invites(): JSX.Element {
                                     icon={<CheckOutlined />}
                                 >{t('Proposal.accept')}</Button>
                             </Card>
-                        </Space>
-                    </Container >
-                ))) : (<Wrapper><Result
-                    style={{
-                        background: 'white',
-                        borderRadius: '15px'
-                    }}
-                    title={t('Proposal.noinvites')}
-                /></Wrapper>)}
-            <div />
-        </>);
+                        ))) : (<Result
+                            style={{
+                                background: 'white',
+                                borderRadius: '15px'
+                            }}
+                            title={t('Proposal.noinvites')}
+                        />)}
+                </Space>
+            </Container >
+        );
     } return <div />;
 }

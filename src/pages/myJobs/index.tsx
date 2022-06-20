@@ -26,48 +26,47 @@ export function MyJobs(): JSX.Element {
     const jobs: IVacancy[] | [] = data;
 
     return (
-      <>
-        {jobs.length > 0 ? (
-          jobs.map((job) => (
-            <Container style={{ minHeight: '600px' }}>
-              <Heading>{t('Proposal.myjobs')}</Heading>
-              <Space direction="vertical" size="large" style={{ display: 'flex' }}>
-                <Card
-                  key={job.id}
-                  style={{
-                    boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
-                  }}
-                  title={<a href={`/vacancy/${job.id}`}>{job.title}</a>}
-                >
-                  <span>{t('Vacancy.rate')} <strong> ${job.price}</strong></span>
-                  <span>  /  {t('Vacancy.duration')} <strong> {job.timePerWeek}{t('Proposal.hour')}</strong></span>
+      <Container style={{ minHeight: '600px' }}>
+        <Heading>{t('Proposal.myjobs')}</Heading>
+        <Space direction="vertical" size="large" style={{ display: 'flex' }}>
+          {jobs.length > 0 ? (
+            jobs.map((job) => (
+              <Card
+                key={job.id}
+                style={{
+                  boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
+                }}
+                title={<a href={`/vacancy/${job.id}`}>{job.title}</a>}
+              >
+                <span>{t('Vacancy.rate')} <strong> ${job.price}</strong></span>
+                <span>  /  {t('Vacancy.duration')} <strong> {job.timePerWeek}{t('Proposal.hour')}</strong></span>
 
-                  <div style={{ paddingTop: '10px' }}>
-                    <p>{job.description}</p>
-                    <div>
-                      {job.skills?.map((skill: { id: number; skill: string; }) => (
-                        <Skill key={skill.id}>{skill.skill}</Skill>
-                      ))}
-                    </div>
+                <div style={{ paddingTop: '10px' }}>
+                  <p>{job.description}</p>
+                  <div>
+                    {job.skills?.map((skill: { id: number; skill: string; }) => (
+                      <Skill key={skill.id}>{skill.skill}</Skill>
+                    ))}
                   </div>
+                </div>
 
-                  <Collapse bordered={false}>
-                    <Panel style={{ marginTop: '20px' }} header={panelHeader(job.proposals ? job.proposals : [])} key={jobs.length}>
-                      <ProposalsList proposals={job.proposals ? job.proposals : []} />
-                    </Panel>
-                  </Collapse>
-                </Card>
-              </Space>
-            </Container >
-          ))) : (<Wrapper><Result
-            style={{
-              background: 'white',
-              borderRadius: '15px'
-            }}
-            title={t('Proposal.nojobs')}
-          /></Wrapper>)}
-        <div />
-      </>
+                <Collapse bordered={false}>
+                  <Panel style={{ marginTop: '20px' }} header={panelHeader(job.proposals ? job.proposals : [])} key={jobs.length}>
+                    <ProposalsList proposals={job.proposals ? job.proposals : []} />
+                  </Panel>
+                </Collapse>
+              </Card>
+
+
+            ))) : (<Result
+              style={{
+                background: 'white',
+                borderRadius: '15px'
+              }}
+              title={t('Proposal.nojobs')}
+            />)}
+        </Space>
+      </Container >
     );
   } return <Spinner />;
 }

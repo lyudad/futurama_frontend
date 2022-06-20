@@ -34,14 +34,14 @@ export function Talents(): JSX.Element {
                                 availableAmountOfHours={user.availableAmountOfHours}
                             />
                         ))
-                    ) : (<Wrapper>
+                    ) : (
                         <Result
                             style={{
                                 background: 'white',
                                 borderRadius: '15px'
                             }}
                             title={t('Invite.notalentsfound')}
-                        /></Wrapper>
+                        />
                     )}
                 </FlexContainer>
             </Container>
