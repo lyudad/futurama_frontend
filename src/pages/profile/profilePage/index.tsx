@@ -14,9 +14,9 @@ import { constants as urlConstants } from 'constants/urls';
 import { Image } from 'antd';
 import { UserProfile } from 'types/profile';
 import { userState } from 'types/auth';
+import { NavLink } from 'react-router-dom';
 import { Experience, ProfileCard, InfoBlock } from './style';
 import Card from './Card';
-import { NavLink } from 'react-router-dom';
 
 
 interface Props {
@@ -70,7 +70,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                                 <InfoItem>${profile?.desirebleSalaryLevel}</InfoItem>
                             </InfoBlock> : <InfoBlock>
                                 <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
                             </InfoBlock>}
 
                         {profile?.availableAmountOfHours ?
@@ -79,7 +79,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                                 <InfoItem>{profile?.availableAmountOfHours}{t('ProfilePage.hour')}</InfoItem>
                             </InfoBlock> : <InfoBlock>
                                 <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
                             </InfoBlock>}
 
                         {profile?.englishLevel ?
@@ -88,7 +88,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                                 <InfoItem>{profile?.englishLevel}</InfoItem>
                             </InfoBlock> : <InfoBlock>
                                 <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to={`/settings`}>{t('ProfilePage.set')}</NavLink></InfoItem>
+                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
                             </InfoBlock>}
                     </Info>
 
@@ -100,15 +100,15 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                 
             </FlexContainer>
 
-            {profile?.skills?.length ? (
+            {!!profile?.skills?.length && (
                 <ProfileCard><h2>{t('ProfilePage.Skills')}</h2>
                     {profile?.skills?.map((skill: { id?: number, skill?: string; }) => (
                         <Skill key={skill.id}>{skill.skill}</Skill>
                     ))}
                 </ProfileCard>
-            ) : null}
+            )}
 
-            {profile?.workExperience?.length ? (
+            {!!profile?.workExperience?.length && (
                 <ProfileCard>
                     <h2>{t('ProfilePage.workExperience')}</h2>
                     <Experience>
@@ -124,9 +124,9 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                         })}
                     </Experience>
                 </ProfileCard>
-            ) : null}
+            )}
 
-            {profile?.educations?.length ? (
+            {!!profile?.educations?.length && (
                 <ProfileCard>
                     <h2>{t('ProfilePage.education')}</h2>
                     <Experience>
@@ -140,14 +140,14 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                         })}
                     </Experience>
                 </ProfileCard>
-            ) : null}
+            )}
 
-            {(profile?.otherExperience || profile?.description) ? (
+            {(!!profile?.otherExperience || !!profile?.description) && (
                 <Card
                     description={t('ProfilePage.otherExperience')}
                     data={otherExperience()}
                 />
-            ) : null}
+            )}
         </>
     );
 }

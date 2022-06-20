@@ -19,8 +19,8 @@ import {
 } from 'store/api/contactsApi';
 import { useAppSelector } from 'store/hooks';
 import { constants as urlConstants } from 'constants/urls';
-import { Container, Heading, Wrapper } from './styles';
 import { useNavigate } from 'react-router-dom';
+import { Container, Heading, Wrapper } from './styles';
 
 
 export function Contacts(): JSX.Element {

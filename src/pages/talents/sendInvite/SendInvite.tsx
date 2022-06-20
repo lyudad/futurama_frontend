@@ -47,7 +47,6 @@ export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
         // await setData(values);
         showModal(false);
         showMessage();
-        console.log(values);
     }
     if (data) {
         const jobs: IVacancy[] | [] = data;

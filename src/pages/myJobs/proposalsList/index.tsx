@@ -3,8 +3,8 @@ import { Collapse, Image } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { IProposal } from 'types/proposal';
 import { constants } from 'constants/urls';
-import { Message } from '../styles';
 import { NavLink } from 'react-router-dom';
+import { Message } from '../styles';
 
 interface IProps {
     proposals: IProposal[];
