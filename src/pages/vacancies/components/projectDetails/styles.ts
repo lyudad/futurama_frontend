@@ -15,7 +15,7 @@ export const Container = styled.section`
 `;
 
 export const Button = styled.button`
-  min-width: 200px;
+  min-width: 220px;
   background-color: rgba(14, 97, 222, 0.2);
   border-radius: 6px;
   padding: 10px 40px;
