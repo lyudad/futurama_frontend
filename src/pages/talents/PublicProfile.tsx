@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Container } from 'pages/vacancies/components/projectDetails/styles';
 import { Spinner } from 'components/ui/Spinner';
 import { useGetProfileByIdQuery } from 'store/api/profileApi';
-import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CheckOutlined } from '@ant-design/icons';
 import { ProfilePage } from '../profile/profilePage';

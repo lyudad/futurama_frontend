@@ -49,7 +49,7 @@ export function Card({
                 </FlexContainer>
 
                 <Header3>{t('Vacancy.keyskills')}</Header3>
-                <div style={{ color: 'black', display: 'flex', justifyContent: 'left' }}>
+                <div style={{ color: 'black', display: 'flex', justifyContent: 'left', flexWrap: 'wrap' }}>
                     {skills?.map((skill: { id?: number, skill?: string; }) => (
                         <Skill key={skill.id}>{skill.skill}</Skill>
                     ))}

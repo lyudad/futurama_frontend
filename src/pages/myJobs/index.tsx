@@ -15,6 +15,7 @@ export function MyJobs(): JSX.Element {
   const { t } = useTranslation();
 
   function panelHeader(proposals: IProposal[]): JSX.Element {
+    proposals = proposals.filter(elem => elem.coverLetter !== null)
     if (proposals.length === 0) return <strong>{t('Proposal.noproposals')}</strong>;
     if (proposals.length === 1)
       return <span>{t('Proposal.show')}<strong>{proposals.length}</strong>{t('Proposal.proposal')}</span>;

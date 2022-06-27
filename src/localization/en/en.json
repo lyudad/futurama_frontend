@@ -64,7 +64,8 @@
         "education": "Education",
         "otherExperience": "Other:",
         "set": "SET",
-        "hour": " hour"
+        "hour": " hour",
+        "empty": "Your profile is empty! Click here to set it."
     },
     "MenuBar": {
         "searchWork": "Search work",
@@ -208,12 +209,18 @@
         "hourlyrate": "hourly rate: $",
         "hour": " hour",
         "recieved": "Received: ",
+        "from": "Invite from: ",
+        "position": "Position: ",
         "nojobs": "No jobs yet...",
         "noproposals": "No proposals yet...",
+        "noinvites": "No invites yet...",
         "show": "Show ",
         "proposal": " proposal",
         "proposals": " proposals",
-        "sentDate": "Sent: "
+        "sentDate": "Sent: ",
+        "accept": "Accept",
+        "decline": "Decline",
+        "jobdetails": "Job details"
     },
     "Invite": {
         "sent": "Your invite to interview have been successfully sent!",
