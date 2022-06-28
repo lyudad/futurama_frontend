@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, Card, Collapse } from 'antd';
+import { Space, Card, Collapse, Result } from 'antd';
 import { useGetMyProposalsQuery } from 'store/api/proposalsApi';
 import { Container, Heading } from 'pages/vacancies/components/projectDetails/styles';
 import { IProposal } from 'types/proposal';
@@ -38,7 +38,13 @@ export function MyProposals(): JSX.Element {
                   </Panel>
                 </Collapse>
               </Card>
-            ))) : (<h5>{t('Proposal.noproposals')}</h5>)}
+            ))) : (<Result
+              style={{
+                background: 'white',
+                borderRadius: '15px'
+              }}
+              title={t('Proposal.noproposals')}
+            />)}
         </Space>
       </Container >
     );

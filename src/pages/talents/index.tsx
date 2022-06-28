@@ -1,19 +1,19 @@
 import React from 'react';
-import NoDataFound from 'assets/no_data_found.png';
-
 import { Spinner } from 'components/ui/Spinner';
 import { Container } from 'pages/vacancies/styles';
-
+import { Container as Wrapper } from 'pages/contacts/styles';
 import { useGetAllProfilesQuery } from 'store/api/profileApi';
 import { UserProfile } from 'types/profile';
 import { FlexContainer } from 'pages/vacancies/components/projectDetails/styles';
+import { Result } from 'antd';
+import { useTranslation } from 'react-i18next';
 import { Card } from './Card/Card';
 
 
 export function Talents(): JSX.Element {
 
     const profiles = useGetAllProfilesQuery().data;
-
+    const { t } = useTranslation();
     if (profiles)
 
         return (
@@ -35,13 +35,12 @@ export function Talents(): JSX.Element {
                             />
                         ))
                     ) : (
-                        <img
-                            src={NoDataFound}
-                            alt="No data found"
+                        <Result
                             style={{
-                                width: '610px',
-                                borderRadius: '10px',
+                                background: 'white',
+                                borderRadius: '15px'
                             }}
+                            title={t('Invite.notalentsfound')}
                         />
                     )}
                 </FlexContainer>

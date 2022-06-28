@@ -7,6 +7,7 @@ background-color: #FFF;
 border-radius: 10px;
 min-width: 748px;
 min-height: 460px;
+box-shadow: rgb(0 0 0 / 12%) 10px 2px 6px, rgb(0 0 0 / 14%) 0px 2px 6px, rgb(0 0 0 / 20%) 0px 2px 6px;
 `;
 
 export const Heading = styled.h1`

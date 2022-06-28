@@ -45,13 +45,14 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
     };
 
     async function sending(values: Proposal): Promise<void> {
-        await setData(values);        
+        await setData(values);
         showModal(false);
         showMessage();
     }
 
     return (
         <Modal
+            onCancel={() => { showModal(false); }}
             bodyStyle={{ padding: '35px' }}
             style={{ top: 30 }}
             width={900}

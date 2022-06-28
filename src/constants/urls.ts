@@ -27,6 +27,8 @@ export const constants = {
     SEND_PROPOSAL: '/proposals/send',
     SETTINGS: '/settings',
     MY_PROPOSALS: '/myproposals',
+    OFFERS: '/offers',
+    CHATS: '/chats',
     INVITES_TO_INTERVIEW: '/invites',
     GET_INVITES: 'proposals/myinvites',
     GET_PROPOSALS: '/proposals/myproposals',

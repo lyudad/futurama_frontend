@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, Card, Collapse, Button } from 'antd';
+import { Space, Card, Collapse, Button, Result } from 'antd';
 import { useGetMyInvitesQuery } from 'store/api/proposalsApi';
 import { Container, Heading, Skill } from 'pages/vacancies/components/projectDetails/styles';
 import { IProposal } from 'types/proposal';
@@ -57,7 +57,13 @@ export function Invites(): JSX.Element {
                                     icon={<CheckOutlined />}
                                 >{t('Proposal.accept')}</Button>
                             </Card>
-                        ))) : (<h3>{t('Proposal.noinvites')}</h3>)}
+                        ))) : (<Result
+                            style={{
+                                background: 'white',
+                                borderRadius: '15px'
+                            }}
+                            title={t('Proposal.noinvites')}
+                        />)}
                 </Space>
             </Container >
         );

@@ -36,9 +36,9 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
         if (profile?.otherExperience) {
             return {
                 'Other experience': profile?.otherExperience,
-                Description: profile?.description
+                'About me': profile?.description
             };
-        } return { Description: profile?.description };
+        } return { 'About me': profile?.description };
     }
 
     return (
@@ -51,6 +51,7 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                     style={{
                         minWidth: '200px',
                         maxHeight: '200px',
+                        objectFit: "contain",
                         borderRadius: '0.5rem',
                         boxShadow: '2px 2px 3px 2px rgba(162, 185, 187, 0.62)'
                     }}

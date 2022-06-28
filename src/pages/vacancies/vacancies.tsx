@@ -19,9 +19,9 @@ import {
     InputNumber,
     Pagination,
     PaginationProps,
+    Result,
 } from 'antd';
 import { useTranslation } from 'react-i18next';
-import NoDataFound from 'assets/no_data_found.png';
 import { IVacancy } from 'types/vacancy';
 import { Spinner } from 'components/ui/Spinner';
 import { Card } from './components/Card';
@@ -258,7 +258,7 @@ export function Vacancies(): JSX.Element {
                     </Form.Item>
                     <Form.Item
                         name="SliderMinPrice"
-                        label="Min rate"
+                        label="Min&nbsp;hourly&nbsp;rate"
                         style={{ marginBottom: '2px' }}
                     >
                         <Row>
@@ -276,6 +276,7 @@ export function Vacancies(): JSX.Element {
                             </Col>
                             <Col span={4}>
                                 <InputNumber
+                                    formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                     min={vacancyWithMinPrice?.price}
                                     max={vacancyWithMaxPrice?.price}
                                     step={50}
@@ -292,7 +293,7 @@ export function Vacancies(): JSX.Element {
                     </Form.Item>
                     <Form.Item
                         name="SliderMaxPrice"
-                        label="Max rate"
+                        label="Max&nbsp;hourly&nbsp;rate"
                         style={{ marginBottom: '2px' }}
                     >
                         <Row>
@@ -310,6 +311,7 @@ export function Vacancies(): JSX.Element {
                             </Col>
                             <Col span={4}>
                                 <InputNumber
+                                    formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                                     min={vacancyWithMinPrice?.price}
                                     max={vacancyWithMaxPrice?.price}
                                     step={50}
@@ -429,13 +431,12 @@ export function Vacancies(): JSX.Element {
                                     )
                             )
                     ) : (
-                        <img
-                            src={NoDataFound}
-                            alt="No data found"
+                        <Result
                             style={{
-                                width: '610px',
-                                borderRadius: '10px',
+                                background: 'white',
+                                borderRadius: '15px'
                             }}
+                            title={t('Vacancies.nojobsfound')}
                         />
                     )}
                 </VacanciesContainer>
