@@ -237,5 +237,12 @@
     },
     "Offers": {
         "noofers": "No offers yet..."
+    },
+    "Chats": {
+        "chats": "Chats",
+        "choose": "Select chat",
+        "nochats": "You have no active chats",
+        "nomessages": "No messages found",
+        "send": "SEND"
     }
 }

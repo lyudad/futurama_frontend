@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Spin = styled.button`
-  border: 10px solid #f3f3f3;
+  border: 10px solid gainsboro;
   border-top: 10px solid transparent;
   border-radius: 50%;
   width: 80px;
