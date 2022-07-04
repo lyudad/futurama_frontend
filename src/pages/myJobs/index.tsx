@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { Spinner } from 'components/ui/Spinner';
 import { IVacancy } from 'types/vacancy';
 import { IProposal } from 'types/proposal';
-import { Container as Wrapper } from 'pages/contacts/styles';
 import { ProposalsList } from './proposalsList';
 
 export function MyJobs(): JSX.Element {

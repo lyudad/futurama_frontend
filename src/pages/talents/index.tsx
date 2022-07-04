@@ -1,12 +1,11 @@
 import React from 'react';
 import { Spinner } from 'components/ui/Spinner';
 import { Container } from 'pages/vacancies/styles';
-import { Container as Wrapper } from 'pages/contacts/styles';
 import { useGetAllProfilesQuery } from 'store/api/profileApi';
 import { UserProfile } from 'types/profile';
-import { FlexContainer } from 'pages/vacancies/components/projectDetails/styles';
 import { Result } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { FlexColumn } from 'pages/chats/styles';
 import { Card } from './Card/Card';
 
 
@@ -18,7 +17,7 @@ export function Talents(): JSX.Element {
 
         return (
             <Container>
-                <FlexContainer style={{ flexDirection: 'column', margin: '0 auto' }}>
+                <FlexColumn style={{ margin: '0 auto' }}>
                     {profiles?.length > 0 ? (
                         profiles.map((user: UserProfile) => (
                             <Card
@@ -43,7 +42,7 @@ export function Talents(): JSX.Element {
                             title={t('Invite.notalentsfound')}
                         />
                     )}
-                </FlexContainer>
+                </FlexColumn>
             </Container>
         ); return <Spinner />;
 }
