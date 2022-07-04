@@ -1,8 +1,8 @@
 export type IMessage = {
     id?: number;
-    messageBody: string,
-    createdAt: string,
-    chatId?: number;
+    type: string;
+    messageBody: string;
+    createdAt: string;
     author?:
     {
         id: number;

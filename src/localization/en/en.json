@@ -69,7 +69,7 @@
     },
     "MenuBar": {
         "searchWork": "Search work",
-        "InvitesToInterview": "Invites to interview",
+        "InvitesToInterview": "Invites",
         "offers": "Offers",
         "proposals": "My proposals",
         "contracts": "Contracts",
@@ -142,7 +142,7 @@
         "updating": "Updating...",
         "updated": "Updated!",
         "message401": "Sorry, you are not authorized to access this page.",
-        "contactinfo": "Contact info",
+        "contactinfo": "Contacts",
         "firstname": "First name",
         "lastname": "Last name",
         "inputFirstname": "Please input first name",
@@ -243,6 +243,7 @@
         "choose": "Select chat",
         "nochats": "You have no active chats",
         "nomessages": "No messages found",
-        "send": "SEND"
+        "send": "SEND",
+        "enter": "Enter message..."
     }
 }

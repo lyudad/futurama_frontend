@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Image } from 'antd';
 
 interface Props {
     author?: string;
@@ -11,6 +12,7 @@ interface ChatProps {
 
 export const Container = styled.section`
   display: flex;
+ 
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   margin: 0px 50px;
   padding: 25px;
@@ -28,7 +30,7 @@ export const ChatWrapper = styled.div<ChatProps>`
     background-color: ${(Props) => Props.chosen ? "honeydew" : "white"};
     padding-top: 15px;
     padding-left: 15px;
-    height: 80px;
+    min-height: 80px;
     padding-bottom: 8px;
     border-bottom: 1px solid #E5E4E2;
     transition: all 0.4s ease;
@@ -44,6 +46,7 @@ export const MessageContainer = styled.div`
     flex: 1 1 100%;
     padding: 25px;
     max-height: 600px;
+    position: relative;
     overflow-y: scroll;
     -ms-overflow-style: none;  
     scrollbar-width: none;    
@@ -91,10 +94,12 @@ ${Props => {
     `;
         } if (Props.author === 'me') {
             return `
+            margin-right: 17px;
             background-color: #E0FFFF;       
     `;
         }
         return `
+            margin-left: 17px;
             background-color: #d5eafb;      
     `;
     }}  
@@ -122,3 +127,10 @@ export const FlexColumn = styled.div`
     display: flex;
     flex-direction: column;
  `;
+
+export const Avatar = styled(Image)`
+    max-height: 60px;
+    border-radius: 50%;
+    margin-top: 5px;
+    width: 50px;
+    `;

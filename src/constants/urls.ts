@@ -44,6 +44,6 @@ export const constants = {
     TALENTS: '/talents',
     CONTRACTS: '/contracts',
     GET_MY_CHATS: '/chats/mychats',
-    GET_MESSAGES: '/messages/',
+    GET_MESSAGES: 'messages/',
     SEND_MESSAGE: '/messages/send'
 };
