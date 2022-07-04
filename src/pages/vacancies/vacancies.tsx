@@ -250,7 +250,7 @@ export function Vacancies(): JSX.Element {
                                 Pre-Intermediate
                             </Option>
                             <Option value="Intermediate">Intermediate</Option>
-                            <Option value="Apper-Intermadiate">
+                            <Option value="Upper-intermediate">
                                 Upper-Intermadiate
                             </Option>
                             <Option value="Advanced">Advanced</Option>

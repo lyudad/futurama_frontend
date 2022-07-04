@@ -6,8 +6,8 @@ export const vacanciesApi = createApi({
     reducerPath: 'vacancies',
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_URL, prepareHeaders: (headers) => {
-            headers.set('Access-Control-Allow-Origin', '*')
-            return headers
+            headers.set('Access-Control-Allow-Origin', '*');
+            return headers;
         },
     }),
     endpoints: (builder) => ({
@@ -18,6 +18,15 @@ export const vacanciesApi = createApi({
                 method: 'POST',
                 body,
             }),
+        }),
+        createJob: builder.mutation({
+            query: (body) => {
+                return {
+                    url: constants.SEND_JOB,
+                    method: "post",
+                    body
+                };
+            },
         }),
         getVacancyById: builder.query({
             query: (vacancyId: number) => constants.GET_VACANCIES + vacancyId
@@ -51,5 +60,6 @@ export const {
     useGetvacancyWithMinPriceQuery,
     useGetvacancyWithMaxPriceQuery,
     useGetvacancyWithMinDurationQuery,
-    useGetvacancyWithMaxDurationQuery }
+    useGetvacancyWithMaxDurationQuery,
+    useCreateJobMutation }
     = vacanciesApi;

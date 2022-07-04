@@ -19,6 +19,7 @@ import PublicProfile from 'pages/talents/PublicProfile';
 import { Invites } from 'pages/myProposals/invites';
 import Offers from 'pages/offers';
 import Chats from 'pages/chats';
+import CreateJob from 'pages/myJobs/createJob';
 
 function Home(): JSX.Element {
     const role = useAppSelector((state) => state.auth.user?.role);
@@ -32,6 +33,7 @@ function Home(): JSX.Element {
                     <Route path={constants.SETTINGS} element={<PrivateRoute component={Settings} />} />
                     <Route path={constants.MY_PROPOSALS} element={<PrivateRoute component={MyProposals} />} />
                     <Route path={constants.MY_JOBS} element={<PrivateRoute component={MyJobs} />} />
+                    <Route path={constants.CREATE_JOB} element={<PrivateRoute component={CreateJob} />} />
                     <Route path={constants.VACANCIES} element={<PrivateRoute component={Vacancies} />} />
                     <Route path={constants.VACANCY_DETAILS} element={<PublicRoute restricted={false} component={ProjectDetails} />} />
                     <Route path={constants.USER_CONTACTS} element={<PublicRoute restricted={false} component={Contacts} />} />
