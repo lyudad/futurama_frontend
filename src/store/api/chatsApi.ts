@@ -43,8 +43,6 @@ export const chatsApi = createApi({
                 };
             },
         }),
-
-
     }),
 });
 
