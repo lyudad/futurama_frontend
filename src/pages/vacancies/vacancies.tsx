@@ -245,15 +245,11 @@ export function Vacancies(): JSX.Element {
                                     .includes(input.toLowerCase())
                             }
                         >
-                            <Option value="Elementary">Elementary</Option>
-                            <Option value="Pre-Intermediate">
-                                Pre-Intermediate
-                            </Option>
-                            <Option value="Intermediate">Intermediate</Option>
-                            <Option value="Upper-intermediate">
-                                Upper-Intermadiate
-                            </Option>
-                            <Option value="Advanced">Advanced</Option>
+                            <Option value="Elementary">{t('CreateJob.elementary')}</Option>
+                            <Option value="Pre-intermediate">{t('CreateJob.preintermediate')}</Option>
+                            <Option value="Intermediate">{t('CreateJob.intermediate')}</Option>
+                            <Option value="Upper-intermediate">{t('CreateJob.upperintermediate')}</Option>
+                            <Option value="Advanced">{t('CreateJob.advanced')}</Option>
                         </Select>
                     </Form.Item>
                     <Form.Item

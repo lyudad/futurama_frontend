@@ -26,26 +26,25 @@ type IJob = {
     skills: [];
     timePerWeek: number;
     category: number;
-    ownew: number;
+    owner: number;
 };
-
 
 function CreateJob(): JSX.Element {
 
     const myId = useAppSelector((state) => state.auth.user?.id);
+    const { data: categoriesData } = useGetCategoriesQuery('');
+    const { data: skillsData } = useGetSkillsQuery('');
+    const [sendJob] = useCreateJobMutation();
+
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { Option } = Select;
     const [form] = Form.useForm();
-    const { data: categoriesData } = useGetCategoriesQuery('');
-    const { data: skillsData } = useGetSkillsQuery('');
 
-    const [sendJob] = useCreateJobMutation();
-
-    const openMessage = (): void => {
+    const showMessage = (): void => {
         const key = 'updatable';
         message.loading({
-            content: "Creating...",
+            content: t('CreateJob.creating'),
             key,
             style: {
                 marginTop: '130px',
@@ -53,7 +52,7 @@ function CreateJob(): JSX.Element {
         });
         setTimeout(() => {
             message.success({
-                content: "Job succesfully created!",
+                content: t('CreateJob.created'),
                 key,
                 duration: 2,
                 style: {
@@ -65,14 +64,14 @@ function CreateJob(): JSX.Element {
 
     async function sending(values: IJob): Promise<void> {
         await sendJob(values);
-        openMessage();
+        showMessage();
         navigate('/myjobs');
     }
 
 
     return (
         <Container>
-            <Heading>Create a job</Heading>
+            <Heading>{t('CreateJob.createajob')}</Heading>
             <Form
                 size='large'
                 form={form}
@@ -80,22 +79,24 @@ function CreateJob(): JSX.Element {
             >
                 <Form.Item
                     name="title"
-                    label="Vacancy title:"
+                    label={t('CreateJob.title')}
                     rules={[
                         {
-                            required: true
+                            required: true,
+                            message: t('CreateJob.titlemessage')
                         },
                     ]}>
-                    <Input placeholder="Input vacancy name" />
+                    <Input placeholder={t('CreateJob.titleplaceholder')} />
                 </Form.Item>
 
-                <Form.Item name="category" label="Job category"
+                <Form.Item name="category" label={t('CreateJob.category')}
                     rules={[
                         {
-                            required: true
+                            required: true,
+                            message: t('CreateJob.categorymessage')
                         },
                     ]}>
-                    <Select placeholder="Select job category">
+                    <Select placeholder={t('CreateJob.categoryplaceholder')}>
                         {categoriesData?.map((el: { id: number, category: string; }) => (
                             <Option value={el.id} key={el.category}>{el.category}</Option>
                         ))}
@@ -104,60 +105,53 @@ function CreateJob(): JSX.Element {
 
                 <Form.Item
                     name="location"
-                    label="Location:"
+                    label={t('CreateJob.location')}
                     rules={[
                         {
-                            required: true
+                            required: true,
+                            message: t('CreateJob.locationmessage')
                         },
                     ]}>
-                    <Input placeholder="Input job's location" />
+                    <Input placeholder={t('CreateJob.locationplaceholder')} />
                 </Form.Item>
 
                 <Form.Item
                     name="company"
-                    label="Name your company:"
+                    label={t('CreateJob.company')}
                     rules={[
                         {
-                            required: true
+                            required: true,
+                            message: t('CreateJob.companymessage')
                         },
                     ]}>
-                    <Input placeholder="Input company name" />
+                    <Input placeholder={t('CreateJob.companyplaceholder')} />
                 </Form.Item>
 
                 <Row>
                     <Col>
-                        <Form.Item name="englishLevel" label="Select required english level:" rules={[
+                        <Form.Item name="englishLevel" label={t('CreateJob.englishlevel')} rules={[
                             {
-                                required: true
+                                required: true,
+                                message: t('CreateJob.englishlevelmessage')
                             },
                         ]}>
-                            <Select
-                                placeholder={t('Vacancies.selectEnglishLevel')}
-                                optionFilterProp="children"
-                                filterOption={(input, option) =>
-                                    (option?.children as unknown as string)
-                                        .toLowerCase()
-                                        .includes(input.toLowerCase())
-                                }>
-                                <Option value="Elementary">Elementary</Option>
-                                <Option value="Pre-intermediate">
-                                    Pre-Intermediate
-                                </Option>
-                                <Option value="Intermediate">Intermediate</Option>
-                                <Option value="Upper-intermediate">
-                                    Upper-Intermadiate
-                                </Option>
-                                <Option value="Advanced">Advanced</Option>
+                            <Select placeholder={t('Vacancies.selectEnglishLevel')}>
+                                <Option value="Elementary">{t('CreateJob.elementary')}</Option>
+                                <Option value="Pre-intermediate">{t('CreateJob.preintermediate')}</Option>
+                                <Option value="Intermediate">{t('CreateJob.intermediate')}</Option>
+                                <Option value="Upper-intermediate">{t('CreateJob.upperintermediate')}</Option>
+                                <Option value="Advanced">{t('CreateJob.advanced')}</Option>
                             </Select>
                         </Form.Item>
                     </Col>
                     <Col offset={3} >
                         <Form.Item
                             name="price"
-                            label="Hourly&nbsp;rate:"
+                            label={t('CreateJob.hourlyrate')}
                             rules={[
                                 {
-                                    required: true
+                                    required: true,
+                                    message: t('CreateJob.hourlyratemessage')
                                 },
                             ]}
                         >
@@ -172,10 +166,11 @@ function CreateJob(): JSX.Element {
                     <Col offset={3} >
                         <Form.Item
                             name="timePerWeek"
-                            label="Duration (hours per week)"
+                            label={t('CreateJob.duration')}
                             rules={[
                                 {
-                                    required: true
+                                    required: true,
+                                    message: t('CreateJob.durationmessage')
                                 },
                             ]}
                         >
@@ -190,10 +185,11 @@ function CreateJob(): JSX.Element {
 
                 <Form.Item
                     name="skills"
-                    label="Select required skills:"
+                    label={t('CreateJob.selectskills')}
                     rules={[
                         {
-                            required: true
+                            required: true,
+                            message: t('CreateJob.selectskillsmessage')
                         },
                     ]}
                 >
@@ -209,17 +205,18 @@ function CreateJob(): JSX.Element {
 
                 <Form.Item
                     name="description"
-                    label="Description of the job:"
+                    label={t('CreateJob.description')}
                     rules={[
                         {
-                            required: true
+                            required: true,
+                            message: t('CreateJob.descriptionmessage')
                         },
                     ]}>
                     <TextArea
                         showCount
                         rows={8}
                         maxLength={999}
-                        placeholder="Input description"
+                        placeholder={t('CreateJob.descriptionplaceholder')}
                     />
 
                 </Form.Item>
@@ -238,7 +235,7 @@ function CreateJob(): JSX.Element {
                     .then((values) => {
                         sending(values);
                     });
-            }} key="submit">CREATE</Button>
+            }} key="submit">{t('CreateJob.create')}</Button>
         </Container>
     );
 }
