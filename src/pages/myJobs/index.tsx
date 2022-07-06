@@ -5,11 +5,11 @@ import { useTranslation } from 'react-i18next';
 import { Spinner } from 'components/ui/Spinner';
 import { IVacancy } from 'types/vacancy';
 import { IProposal } from 'types/proposal';
-import { ProposalsList } from './proposalsList';
 import { Button as CustomButton } from 'components/ui/button';
-import { ListSelector } from './styles';
 import { useChangeJobStatusMutation, useDeleteJobMutation, useGetMyJobsQuery } from 'store/api/vacanciesApi';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { ListSelector } from './styles';
+import { ProposalsList } from './proposalsList';
 
 export function MyJobs(): JSX.Element {
   const { data } = useGetMyJobsQuery();
