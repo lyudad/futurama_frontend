@@ -17,6 +17,7 @@ export const constants = {
     GET_CATEGORIES: 'search_work/categories/',
     SEND_JOB: 'search_work/add_vacancy',
     GET_SKILLS: 'search_work/skills/',
+    CHANGE_STATUS: 'search_work/status/',
     GET_PROFILE: '/profile/',
     PROFILE: '/profile/:id',
     GET_ALL_PROFILES: '/profile/all',

@@ -22,3 +22,8 @@ export const Message = styled.div`
 }
 `;
 
+export const ListSelector = styled.div`
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+`

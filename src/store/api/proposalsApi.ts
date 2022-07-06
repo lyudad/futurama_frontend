@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { constants } from 'constants/urls';
 import { RootState } from 'store';
 
-
 export const proposalsApi = createApi({
     reducerPath: 'sendProposalApi',
     baseQuery: fetchBaseQuery({
@@ -53,14 +52,6 @@ export const proposalsApi = createApi({
             },
             providesTags: [{ type: 'Proposal', id: 'LIST' }],
         }),
-        getMyJobs: build.query<[], void>({
-            query: () => {
-                return {
-                    url: constants.GET_MY_JOBS,
-                    method: "get"
-                };
-            }
-        })
     }),
 });
 
@@ -68,5 +59,4 @@ export const {
     useSendProposalMutation,
     useGetMyProposalsQuery,
     useCheckProposalIsExistQuery,
-    useGetMyJobsQuery,
     useGetMyInvitesQuery } = proposalsApi;
