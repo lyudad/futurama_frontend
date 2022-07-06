@@ -16,12 +16,20 @@ export const chatsApi = createApi({
             return headers;
         },
     }),
-
     endpoints: (build) => ({
         sendMessage: build.mutation({
             query: (body) => {
                 return {
                     url: constants.SEND_MESSAGE,
+                    method: "post",
+                    body
+                };
+            },
+        }),
+        createChat: build.mutation({
+            query: (body) => {
+                return {
+                    url: constants.CREATE_CHAT,
                     method: "post",
                     body
                 };
@@ -46,4 +54,4 @@ export const chatsApi = createApi({
     }),
 });
 
-export const { useGetMyChatsQuery, useGetMesagesByChatIdQuery, useSendMessageMutation } = chatsApi;
+export const { useGetMyChatsQuery, useGetMesagesByChatIdQuery, useSendMessageMutation, useCreateChatMutation } = chatsApi;

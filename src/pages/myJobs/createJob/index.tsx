@@ -68,7 +68,6 @@ function CreateJob(): JSX.Element {
         navigate('/myjobs');
     }
 
-
     return (
         <Container>
             <Heading>{t('CreateJob.createajob')}</Heading>
@@ -209,10 +208,12 @@ function CreateJob(): JSX.Element {
                     rules={[
                         {
                             required: true,
+                            min: 200,
                             message: t('CreateJob.descriptionmessage')
                         },
                     ]}>
                     <TextArea
+
                         showCount
                         rows={8}
                         maxLength={999}

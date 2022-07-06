@@ -1,11 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { CardWrapper, Header2, Header3 } from 'pages/vacancies/styles';
+import { Header2, Header3 } from 'pages/vacancies/styles';
 import { UserProfile } from 'types/profile';
 import { FlexContainer, Skill } from 'pages/vacancies/components/projectDetails/styles';
 import { Image } from 'antd';
 import { constants } from 'constants/urls';
+import { CardWrapper } from '../styles';
 
 
 export function Card({
@@ -19,7 +20,7 @@ export function Card({
     return (
 
         <NavLink to={`/profile/${user?.id}`}>
-            <CardWrapper style={{ flexBasis: '80%', padding: '2.5rem' }}>
+            <CardWrapper>
                 <Header2>{user?.firstName} {user?.lastName}</Header2>
                 <FlexContainer>
                     <Image

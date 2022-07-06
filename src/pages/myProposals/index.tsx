@@ -21,7 +21,10 @@ export function MyProposals(): JSX.Element {
         <Space direction="vertical" size="large" style={{ display: 'flex' }}>
           {proposals.length > 0 ? (
             proposals.map((proposal) => (
-              <Card
+              <Card style={{
+                padding: '1rem',
+                boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
+              }}
                 key={proposal.id}
                 title={<a href={`/vacancy/${proposal.vacancy.id}`}>{proposal.vacancy.title}</a>}
                 size="small">

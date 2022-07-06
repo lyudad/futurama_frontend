@@ -19,6 +19,18 @@ export function MyJobs(): JSX.Element {
   const [changeStatus] = useChangeJobStatusMutation();
   const [deleteJob] = useDeleteJobMutation();
 
+  function showMessage(): void {
+    const key = 'updatable';
+    message.success({
+      content: t('CreateJob.moved'),
+      key,
+      duration: 2,
+      style: {
+        marginTop: '130px',
+      },
+    });
+  }
+
   function panelHeader(proposals: IProposal[]): JSX.Element {
     proposals = proposals.filter(elem => elem.coverLetter !== null);
     if (proposals.length === 0) return <strong>{t('Proposal.noproposals')}</strong>;
@@ -52,18 +64,6 @@ export function MyJobs(): JSX.Element {
       </div>);
   }
 
-  function showMessage(): void {
-    const key = 'updatable';
-    message.success({
-      content: t('CreateJob.moved'),
-      key,
-      duration: 2,
-      style: {
-        marginTop: '130px',
-      },
-    });
-  }
-
   if (data) {
     let jobs: IVacancy[] | [] = data;
     if (isActiveJobs) {
@@ -71,7 +71,7 @@ export function MyJobs(): JSX.Element {
     } else jobs = jobs.filter(elem => elem.isActive === false);
 
     return (
-      <Container style={{ minHeight: '600px' }}>
+      <Container style={{ minHeight: '700px' }}>
         <Heading>{t('Proposal.myjobs')}</Heading>
         <ListSelector>
           {isActiveJobs
