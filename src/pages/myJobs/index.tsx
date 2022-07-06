@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Space, Card, Collapse, Result, Button } from 'antd';
+import { Space, Card, Collapse, Result, Button, message } from 'antd';
 import { Container, Heading, Skill } from 'pages/vacancies/components/projectDetails/styles';
 import { useTranslation } from 'react-i18next';
 import { Spinner } from 'components/ui/Spinner';
@@ -33,23 +33,35 @@ export function MyJobs(): JSX.Element {
         <a href={`/vacancy/${job.id}`}>{job.title}</a>
         {job.isActive ? <Button size='middle'
           type='default'
-          icon={<CloseOutlined />} onClick={() => changeStatus({ id: job.id, status: !job.isActive })}>
-          Move to archive
+          icon={<CloseOutlined />} onClick={() => { changeStatus({ id: job.id, status: !job.isActive }); showMessage(); }}>
+          {t('CreateJob.move')}
         </Button> : <div>
-          <Button onClick={() => changeStatus({ id: job.id, status: !job.isActive })}
+          <Button onClick={() => { changeStatus({ id: job.id, status: !job.isActive }); showMessage(); }}
             style={{ marginRight: '15px' }}
             size='middle'
             type='primary'
             icon={<CheckOutlined />}
-          >Restore</Button>
+          >{t('CreateJob.restore')}</Button>
           <Button onClick={() => deleteJob({ id: job.id })}
             size='middle'
             type='default'
             icon={<CloseOutlined />}
-          >Delete
+          >{t('CreateJob.delete')}
           </Button>
         </div>}
       </div>);
+  }
+
+  function showMessage(): void {
+    const key = 'updatable';
+    message.success({
+      content: t('CreateJob.moved'),
+      key,
+      duration: 2,
+      style: {
+        marginTop: '130px',
+      },
+    });
   }
 
   if (data) {
@@ -63,11 +75,11 @@ export function MyJobs(): JSX.Element {
         <Heading>{t('Proposal.myjobs')}</Heading>
         <ListSelector>
           {isActiveJobs
-            ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(true)}>Active jobs</CustomButton>
-            : <CustomButton onClick={() => setIsAvtiveJobs(true)}>Active jobs</CustomButton>}
+            ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>
+            : <CustomButton onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>}
           {!isActiveJobs
-            ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(false)}>Archive</CustomButton>
-            : <CustomButton onClick={() => setIsAvtiveJobs(false)}>Archive</CustomButton>}
+            ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>
+            : <CustomButton onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>}
         </ListSelector>
 
         <Space direction="vertical" size="large" style={{ display: 'flex' }}>
