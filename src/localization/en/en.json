@@ -221,7 +221,9 @@
         "sentDate": "Sent: ",
         "accept": "Accept",
         "decline": "Decline",
-        "jobdetails": "Job details"
+        "jobdetails": "Job details",
+        "gotochat": "Go to chat",
+        "accepted": "Proposal accepted"
     },
     "Invite": {
         "sent": "Your invite to interview have been successfully sent!",
@@ -233,7 +235,10 @@
         "invited": " ALREADY INVITED",
         "selectjob": "Select job for proposal",
         "requiredmessage": "Please choose your job!",
-        "notalentsfound": "No talents found for your categories."
+        "notalentsfound": "No talents found for your categories.",
+        "accepted": "Invite accepted",
+        "declined": "Invite declined",
+        "delete": "Delete from list"
     },
     "Offers": {
         "noofers": "No offers yet..."

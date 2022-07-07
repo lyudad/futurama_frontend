@@ -106,7 +106,7 @@ export function MyJobs(): JSX.Element {
 
                 <Collapse bordered={false}>
                   <Panel style={{ marginTop: '20px' }} header={panelHeader(job.proposals ? job.proposals : [])} key={jobs.length}>
-                    <ProposalsList proposals={job.proposals ? job.proposals : []} />
+                    <ProposalsList jobId={job.id} proposals={job.proposals ? job.proposals : []} />
                   </Panel>
                 </Collapse>
               </Card>

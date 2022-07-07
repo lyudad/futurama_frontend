@@ -193,6 +193,7 @@ function CreateJob(): JSX.Element {
                     ]}
                 >
                     <Select
+                        showArrow
                         mode="multiple"
                         placeholder={t('Vacancies.selectSkills')}
                     >
@@ -213,20 +214,17 @@ function CreateJob(): JSX.Element {
                         },
                     ]}>
                     <TextArea
-
                         showCount
                         rows={8}
                         maxLength={999}
                         placeholder={t('CreateJob.descriptionplaceholder')}
                     />
-
                 </Form.Item>
 
                 <Form.Item noStyle
                     name="owner"
                     initialValue={myId}
                 />
-
             </Form>
 
             <Button onClick={() => navigate(-1)}>{t('Invite.back')}</Button>

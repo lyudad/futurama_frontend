@@ -20,7 +20,7 @@ export interface IProposal {
         };
         skills?: [];
     },
-    user?: {
+    user: {
         id: number,
         firstName: string,
         lastName: string,
