@@ -178,7 +178,8 @@
         "skills": "Required skills:",
         "apply": "APPLY TO JOB",
         "back": "BACK",
-        "keyskills": "Key skills: "
+        "keyskills": "Key skills: ",
+        "inarchive": "Vacancy in archive"
     },
     "Contract": {
         "title": "My contracts",

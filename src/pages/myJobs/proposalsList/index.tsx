@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Collapse, Image } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { IProposal } from 'types/proposal';
+import { IProposal, ProposalStatus } from 'types/proposal';
 import { constants } from 'constants/urls';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
@@ -23,7 +23,7 @@ export function ProposalsList({ proposals, jobId }: IProps): JSX.Element {
 
     function acceptProposal(freelancerId: number, proposal: number): void {
         createChat({ freelancer: freelancerId, vacancy: jobId });
-        changeStatus({ id: proposal, status: 'Accepted' });
+        changeStatus({ id: proposal, status: ProposalStatus.Accepted });
         navigate('/chats');
     }
 
@@ -66,7 +66,7 @@ export function ProposalsList({ proposals, jobId }: IProps): JSX.Element {
                             </NavLink> <Message>{proposal.coverLetter}</Message>
                             </ListSelector>
                             <div style={{ margin: '20px 12px 0 0' }}>
-                                {proposal.status === "Accepted" ? <Button
+                                {proposal.status === ProposalStatus.Accepted ? <Button
                                     disabled
                                     block
                                     size='large'
@@ -81,7 +81,6 @@ export function ProposalsList({ proposals, jobId }: IProps): JSX.Element {
                             </div>
                         </Panel>
                     </Collapse>
-
                 ))
             }
         </>

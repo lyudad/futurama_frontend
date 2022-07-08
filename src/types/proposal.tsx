@@ -32,3 +32,9 @@ export interface IProposal {
     updatedAt: string;
     status: string;
 };
+
+export enum ProposalStatus {
+    Pending = 'Pending',
+    Accepted = 'Accepted',
+    Declined = 'Declined'
+}

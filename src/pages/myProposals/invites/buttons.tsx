@@ -5,6 +5,7 @@ import { useCreateChatMutation } from 'store/api/chatsApi';
 import { useAppSelector } from 'store/hooks';
 import { useTranslation } from 'react-i18next';
 import { useChangeProposalStatusMutation } from 'store/api/proposalsApi';
+import { ProposalStatus } from 'types/proposal';
 
 interface IProps {
     inviteId: number;
@@ -21,10 +22,10 @@ function Buttons({ inviteId, vacancyId, status }: IProps): JSX.Element {
 
     function acceptingInvite(vacancy: number, invite: number): void {
         createChat({ freelancer: myId, vacancy });
-        changeStatus({ id: invite, status: 'Accepted' });
+        changeStatus({ id: invite, status: ProposalStatus.Accepted });
     }
 
-    if (status === "Pending")
+    if (status === ProposalStatus.Pending)
         return (
             <>
                 <Button onClick={() => { acceptingInvite(vacancyId, inviteId); }}
@@ -34,7 +35,7 @@ function Buttons({ inviteId, vacancyId, status }: IProps): JSX.Element {
                     icon={<CheckOutlined />}
                 >{t('Proposal.accept')}
                 </Button>
-                <Button onClick={() => { changeStatus({ id: inviteId, status: "Declined" }); }}
+                <Button onClick={() => { changeStatus({ id: inviteId, status: ProposalStatus.Declined }); }}
                     style={{ marginTop: '10px' }}
                     danger
                     size='middle'
@@ -43,7 +44,7 @@ function Buttons({ inviteId, vacancyId, status }: IProps): JSX.Element {
                 >{t('Proposal.decline')}
                 </Button>
             </>);
-    if (status === "Accepted")
+    if (status === ProposalStatus.Accepted)
         return (
             <>
                 <Button

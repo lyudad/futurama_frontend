@@ -91,6 +91,7 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
                     ]}
                 >
                     <TextArea
+                        autoFocus
                         showCount
                         rows={4}
                         maxLength={500}
