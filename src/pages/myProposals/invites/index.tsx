@@ -46,14 +46,12 @@ export function Invites(): JSX.Element {
                                     style={{ margin: '15px 10px' }}
                                     size='middle'
                                     type='default'
-                                    shape="round"
                                     icon={<CloseOutlined />}
                                 >{t('Proposal.decline')}</Button>
                                 <Button
                                     style={{ margin: '15px 0' }}
                                     size='middle'
                                     type='primary'
-                                    shape="round"
                                     icon={<CheckOutlined />}
                                 >{t('Proposal.accept')}</Button>
                             </Card>
