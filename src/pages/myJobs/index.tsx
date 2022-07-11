@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Space, Card, Collapse, Result, Button, message } from 'antd';
 import { Container, Heading, Skill } from 'pages/vacancies/components/projectDetails/styles';
 import { useTranslation } from 'react-i18next';
@@ -12,12 +12,24 @@ import { ListSelector } from './styles';
 import { ProposalsList } from './proposalsList';
 
 export function MyJobs(): JSX.Element {
-  const { data } = useGetMyJobsQuery();
+  const { data, isLoading } = useGetMyJobsQuery();
   const { Panel } = Collapse;
   const { t } = useTranslation();
-  const [isActiveJobs, setIsAvtiveJobs] = useState(true);
+  const [isActiveJobs, setIsAvtiveJobs] = useState<boolean>(true);
   const [changeStatus] = useChangeJobStatusMutation();
   const [deleteJob] = useDeleteJobMutation();
+
+  function showMessage(): void {
+    const key = 'updatable';
+    message.success({
+      content: t('CreateJob.moved'),
+      key,
+      duration: 2,
+      style: {
+        marginTop: '130px',
+      },
+    });
+  }
 
   function panelHeader(proposals: IProposal[]): JSX.Element {
     proposals = proposals.filter(elem => elem.coverLetter !== null);
@@ -52,74 +64,66 @@ export function MyJobs(): JSX.Element {
       </div>);
   }
 
-  function showMessage(): void {
-    const key = 'updatable';
-    message.success({
-      content: t('CreateJob.moved'),
-      key,
-      duration: 2,
-      style: {
-        marginTop: '130px',
-      },
-    });
-  }
+  const filteredJobs = useMemo(() => {
+    if (data) {
+      let jobs: IVacancy[] | [] = data;
+      if (isActiveJobs) {
+        jobs = jobs.filter(elem => elem.isActive === true);
+      } else jobs = jobs.filter(elem => elem.isActive === false);
+      return jobs;
+    } return [];
+  }, [isActiveJobs, data]);
 
-  if (data) {
-    let jobs: IVacancy[] | [] = data;
-    if (isActiveJobs) {
-      jobs = jobs.filter(elem => elem.isActive === true);
-    } else jobs = jobs.filter(elem => elem.isActive === false);
+  if (isLoading) return <Spinner />;
+  return (
+    <Container style={{ minHeight: '700px' }}>
+      <Heading>{t('Proposal.myjobs')}</Heading>
+      <ListSelector>
+        {isActiveJobs
+          ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>
+          : <CustomButton onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>}
+        {!isActiveJobs
+          ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>
+          : <CustomButton onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>}
+      </ListSelector>
 
-    return (
-      <Container style={{ minHeight: '600px' }}>
-        <Heading>{t('Proposal.myjobs')}</Heading>
-        <ListSelector>
-          {isActiveJobs
-            ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>
-            : <CustomButton onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>}
-          {!isActiveJobs
-            ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>
-            : <CustomButton onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>}
-        </ListSelector>
-
-        <Space direction="vertical" size="large" style={{ display: 'flex' }}>
-          {jobs.length > 0 ? (
-            jobs.map((job) => (
-              <Card
-                key={job.id}
-                style={{
-                  boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
-                }}
-                title={jobHeader(job)}
-              >
-                <span>{t('Vacancy.rate')} <strong> ${job.price}</strong></span>
-                <span>  /  {t('Vacancy.duration')} <strong> {job.timePerWeek}{t('Proposal.hour')}</strong></span>
-
-                <div style={{ paddingTop: '10px' }}>
-                  <p>{job.description}</p>
-                  <div>
-                    {job.skills?.map((skill: { id: number; skill: string; }) => (
-                      <Skill key={skill.id}>{skill.skill}</Skill>
-                    ))}
-                  </div>
-                </div>
-
-                <Collapse bordered={false}>
-                  <Panel style={{ marginTop: '20px' }} header={panelHeader(job.proposals ? job.proposals : [])} key={jobs.length}>
-                    <ProposalsList proposals={job.proposals ? job.proposals : []} />
-                  </Panel>
-                </Collapse>
-              </Card>
-
-            ))) : (<Result
+      <Space direction="vertical" size="large" style={{ display: 'flex' }}>
+        {filteredJobs.length > 0 ? (
+          filteredJobs.map((job) => (
+            <Card
+              key={job.id}
               style={{
-                background: 'white',
-                borderRadius: '15px'
+                boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
               }}
-              title={t('Proposal.nojobs')}
-            />)}
-        </Space>
-      </Container >
-    );
-  } return <Spinner />;
+              title={jobHeader(job)}
+            >
+              <span>{t('Vacancy.rate')} <strong> ${job.price}</strong></span>
+              <span>  /  {t('Vacancy.duration')} <strong> {job.timePerWeek}{t('Proposal.hour')}</strong></span>
+
+              <div style={{ paddingTop: '10px' }}>
+                <p>{job.description}</p>
+                <div>
+                  {job.skills?.map((skill: { id: number; skill: string; }) => (
+                    <Skill key={skill.id}>{skill.skill}</Skill>
+                  ))}
+                </div>
+              </div>
+
+              <Collapse bordered={false}>
+                <Panel style={{ marginTop: '20px' }} header={panelHeader(job.proposals ? job.proposals : [])} key={filteredJobs.length}>
+                  <ProposalsList jobId={job.id} proposals={job.proposals ? job.proposals : []} />
+                </Panel>
+              </Collapse>
+            </Card>
+
+          ))) : (<Result
+            style={{
+              background: 'white',
+              borderRadius: '15px'
+            }}
+            title={t('Proposal.nojobs')}
+          />)}
+      </Space>
+    </Container >
+  );
 }
