@@ -47,7 +47,7 @@ function Messages({ selectedChat }: IProps): JSX.Element {
     return (
         <MessageContainer>
             {
-                messages.map((message: IMessage) => {
+                messages.map((message) => {
                     if (!message.author) {
                         return (
                             <FlexContainer key={message.createdAt} style={{ justifyContent: 'center' }}>

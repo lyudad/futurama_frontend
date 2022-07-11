@@ -44,7 +44,7 @@ function Buttons({ showModal, proposalExist }: Props): JSX.Element {
 }
 
 export default function ProjectDetails(): JSX.Element {
-    const [modal, showModal] = useState(false);
+    const [modal, showModal] = useState<boolean>(false);
     const id: number = useParams<param>().id as unknown as number;
     const role = useAppSelector((state) => state.auth.user?.role);
     const vacancy: IVacancy = useGetVacancyByIdQuery(id).data;

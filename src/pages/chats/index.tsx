@@ -33,7 +33,7 @@ function Chats(): JSX.Element {
                         </ChatWrapper>
                     ))}
                 </ChatsContainer>
-                {selectedChat ? <Messages selectedChat={selectedChat} /> :
+                {selectedChat ? <Messages selectedChat={selectedChat}/> :
                     <MessageContainer>
                         <Result title={t('Chats.choose')} />
                     </MessageContainer>}

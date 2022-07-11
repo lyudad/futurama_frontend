@@ -242,7 +242,13 @@
         "delete": "Delete from list"
     },
     "Offers": {
-        "noofers": "No offers yet..."
+        "sendYour": "Send offer",
+        "send": "SEND OFFER",
+        "noofers": "No offers yet...",
+        "cancel": "CANCEL",
+        "finalrate": "Input final rate:",
+        "rateRequired": "Please input hourly rate",
+        "sent": "Your offer have been successfully sent!"
     },
     "Chats": {
         "chats": "Chats",
