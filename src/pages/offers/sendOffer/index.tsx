@@ -33,7 +33,7 @@ function SendOffer({ user, vacancy, modal, showModal }: IProps): JSX.Element {
     const showMessage = (): void => {
         const message = Modal.success({
             title: t('Proposal.success'),
-            content: t('Proposal.sent'),
+            content: t('Offers.sent'),
         });
         setTimeout(() => {
             message.destroy();

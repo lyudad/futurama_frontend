@@ -237,8 +237,8 @@
         "selectjob": "Select job for proposal",
         "requiredmessage": "Please choose your job!",
         "notalentsfound": "No talents found for your categories.",
-        "accepted": "Invite accepted",
-        "declined": "Invite declined",
+        "accepted": "Accepted",
+        "declined": "Declined",
         "delete": "Delete from list"
     },
     "Offers": {

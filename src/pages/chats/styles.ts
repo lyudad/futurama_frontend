@@ -17,7 +17,7 @@ export const Container = styled.section`
   padding: 25px;
   background-color: #fff;
   text-align: left;  
-  min-height: 600px;
+  min-height: 700px;
 `;
 
 export const ChatsContainer = styled.div`
@@ -45,7 +45,6 @@ export const MessageContainer = styled.div`
     flex: 1 1 100%;
     padding: 25px;
     max-height: 600px;
-    position: relative;
     overflow-y: scroll;
     -ms-overflow-style: none;  
     scrollbar-width: none;    
@@ -53,6 +52,11 @@ export const MessageContainer = styled.div`
         display: none;
 }
 `;
+export const MessagesWrapper = styled.div`
+    display: flex; 
+    align-items: flex-end;
+    flex: 1 1 100%;
+ `;
 
 export const Message = styled.div<Props>`
     min-width: 58px;    

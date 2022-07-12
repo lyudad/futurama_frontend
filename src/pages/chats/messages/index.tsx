@@ -20,7 +20,6 @@ function Messages({ selectedChat }: IProps): JSX.Element {
     const [messages, setMessages] = useState<IMessage[]>([]);
     const [newMessage, setNewMessage] = useState({} as IMessage);
 
-
     async function getOldMessages(): Promise<void> {
         await axios.get(`${process.env.REACT_APP_URL}${constants.GET_MESSAGES}${selectedChat}`)
             .then((response) =>
@@ -35,6 +34,7 @@ function Messages({ selectedChat }: IProps): JSX.Element {
     useEffect(() => {
         socket.on('receive_message', (incomingMessage: IMessage) => {
             setNewMessage(incomingMessage);
+
         });
     }, []);
 
@@ -45,7 +45,7 @@ function Messages({ selectedChat }: IProps): JSX.Element {
     if (!messages.length) return <MessageContainer ><MessageForm selectedChat={selectedChat} />  </MessageContainer >;
 
     return (
-        <MessageContainer>
+        <MessageContainer className='messagesContainer'>
             {
                 messages.map((message) => {
                     if (!message.author) {
@@ -84,6 +84,7 @@ function Messages({ selectedChat }: IProps): JSX.Element {
                 })
             }
             <MessageForm selectedChat={selectedChat} />
+
         </MessageContainer>
     );
 }
