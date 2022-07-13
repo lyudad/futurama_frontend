@@ -36,5 +36,6 @@ export interface IProposal {
 export enum ProposalStatus {
     Pending = 'Pending',
     Accepted = 'Accepted',
-    Declined = 'Declined'
+    Declined = 'Declined',
+    Deleted = 'Deleted'
 }

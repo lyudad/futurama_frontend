@@ -55,6 +55,15 @@ export const proposalsApi = createApi({
             },
             providesTags: [{ type: 'Proposal', id: 'LIST' }],
         }),
+        getMyOffers: build.query<[], void>({
+            query: () => {
+                return {
+                    url: constants.GET_OFFERS,
+                    method: "get"
+                };
+            },
+            providesTags: [{ type: 'Proposal', id: 'LIST' }],
+        }),
         checkProposalIsExist: build.query<boolean, number>({
             query: (vacancyId) => {
                 return {
@@ -72,4 +81,5 @@ export const {
     useChangeProposalStatusMutation,
     useGetMyProposalsQuery,
     useCheckProposalIsExistQuery,
-    useGetMyInvitesQuery } = proposalsApi;
+    useGetMyInvitesQuery,
+    useGetMyOffersQuery } = proposalsApi;

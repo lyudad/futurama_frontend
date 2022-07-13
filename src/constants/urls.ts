@@ -34,6 +34,7 @@ export const constants = {
     INVITES_TO_INTERVIEW: '/invites',
     GET_INVITES: 'proposals/myinvites',
     GET_PROPOSALS: '/proposals/myproposals',
+    GET_OFFERS: '/proposals/myoffers',
     CHECK_PROPOSAL: '/proposals/check/',
     POST_EDUCATION: '/profile/education/create',
     PATCH_EDUCATION: '/profile/education/update',
@@ -52,5 +53,6 @@ export const constants = {
     CREATE_CHAT: '/chats/create',
     GET_MY_CHATS: '/chats/mychats',
     GET_MESSAGES: 'messages/',
+    GET_CHAT_DATA: '/chats/',
     SEND_MESSAGE: '/messages/send'
 };

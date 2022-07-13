@@ -1,13 +1,15 @@
 import React from 'react';
-import { Space, Card, Collapse, Result } from 'antd';
-import { useGetMyProposalsQuery } from 'store/api/proposalsApi';
+import { Space, Card, Collapse, Result, Button } from 'antd';
+import { useChangeProposalStatusMutation, useGetMyProposalsQuery } from 'store/api/proposalsApi';
 import { Container, Heading } from 'pages/vacancies/components/projectDetails/styles';
-import { IProposal } from 'types/proposal';
+import { IProposal, ProposalStatus } from 'types/proposal';
 import { useTranslation } from 'react-i18next';
 import { Spinner } from 'components/ui/Spinner';
+import { CloseOutlined } from '@ant-design/icons';
 
 export function MyProposals(): JSX.Element {
   const { data } = useGetMyProposalsQuery();
+  const [changeStatus] = useChangeProposalStatusMutation();
   const { Panel } = Collapse;
   const { t } = useTranslation();
 
@@ -15,7 +17,7 @@ export function MyProposals(): JSX.Element {
     const proposals: IProposal[] | [] = data;
 
     return (
-      <Container style={{ minHeight: '600px' }}>
+      <Container style={{ minHeight: '700px' }}>
         <Heading>{t('Proposal.myproposals')}</Heading>
 
         <Space direction="vertical" size="large" style={{ display: 'flex' }}>
@@ -40,6 +42,12 @@ export function MyProposals(): JSX.Element {
                     }}>{proposal.coverLetter}</p>
                   </Panel>
                 </Collapse>
+                <Button onClick={() => { changeStatus({ id: proposal.id, status: ProposalStatus.Deleted }); }}
+                  style={{ marginTop: '10px' }}
+                  size='middle'
+                  type='default'
+                  icon={<CloseOutlined />}
+                >{t('Invite.delete')}</Button>
               </Card>
             ))) : (<Result
               style={{

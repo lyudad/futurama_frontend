@@ -7,7 +7,7 @@ import { Result } from 'antd';
 import { Chat } from 'types/chat';
 import { useAppSelector } from 'store/hooks';
 import { variables } from 'constants/variables';
-import { ChatsContainer, ChatWrapper, Container, MessageContainer } from './styles';
+import { ChatsContainer, ChatWrapper, Container, MessageContainer, MessagesWrapper } from './styles';
 import Messages from './messages';
 
 function Chats(): JSX.Element {
@@ -33,7 +33,9 @@ function Chats(): JSX.Element {
                         </ChatWrapper>
                     ))}
                 </ChatsContainer>
-                {selectedChat ? <Messages selectedChat={selectedChat} /> :
+                {selectedChat ? <MessagesWrapper>
+                    <Messages selectedChat={selectedChat} />
+                </MessagesWrapper> :
                     <MessageContainer>
                         <Result title={t('Chats.choose')} />
                     </MessageContainer>}

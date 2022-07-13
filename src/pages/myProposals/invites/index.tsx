@@ -13,7 +13,6 @@ export function Invites(): JSX.Element {
     const { Panel } = Collapse;
     const { t } = useTranslation();
 
-
     if (isLoading) return <Spinner />;
     if (data) {
         const invites: IProposal[] | [] = data;
@@ -47,7 +46,7 @@ export function Invites(): JSX.Element {
                                         ))}
                                     </Panel>
                                 </Collapse>
-                                <Buttons inviteId={invite.id} vacancyId={invite.vacancy.id} status={invite.status} />
+                                <Buttons chat inviteId={invite.id} vacancyId={invite.vacancy.id} status={invite.status} />
                             </Card>
                         ))) : (<Result
                             style={{

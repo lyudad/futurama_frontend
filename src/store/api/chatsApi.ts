@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { constants } from 'constants/urls';
+import { ChatData } from 'pages/chats/messageForm';
 import { RootState } from 'store';
 
 
@@ -60,7 +61,15 @@ export const chatsApi = createApi({
                 };
             },
         }),
+        getChatData: build.query<ChatData, number>({
+            query: (chatId) => {
+                return {
+                    url: constants.GET_CHAT_DATA + chatId,
+                    method: "get"
+                };
+            },
+        }),
     }),
 });
 
-export const { useGetMyChatsQuery, useGetMesagesByChatIdQuery, useSendMessageMutation, useCreateChatMutation } = chatsApi;
+export const { useGetMyChatsQuery, useGetMesagesByChatIdQuery, useSendMessageMutation, useCreateChatMutation, useGetChatDataQuery } = chatsApi;

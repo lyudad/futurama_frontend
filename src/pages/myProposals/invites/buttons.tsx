@@ -11,9 +11,10 @@ interface IProps {
     inviteId: number;
     vacancyId: number;
     status: string;
+    chat?: boolean;
 }
 
-function Buttons({ inviteId, vacancyId, status }: IProps): JSX.Element {
+function Buttons({ inviteId, vacancyId, status, chat }: IProps): JSX.Element {
     const myId = useAppSelector((state) => state.auth.user?.id);
     const { t } = useTranslation();
 
@@ -21,8 +22,9 @@ function Buttons({ inviteId, vacancyId, status }: IProps): JSX.Element {
     const [changeStatus] = useChangeProposalStatusMutation();
 
     function acceptingInvite(vacancy: number, invite: number): void {
-        createChat({ freelancer: myId, vacancy });
         changeStatus({ id: invite, status: ProposalStatus.Accepted });
+        if (chat)
+            createChat({ freelancer: myId, vacancy });
     }
 
     if (status === ProposalStatus.Pending)
@@ -54,7 +56,7 @@ function Buttons({ inviteId, vacancyId, status }: IProps): JSX.Element {
                     disabled
                     icon={<CheckOutlined />}
                 >{t('Invite.accepted')}</Button>
-                <Button
+                <Button onClick={() => { changeStatus({ id: inviteId, status: ProposalStatus.Deleted }); }}
                     style={{ marginTop: '10px' }}
                     size='middle'
                     type='default'
@@ -70,7 +72,7 @@ function Buttons({ inviteId, vacancyId, status }: IProps): JSX.Element {
                 disabled
                 icon={<CloseOutlined />}
             >{t('Invite.declined')}</Button>
-            <Button
+            <Button onClick={() => { changeStatus({ id: inviteId, status: ProposalStatus.Deleted }); }}
                 style={{ marginTop: '10px' }}
                 size='middle'
                 type='default'
