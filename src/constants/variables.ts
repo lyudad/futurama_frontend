@@ -1,5 +1,6 @@
 export const variables = {
-    freelancer: 'freelancer'
+    freelancer: 'freelancer',
+    jobOwner: 'jobOwner'
 }
 
 export const englishLevels = [

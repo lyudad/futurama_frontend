@@ -1,7 +1,7 @@
 export interface IProposal {
     id: number,
-    coverLetter: string,
-    price: number,
+    coverLetter?: string,
+    price?: number,
     vacancy: {
         id: number,
         title: string,
@@ -13,8 +13,14 @@ export interface IProposal {
         timePerWeek: number,
         createdAt: string,
         updatedAt: string;
+        owner?: {
+            firstName: string;
+            lastName: string;
+            photo: string;
+        };
+        skills?: [];
     },
-    user?: {
+    user: {
         id: number,
         firstName: string,
         lastName: string,
@@ -22,5 +28,13 @@ export interface IProposal {
         phone: string,
         photo: string;
     };
-    createdAt: string
+    createdAt: string,
+    updatedAt: string;
+    status: string;
 };
+
+export enum ProposalStatus {
+    Pending = 'Pending',
+    Accepted = 'Accepted',
+    Declined = 'Declined'
+}

@@ -12,13 +12,14 @@ import {
 import { Spinner } from 'components/ui/Spinner';
 import { UploadOutlined } from '@ant-design/icons';
 import { useTranslation } from 'react-i18next';
-
 import {
     useGetContactsQuery,
     useSetContactsMutation,
 } from 'store/api/contactsApi';
 import { useAppSelector } from 'store/hooks';
 import { constants as urlConstants } from 'constants/urls';
+import { useNavigate } from 'react-router-dom';
+import { FlexColumn } from 'pages/chats/styles';
 import { Container, Heading, Wrapper } from './styles';
 
 
@@ -26,6 +27,7 @@ export function Contacts(): JSX.Element {
     const [form] = Form.useForm();
     const { t } = useTranslation();
     const token = useAppSelector((state) => state.auth.token);
+    const navigate = useNavigate();
 
     const [setData] = useSetContactsMutation();
     const { data, error } = useGetContactsQuery();
@@ -62,6 +64,7 @@ export function Contacts(): JSX.Element {
         }
         openMessage();
         await setData(values).unwrap();
+        navigate('/');
     }
 
     const uploadParams = {
@@ -166,10 +169,9 @@ export function Contacts(): JSX.Element {
                             </Form.Item>
                         </Form>
                     </div>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
+                    <FlexColumn
+                        style={{                          
+                            textAlign: 'left'
                         }}
                     >
                         <Image
@@ -186,7 +188,7 @@ export function Contacts(): JSX.Element {
                                 {t('Contacts.updatephoto')}
                             </Button>
                         </Upload>
-                    </div>
+                    </FlexColumn>
                 </Wrapper>
             </Container>
         );

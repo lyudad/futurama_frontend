@@ -15,6 +15,14 @@ export type UserProfile = {
     availableAmountOfHours: NullableNumber;
     otherExperience?: NullableString;
     description?: NullableString;
+    user?: {
+        id: number;
+        email: string;
+        firstName: string;
+        lastName: string;
+        phone: string;
+        photo: string;
+    };
 };
 
 export interface Settings {

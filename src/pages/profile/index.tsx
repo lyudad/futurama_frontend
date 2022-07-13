@@ -1,99 +1,44 @@
 import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useAppSelector } from 'store/hooks';
-import profileImage from 'assets/icons/profile.png';
-import { useNavigate } from 'react-router-dom';
-import Card from './Card';
-import { UserProfile, ProfilePhoto, UserInfo } from './style';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { Container } from 'pages/vacancies/components/projectDetails/styles';
+import { useTranslation } from 'react-i18next';
+import ProfileImage from 'assets/icons/profile.png';
+import { Container as Wrapper, Heading } from 'pages/contacts/styles';
+import { Spinner } from 'components/ui/Spinner';
+import { useGetMyProfileQuery } from 'store/api/profileApi';
+import { ProfilePage } from './profilePage';
+
 
 function Profile(): JSX.Element {
     const navigate = useNavigate();
     const { t } = useTranslation();
-    const profile = useAppSelector((state) => state.profile.profile); 
-    
-    const user = useAppSelector((state) => state.auth.user);   
-    const contactInformation = {
-        Email: user?.email,
-        Phone: user?.phone,
-    };
-
-    const Skills = {
-        Skills: profile?.skills,
-    };
-
-    const conditionsAtWork = {
-        'Desirebl salary level (per hour)': profile?.desirebleSalaryLevel,
-        'Available amount of hours': profile?.availableAmountOfHours,
-    };
-
-    const otherExperience = {
-        'Other experience': profile?.otherExperience,
-        Description: profile?.description,
-        'English level': profile?.englishLevel
-    };
+    const token = useAppSelector((state) => state.auth.token);
+    const { data: profile, isLoading } = useGetMyProfileQuery({ token });
+    const user = useAppSelector((state) => state.auth.user);
 
     useEffect(() => {
-        if(!profile?.position){            
-            navigate('/settings');
+        if (user?.role !== 'freelancer') {
+            navigate('/myjobs');
         }
-    }, [profile])
-    
+        if (!user?.phone) {
+            navigate('/user/contacts');
+        }
+    }, [user?.phone, profile]);
 
-    return (
-        <div className="container">
-            <UserProfile>
-                <UserInfo>
-                    <ProfilePhoto>
-                        <img src={user?.photo || profileImage} alt="#" />
-                    </ProfilePhoto>
-                    <div>
-                        <h2>
-                            {user?.firstName} {user?.lastName}
-                        </h2>
-                        <h3>
-                            <strong>{t('ProfilePage.Position')}</strong>: {profile?.position?.category}
-                        </h3>
-                    </div>
-                </UserInfo>
-                <Card
-                    description={t('ProfilePage.contactInformation')}
-                    data={contactInformation}
+    if (isLoading) return <Spinner />;
+    if (profile && user)
+        return (
+            <Container>
+                <ProfilePage
+                    user={user}
+                    profile={profile}
                 />
-                <Card
-                    description={t('ProfilePage.Skills')}
-                    data={Skills}
-                />
-                <Card
-                    description={t('ProfilePage.conditionsForWork')}
-                    data={conditionsAtWork}
-                />
-                {profile?.workExperience?.map((experience) => {
-                        return (
-                            <Card
-                                key={experience.id}
-                                description={t('ProfilePage.workExperience')}
-                                data={experience}
-                            />
-                        );
-                    })}
-                {profile?.educations?.map((educat) => {
-                        return (
-                            <Card
-                                key={educat.id}
-                                description={t('ProfilePage.education')}
-                                data={educat}
-                            />
-                        );
-                    })}
-                {otherExperience && (
-                    <Card
-                        description={t('ProfilePage.otherExperience')}
-                        data={otherExperience}
-                    />
-                )}
-            </UserProfile>
-        </div>
-    );
+            </Container >
+        ); return <NavLink to='/settings'><Wrapper><img style={{
+            width: '180px'
+        }} src={ProfileImage} alt='profilePhoto'/>
+            <Heading>{t('ProfilePage.empty')}</Heading></Wrapper></NavLink>;
 }
 
 export default Profile;

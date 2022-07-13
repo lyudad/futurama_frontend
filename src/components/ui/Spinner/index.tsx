@@ -1,22 +1,17 @@
 import React from 'react';
-import { Spin } from 'antd';
+import { Spin } from './styles';
 
 export function Spinner(): JSX.Element {
     return (
         <div
             style={{
-                height: '85vh',
+                height: '70vh',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
             }}
         >
-            <Spin
-                size="large"
-                style={{
-                    display: 'block',
-                }}
-            />
+            <Spin />
         </div>
     );
 }

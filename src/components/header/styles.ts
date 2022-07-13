@@ -11,7 +11,6 @@ export const NavLink = styled(BaseNavLink)`
   }
 `;
 
-
 export const NavContainer = styled.div`
     background: white;
     display: flex;
@@ -24,5 +23,5 @@ export const NavContainer = styled.div`
     font-size: ${fonts.FONT_SIZE_MEDIUM};
     > *{
         color: ${colors.NAVLINK_HEADER_COLOR};
-    }
+    }   
 `;

@@ -8,6 +8,7 @@ import {
 import { IVacancy } from 'types/vacancy';
 import { useTranslation } from 'react-i18next';
 import { useSendProposalMutation } from 'store/api/proposalsApi';
+import { useAppSelector } from 'store/hooks';
 import { Button } from '../projectDetails/styles';
 
 
@@ -22,12 +23,14 @@ type Proposal = {
     vacancy: number;
     price: number;
     coverLetter: string;
+    type: string;
+    status: string;
 };
 
 function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
     const [form] = Form.useForm();
     const [setData] = useSendProposalMutation();
-
+    const user = useAppSelector(state => state.auth.user?.id);
     const { TextArea } = Input;
     const { t } = useTranslation();
 
@@ -49,6 +52,7 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
 
     return (
         <Modal
+            onCancel={() => { showModal(false); }}
             bodyStyle={{ padding: '35px' }}
             style={{ top: 30 }}
             width={900}
@@ -87,6 +91,7 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
                     ]}
                 >
                     <TextArea
+                        autoFocus
                         showCount
                         rows={4}
                         maxLength={500}
@@ -116,6 +121,19 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
                 <Form.Item noStyle
                     name="vacancy"
                     initialValue={vacancy.id}
+                />
+                <Form.Item noStyle
+                    name="user"
+                    initialValue={user}
+                />
+                <Form.Item noStyle
+                    name="type"
+                    initialValue="Proposal"
+                />
+
+                <Form.Item noStyle
+                    name="status"
+                    initialValue="Pending"
                 />
             </Form>
             <p style={{

@@ -1,5 +1,5 @@
 export interface IVacancy {
-    id?: number;
+    id: number;
     vacancyId?: number;
     title: string;
     company: string;
@@ -13,6 +13,7 @@ export interface IVacancy {
     updatedAt: string;
     category: [];
     proposals?: [];
+    isActive: boolean;
 }
 
 export interface IvacancyQuery {
@@ -23,6 +24,6 @@ export interface IvacancyQuery {
     maxPrice?: number,
     minTimePerWeek?: number,
     maxTimePerWeek?: number,
-    skills?: []
-    pageValue?: number
+    skills?: [];
+    pageValue?: number;
 }

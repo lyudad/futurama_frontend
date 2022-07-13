@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import React, { Dispatch, SetStateAction, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useGetVacancyByIdQuery } from 'store/api/vacanciesApi';
 import { useCheckProposalIsExistQuery } from 'store/api/proposalsApi';
 import { CheckOutlined } from '@ant-design/icons';
 import { Spinner } from 'components/ui/Spinner';
 import { IVacancy } from 'types/vacancy';
+import { useAppSelector } from 'store/hooks';
+import { variables } from 'constants/variables';
+import { Result } from 'antd';
 import SendProposal from '../sendProposal/sendProposal';
 import {
     Container,
@@ -19,23 +22,49 @@ import {
     InfoItem,
     Date,
     SmallHeading,
+    FlexContainer,
 } from './styles';
 
 type param = {
     id: string;
 };
 
+interface Props {
+    proposalExist: boolean;
+    showModal: Dispatch<SetStateAction<boolean>>;
+}
+
+function Buttons({ showModal, proposalExist }: Props): JSX.Element {
+    const { t } = useTranslation();
+    if (proposalExist) {
+        return <Button disabled><CheckOutlined /> {t('Proposal.applied')}</Button>;
+    } return <Button onClick={() => {
+        showModal(true);
+    }}>{t('Vacancy.apply')}</Button>;
+}
 
 export default function ProjectDetails(): JSX.Element {
     const [modal, showModal] = useState(false);
     const id: number = useParams<param>().id as unknown as number;
-
+    const role = useAppSelector((state) => state.auth.user?.role);
     const vacancy: IVacancy = useGetVacancyByIdQuery(id).data;
-    const proposalExist = useCheckProposalIsExistQuery(id).data;
+    const proposalExist = useCheckProposalIsExistQuery(id).data || false;
+    const navigate = useNavigate();
 
     const { t } = useTranslation();
 
     if (vacancy) {
+        if (role === variables.freelancer && !vacancy.isActive)
+            return (<Container>
+                <Result
+                    style={{
+                        background: 'white',
+                        borderRadius: '15px'
+                    }}
+                    title={t('Vacancy.inarchive')}
+                />
+            </Container >
+            );
         const skills = vacancy.skills.map(
             (obj: { id: number; skill: string; }) => obj.skill
         );
@@ -81,7 +110,7 @@ export default function ProjectDetails(): JSX.Element {
                 </Wrapper>
                 <SendProposal vacancy={vacancy} modal={modal} showModal={showModal} />
 
-                <div style={{ display: 'flex' }}>
+                <FlexContainer>
                     <div>
                         <SmallHeading>{t('Vacancy.description')}</SmallHeading>
                         <p style={{ marginTop: '10px', fontSize: '17px' }}>
@@ -103,14 +132,9 @@ export default function ProjectDetails(): JSX.Element {
                         </div>
                     </div>
 
-                </div>
-
-                <NavLink style={{ color: 'black' }} to="/vacancies">
-                    <Button>{t('Vacancy.back')}</Button>
-                </NavLink>
-                {proposalExist ? <Button disabled><CheckOutlined /> {t('Proposal.applied')}</Button> : <Button onClick={() => {
-                    showModal(true);
-                }}>{t('Vacancy.apply')}</Button>}
+                </FlexContainer>
+                <Button onClick={() => navigate(-1)}>{t('Invite.back')}</Button>
+                {role === variables.freelancer ? <Buttons showModal={showModal} proposalExist={proposalExist} /> : null}
             </Container>
         );
     }

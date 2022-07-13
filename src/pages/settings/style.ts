@@ -4,10 +4,8 @@ export const SettingsContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    background: white;
-    margin: 2rem 0;
-    border-radius: 3rem;
+    padding: 45px 0 30px 0;
+    background: white;   
     > div {
         margin-top: 2rem;
     }
