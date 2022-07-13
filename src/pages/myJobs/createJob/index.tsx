@@ -68,7 +68,6 @@ function CreateJob(): JSX.Element {
         navigate('/myjobs');
     }
 
-
     return (
         <Container>
             <Heading>{t('CreateJob.createajob')}</Heading>
@@ -194,6 +193,7 @@ function CreateJob(): JSX.Element {
                     ]}
                 >
                     <Select
+                        showArrow
                         mode="multiple"
                         placeholder={t('Vacancies.selectSkills')}
                     >
@@ -209,6 +209,7 @@ function CreateJob(): JSX.Element {
                     rules={[
                         {
                             required: true,
+                            min: 200,
                             message: t('CreateJob.descriptionmessage')
                         },
                     ]}>
@@ -218,14 +219,12 @@ function CreateJob(): JSX.Element {
                         maxLength={999}
                         placeholder={t('CreateJob.descriptionplaceholder')}
                     />
-
                 </Form.Item>
 
                 <Form.Item noStyle
                     name="owner"
                     initialValue={myId}
                 />
-
             </Form>
 
             <Button onClick={() => navigate(-1)}>{t('Invite.back')}</Button>

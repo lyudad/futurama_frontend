@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+    nomargin?: boolean;
+}
+
 export const Message = styled.div`
     background-color: #d5eafb;
     color: #282c34;
@@ -22,8 +26,8 @@ export const Message = styled.div`
 }
 `;
 
-export const ListSelector = styled.div`
-    margin: 2rem 0;
+export const ListSelector = styled.div<Props>`
+    margin:  ${(Props) => Props.nomargin ? "0" : " 2rem 0"};
     display: flex;
     justify-content: space-between;
 `

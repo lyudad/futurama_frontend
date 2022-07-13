@@ -8,6 +8,7 @@ import { Spinner } from 'components/ui/Spinner';
 import { IVacancy } from 'types/vacancy';
 import { useAppSelector } from 'store/hooks';
 import { variables } from 'constants/variables';
+import { Result } from 'antd';
 import SendProposal from '../sendProposal/sendProposal';
 import {
     Container,
@@ -53,6 +54,17 @@ export default function ProjectDetails(): JSX.Element {
     const { t } = useTranslation();
 
     if (vacancy) {
+        if (role === variables.freelancer && !vacancy.isActive)
+            return (<Container>
+                <Result
+                    style={{
+                        background: 'white',
+                        borderRadius: '15px'
+                    }}
+                    title={t('Vacancy.inarchive')}
+                />
+            </Container >
+            );
         const skills = vacancy.skills.map(
             (obj: { id: number; skill: string; }) => obj.skill
         );

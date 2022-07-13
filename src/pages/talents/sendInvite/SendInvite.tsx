@@ -6,8 +6,9 @@ import {
 } from "antd";
 import { useTranslation } from 'react-i18next';
 import { Button } from 'pages/vacancies/components/projectDetails/styles';
-import { useGetMyJobsQuery, useSendProposalMutation } from 'store/api/proposalsApi';
+import { useSendProposalMutation } from 'store/api/proposalsApi';
 import { IVacancy } from 'types/vacancy';
+import { useGetMyJobsQuery } from 'store/api/vacanciesApi';
 
 interface IProps {
     modal: boolean;

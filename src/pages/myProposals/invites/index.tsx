@@ -1,28 +1,33 @@
 import React from 'react';
-import { Space, Card, Collapse, Button, Result } from 'antd';
+import { Space, Card, Collapse, Result } from 'antd';
 import { useGetMyInvitesQuery } from 'store/api/proposalsApi';
 import { Container, Heading, Skill } from 'pages/vacancies/components/projectDetails/styles';
 import { IProposal } from 'types/proposal';
 import { useTranslation } from 'react-i18next';
 import { Spinner } from 'components/ui/Spinner';
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import Buttons from './buttons';
+
 
 export function Invites(): JSX.Element {
     const { data, isLoading } = useGetMyInvitesQuery();
     const { Panel } = Collapse;
     const { t } = useTranslation();
 
+
     if (isLoading) return <Spinner />;
     if (data) {
         const invites: IProposal[] | [] = data;
 
         return (
-            <Container style={{ minHeight: '600px' }}>
+            <Container style={{ minHeight: '700px' }}>
                 <Heading>{t('MenuBar.InvitesToInterview')}</Heading>
                 <Space direction="vertical" size="large" style={{ display: 'flex' }}>
                     {invites.length > 0 ? (
                         invites.map((invite) => (
-                            <Card
+                            <Card style={{
+                                padding: '1rem',
+                                boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
+                            }}
                                 key={invite.id}
                                 title={<span>{t('Proposal.from')}
                                     <strong>{invite.vacancy?.owner?.firstName} {invite.vacancy?.owner?.lastName}</strong>
@@ -42,18 +47,7 @@ export function Invites(): JSX.Element {
                                         ))}
                                     </Panel>
                                 </Collapse>
-                                <Button
-                                    style={{ margin: '15px 10px' }}
-                                    size='middle'
-                                    type='default'
-                                    icon={<CloseOutlined />}
-                                >{t('Proposal.decline')}</Button>
-                                <Button
-                                    style={{ margin: '15px 0' }}
-                                    size='middle'
-                                    type='primary'
-                                    icon={<CheckOutlined />}
-                                >{t('Proposal.accept')}</Button>
+                                <Buttons inviteId={invite.id} vacancyId={invite.vacancy.id} status={invite.status} />
                             </Card>
                         ))) : (<Result
                             style={{

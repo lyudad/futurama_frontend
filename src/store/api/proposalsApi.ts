@@ -27,6 +27,16 @@ export const proposalsApi = createApi({
             },
             invalidatesTags: [{ type: 'Proposal', id: 'LIST' }],
         }),
+        changeProposalStatus: build.mutation({
+            query: (body) => {
+                return {
+                    url: constants.SEND_PROPOSAL,
+                    method: "put",
+                    body
+                };
+            },
+            invalidatesTags: [{ type: 'Proposal', id: 'LIST' }],
+        }),
         getMyProposals: build.query<[], void>({
             query: () => {
                 return {
@@ -34,6 +44,7 @@ export const proposalsApi = createApi({
                     method: "get"
                 };
             },
+            providesTags: [{ type: 'Proposal', id: 'LIST' }],
         }),
         getMyInvites: build.query<[], void>({
             query: () => {
@@ -42,6 +53,7 @@ export const proposalsApi = createApi({
                     method: "get"
                 };
             },
+            providesTags: [{ type: 'Proposal', id: 'LIST' }],
         }),
         checkProposalIsExist: build.query<boolean, number>({
             query: (vacancyId) => {
@@ -57,6 +69,7 @@ export const proposalsApi = createApi({
 
 export const {
     useSendProposalMutation,
+    useChangeProposalStatusMutation,
     useGetMyProposalsQuery,
     useCheckProposalIsExistQuery,
     useGetMyInvitesQuery } = proposalsApi;

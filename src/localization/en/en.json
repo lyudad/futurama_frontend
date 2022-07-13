@@ -142,7 +142,7 @@
         "updating": "Updating...",
         "updated": "Updated!",
         "message401": "Sorry, you are not authorized to access this page.",
-        "contactinfo": "Contacts",
+        "contactinfo": "Contact info",
         "firstname": "First name",
         "lastname": "Last name",
         "inputFirstname": "Please input first name",
@@ -178,7 +178,8 @@
         "skills": "Required skills:",
         "apply": "APPLY TO JOB",
         "back": "BACK",
-        "keyskills": "Key skills: "
+        "keyskills": "Key skills: ",
+        "inarchive": "Vacancy in archive"
     },
     "Contract": {
         "title": "My contracts",
@@ -221,7 +222,9 @@
         "sentDate": "Sent: ",
         "accept": "Accept",
         "decline": "Decline",
-        "jobdetails": "Job details"
+        "jobdetails": "Job details",
+        "gotochat": "Go to chat",
+        "accepted": "Proposal accepted"
     },
     "Invite": {
         "sent": "Your invite to interview have been successfully sent!",
@@ -233,7 +236,10 @@
         "invited": " ALREADY INVITED",
         "selectjob": "Select job for proposal",
         "requiredmessage": "Please choose your job!",
-        "notalentsfound": "No talents found for your categories."
+        "notalentsfound": "No talents found for your categories.",
+        "accepted": "Invite accepted",
+        "declined": "Invite declined",
+        "delete": "Delete from list"
     },
     "Offers": {
         "noofers": "No offers yet..."
@@ -251,6 +257,7 @@
         "creating": "Creating...",
         "title": "Vacancy title:",
         "created": "Job succesfully created!",
+        "create": "CREATE",
         "moved": "Succesfully moved!",
         "titleplaceholder": "Input vacancy name",
         "titlemessage": "Please input vacancy name!",
@@ -278,7 +285,7 @@
         "selectskillsmessage": "Please select skills!",
         "description": "Description of the job:",
         "descriptionplaceholder": "Enter a description",
-        "descriptionmessage": "Please input a description!",
+        "descriptionmessage": "Description must contain at least 200 characters",
         "move": "Move to archive",
         "restore": "Restore",
         "delete": "Delete",

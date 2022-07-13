@@ -1,6 +1,5 @@
 import React from 'react';
 import { Spinner } from 'components/ui/Spinner';
-import { Container } from 'pages/vacancies/styles';
 import { useGetAllProfilesQuery } from 'store/api/profileApi';
 import { UserProfile } from 'types/profile';
 import { Result } from 'antd';
@@ -15,9 +14,8 @@ export function Talents(): JSX.Element {
     const { t } = useTranslation();
     if (profiles)
 
-        return (
-            <Container>
-                <FlexColumn style={{ margin: '0 auto' }}>
+        return (           
+                <FlexColumn style={{ margin: '20px auto', flexWrap: 'wrap' }}>
                     {profiles?.length > 0 ? (
                         profiles.map((user: UserProfile) => (
                             <Card
@@ -43,6 +41,6 @@ export function Talents(): JSX.Element {
                         />
                     )}
                 </FlexColumn>
-            </Container>
+           
         ); return <Spinner />;
 }
