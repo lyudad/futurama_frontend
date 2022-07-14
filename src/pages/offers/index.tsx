@@ -41,7 +41,16 @@ export default function Offers(): JSX.Element {
                                         ))}
                                     </Panel>
                                 </Collapse>
-                                <Buttons inviteId={offer.id} vacancyId={offer.vacancy.id} status={offer.status} />
+                                <Buttons
+                                    contract
+                                    inviteId={offer.id}
+                                    vacancyId={offer.vacancy.id}
+                                    status={offer.status}
+                                    title={offer.vacancy.title}
+                                    hourlyRate={offer.price}
+                                    description={offer.vacancy.description}
+                                    owner={offer.vacancy.owner?.id}
+                                />
                             </Card>
                         ))) : (<Result
                             style={{

@@ -47,6 +47,7 @@ export const constants = {
     CREATE_JOB: '/jobs/create',
     TALENTS: '/talents',
     CONTRACTS: '/contracts',
+    CREATE_CONTRACT: '/contracts/create',
     CONTRACTS_FREELANCER: '/contracts/freelancer',
     CONTRACTS_OWNER: 'contracts/owner',
     CONTRACTS_UPDATE: '/contracts/update',

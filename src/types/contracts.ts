@@ -12,4 +12,10 @@ export interface IContract {
     start: string;
     end: string;
     active: boolean;
+    freelancer: {
+        id: number,
+        firstName: string,
+        lastName: string,
+        photo: string;
+    };
 };

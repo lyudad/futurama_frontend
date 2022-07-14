@@ -11,11 +11,20 @@ export const contractsApi = createApi({
             if (token) {
                 headers.set('token', token);
             }
-            headers.set('Access-Control-Allow-Origin', '*')
-            return headers
+            headers.set('Access-Control-Allow-Origin', '*');
+            return headers;
         },
     }),
     endpoints: (builder) => ({
+        createContract: builder.mutation({
+            query: (body) => {
+                return {
+                    url: constants.CREATE_CONTRACT,
+                    method: "post",
+                    body
+                };
+            },
+        }),
         getFreelancerContracts: builder.mutation<IContract[], void>({
             query: () => {
                 return {
@@ -38,13 +47,14 @@ export const contractsApi = createApi({
                     url: constants.CONTRACTS_UPDATE,
                     method: 'put',
                     body
-                }
+                };
             }
         }),
     }),
 });
 
 export const { useGetFreelancerContractsMutation,
-    useGetJobOwnerContractsMutation, 
+    useGetJobOwnerContractsMutation,
     useUpdateContractMutation,
- } = contractsApi;
+    useCreateContractMutation
+} = contractsApi;

@@ -189,9 +189,10 @@
         "closed": "Closed contracts",
         "chat": "Open chat",
         "owner": "Owner",
-        "hourly_rate": "Hourly rate",
-        "start": "Start date",
-        "end": "End date",
+        "freelancer":"Freelancer",
+        "hourly_rate": "Hourly rate: $",
+        "start": "Start date:",
+        "end": "End date:",
         "closeContract": "Close contract"
     },
     "Proposal": {

@@ -31,7 +31,7 @@ export function MyProposals(): JSX.Element {
                 title={<a href={`/vacancy/${proposal.vacancy.id}`}>{proposal.vacancy.title}</a>}
                 size="small">
                 <p>{t('Proposal.myhourlyrate')}<strong>${proposal.price}</strong></p>
-                <Collapse>
+                <Collapse bordered={false}>
                   <Panel header="Cover letter" key={proposal.id}>
                     <span>{t('Proposal.sentDate')}<strong>{proposal.createdAt.slice(0, 10)}</strong></span>
                     <p style={{
@@ -45,7 +45,7 @@ export function MyProposals(): JSX.Element {
                 <Button onClick={() => { changeStatus({ id: proposal.id, status: ProposalStatus.Deleted }); }}
                   style={{ marginTop: '10px' }}
                   size='middle'
-                  type='default'
+                  type='ghost'                  
                   icon={<CloseOutlined />}
                 >{t('Invite.delete')}</Button>
               </Card>
