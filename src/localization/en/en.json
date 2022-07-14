@@ -21,7 +21,7 @@
             "validateDescription": "Please describe about yourself",
             "typeAboutYourself": "Type about yourself...",
             "typeOther": "Type your other experiences...",
-            "save": "save",
+            "save": "Save",
             "contactInfo": "Contact info"
         },
         "selectSkills": "Select skills",
@@ -237,12 +237,18 @@
         "selectjob": "Select job for proposal",
         "requiredmessage": "Please choose your job!",
         "notalentsfound": "No talents found for your categories.",
-        "accepted": "Invite accepted",
-        "declined": "Invite declined",
+        "accepted": "Accepted",
+        "declined": "Declined",
         "delete": "Delete from list"
     },
     "Offers": {
-        "noofers": "No offers yet..."
+        "sendYour": "Send offer",
+        "send": "SEND OFFER",
+        "noofers": "No offers yet...",
+        "cancel": "CANCEL",
+        "finalrate": "Input final rate:",
+        "rateRequired": "Please input hourly rate",
+        "sent": "Your offer have been successfully sent!"
     },
     "Chats": {
         "chats": "Chats",

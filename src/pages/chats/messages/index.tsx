@@ -5,6 +5,8 @@ import { FlexContainer } from 'pages/vacancies/components/projectDetails/styles'
 import { useAppSelector } from 'store/hooks';
 import io from "socket.io-client";
 import axios from 'axios';
+import { trackPromise, usePromiseTracker } from 'react-promise-tracker';
+import { Spinner } from 'components/ui/Spinner';
 import { Avatar, Message, MessageContainer } from '../styles';
 import MessageForm from '../messageForm';
 
@@ -19,7 +21,7 @@ function Messages({ selectedChat }: IProps): JSX.Element {
 
     const [messages, setMessages] = useState<IMessage[]>([]);
     const [newMessage, setNewMessage] = useState({} as IMessage);
-
+    const {promiseInProgress} = usePromiseTracker();
 
     async function getOldMessages(): Promise<void> {
         await axios.get(`${process.env.REACT_APP_URL}${constants.GET_MESSAGES}${selectedChat}`)
@@ -29,7 +31,7 @@ function Messages({ selectedChat }: IProps): JSX.Element {
     };
 
     useEffect(() => {
-        getOldMessages();
+        trackPromise(getOldMessages());
     }, [selectedChat]);
 
     useEffect(() => {
@@ -42,12 +44,13 @@ function Messages({ selectedChat }: IProps): JSX.Element {
         if (newMessage) setMessages((old: IMessage[]) => [...old, newMessage]);
     }, [newMessage]);
 
+    if (promiseInProgress) return <MessageContainer ><Spinner /></MessageContainer>;
     if (!messages.length) return <MessageContainer ><MessageForm selectedChat={selectedChat} />  </MessageContainer >;
 
     return (
         <MessageContainer>
             {
-                messages.map((message: IMessage) => {
+                messages.map((message) => {
                     if (!message.author) {
                         return (
                             <FlexContainer key={message.createdAt} style={{ justifyContent: 'center' }}>
