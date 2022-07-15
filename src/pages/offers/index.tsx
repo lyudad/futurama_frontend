@@ -17,8 +17,9 @@ export default function Offers(): JSX.Element {
         const offers: IProposal[] | [] = data;
 
         return (
-            <Container style={{ minHeight: '700px' }}>
-                <Heading>{t('MenuBar.offers')}</Heading>
+            <Container>
+                {offers.length > 0 && (
+                    <Heading>{t('MenuBar.offers')}</Heading>)}
                 <Space direction="vertical" size="large" style={{ display: 'flex' }}>
                     {offers.length > 0 ? (
                         offers.map((offer) => (
@@ -52,13 +53,7 @@ export default function Offers(): JSX.Element {
                                     owner={offer.vacancy.owner?.id}
                                 />
                             </Card>
-                        ))) : (<Result
-                            style={{
-                                background: 'white',
-                                borderRadius: '15px'
-                            }}
-                            title={t('Offers.noofers')}
-                        />)}
+                        ))) : (<Result title={t('Offers.noofers')} />)}
                 </Space>
             </Container >
         );

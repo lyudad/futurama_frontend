@@ -6,15 +6,15 @@ import { Result } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { FlexColumn } from 'pages/chats/styles';
 import { Card } from './Card/Card';
-
+import { Container } from 'pages/vacancies/components/projectDetails/styles';
 
 export function Talents(): JSX.Element {
-
     const profiles = useGetAllProfilesQuery().data;
     const { t } = useTranslation();
-    if (profiles)
 
-        return (           
+    if (profiles)
+        return (
+            <Container>
                 <FlexColumn style={{ margin: '20px auto', flexWrap: 'wrap' }}>
                     {profiles?.length > 0 ? (
                         profiles.map((user: UserProfile) => (
@@ -32,15 +32,8 @@ export function Talents(): JSX.Element {
                             />
                         ))
                     ) : (
-                        <Result
-                            style={{
-                                background: 'white',
-                                borderRadius: '15px'
-                            }}
-                            title={t('Invite.notalentsfound')}
-                        />
-                    )}
+                        <Result title={t('Invite.notalentsfound')} />)}
                 </FlexColumn>
-           
+            </Container>
         ); return <Spinner />;
 }

@@ -12,8 +12,8 @@ import { setUser } from 'store/reducers/auth';
 import { loginForm } from 'types/auth';
 import { constants } from 'constants/urls';
 import { validations } from 'constants/validation';
-import SigninWithGoogle from './SigninWithGoogle';
-import SigninWithFacebook from './SigninWithFacebook';
+//import SigninWithGoogle from './SigninWithGoogle';
+//import SigninWithFacebook from './SigninWithFacebook';
 import {
     ButtonsContainer,
     Card,
@@ -116,10 +116,10 @@ export function SignIn(): JSX.Element {
                         </Button>
                     </Form>
                 </Formik>
-                <ButtonsContainer>
+                {/* <ButtonsContainer>
                     <SigninWithGoogle />
                     <SigninWithFacebook />
-                </ButtonsContainer>
+                </ButtonsContainer> */}
                 <p>
                     {t('SignInForm.do_not_have_an_account')}{' '}
                     <NavLink to="/signup">{t('SignInForm.signup')}</NavLink>

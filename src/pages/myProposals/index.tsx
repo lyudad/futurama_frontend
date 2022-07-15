@@ -17,8 +17,9 @@ export function MyProposals(): JSX.Element {
     const proposals: IProposal[] | [] = data;
 
     return (
-      <Container style={{ minHeight: '700px' }}>
-        <Heading>{t('Proposal.myproposals')}</Heading>
+      <Container>
+        {proposals.length > 0 && (
+          <Heading>{t('Proposal.myproposals')}</Heading>)}
 
         <Space direction="vertical" size="large" style={{ display: 'flex' }}>
           {proposals.length > 0 ? (
@@ -45,17 +46,11 @@ export function MyProposals(): JSX.Element {
                 <Button onClick={() => { changeStatus({ id: proposal.id, status: ProposalStatus.Deleted }); }}
                   style={{ marginTop: '10px' }}
                   size='middle'
-                  type='ghost'                  
+                  type='ghost'
                   icon={<CloseOutlined />}
                 >{t('Invite.delete')}</Button>
               </Card>
-            ))) : (<Result
-              style={{
-                background: 'white',
-                borderRadius: '15px'
-              }}
-              title={t('Proposal.noproposals')}
-            />)}
+            ))) : (<Result title={t('Proposal.noproposals')} />)}
         </Space>
       </Container >
     );

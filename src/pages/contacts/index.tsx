@@ -20,7 +20,8 @@ import { useAppSelector } from 'store/hooks';
 import { constants as urlConstants } from 'constants/urls';
 import { useNavigate } from 'react-router-dom';
 import { FlexColumn } from 'pages/chats/styles';
-import { Container, Heading, Wrapper } from './styles';
+import { Heading, Wrapper } from './styles';
+import { Container } from 'pages/vacancies/components/projectDetails/styles';
 
 
 export function Contacts(): JSX.Element {
@@ -116,7 +117,7 @@ export function Contacts(): JSX.Element {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input disabled/>
                             </Form.Item>
                             <Form.Item
                                 label={t('Contacts.lastname')}
@@ -131,7 +132,7 @@ export function Contacts(): JSX.Element {
                                     },
                                 ]}
                             >
-                                <Input />
+                                <Input disabled/>
                             </Form.Item>
                             <Form.Item
                                 label={t('Contacts.email')}

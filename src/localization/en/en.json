@@ -65,7 +65,7 @@
         "otherExperience": "Other",
         "set": "SET",
         "hour": " hour",
-        "empty": "Your profile is empty! Click here to set it."
+        "empty": "Your profile is empty! Click here to tell about yourself."
     },
     "MenuBar": {
         "searchWork": "Search work",
@@ -189,7 +189,7 @@
         "closed": "Closed contracts",
         "chat": "Open chat",
         "owner": "Owner",
-        "freelancer":"Freelancer",
+        "freelancer": "Freelancer",
         "hourly_rate": "Hourly rate: $",
         "start": "Start date:",
         "end": "End date:",
@@ -240,7 +240,7 @@
         "invited": " ALREADY INVITED",
         "selectjob": "Select job for proposal",
         "requiredmessage": "Please choose your job!",
-        "notalentsfound": "No talents found for your categories.",
+        "notalentsfound": "No talents found for your job's categories.",
         "accepted": "Accepted",
         "declined": "Declined",
         "delete": "Delete from list"
@@ -263,6 +263,7 @@
         "enter": "Enter message..."
     },
     "CreateJob": {
+        "letscreate": "Click here to create your first job!",
         "createajob": "Create a job",
         "creating": "Creating...",
         "title": "Vacancy title:",

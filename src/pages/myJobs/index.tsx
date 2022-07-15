@@ -7,9 +7,10 @@ import { IVacancy } from 'types/vacancy';
 import { IProposal } from 'types/proposal';
 import { Button as CustomButton } from 'components/ui/button';
 import { useChangeJobStatusMutation, useDeleteJobMutation, useGetMyJobsQuery } from 'store/api/vacanciesApi';
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
+import { CheckOutlined, CloseOutlined, SmileOutlined } from '@ant-design/icons';
 import { ListSelector } from './styles';
 import { ProposalsList } from './proposalsList';
+import { NavLink } from 'react-router-dom';
 
 export function MyJobs(): JSX.Element {
   const { data, isLoading } = useGetMyJobsQuery();
@@ -75,55 +76,53 @@ export function MyJobs(): JSX.Element {
   }, [isActiveJobs, data]);
 
   if (isLoading) return <Spinner />;
+
   return (
-    <Container style={{ minHeight: '700px' }}>
-      <Heading>{t('Proposal.myjobs')}</Heading>
-      <ListSelector>
-        {isActiveJobs
-          ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>
-          : <CustomButton onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>}
-        {!isActiveJobs
-          ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>
-          : <CustomButton onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>}
-      </ListSelector>
+    <Container>
+      {data?.length === 0 ? <NavLink to='/jobs/create'><Result icon={<SmileOutlined />} />
+        <Heading style={{ textAlign: 'center' }}>{t('CreateJob.letscreate')}</Heading></NavLink>
+        : <><Heading>{t('Proposal.myjobs')}</Heading>
+          <ListSelector>
+            {isActiveJobs
+              ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>
+              : <CustomButton onClick={() => setIsAvtiveJobs(true)}>{t('CreateJob.activejobs')}</CustomButton>}
+            {!isActiveJobs
+              ? <CustomButton theme="#75CCD2" color="white" onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>
+              : <CustomButton onClick={() => setIsAvtiveJobs(false)}>{t('CreateJob.archive')}</CustomButton>}
+          </ListSelector>
 
-      <Space direction="vertical" size="large" style={{ display: 'flex' }}>
-        {filteredJobs.length > 0 ? (
-          filteredJobs.map((job) => (
-            <Card
-              key={job.id}
-              style={{
-                boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
-              }}
-              title={jobHeader(job)}
-            >
-              <span>{t('Vacancy.rate')} <strong> ${job.price}</strong></span>
-              <span>  /  {t('Vacancy.duration')} <strong> {job.timePerWeek}{t('Proposal.hour')}</strong></span>
+          <Space direction="vertical" size="large" style={{ display: 'flex' }}>
+            {filteredJobs.length > 0 ? (
+              filteredJobs.map((job) => (
+                <Card
+                  key={job.id}
+                  style={{
+                    boxShadow: '2px 2px 2px 2px rgba(4, 8, 14, 0.5)'
+                  }}
+                  title={jobHeader(job)}
+                >
+                  <span>{t('Vacancy.rate')} <strong> ${job.price}</strong></span>
+                  <span>  /  {t('Vacancy.duration')} <strong> {job.timePerWeek}{t('Proposal.hour')}</strong></span>
 
-              <div style={{ paddingTop: '10px' }}>
-                <p>{job.description}</p>
-                <div>
-                  {job.skills?.map((skill: { id: number; skill: string; }) => (
-                    <Skill key={skill.id}>{skill.skill}</Skill>
-                  ))}
-                </div>
-              </div>
+                  <div style={{ paddingTop: '10px' }}>
+                    <p>{job.description}</p>
+                    <div>
+                      {job.skills?.map((skill: { id: number; skill: string; }) => (
+                        <Skill key={skill.id}>{skill.skill}</Skill>
+                      ))}
+                    </div>
+                  </div>
 
-              <Collapse bordered={false}>
-                <Panel style={{ marginTop: '20px' }} header={panelHeader(job.proposals ? job.proposals : [])} key={filteredJobs.length}>
-                  <ProposalsList jobId={job.id} proposals={job.proposals ? job.proposals : []} />
-                </Panel>
-              </Collapse>
-            </Card>
+                  <Collapse bordered={false}>
+                    <Panel style={{ marginTop: '20px' }} header={panelHeader(job.proposals ? job.proposals : [])} key={filteredJobs.length}>
+                      <ProposalsList jobId={job.id} proposals={job.proposals ? job.proposals : []} />
+                    </Panel>
+                  </Collapse>
+                </Card>
 
-          ))) : (<Result
-            style={{
-              background: 'white',
-              borderRadius: '15px'
-            }}
-            title={t('Proposal.nojobs')}
-          />)}
-      </Space>
+              ))) : (<Result title={t('Proposal.nojobs')} />)}
+          </Space></>}
+
     </Container >
   );
 }
