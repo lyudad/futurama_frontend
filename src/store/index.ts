@@ -13,6 +13,7 @@ import { profileApi } from './api/profileApi';
 import { contactsApi } from './api/contactsApi';
 import { proposalsApi } from './api/proposalsApi';
 import { settingsApi } from './api/settingsApi';
+import { contractsApi } from './api/contractsApi';
 import { chatsApi } from './api/chatsApi';
 
 
@@ -30,6 +31,7 @@ const reducers = combineReducers({
     [contactsApi.reducerPath]: contactsApi.reducer,
     [proposalsApi.reducerPath]: proposalsApi.reducer,
     [settingsApi.reducerPath]: settingsApi.reducer,
+    [contractsApi.reducerPath]: contractsApi.reducer,
     [chatsApi.reducerPath]: chatsApi.reducer,
     auth: authReducer,
     profile: profileReducer,
@@ -51,6 +53,7 @@ export const store = configureStore({
             .concat(vacanciesApi.middleware)
             .concat(contactsApi.middleware)
             .concat(proposalsApi.middleware)
+            .concat(contractsApi.middleware)
             .concat(chatsApi.middleware),
 });
 

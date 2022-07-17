@@ -11,13 +11,13 @@ import {
 import profileImage from 'assets/icons/profile.png';
 import { useTranslation } from 'react-i18next';
 import { constants as urlConstants } from 'constants/urls';
-import { Image } from 'antd';
+import { Image, Result } from 'antd';
 import { UserProfile } from 'types/profile';
 import { userState } from 'types/auth';
 import { NavLink } from 'react-router-dom';
 import { Experience, ProfileCard, InfoBlock } from './style';
 import Card from './Card';
-
+import { SmileOutlined } from '@ant-design/icons';
 
 interface Props {
     profile: UserProfile;
@@ -41,12 +41,13 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
         } return { 'About me': profile?.description };
     }
 
+    if (!profile.englishLevel) return (<div style={{ textAlign: 'center' }}><NavLink to='/settings'><Result icon={<SmileOutlined />} />
+        <Heading>{t('ProfilePage.empty')}</Heading></NavLink></div>);
     return (
         <>
             <Heading>{user?.firstName} {user?.lastName}</Heading>
             <SmallHeading>{profile?.position?.category}</SmallHeading>
-
-            <FlexContainer style={{ marginTop: '25px' }}>
+            <FlexContainer>
                 <Image
                     style={{
                         minWidth: '200px',
@@ -63,42 +64,28 @@ export function ProfilePage({ user, profile }: Props): JSX.Element {
                     marginLeft: '30px',
                     width: '100%'
                 }}>
-
-                    <Info style={{ margin: 0, flexWrap: 'wrap' }}>
-                        {profile?.desirebleSalaryLevel ?
+                    <Info style={{ margin: 0, flexWrap: 'wrap' }}>                       
                             <InfoBlock>
                                 <Title> {t('GeneralSettings.mainForm.salary')}</Title>
                                 <InfoItem>${profile?.desirebleSalaryLevel}</InfoItem>
-                            </InfoBlock> : <InfoBlock>
-                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
-                            </InfoBlock>}
-
-                        {profile?.availableAmountOfHours ?
+                            </InfoBlock> 
+                       
                             <InfoBlock>
                                 <Title> {t('GeneralSettings.mainForm.availableHours')}</Title>
                                 <InfoItem>{profile?.availableAmountOfHours}{t('ProfilePage.hour')}</InfoItem>
-                            </InfoBlock> : <InfoBlock>
-                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
-                            </InfoBlock>}
-
-                        {profile?.englishLevel ?
+                            </InfoBlock>
+                    
                             <InfoBlock>
                                 <Title>{t('Vacancy.englishlevel')}</Title>
                                 <InfoItem>{profile?.englishLevel}</InfoItem>
-                            </InfoBlock> : <InfoBlock>
-                                <Title> {t('GeneralSettings.mainForm.salary')}</Title>
-                                <InfoItem><NavLink to="/settings">{t('ProfilePage.set')}</NavLink></InfoItem>
-                            </InfoBlock>}
+                            </InfoBlock> 
                     </Info>
-
                     <Card
                         description={t('ProfilePage.contactInformation')}
                         data={contactInformation}
                     />
                 </div>
-                
+
             </FlexContainer>
 
             {!!profile?.skills?.length && (

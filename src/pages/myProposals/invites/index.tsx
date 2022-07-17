@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { Spinner } from 'components/ui/Spinner';
 import Buttons from './buttons';
 
-
 export function Invites(): JSX.Element {
     const { data, isLoading } = useGetMyInvitesQuery();
     const { Panel } = Collapse;
@@ -18,8 +17,9 @@ export function Invites(): JSX.Element {
         const invites: IProposal[] | [] = data;
 
         return (
-            <Container style={{ minHeight: '700px' }}>
-                <Heading>{t('MenuBar.InvitesToInterview')}</Heading>
+            <Container>
+                {invites.length > 0 && (
+                    <Heading>{t('MenuBar.InvitesToInterview')}</Heading>)}
                 <Space direction="vertical" size="large" style={{ display: 'flex' }}>
                     {invites.length > 0 ? (
                         invites.map((invite) => (
@@ -48,13 +48,7 @@ export function Invites(): JSX.Element {
                                 </Collapse>
                                 <Buttons chat inviteId={invite.id} vacancyId={invite.vacancy.id} status={invite.status} />
                             </Card>
-                        ))) : (<Result
-                            style={{
-                                background: 'white',
-                                borderRadius: '15px'
-                            }}
-                            title={t('Proposal.noinvites')}
-                        />)}
+                        ))) : (<Result title={t('Proposal.noinvites')} />)}
                 </Space>
             </Container >
         );

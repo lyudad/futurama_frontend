@@ -1,80 +1,82 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'components/ui/button';
+import { useGetFreelancerContractsMutation, useGetJobOwnerContractsMutation, useUpdateContractMutation } from 'store/api/contractsApi';
+import { useAppSelector } from 'store/hooks';
+import { variables } from 'constants/variables';
+import { IContract } from 'types/contracts';
+import { Result } from 'antd';
+import { Container, Heading } from 'pages/vacancies/components/projectDetails/styles';
 import { Contract } from './Contract';
-import { Container, Navigation } from './styles';
+import { Wrapper } from './Wrapper';
+import { ListSelector } from 'pages/myJobs/styles';
+import { ContractsContainer } from './styles';
 
 export function Contracts(): JSX.Element {
-    const { t } = useTranslation();
-    const [openContracts, setOpenContracts] = useState(true);
+  const { t } = useTranslation();
+  const [getFreelancerContract, freelancerContract] = useGetFreelancerContractsMutation();
+  const [getJobOwnerContract, ownerContract] = useGetJobOwnerContractsMutation();
+  const [updateContract] = useUpdateContractMutation();
 
-    const data = [
-        {
-            id: 1,
-            title: "Android app",
-            hourlyRate: 10,
-            description: "Description of job Description of job Description of job Description of job Description of job",
-            owner: {
-                firstName: "Askabek",
-                lastName: "Djanbolotov",
-                photo: "https://avatars.githubusercontent.com/u/72981665?v=4"
-            },
-            startDate: "12.02.2022",
-            endDate: "12.02.2022"
-        },
-        {
-            id: 2,
-            title: "Android app",
-            hourlyRate: 10,
-            description: "Description of job",
-            owner: {
-                firstName: "Askabek",
-                lastName: "Djanbolotov",
-                photo: "https://avatars.githubusercontent.com/u/72981665?v=4"
-            },
-            startDate: "12.02.2022",
-            endDate: "12.02.2022"
-        },
-        {
-            id: 3,
-            title: "Android app",
-            hourlyRate: 10,
-            description: "Description of job",
-            owner: {
-                firstName: "Askabek",
-                lastName: "Djanbolotov",
-                photo: "https://avatars.githubusercontent.com/u/72981665?v=4"
-            },
-            startDate: "12.02.2022",
-            endDate: "12.02.2022"
-        },
-        {
-            id: 4,
-            title: "Android app",
-            hourlyRate: 10,
-            description: "Description of job",
-            owner: {
-                firstName: "Askabek",
-                lastName: "Djanbolotov",
-                photo: "https://avatars.githubusercontent.com/u/72981665?v=4"
-            },
-            startDate: "12.02.2022",
-            endDate: "12.02.2022"
-        }
-    ]
+  const [openContracts, setOpenContracts] = useState<boolean>(true);
+  const [contracts, setContracts] = useState<{ open: IContract[] | [], closed: IContract[] | []; }>({ open: [], closed: [], });
+  const role = useAppSelector((state) => state.auth.user?.role);
+  const isOwner: boolean = role === variables.jobOwner;
 
-    return (
-      <Container style={{ minHeight: '600px' }}>
-        <h1>{t('Contract.title')}</h1>
-        <Navigation>
-              {openContracts
-              ? <Button theme="#75CCD2" color="white" onClick={() => setOpenContracts(true)}>{t('Contract.open')}</Button> 
-              : <Button onClick={() => setOpenContracts(true)}>{t('Contract.open')}</Button>}
-              {!openContracts
-              ? <Button theme="#75CCD2" color="white" onClick={() => setOpenContracts(false)}>{t('Contract.closed')}</Button> 
-              : <Button onClick={() => setOpenContracts(false)}>{t('Contract.closed')}</Button>}
-        </Navigation>
-        {data.map((contract) => <Contract key={contract.id} data={contract}/>)}
-      </Container >
-    );
+  async function closeContract(id: number): Promise<void> {
+    const [closed] = contracts.open.splice(id, 1);
+    await updateContract({ ...closed, active: false, owner: closed.owner.id });
+    if (role === variables.freelancer) {
+      getFreelancerContract();
+    } else {
+      getJobOwnerContract();
+    }
+  }
+
+  function sortContracts(data: IContract[]): void {
+    const open = data.filter((contract: IContract) => contract.active);
+    const closed = data.filter((contract: IContract) => !contract.active);
+    setContracts({ open, closed });
+  }
+
+  useEffect(() => {
+    if (freelancerContract.data) {
+      sortContracts(freelancerContract.data);
+    } else if (ownerContract.data) {
+      sortContracts(ownerContract.data);
+    } else if (role === variables.freelancer) {
+      getFreelancerContract();
+    } else {
+      getJobOwnerContract();
+    }
+  }, [freelancerContract.data, ownerContract.data]);
+
+  return (
+    <Container>
+      <Heading>{t('Contract.title')}</Heading>
+      <ListSelector>
+        <Wrapper onClick={() => setOpenContracts(true)} text={t('Contract.open')} active={openContracts} />
+        <Wrapper onClick={() => setOpenContracts(false)} text={t('Contract.closed')} active={!openContracts} />
+      </ListSelector>
+
+      <ContractsContainer>
+        {openContracts ? <>
+          {contracts.open.map((contract, index) => <Contract
+            isOwner={isOwner}
+            closeContract={() => closeContract(index)}
+            key={contract.id}
+            data={contract} />
+          )}
+          {!contracts.open.length && <Result
+            style={{ position: 'absolute', top: '50%', left: '34%' }}
+            title={t('Contract.noOpenContractsYet')} />}
+        </>
+          : <> {contracts.closed.map((contract) => <Contract isOwner={isOwner} key={contract.id} data={contract} />)}
+            {!contracts.closed.length && <Result
+              style={{ position: 'absolute', top: '50%', left: '33%' }}
+              title={t('Contract.noClosedContractsYet')}
+            />}
+          </>}
+      </ContractsContainer>
+    </Container >
+  );
 }

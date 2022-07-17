@@ -6,25 +6,43 @@ import { useAppSelector } from 'store/hooks';
 import { useTranslation } from 'react-i18next';
 import { useChangeProposalStatusMutation } from 'store/api/proposalsApi';
 import { ProposalStatus } from 'types/proposal';
+import { useCreateContractMutation } from 'store/api/contractsApi';
 
 interface IProps {
     inviteId: number;
     vacancyId: number;
     status: string;
     chat?: boolean;
+    contract?: boolean;
+    title?: string;
+    hourlyRate?: number;
+    description?: string;
+    owner?: number;
 }
 
-function Buttons({ inviteId, vacancyId, status, chat }: IProps): JSX.Element {
+function Buttons({ inviteId, vacancyId, status, chat, contract, title, hourlyRate, description, owner }: IProps): JSX.Element {
     const myId = useAppSelector((state) => state.auth.user?.id);
     const { t } = useTranslation();
 
     const [createChat] = useCreateChatMutation();
+    const [createContract] = useCreateContractMutation();
     const [changeStatus] = useChangeProposalStatusMutation();
 
     function acceptingInvite(vacancy: number, invite: number): void {
         changeStatus({ id: invite, status: ProposalStatus.Accepted });
         if (chat)
             createChat({ freelancer: myId, vacancy });
+        if (contract)
+            createContract({
+                title,
+                hourlyRate,
+                description,
+                owner,
+                vacancy,
+                end: null,
+                active: true,
+                freelancer: myId
+            });
     }
 
     if (status === ProposalStatus.Pending)

@@ -75,8 +75,7 @@ function SendOffer({ user, vacancy, modal, showModal }: IProps): JSX.Element {
                 size='large'
             >
                 <Form.Item
-                    name="price"
-                    initialValue={5}
+                    name="price"                  
                     label={t('Offers.finalrate')}
                     rules={[
                         {

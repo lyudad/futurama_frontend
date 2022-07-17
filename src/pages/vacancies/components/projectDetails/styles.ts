@@ -11,7 +11,7 @@ export const Container = styled.section`
   background-color: #fff;
   min-width: 750px; 
   text-align: left;  
-  min-height: 550px;
+  min-height: 700px;
 `;
 
 export const Button = styled.button`

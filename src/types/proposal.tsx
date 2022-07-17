@@ -14,6 +14,7 @@ export interface IProposal {
         createdAt: string,
         updatedAt: string;
         owner?: {
+            id?: number;
             firstName: string;
             lastName: string;
             photo: string;

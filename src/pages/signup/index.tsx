@@ -11,10 +11,10 @@ import { useSignupUserMutation } from 'store/api/authApi';
 import { setUser } from 'store/reducers/auth';
 import { signupForm } from 'types/auth';
 import { validations } from 'constants/validation';
-import SignupWithGoogle from './SignupWithGoogle';
-import SignupWithFacebook from './SignupWithFacebook';
+//import SignupWithGoogle from './SignupWithGoogle';
+//import SignupWithFacebook from './SignupWithFacebook';
 import {
-    ButtonsContainer,
+  //  ButtonsContainer,
     Card,
     ErrorSpan,
     FindADreamJob,
@@ -161,10 +161,10 @@ export function SignUp(): JSX.Element {
                         </Button>
                     </Form>
                 </Formik>
-                <ButtonsContainer>
+                {/* <ButtonsContainer>
                     <SignupWithGoogle />
                     <SignupWithFacebook />
-                </ButtonsContainer>
+                </ButtonsContainer> */}
                 <p>
                     {t('SignUpForm.already_have_an_account')}{' '}
                     <NavLink to="/login">{t('SignUpForm.signIn')}</NavLink>
