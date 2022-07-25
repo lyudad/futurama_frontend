@@ -193,7 +193,8 @@
         "hourly_rate": "Hourly rate: $",
         "start": "Start date:",
         "end": "End date:",
-        "closeContract": "Close contract"
+        "closeContract": "Close contract",
+        "closedsucces": "Contract succesfully closed!"
     },
     "Proposal": {
         "success": "Success",
@@ -227,8 +228,10 @@
         "accept": "Accept",
         "decline": "Decline",
         "jobdetails": "Job details",
-        "gotochat": "Go to chat",
-        "accepted": "Proposal accepted"
+        "gotochat": "Accept proposal and open chats",
+        "accepted": "Proposal accepted",
+        "error": "Your profile is empty",
+        "errormessage": "To send a proposal, you must have the public profile. Click on this message to set."
     },
     "Invite": {
         "sent": "Your invite to interview have been successfully sent!",
@@ -243,7 +246,9 @@
         "notalentsfound": "No talents found for your job's categories.",
         "accepted": "Accepted",
         "declined": "Declined",
-        "delete": "Delete from list"
+        "delete": "Delete from list",
+        "success": "Invite accepted!",
+        "chat": "New chat succefully created"
     },
     "Offers": {
         "sendYour": "Send offer",
@@ -252,7 +257,9 @@
         "cancel": "CANCEL",
         "finalrate": "Input final rate:",
         "rateRequired": "Please input hourly rate",
-        "sent": "Your offer have been successfully sent!"
+        "sent": "Your offer have been successfully sent!",
+        "success": "Offer accepted!",
+        "chat": "New contract succefully created"
     },
     "Chats": {
         "chats": "Chats",
@@ -260,7 +267,9 @@
         "nochats": "You have no active chats",
         "nomessages": "No messages found",
         "send": "SEND",
-        "enter": "Enter message..."
+        "enter": "Enter message...",
+        "success": "Proposal accepted!",
+        "chat": "New chat succefully created"
     },
     "CreateJob": {
         "letscreate": "Click here to create your first job!",

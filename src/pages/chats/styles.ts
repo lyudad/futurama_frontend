@@ -13,8 +13,9 @@ interface ChatProps {
 export const Container = styled.section`
   display: flex; 
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  margin: 0px 50px;
+  margin: 20px 50px;
   padding: 25px;
+  border-radius: 15px;
   background-color: #fff;
   text-align: left;  
   min-height: 700px;

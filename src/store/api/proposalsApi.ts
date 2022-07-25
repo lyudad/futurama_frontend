@@ -73,6 +73,16 @@ export const proposalsApi = createApi({
             },
             providesTags: [{ type: 'Proposal', id: 'LIST' }],
         }),
+        checkOfferIsExist: build.query({
+            query: (body) => {
+                return {
+                    url: constants.CHECK_OFFER,
+                    method: "post",
+                    body
+                };
+            },
+            providesTags: [{ type: 'Proposal', id: 'LIST' }],
+        }),
     }),
 });
 
@@ -82,4 +92,5 @@ export const {
     useGetMyProposalsQuery,
     useCheckProposalIsExistQuery,
     useGetMyInvitesQuery,
-    useGetMyOffersQuery } = proposalsApi;
+    useGetMyOffersQuery,
+    useCheckOfferIsExistQuery } = proposalsApi;

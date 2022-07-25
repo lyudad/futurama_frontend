@@ -42,7 +42,7 @@ export const constants = {
     POST_EXPERIENCE: '/profile/experience/create',
     PATCH_EXPERIENCE: '/profile/experience/update',
     DELETE_EXPERIENCE: '/profile/experience/delete/',
-    GET_MY_JOBS: '/proposals/myjobs',
+    GET_MY_JOBS: '/proposals/myjobs/',
     MY_JOBS: '/myjobs/',
     CREATE_JOB: '/jobs/create',
     TALENTS: '/talents',
@@ -55,5 +55,6 @@ export const constants = {
     GET_MY_CHATS: '/chats/mychats',
     GET_MESSAGES: 'messages/',
     GET_CHAT_DATA: '/chats/',
-    SEND_MESSAGE: '/messages/send'
+    SEND_MESSAGE: '/messages/send',
+    CHECK_OFFER: '/proposals/offer-exist'
 };

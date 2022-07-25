@@ -1,14 +1,15 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import {
     Modal,
     Form,
     Select
 } from "antd";
 import { useTranslation } from 'react-i18next';
+import notification, { NotificationPlacement } from 'antd/lib/notification';
 import { Button } from 'pages/vacancies/components/projectDetails/styles';
 import { useSendProposalMutation } from 'store/api/proposalsApi';
 import { IVacancy } from 'types/vacancy';
-import { useGetMyJobsQuery } from 'store/api/vacanciesApi';
+import { useGetMyJobsForCurrentUserQuery } from 'store/api/vacanciesApi';
 
 interface IProps {
     modal: boolean;
@@ -28,30 +29,30 @@ export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
     const [form] = Form.useForm();
     const [setData] = useSendProposalMutation();
 
-    const { data } = useGetMyJobsQuery();
+    const { data, refetch } = useGetMyJobsForCurrentUserQuery(id);
     const { t } = useTranslation();
     const { Option } = Select;
 
-    const showMessage = (): void => {
-        const message = Modal.success({
-            title: t('Proposal.success'),
-            content: t('Invite.sent'),
-            width: 600,
+    const openNotification = (placement: NotificationPlacement): void => {
+        notification.success({
+            message: t('Proposal.success'),
+            description: t('Invite.sent'),
+            placement,
         });
-        setTimeout(() => {
-            message.destroy();
-        }, 3500);
     };
 
     async function sending(values: Invite): Promise<void> {
         await setData(values);
         showModal(false);
-        showMessage();
+        openNotification('bottomRight');
     }
+    
+    useEffect(() => {
+        refetch();
+    }, [modal]);
 
     if (data) {
         const jobs: IVacancy[] | [] = data;
-
         return (
             <Modal
                 onCancel={() => { showModal(false); }}

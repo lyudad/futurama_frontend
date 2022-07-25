@@ -11,8 +11,8 @@ import { useSignupUserMutation } from 'store/api/authApi';
 import { setUser } from 'store/reducers/auth';
 import { signupForm } from 'types/auth';
 import { validations } from 'constants/validation';
-//import SignupWithGoogle from './SignupWithGoogle';
-//import SignupWithFacebook from './SignupWithFacebook';
+// import SignupWithGoogle from './SignupWithGoogle';
+// import SignupWithFacebook from './SignupWithFacebook';
 import {
   //  ButtonsContainer,
     Card,

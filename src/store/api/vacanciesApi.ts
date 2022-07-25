@@ -50,6 +50,15 @@ export const vacanciesApi = createApi({
                     ]
                     : [{ type: 'Jobs', id: 'LIST' }],
         }),
+        getMyJobsForCurrentUser: builder.query<[], number>({
+            query: (id) => {
+                return {
+                    url: constants.GET_MY_JOBS + id,
+                    method: "get"
+                };
+            },
+            providesTags: [{ type: 'Jobs', id: 'LIST' }]
+        }),
         changeJobStatus: builder.mutation({
             query: (body: { id: number, status: boolean; }) => {
                 return {
@@ -106,4 +115,5 @@ export const {
     useCreateJobMutation,
     useChangeJobStatusMutation,
     useGetMyJobsQuery,
+    useGetMyJobsForCurrentUserQuery,
     useDeleteJobMutation } = vacanciesApi;

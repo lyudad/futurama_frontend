@@ -9,8 +9,8 @@ import { IVacancy } from 'types/vacancy';
 import { useTranslation } from 'react-i18next';
 import { useSendProposalMutation } from 'store/api/proposalsApi';
 import { useAppSelector } from 'store/hooks';
+import notification, { NotificationPlacement } from 'antd/lib/notification';
 import { Button } from '../projectDetails/styles';
-
 
 interface IProps {
     vacancy: IVacancy;
@@ -34,20 +34,18 @@ function SendProposal({ vacancy, modal, showModal }: IProps): JSX.Element {
     const { TextArea } = Input;
     const { t } = useTranslation();
 
-    const showMessage = (): void => {
-        const message = Modal.success({
-            title: t('Proposal.success'),
-            content: t('Proposal.sent'),
+    const openNotification = (placement: NotificationPlacement): void => {
+        notification.success({
+            message: t('Proposal.success'),
+            description: t('Proposal.sent'),
+            placement,
         });
-        setTimeout(() => {
-            message.destroy();
-        }, 3500);
     };
 
     async function sending(values: Proposal): Promise<void> {
         await setData(values);
         showModal(false);
-        showMessage();
+        openNotification('bottomRight');
     }
 
     return (

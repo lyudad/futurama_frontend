@@ -7,6 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { useCreateChatMutation } from 'store/api/chatsApi';
 import { useChangeProposalStatusMutation } from 'store/api/proposalsApi';
+import notification, { NotificationPlacement } from 'antd/lib/notification';
 import { ListSelector, Message } from '../styles';
 
 interface IProps {
@@ -21,10 +22,19 @@ export function ProposalsList({ proposals, jobId }: IProps): JSX.Element {
     const navigate = useNavigate();
     const [changeStatus] = useChangeProposalStatusMutation();
 
+    const openNotification = (placement: NotificationPlacement): void => {
+        notification.success({
+            message: t('Chats.success'),
+            description: t('Chats.chat'),
+            placement,
+        });
+    };
+
     function acceptProposal(freelancerId: number, proposal: number): void {
         createChat({ freelancer: freelancerId, vacancy: jobId });
         changeStatus({ id: proposal, status: ProposalStatus.Accepted });
         navigate('/chats');
+        openNotification('bottomRight');
     }
 
     function panelHeader(proposal: IProposal): JSX.Element {

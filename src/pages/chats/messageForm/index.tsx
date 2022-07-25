@@ -8,6 +8,7 @@ import io from "socket.io-client";
 import { variables } from 'constants/variables';
 import SendOffer from 'pages/offers/sendOffer';
 import { useGetChatDataQuery } from 'store/api/chatsApi';
+import { useCheckOfferIsExistQuery } from 'store/api/proposalsApi';
 import { IProps } from '../messages';
 import { Button, FlexColumn } from '../styles';
 
@@ -29,6 +30,10 @@ function MessageForm({ selectedChat }: IProps): JSX.Element {
     const [form] = Form.useForm();
     const socket = io(`${process.env.REACT_APP_URL}`);
     const { t } = useTranslation();
+    const { data: offerExist } = useCheckOfferIsExistQuery({
+        vacancyId: data.vacancy.id,
+        freelancerId: data.freelancer.id
+    });
 
     async function send(values: IMessage): Promise<void> {
         if (values.messageBody && values.messageBody.trim().length > 0)
@@ -57,7 +62,7 @@ function MessageForm({ selectedChat }: IProps): JSX.Element {
                 />
             </Form>
 
-            {role === variables.jobOwner ? <div style={{ display: 'flex', justifyContent: 'space-between' }}><Button onClick={() => {
+            {role === variables.jobOwner && !offerExist ? <div style={{ display: 'flex', justifyContent: 'space-between' }}><Button onClick={() => {
                 showModal(true);
             }}>{t('Offers.send')}</Button>
                 <Button onClick={() => {

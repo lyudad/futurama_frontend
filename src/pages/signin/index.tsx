@@ -12,10 +12,10 @@ import { setUser } from 'store/reducers/auth';
 import { loginForm } from 'types/auth';
 import { constants } from 'constants/urls';
 import { validations } from 'constants/validation';
-//import SigninWithGoogle from './SigninWithGoogle';
-//import SigninWithFacebook from './SigninWithFacebook';
+// import SigninWithGoogle from './SigninWithGoogle';
+// import SigninWithFacebook from './SigninWithFacebook';
 import {
-    ButtonsContainer,
+   // ButtonsContainer,
     Card,
     ErrorSpan,
     FindADreamJob,

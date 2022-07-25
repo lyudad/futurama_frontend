@@ -8,7 +8,8 @@ import { Spinner } from 'components/ui/Spinner';
 import { IVacancy } from 'types/vacancy';
 import { useAppSelector } from 'store/hooks';
 import { variables } from 'constants/variables';
-import { Result } from 'antd';
+import { notification, Result } from 'antd';
+import type { NotificationPlacement } from 'antd/es/notification';
 import SendProposal from '../sendProposal/sendProposal';
 import {
     Container,
@@ -35,11 +36,29 @@ interface Props {
 }
 
 function Buttons({ showModal, proposalExist }: Props): JSX.Element {
+    const navigate = useNavigate();
     const { t } = useTranslation();
-    if (proposalExist) {
-        return <Button disabled><CheckOutlined /> {t('Proposal.applied')}</Button>;
+    const openNotification = (placement: NotificationPlacement): void => {
+        notification.error({
+            message: t('Proposal.error'),
+            description: t('Proposal.errormessage'),
+            placement,
+            onClick() {
+                navigate('/settings');
+            },
+        });
+    };
+
+    const profileState = useAppSelector((state) => state.profile.profile);
+       
+    if (profileState?.englishLevel) {
+        if (proposalExist) {
+            return <Button disabled><CheckOutlined /> {t('Proposal.applied')}</Button>;
+        } return <Button onClick={() => {
+            showModal(true);
+        }}>{t('Vacancy.apply')}</Button>;
     } return <Button onClick={() => {
-        showModal(true);
+        openNotification('bottomRight');
     }}>{t('Vacancy.apply')}</Button>;
 }
 

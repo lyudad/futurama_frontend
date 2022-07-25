@@ -8,9 +8,9 @@ import { IProposal } from 'types/proposal';
 import { Button as CustomButton } from 'components/ui/button';
 import { useChangeJobStatusMutation, useDeleteJobMutation, useGetMyJobsQuery } from 'store/api/vacanciesApi';
 import { CheckOutlined, CloseOutlined, SmileOutlined } from '@ant-design/icons';
+import { NavLink } from 'react-router-dom';
 import { ListSelector } from './styles';
 import { ProposalsList } from './proposalsList';
-import { NavLink } from 'react-router-dom';
 
 export function MyJobs(): JSX.Element {
   const { data, isLoading } = useGetMyJobsQuery();

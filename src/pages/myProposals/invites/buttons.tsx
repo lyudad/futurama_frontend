@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useChangeProposalStatusMutation } from 'store/api/proposalsApi';
 import { ProposalStatus } from 'types/proposal';
 import { useCreateContractMutation } from 'store/api/contractsApi';
+import notification, { NotificationPlacement } from 'antd/lib/notification';
 
 interface IProps {
     inviteId: number;
@@ -28,11 +29,29 @@ function Buttons({ inviteId, vacancyId, status, chat, contract, title, hourlyRat
     const [createContract] = useCreateContractMutation();
     const [changeStatus] = useChangeProposalStatusMutation();
 
+    const openInviteNotification = (placement: NotificationPlacement): void => {
+        notification.success({
+            message: t('Invite.success'),
+            description: t('Invite.chat'),
+            placement,
+        });
+    };
+
+    const openContractNotification = (placement: NotificationPlacement): void => {
+        notification.success({
+            message: t('Offers.success'),
+            description: t('Offers.chat'),
+            placement,
+        });
+    };
+
     function acceptingInvite(vacancy: number, invite: number): void {
         changeStatus({ id: invite, status: ProposalStatus.Accepted });
-        if (chat)
+        if (chat) {
             createChat({ freelancer: myId, vacancy });
-        if (contract)
+            openInviteNotification('bottomRight');
+        }
+        if (contract) {
             createContract({
                 title,
                 hourlyRate,
@@ -43,6 +62,8 @@ function Buttons({ inviteId, vacancyId, status, chat, contract, title, hourlyRat
                 active: true,
                 freelancer: myId
             });
+            openContractNotification('bottomRight');
+        }
     }
 
     if (status === ProposalStatus.Pending)
