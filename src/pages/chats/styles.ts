@@ -23,6 +23,7 @@ export const Container = styled.section`
 
 export const ChatsContainer = styled.div`
   border-right: 2px solid #E5E4E2;
+  padding-bottom: 84px;
   flex: 3 2.5 100%;
 `;
 

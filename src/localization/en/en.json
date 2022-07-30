@@ -274,6 +274,7 @@
     "CreateJob": {
         "letscreate": "Click here to create your first job!",
         "createajob": "Create a job",
+        "editing": "Editing",
         "creating": "Creating...",
         "title": "Vacancy title:",
         "created": "Job succesfully created!",
@@ -310,6 +311,8 @@
         "restore": "Restore",
         "delete": "Delete",
         "activejobs": "Active jobs",
-        "archive": "Archive"
+        "archive": "Archive",
+        "edit": "EDIT",
+        "save": "SAVE AND PUBLISH"
     }
 }

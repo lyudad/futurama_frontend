@@ -46,7 +46,7 @@ export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
         showModal(false);
         openNotification('bottomRight');
     }
-    
+
     useEffect(() => {
         refetch();
     }, [modal]);
@@ -62,7 +62,7 @@ export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
                 visible={modal}
                 title={<h2 style={{ margin: 9 }}>{t('Invite.sendTitle')}</h2>}
                 footer={[
-                    <Button style={{ margin: '15px 20px 20px 5px' }} onClick={() => {
+                    <Button style={{ width: '250px' }} onClick={() => {
                         showModal(false);
                     }} key="back" >
                         {t('Invite.backto')}
@@ -74,7 +74,7 @@ export function SendInvite({ modal, showModal, id }: IProps): JSX.Element {
                                 form.resetFields();
                                 sending(values);
                             });
-                    }} style={{ margin: '15px 20px 20px 5px' }} key="submit">
+                    }} style={{ width: '250px', marginRight: '24px' }} key="submit">
                         {t('Invite.sendinvitation')}
                     </Button>
                 ]}>

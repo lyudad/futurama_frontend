@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Collapse, Image } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { IProposal, ProposalStatus } from 'types/proposal';
@@ -13,9 +13,10 @@ import { ListSelector, Message } from '../styles';
 interface IProps {
     proposals: IProposal[];
     jobId: number;
+    refetch: () => void;
 }
 
-export function ProposalsList({ proposals, jobId }: IProps): JSX.Element {
+export function ProposalsList({ proposals, jobId, refetch }: IProps): JSX.Element {
     const [createChat] = useCreateChatMutation();
     const { Panel } = Collapse;
     const { t } = useTranslation();
@@ -36,6 +37,10 @@ export function ProposalsList({ proposals, jobId }: IProps): JSX.Element {
         navigate('/chats');
         openNotification('bottomRight');
     }
+
+    useEffect(() => {
+        refetch();
+    }, [changeStatus]);
 
     function panelHeader(proposal: IProposal): JSX.Element {
         return (

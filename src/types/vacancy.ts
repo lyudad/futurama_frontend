@@ -13,7 +13,8 @@ export interface IVacancy {
     updatedAt: string;
     category: [];
     proposals?: [];
-    isActive: boolean;
+    isActive?: boolean;
+    owner?: { id: number; };
 }
 
 export interface IvacancyQuery {
@@ -26,4 +27,23 @@ export interface IvacancyQuery {
     maxTimePerWeek?: number,
     skills?: [];
     pageValue?: number;
+}
+
+export interface ProjectDetails {
+    id: number;
+    vacancyId?: number;
+    title: string;
+    company: string;
+    location: string;
+    description: string;
+    englishLevel: string;
+    price: number;
+    skills: [];
+    timePerWeek: number;
+    createdAt: string;
+    updatedAt: string;
+    category: { id: number; };
+    proposals?: [];
+    isActive?: boolean;
+    owner?: { id: number; };
 }

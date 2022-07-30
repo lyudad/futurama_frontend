@@ -62,10 +62,11 @@ function MessageForm({ selectedChat }: IProps): JSX.Element {
                 />
             </Form>
 
-            {role === variables.jobOwner && !offerExist ? <div style={{ display: 'flex', justifyContent: 'space-between' }}><Button onClick={() => {
-                showModal(true);
-            }}>{t('Offers.send')}</Button>
-                <Button onClick={() => {
+            {role === variables.jobOwner && !offerExist ? <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Button style={{ width: '160px' }} onClick={() => {
+                    showModal(true);
+                }}>{t('Offers.send')}</Button>
+                <Button style={{ width: '160px' }} onClick={() => {
                     form
                         .validateFields()
                         .then((values) => {

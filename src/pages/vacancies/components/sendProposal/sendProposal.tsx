@@ -5,7 +5,7 @@ import {
     Input,
     InputNumber
 } from "antd";
-import { IVacancy } from 'types/vacancy';
+import { ProjectDetails } from 'types/vacancy';
 import { useTranslation } from 'react-i18next';
 import { useSendProposalMutation } from 'store/api/proposalsApi';
 import { useAppSelector } from 'store/hooks';
@@ -13,7 +13,7 @@ import notification, { NotificationPlacement } from 'antd/lib/notification';
 import { Button } from '../projectDetails/styles';
 
 interface IProps {
-    vacancy: IVacancy;
+    vacancy: ProjectDetails;
     modal: boolean;
     showModal: Dispatch<SetStateAction<boolean>>;
 }

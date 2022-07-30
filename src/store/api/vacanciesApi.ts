@@ -34,6 +34,7 @@ export const vacanciesApi = createApi({
                     body
                 };
             },
+            invalidatesTags: [{ type: 'Jobs', id: 'LIST' }]
         }),
         getMyJobs: builder.query<[], void>({
             query: () => {
