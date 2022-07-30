@@ -4,17 +4,13 @@ import { string, object } from 'yup';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-
 import { Button } from 'components/ui/button';
 import { Input } from 'components/ui/input';
 import { useSignupUserMutation } from 'store/api/authApi';
 import { setUser } from 'store/reducers/auth';
 import { signupForm } from 'types/auth';
 import { validations } from 'constants/validation';
-//import SignupWithGoogle from './SignupWithGoogle';
-//import SignupWithFacebook from './SignupWithFacebook';
-import {
-  //  ButtonsContainer,
+import {  
     Card,
     ErrorSpan,
     FindADreamJob,
@@ -160,11 +156,7 @@ export function SignUp(): JSX.Element {
                                 : t('SignUpForm.signUp')}
                         </Button>
                     </Form>
-                </Formik>
-                {/* <ButtonsContainer>
-                    <SignupWithGoogle />
-                    <SignupWithFacebook />
-                </ButtonsContainer> */}
+                </Formik>              
                 <p>
                     {t('SignUpForm.already_have_an_account')}{' '}
                     <NavLink to="/login">{t('SignUpForm.signIn')}</NavLink>

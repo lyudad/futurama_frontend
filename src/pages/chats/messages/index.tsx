@@ -21,7 +21,7 @@ function Messages({ selectedChat }: IProps): JSX.Element {
 
     const [messages, setMessages] = useState<IMessage[]>([]);
     const [newMessage, setNewMessage] = useState({} as IMessage);
-    const {promiseInProgress} = usePromiseTracker();
+    const { promiseInProgress } = usePromiseTracker();
 
     async function getOldMessages(): Promise<void> {
         await axios.get(`${process.env.REACT_APP_URL}${constants.GET_MESSAGES}${selectedChat}`)
@@ -48,7 +48,7 @@ function Messages({ selectedChat }: IProps): JSX.Element {
     if (!messages.length) return <MessageContainer ><MessageForm selectedChat={selectedChat} />  </MessageContainer >;
 
     return (
-        <MessageContainer>
+        <MessageContainer className='messagesContainer'>
             {
                 messages.map((message) => {
                     if (!message.author) {

@@ -4,11 +4,11 @@ import { useGetFreelancerContractsMutation, useGetJobOwnerContractsMutation, use
 import { useAppSelector } from 'store/hooks';
 import { variables } from 'constants/variables';
 import { IContract } from 'types/contracts';
-import { Result } from 'antd';
+import { message, Result } from 'antd';
 import { Container, Heading } from 'pages/vacancies/components/projectDetails/styles';
+import { ListSelector } from 'pages/myJobs/styles';
 import { Contract } from './Contract';
 import { Wrapper } from './Wrapper';
-import { ListSelector } from 'pages/myJobs/styles';
 import { ContractsContainer } from './styles';
 
 export function Contracts(): JSX.Element {
@@ -17,6 +17,18 @@ export function Contracts(): JSX.Element {
   const [getJobOwnerContract, ownerContract] = useGetJobOwnerContractsMutation();
   const [updateContract] = useUpdateContractMutation();
 
+  function showMessage(): void {
+    const key = 'updatable';
+    message.success({
+      content: t('Contract.closedsucces'),
+      key,
+      duration: 2,
+      style: {
+        marginTop: '130px',
+      },
+    });
+  }
+
   const [openContracts, setOpenContracts] = useState<boolean>(true);
   const [contracts, setContracts] = useState<{ open: IContract[] | [], closed: IContract[] | []; }>({ open: [], closed: [], });
   const role = useAppSelector((state) => state.auth.user?.role);
@@ -24,6 +36,7 @@ export function Contracts(): JSX.Element {
 
   async function closeContract(id: number): Promise<void> {
     const [closed] = contracts.open.splice(id, 1);
+    showMessage();
     await updateContract({ ...closed, active: false, owner: closed.owner.id });
     if (role === variables.freelancer) {
       getFreelancerContract();

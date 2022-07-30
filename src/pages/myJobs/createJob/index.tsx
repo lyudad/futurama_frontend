@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Container, Heading } from 'pages/vacancies/components/projectDetails/styles';
 import { useTranslation } from 'react-i18next';
 import { useCreateJobMutation, useGetCategoriesQuery, useGetSkillsQuery } from 'store/api/vacanciesApi';
-
 import {
     Form,
     Input,
@@ -23,28 +22,31 @@ type IJob = {
     description: string;
     englishLevel: string;
     price: number;
-    skills: [];
+    skills: number[];
     timePerWeek: number;
     category: number;
-    owner: number;
 };
 
-function CreateJob(): JSX.Element {
+type Props = {
+    jobId?: number;
+    vacancy?: IJob;
+};
+
+function CreateJob({ jobId, vacancy }: Props): JSX.Element {
 
     const myId = useAppSelector((state) => state.auth.user?.id);
     const { data: categoriesData } = useGetCategoriesQuery('');
     const { data: skillsData } = useGetSkillsQuery('');
     const [sendJob] = useCreateJobMutation();
-
     const navigate = useNavigate();
     const { t } = useTranslation();
     const { Option } = Select;
     const [form] = Form.useForm();
 
-    const showMessage = (): void => {
+    const showMessage = (loading: string, success: string): void => {
         const key = 'updatable';
         message.loading({
-            content: t('CreateJob.creating'),
+            content: loading,
             key,
             style: {
                 marginTop: '130px',
@@ -52,25 +54,33 @@ function CreateJob(): JSX.Element {
         });
         setTimeout(() => {
             message.success({
-                content: t('CreateJob.created'),
+                content: success,
                 key,
                 duration: 2,
                 style: {
                     marginTop: '130px',
                 },
             });
-        }, 1800);
+        }, 1000);
     };
 
     async function sending(values: IJob): Promise<void> {
         await sendJob(values);
-        showMessage();
+        if (jobId) {
+            showMessage(t('Contacts.updating'), t('Contacts.updated'));
+        } else {
+            showMessage(t('CreateJob.creating'), t('CreateJob.created'));
+        }
         navigate('/myjobs');
     }
 
+    useEffect(() => {
+        form.setFieldsValue(vacancy);
+    }, [vacancy]);
+
     return (
         <Container>
-            <Heading>{t('CreateJob.createajob')}</Heading>
+            <Heading>{jobId ? t('CreateJob.editing') : t('CreateJob.createajob')}</Heading>
             <Form
                 size='large'
                 form={form}
@@ -81,6 +91,7 @@ function CreateJob(): JSX.Element {
                     label={t('CreateJob.title')}
                     rules={[
                         {
+                            min: 5,
                             required: true,
                             message: t('CreateJob.titlemessage')
                         },
@@ -88,7 +99,7 @@ function CreateJob(): JSX.Element {
                     <Input placeholder={t('CreateJob.titleplaceholder')} />
                 </Form.Item>
 
-                <Form.Item name="category" label={t('CreateJob.category')}
+                <Form.Item name="category" label={t('CreateJob.category')} initialValue={vacancy?.category}
                     rules={[
                         {
                             required: true,
@@ -225,6 +236,10 @@ function CreateJob(): JSX.Element {
                     name="owner"
                     initialValue={myId}
                 />
+                {jobId && <Form.Item noStyle
+                    name="id"
+                    initialValue={jobId}
+                />}
             </Form>
 
             <Button onClick={() => navigate(-1)}>{t('Invite.back')}</Button>
@@ -234,7 +249,7 @@ function CreateJob(): JSX.Element {
                     .then((values) => {
                         sending(values);
                     });
-            }} key="submit">{t('CreateJob.create')}</Button>
+            }} key="submit">{jobId ? t('CreateJob.save') : t('CreateJob.create')}</Button>
         </Container>
     );
 }

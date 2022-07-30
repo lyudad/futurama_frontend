@@ -6,7 +6,8 @@ interface Props {
 
 export const Container = styled.section`
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-  margin: 0px 50px;
+  margin: 20px 50px;
+  border-radius: 15px;
   padding: 45px 80px 30px 90px;
   background-color: #fff;
   min-width: 750px; 

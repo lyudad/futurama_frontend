@@ -8,12 +8,12 @@ import { IProposal } from 'types/proposal';
 import { Button as CustomButton } from 'components/ui/button';
 import { useChangeJobStatusMutation, useDeleteJobMutation, useGetMyJobsQuery } from 'store/api/vacanciesApi';
 import { CheckOutlined, CloseOutlined, SmileOutlined } from '@ant-design/icons';
+import { NavLink } from 'react-router-dom';
 import { ListSelector } from './styles';
 import { ProposalsList } from './proposalsList';
-import { NavLink } from 'react-router-dom';
 
 export function MyJobs(): JSX.Element {
-  const { data, isLoading } = useGetMyJobsQuery();
+  const { data, isLoading, refetch } = useGetMyJobsQuery();
   const { Panel } = Collapse;
   const { t } = useTranslation();
   const [isActiveJobs, setIsAvtiveJobs] = useState<boolean>(true);
@@ -115,7 +115,7 @@ export function MyJobs(): JSX.Element {
 
                   <Collapse bordered={false}>
                     <Panel style={{ marginTop: '20px' }} header={panelHeader(job.proposals ? job.proposals : [])} key={filteredJobs.length}>
-                      <ProposalsList jobId={job.id} proposals={job.proposals ? job.proposals : []} />
+                      <ProposalsList jobId={job.id} refetch={refetch} proposals={job.proposals ? job.proposals : []} />
                     </Panel>
                   </Collapse>
                 </Card>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CardWrapper = styled.div`
+    border-radius: 15px;
     padding: 1.5rem; 
     background: white;  
     > h2,
@@ -9,7 +10,7 @@ export const CardWrapper = styled.div`
     }
     box-shadow: 10px 2px 6px rgba(0, 0, 0, 0.12),
         0px 2px 6px rgba(0, 0, 0, 0.14), 0px 2px 6px rgba(0, 0, 0, 0.2);
-    margin: 0 auto 20px auto;    
+    margin: 20px auto 0px auto;    
     transition: box-shadow 200ms ease;
     &:hover {
      

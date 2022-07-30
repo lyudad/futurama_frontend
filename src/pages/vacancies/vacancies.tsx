@@ -430,7 +430,8 @@ export function Vacancies(): JSX.Element {
                         <Result
                             style={{
                                 background: 'white',
-                                borderRadius: '15px'
+                                borderRadius: '15px',
+                                padding: '80px 110px'
                             }}
                             title={t('Vacancies.nojobsfound')}
                         />

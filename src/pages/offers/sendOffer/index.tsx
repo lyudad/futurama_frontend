@@ -6,8 +6,8 @@ import {
 } from "antd";
 import { useTranslation } from 'react-i18next';
 import { useSendProposalMutation } from 'store/api/proposalsApi';
+import notification, { NotificationPlacement } from 'antd/lib/notification';
 import { Button } from 'pages/vacancies/components/projectDetails/styles';
-
 
 interface IProps {
     user: number;
@@ -27,23 +27,20 @@ type Proposal = {
 function SendOffer({ user, vacancy, modal, showModal }: IProps): JSX.Element {
     const [form] = Form.useForm();
     const [setData] = useSendProposalMutation();
-
     const { t } = useTranslation();
 
-    const showMessage = (): void => {
-        const message = Modal.success({
-            title: t('Proposal.success'),
-            content: t('Offers.sent'),
+    const openNotification = (placement: NotificationPlacement): void => {
+        notification.success({
+            message: t('Proposal.success'),
+            description: t('Offers.sent'),
+            placement,
         });
-        setTimeout(() => {
-            message.destroy();
-        }, 2500);
     };
 
     async function sending(values: Proposal): Promise<void> {
         await setData(values);
         showModal(false);
-        showMessage();
+        openNotification('bottomRight');
     }
 
     return (
@@ -75,7 +72,7 @@ function SendOffer({ user, vacancy, modal, showModal }: IProps): JSX.Element {
                 size='large'
             >
                 <Form.Item
-                    name="price"                  
+                    name="price"
                     label={t('Offers.finalrate')}
                     rules={[
                         {

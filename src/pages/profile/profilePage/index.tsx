@@ -15,9 +15,9 @@ import { Image, Result } from 'antd';
 import { UserProfile } from 'types/profile';
 import { userState } from 'types/auth';
 import { NavLink } from 'react-router-dom';
+import { SmileOutlined } from '@ant-design/icons';
 import { Experience, ProfileCard, InfoBlock } from './style';
 import Card from './Card';
-import { SmileOutlined } from '@ant-design/icons';
 
 interface Props {
     profile: UserProfile;

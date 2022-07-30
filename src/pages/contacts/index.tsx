@@ -20,8 +20,8 @@ import { useAppSelector } from 'store/hooks';
 import { constants as urlConstants } from 'constants/urls';
 import { useNavigate } from 'react-router-dom';
 import { FlexColumn } from 'pages/chats/styles';
-import { Heading, Wrapper } from './styles';
 import { Container } from 'pages/vacancies/components/projectDetails/styles';
+import { Heading, Wrapper } from './styles';
 
 
 export function Contacts(): JSX.Element {

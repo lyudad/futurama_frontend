@@ -16,7 +16,14 @@ function Chats(): JSX.Element {
     const { t } = useTranslation();
     const isOwner = useAppSelector((state) => state.auth.user?.role) === variables.jobOwner;
     const { data: chats, isLoading } = useGetMyChatsQuery();
-
+    const scrollToBottom = (): void => {
+        setTimeout(() => {
+            const messagesContainer = document.querySelector(".messagesContainer");
+            if (messagesContainer)
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }, 200);
+    };
+    
     if (isLoading) return <Spinner />;
 
     if (chats)
@@ -26,7 +33,7 @@ function Chats(): JSX.Element {
                     <Heading style={{ paddingLeft: '15px' }}>{t('Chats.chats')}</Heading>
 
                     {chats?.map((chat: Chat) => (
-                        <ChatWrapper onClick={() => { setSelectedChat(chat.id); }} key={chat.id}>
+                        <ChatWrapper onClick={() => { setSelectedChat(chat.id); scrollToBottom(); }} key={chat.id}>
                             <h3>{chat.vacancy.title}</h3>
                             {!isOwner ? <h4>{chat.vacancy.owner.firstName} {chat.vacancy.owner.lastName}</h4> :
                                 <h4>{chat.freelancer.firstName} {chat.freelancer.lastName}</h4>}

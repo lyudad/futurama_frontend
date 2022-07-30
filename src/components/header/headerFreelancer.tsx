@@ -2,11 +2,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Profile from 'assets/icons/profile.png';
 import { constants } from 'constants/urls';
-import { useAppSelector } from 'store/hooks';
+import { useGetContactsQuery } from 'store/api/contactsApi';
 import { NavContainer, NavLink } from './styles';
 
 export function HeaderFreelancer(): JSX.Element {
-    const profilePhoto = useAppSelector(state => state.auth.user?.photo);
+    const profilePhoto = useGetContactsQuery().data?.photo;
     const { t } = useTranslation();
 
     return (

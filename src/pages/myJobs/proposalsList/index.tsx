@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Collapse, Image } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { IProposal, ProposalStatus } from 'types/proposal';
@@ -7,25 +7,40 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { ArrowRightOutlined, CheckOutlined } from '@ant-design/icons';
 import { useCreateChatMutation } from 'store/api/chatsApi';
 import { useChangeProposalStatusMutation } from 'store/api/proposalsApi';
+import notification, { NotificationPlacement } from 'antd/lib/notification';
 import { ListSelector, Message } from '../styles';
 
 interface IProps {
     proposals: IProposal[];
     jobId: number;
+    refetch: () => void;
 }
 
-export function ProposalsList({ proposals, jobId }: IProps): JSX.Element {
+export function ProposalsList({ proposals, jobId, refetch }: IProps): JSX.Element {
     const [createChat] = useCreateChatMutation();
     const { Panel } = Collapse;
     const { t } = useTranslation();
     const navigate = useNavigate();
     const [changeStatus] = useChangeProposalStatusMutation();
 
+    const openNotification = (placement: NotificationPlacement): void => {
+        notification.success({
+            message: t('Chats.success'),
+            description: t('Chats.chat'),
+            placement,
+        });
+    };
+
     function acceptProposal(freelancerId: number, proposal: number): void {
         createChat({ freelancer: freelancerId, vacancy: jobId });
         changeStatus({ id: proposal, status: ProposalStatus.Accepted });
         navigate('/chats');
+        openNotification('bottomRight');
     }
+
+    useEffect(() => {
+        refetch();
+    }, [changeStatus]);
 
     function panelHeader(proposal: IProposal): JSX.Element {
         return (

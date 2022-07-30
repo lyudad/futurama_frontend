@@ -5,6 +5,7 @@ import { useGetProfileByIdQuery } from 'store/api/profileApi';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CheckOutlined } from '@ant-design/icons';
+import { useGetMyJobsForCurrentUserQuery } from 'store/api/vacanciesApi';
 import { ProfilePage } from '../profile/profilePage';
 import { SendInvite } from './sendInvite/SendInvite';
 
@@ -17,10 +18,14 @@ function PublicProfile(): JSX.Element {
     const profile = useGetProfileByIdQuery(id).data;
     const user = profile?.user || { lastName: '', firstName: '', email: '' };
     const { t } = useTranslation();
-    const [modal, showModal] = useState(false);
+    const [modal, showModal] = useState<boolean>(false);
+    let inviteExist = false;
+    const { data } = useGetMyJobsForCurrentUserQuery(id);
     const navigate = useNavigate();
-    const inviteExist = false;
 
+    if (data && data.length === 0) {
+        inviteExist = true;
+    }
     if (profile) {
 
         return (
